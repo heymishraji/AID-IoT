@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+  <style>
+  :root{--navy:#0B1F3A;--orange:#E8541C;--orange-ink:#B4400E;--ground:#F3F4F6;--surface:#FFFFFF;--muted:#5B6573;--line:#D8DDE6;--im:#9FB3C8;--green:#1F7A6D;--ink:#0B1F3A;--navy2:#132B4D}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Geist","Segoe UI",Helvetica,Arial,sans-serif;color:#0B1F3A;background:#F3F4F6;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.55}
+  a{color:#B4400E;text-decoration:none} a:hover{color:#8F3209}
+  .mono{font-family:"Geist Mono",ui-monospace,Menlo,monospace}
+  .eyebrow{font-family:"Geist Mono",ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#B4400E;font-weight:500}
+  .eyebrow.im{color:#9FB3C8}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;font-weight:600;font-size:15px;white-space:nowrap}
+  .btn.primary{background:#E8541C;color:#FFFFFF}
+  .btn.secondary{background:transparent;color:#0B1F3A;border:1.5px solid #0B1F3A}
+  .btn.onnavy{background:transparent;color:#FFFFFF;border:1.5px solid rgba(255,255,255,.5)}
+  .card{background:#FFFFFF;border:1px solid #D8DDE6;border-radius:8px}
+  .instr{background:#0B1F3A;color:#E9EEF6;border-radius:10px}
+  .instr .lbl{font-family:"Geist Mono",ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9FB3C8}
+  .instr .val{font-family:"Geist Mono",ui-monospace,Menlo,monospace;font-size:14px;color:#FFFFFF}
+  .h2{font-size:40px;line-height:1.08;letter-spacing:-.02em;font-weight:600;margin:0;text-wrap:balance}
+  .h3{font-size:20px;line-height:1.25;letter-spacing:-.01em;font-weight:600;margin:0}
+  .sub{font-size:18px;line-height:1.5;color:#5B6573;margin:0;max-width:60ch}
+  .p{font-size:16px;line-height:1.55;color:#3A465C;margin:0}
+  .small{font-size:14px;line-height:1.5;color:#5B6573;margin:0}
+  .chip{display:inline-flex;align-items:center;height:28px;padding:0 10px;border-radius:6px;background:#F3F4F6;border:1px solid #D8DDE6;font-family:"Geist Mono",ui-monospace,Menlo,monospace;font-size:12px;color:#3A465C;white-space:nowrap}
+  .stat{font-size:44px;line-height:1;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin:0}
+  .navlink{font-size:15px;font-weight:500;color:#0B1F3A}
+  .logo-ph{font-family:"Geist Mono",ui-monospace,Menlo,monospace;font-size:13px;letter-spacing:.04em;color:#5B6573;border:1px dashed #B9C1CF;border-radius:6px;padding:8px 14px;white-space:nowrap}
+  .spec td{padding:9px 0;border-bottom:1px solid #D8DDE6;font-size:14px;vertical-align:top}
+  .spec td:first-child{font-family:"Geist Mono",ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#5B6573;width:38%;padding-right:10px;padding-top:11px}
+  .spec tr:last-child td{border-bottom:0}
+  .arrow{display:inline-block;width:16px;height:16px;vertical-align:middle}
+  .m .h2{font-size:30px}.m .sub{font-size:17px}.m .stat{font-size:38px}
+</style>
+</helmet>
+
+<div style="width:1440px;background:#F3F4F6;padding:56px 64px;display:flex;flex-direction:column;gap:40px;box-sizing:border-box">
+  <div style="display:flex;flex-direction:column;gap:8px"><div class="eyebrow">Design system · v0.1</div><h2 class="h2">Precision, plainly.</h2><p class="sub">One visual world. Light is the reading and selling surface; navy “instrument panels” are reserved for devices, diagrams, specs and dashboards.</p></div>
+  <div style="display:grid;grid-template-columns:repeat(8, minmax(0, 1fr));gap:14px">
+    <div class="card" style="overflow:hidden"><div style="height:72px;background:#0B1F3A;display:flex;align-items:flex-end;padding:8px;font-family:'Geist Mono',monospace;font-size:11px;color:#FFFFFF">#0B1F3A</div><div style="padding:10px 12px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:13px">Navy ink</span><span class="small" style="font-size:12px">text · instrument ground</span></div></div><div class="card" style="overflow:hidden"><div style="height:72px;background:#132B4D;display:flex;align-items:flex-end;padding:8px;font-family:'Geist Mono',monospace;font-size:11px;color:#FFFFFF">#132B4D</div><div style="padding:10px 12px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:13px">Navy 2</span><span class="small" style="font-size:12px">instrument surface</span></div></div><div class="card" style="overflow:hidden"><div style="height:72px;background:#E8541C;display:flex;align-items:flex-end;padding:8px;font-family:'Geist Mono',monospace;font-size:11px;color:#FFFFFF">#E8541C</div><div style="padding:10px 12px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:13px">Signal orange</span><span class="small" style="font-size:12px">buttons · display · fills</span></div></div><div class="card" style="overflow:hidden"><div style="height:72px;background:#B4400E;display:flex;align-items:flex-end;padding:8px;font-family:'Geist Mono',monospace;font-size:11px;color:#FFFFFF">#B4400E</div><div style="padding:10px 12px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:13px">Orange ink</span><span class="small" style="font-size:12px">links · eyebrows · small text</span></div></div><div class="card" style="overflow:hidden"><div style="height:72px;background:#F3F4F6;display:flex;align-items:flex-end;padding:8px;font-family:'Geist Mono',monospace;font-size:11px;color:#0B1F3A">#F3F4F6</div><div style="padding:10px 12px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:13px">Ground</span><span class="small" style="font-size:12px">page background</span></div></div><div class="card" style="overflow:hidden"><div style="height:72px;background:#FFFFFF;display:flex;align-items:flex-end;padding:8px;font-family:'Geist Mono',monospace;font-size:11px;color:#0B1F3A">#FFFFFF</div><div style="padding:10px 12px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:13px">Surface</span><span class="small" style="font-size:12px">cards · tables</span></div></div><div class="card" style="overflow:hidden"><div style="height:72px;background:#5B6573;display:flex;align-items:flex-end;padding:8px;font-family:'Geist Mono',monospace;font-size:11px;color:#FFFFFF">#5B6573</div><div style="padding:10px 12px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:13px">Muted</span><span class="small" style="font-size:12px">secondary text</span></div></div><div class="card" style="overflow:hidden"><div style="height:72px;background:#9FB3C8;display:flex;align-items:flex-end;padding:8px;font-family:'Geist Mono',monospace;font-size:11px;color:#0B1F3A">#9FB3C8</div><div style="padding:10px 12px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:13px">Instrument muted</span><span class="small" style="font-size:12px">labels on navy</span></div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:24px">
+    <div class="card" style="padding:28px;display:flex;flex-direction:column;gap:14px">
+      <div class="eyebrow" style="color:#0B1F3A">Type · Geist + Geist Mono</div>
+      <div style="font-size:49px;line-height:1.04;letter-spacing:-.025em;font-weight:600">Display 49 / 600</div>
+      <div style="font-size:39px;line-height:1.08;letter-spacing:-.02em;font-weight:600">Heading 39 / 600</div>
+      <div style="font-size:25px;line-height:1.2;letter-spacing:-.01em;font-weight:600">Subheading 25 / 600</div>
+      <div style="font-size:17px;line-height:1.55;color:#3A465C">Body 17 / 400 — running text, 65 characters wide, calm and specific.</div>
+      <div style="font-size:14px;line-height:1.5;color:#5B6573">Caption 14 / 400 — never below 12 on any device.</div>
+      <div class="mono" style="font-size:13px;color:#5B6573;letter-spacing:.02em">MONO 13 · 12–24 V DC · RS-485 ×2 · −20 to 60 °C — anything that is data</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="card" style="padding:24px;display:flex;flex-direction:column;gap:14px">
+        <div class="eyebrow" style="color:#0B1F3A">Buttons · 48px · one primary per view</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn primary" href="#">Talk to an engineer</a><a class="btn secondary" href="#">See how it works</a><a href="#" style="font-weight:600;display:inline-flex;align-items:center;gap:6px;height:48px">Text link <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+        <div class="instr" style="padding:14px;display:flex;gap:12px;align-items:center"><a class="btn primary" href="#">On navy</a><a class="btn onnavy" href="#">Secondary on navy</a></div>
+      </div>
+      <div class="card" style="padding:24px;display:flex;flex-direction:column;gap:12px">
+        <div class="eyebrow" style="color:#0B1F3A">Instrument panel · chips · spec rows</div>
+        <div class="instr" style="padding:14px 18px;display:flex;gap:24px"><div><div class="lbl">Uplink</div><div class="val">4G / CAT-M</div></div><div><div class="lbl">Uptime</div><div class="val">14d 03h</div></div><div><div class="lbl">Status</div><div class="val" style="color:#7BD0A3">● healthy</div></div></div>
+        <div style="display:flex;gap:6px"><span class="chip">IIoT Bridge</span><span class="chip">AID-Fuel</span><span class="chip">NavIC CMS</span></div>
+        <table class="spec" style="width:100%;border-collapse:collapse"><tr><td>Serial</td><td>RS-232 · 2× RS-485</td></tr><tr><td>Power</td><td>12–24 V DC</td></tr></table>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="padding:20px 24px;display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:20px">
+    <div><div class="eyebrow" style="color:#0B1F3A">Grid</div><p class="small" style="margin-top:4px">12 columns · 1312 max · 24px gutters</p></div><div><div class="eyebrow" style="color:#0B1F3A">Spacing</div><p class="small" style="margin-top:4px">8px scale · sections 96 / 56 (mobile)</p></div><div><div class="eyebrow" style="color:#0B1F3A">Radius</div><p class="small" style="margin-top:4px">8px cards · 10–14px panels · 6px chips</p></div><div><div class="eyebrow" style="color:#0B1F3A">Contrast</div><p class="small" style="margin-top:4px">All text pairs ≥ 4.5:1 · orange ink 5.7:1 on white</p></div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

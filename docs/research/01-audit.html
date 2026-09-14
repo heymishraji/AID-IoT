@@ -1,0 +1,861 @@
+<title>AID-IoT Website Audit</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F3F4F7; --surface:#FFFFFF; --surface-2:#E9ECF2; --ink:#0F1B2D; --ink-2:#3A465C; --muted:#5F6B80;
+  --line:#D7DCE6; --line-strong:#B9C1CF; --accent:#B4400E; --accent-ink:#FFFFFF; --accent-soft:#FBEDE5;
+  --navy:#0B1F3A; --navy-ink:#E9EEF6;
+  --p0:#9F1B1B; --p0-soft:#FBE7E7; --p1:#B4400E; --p1-soft:#FBEDE5; --p2:#7A5C00; --p2-soft:#FAF1D6; --p3:#2F5A8F; --p3-soft:#E4EDF8;
+  --good:#1F6B4A; --good-soft:#E1F1E8;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif; --body:"IBM Plex Sans","Segoe UI",Roboto,sans-serif; --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0E141F; --surface:#151D2B; --surface-2:#1C2636; --ink:#E7ECF4; --ink-2:#C2CBDA; --muted:#98A5BA;
+  --line:#28334A; --line-strong:#3A4760; --accent:#FF8A55; --accent-ink:#1A0A02; --accent-soft:#3A2114;
+  --navy:#0B1F3A; --navy-ink:#E9EEF6;
+  --p0:#FF8A8A; --p0-soft:#3B1717; --p1:#FFA073; --p1-soft:#3A2114; --p2:#E9C862; --p2-soft:#332B10; --p3:#8FB6E8; --p3-soft:#16263B;
+  --good:#7BD0A3; --good-soft:#12301F;
+}}
+:root[data-theme="dark"]{
+  --paper:#0E141F; --surface:#151D2B; --surface-2:#1C2636; --ink:#E7ECF4; --ink-2:#C2CBDA; --muted:#98A5BA;
+  --line:#28334A; --line-strong:#3A4760; --accent:#FF8A55; --accent-ink:#1A0A02; --accent-soft:#3A2114;
+  --navy:#0B1F3A; --navy-ink:#E9EEF6;
+  --p0:#FF8A8A; --p0-soft:#3B1717; --p1:#FFA073; --p1-soft:#3A2114; --p2:#E9C862; --p2-soft:#332B10; --p3:#8FB6E8; --p3-soft:#16263B;
+  --good:#7BD0A3; --good-soft:#12301F;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;padding-inline:20px;padding-block:0 80px;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1180px;margin:0 auto}
+header.masthead{padding-block:40px 28px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-size:clamp(34px,5vw,56px);line-height:1.02;letter-spacing:-.02em;margin:10px 0 14px;text-wrap:balance;font-weight:700}
+.lede{font-size:19px;line-height:1.5;color:var(--ink-2);max-width:60ch;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:22px;font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:500}
+.banner{margin-top:22px;border:1px solid var(--line-strong);border-left:4px solid var(--p2);background:var(--p2-soft);padding:12px 16px;border-radius:6px;font-size:14px;color:var(--ink)}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:48px;align-items:start}
+@media (max-width:1000px){.layout{grid-template-columns:1fr;gap:0}}
+nav.toc{position:sticky;top:20px;font-size:13.5px;padding-top:28px}
+nav.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
+nav.toc li a{display:block;padding:6px 0 6px 14px;color:var(--ink-2);text-decoration:none;border-left:2px solid transparent;margin-left:-1px}
+nav.toc li a:hover{color:var(--accent);border-left-color:var(--accent)}
+nav.toc li a span{font-family:var(--mono);color:var(--muted);font-size:11.5px;margin-right:6px}
+@media (max-width:1000px){nav.toc{position:static;padding-top:8px}nav.toc details{border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:10px 14px}nav.toc summary{cursor:pointer;font-weight:600;font-family:var(--display)}nav.toc ol{margin-top:8px}}
+@media (min-width:1001px){nav.toc summary{display:none}nav.toc details{display:contents}}
+main{min-width:0}
+section.sec{padding-block:44px 8px;border-top:1px solid var(--line)}
+section.sec:first-of-type{border-top:0}
+h2{font-family:var(--display);font-size:clamp(26px,3vw,34px);line-height:1.1;letter-spacing:-.015em;margin:0 0 6px;text-wrap:balance;font-weight:700}
+h2 .num{font-family:var(--mono);font-weight:400;font-size:.55em;color:var(--muted);letter-spacing:.06em;display:block;margin-bottom:8px}
+h3{font-family:var(--display);font-size:21px;line-height:1.2;margin:34px 0 10px;letter-spacing:-.01em;font-weight:600;text-wrap:balance}
+h4{font-family:var(--body);font-size:16px;margin:24px 0 6px;font-weight:600}
+p,ul,ol{max-width:72ch}
+p{margin:0 0 14px}
+ul,ol{padding-left:22px;margin:0 0 14px}
+li{margin-bottom:5px}
+li::marker{color:var(--muted)}
+.sub{color:var(--ink-2);font-size:17px;max-width:66ch;margin-bottom:22px}
+code,kbd{font-family:var(--mono);font-size:.9em;background:var(--surface-2);padding:1px 5px;border-radius:4px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:760px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.tile .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tile .v{font-family:var(--display);font-size:38px;line-height:1;margin:8px 0 6px;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.tile .d{font-size:13.5px;color:var(--ink-2);margin:0}
+.score{display:flex;align-items:baseline;gap:6px}.score small{font-size:16px;color:var(--muted);font-family:var(--mono)}
+.band{display:inline-block;font-family:var(--mono);font-size:11.5px;padding:2px 8px;border-radius:999px;margin-top:4px}
+.band.poor{background:var(--p0-soft);color:var(--p0)}.band.acc{background:var(--p2-soft);color:var(--p2)}.band.good{background:var(--good-soft);color:var(--good)}
+.tablewrap{overflow-x:auto;margin:14px 0 22px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--surface-2)}
+tr:last-child td{border-bottom:0}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.04em;padding:2px 7px;border-radius:4px;white-space:nowrap;font-weight:500}
+.P0{background:var(--p0-soft);color:var(--p0)}.P1{background:var(--p1-soft);color:var(--p1)}.P2{background:var(--p2-soft);color:var(--p2)}.P3{background:var(--p3-soft);color:var(--p3)}.OK{background:var(--good-soft);color:var(--good)}
+.issue{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:18px 20px;margin:14px 0}
+.issue header{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.issue header h4{margin:0;font-size:17px;font-family:var(--display);font-weight:600}
+.issue .row{display:grid;grid-template-columns:110px minmax(0,1fr);gap:6px 14px;font-size:14.5px}
+.issue .row b{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+@media (max-width:600px){.issue .row{grid-template-columns:1fr}}
+.issue .row p{margin:0 0 4px;max-width:none}
+figure{margin:20px 0 26px}
+figure img{width:100%;height:auto;border:1px solid var(--line);border-radius:8px;display:block;background:#fff}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5}
+.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}
+@media (max-width:760px){.shots{grid-template-columns:1fr}}
+.shots figure{margin:0}
+.callout{border-left:4px solid var(--accent);background:var(--surface);padding:14px 18px;border-radius:0 8px 8px 0;margin:18px 0 22px;font-size:15px}
+.callout.navy{border-left-color:var(--navy);background:var(--navy);color:var(--navy-ink)}
+.callout.navy .eyebrow{color:#9FB3C8}
+.copy{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 22px}
+@media (max-width:760px){.copy{grid-template-columns:1fr}}
+.copy>div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:14.5px}
+.copy .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.copy .before .lbl{color:var(--p0)}.copy .after .lbl{color:var(--good)}
+.copy q{quotes:none;display:block;font-style:normal}
+.copy .why{font-size:13px;color:var(--muted);margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:14px 0 20px}
+.sw{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface);font-size:13px}
+.sw .c{height:64px}
+.sw .t{padding:9px 11px}
+.sw .t b{display:block;font-weight:600}
+.sw .t code{background:transparent;padding:0;color:var(--muted);font-size:12px}
+.sw .t small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.typo{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 22px;margin:14px 0 22px}
+.typo .h{font-family:"Geist",var(--body);font-size:34px;font-weight:600;letter-spacing:-.02em;line-height:1.1;margin:0 0 6px}
+.typo .b{font-size:16px;margin:0 0 6px;max-width:60ch}
+.typo .m{font-family:var(--mono);font-size:13px;color:var(--muted);margin:0}
+.phase{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:20px 22px;margin:16px 0;display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 22px}
+@media (max-width:700px){.phase{grid-template-columns:1fr}}
+.phase .ph{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.phase .ph b{display:block;font-family:var(--display);font-size:22px;letter-spacing:-.01em;color:var(--ink);text-transform:none;margin:4px 0 4px;font-weight:600}
+.phase .ph small{display:block;font-size:12px;color:var(--ink-2);text-transform:none;letter-spacing:0}
+.phase h4{margin:0 0 8px;font-size:16px}
+.phase ul{margin-bottom:8px}
+.phase .out{font-size:13.5px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:8px;margin-top:6px}
+pre.mermaid{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;overflow-x:auto;margin:14px 0 22px}
+.check{list-style:none;padding:0}
+.check li{padding-left:26px;position:relative}
+.check li::before{content:"";position:absolute;left:0;top:7px;width:14px;height:14px;border-radius:3px;border:1.5px solid var(--line-strong)}
+.check li.fail::before{background:var(--p0-soft);border-color:var(--p0)}
+.check li.pass::before{background:var(--good-soft);border-color:var(--good)}
+.check li.fail::after{content:"✕";position:absolute;left:2px;top:2px;font-size:11px;color:var(--p0);font-family:var(--mono)}
+.check li.pass::after{content:"✓";position:absolute;left:2px;top:2px;font-size:11px;color:var(--good);font-family:var(--mono)}
+.persona{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.persona .who{font-family:var(--display);font-weight:600;font-size:17px;margin:0 0 2px}
+.persona .role{font-size:13px;color:var(--muted);margin:0 0 10px}
+.persona ul{font-size:14px;margin:0;padding-left:18px}
+.foot{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);font-family:var(--mono)}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<div class="wrap">
+<header class="masthead">
+  <div class="eyebrow">UX · IA · Brand · Technical audit — aid-iot.com</div>
+  <h1>AID-IoT Website Audit &amp; Rebuild Plan</h1>
+  <p class="lede">What the current site says to a non-technical executive, where it breaks on desktop and mobile, and a phased plan to rebuild it as a clear, single-voice platform that sells AID-IoT as a hardware <em>and</em> software partner.</p>
+  <div class="meta">
+    <span>Date <b>12 Sep 2026</b></span>
+    <span>Pages crawled <b>31 live · 6 dead footer/nav targets</b></span>
+    <span>Viewports <b>1440 × 900 desktop · 390 × 844 mobile</b></span>
+    <span>Method <b>impeccable critique + audit playbooks, Nielsen heuristics, axe-core 4.10, Playwright/Chrome 140</b></span>
+  </div>
+  <div class="banner"><b>Method note — single-context run.</b> The impeccable playbook asks for two isolated sub-agent assessments. This run was done in one context (the impeccable launcher binary could not download behind the corporate proxy, and no sub-agents were spawned). The design review was written before the automated axe/performance data was read, to keep the two from anchoring each other. Everything below was verified against the live site.</div>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="Contents">
+<details open>
+<summary>Contents</summary>
+<ol>
+<li><a href="#s1"><span>01</span>Executive summary</a></li>
+<li><a href="#s2"><span>02</span>What the site is today</a></li>
+<li><a href="#s3"><span>03</span>Heuristic evaluation</a></li>
+<li><a href="#s4"><span>04</span>Priority issues</a></li>
+<li><a href="#s5"><span>05</span>Technical audit</a></li>
+<li><a href="#s6"><span>06</span>Responsive findings</a></li>
+<li><a href="#s7"><span>07</span>Content &amp; copy</a></li>
+<li><a href="#s8"><span>08</span>Proposed architecture</a></li>
+<li><a href="#s9"><span>09</span>Brand &amp; visual language</a></li>
+<li><a href="#s10"><span>10</span>Build plan in phases</a></li>
+<li><a href="#s11"><span>11</span>Appendix: page-by-page</a></li>
+</ol>
+</details>
+</nav>
+
+<main>
+
+<!-- ============ 01 ============ -->
+<section class="sec" id="s1">
+<h2><span class="num">01</span>Executive summary</h2>
+<p class="sub">The product pages are genuinely good. The front door is not. A CEO who lands on aid-iot.com today cannot tell within ten seconds what AID-IoT would do for their business, that AID-IoT writes the software as well as the hardware, or where to click next.</p>
+
+<div class="grid g3">
+  <div class="tile"><div class="k">Design health · Nielsen</div><div class="v score">13<small>/32</small></div><span class="band poor">Poor — significant rework</span><p class="d">8 heuristics scored; Flexibility and Help marked n/a for a marketing surface.</p></div>
+  <div class="tile"><div class="k">Technical health · impeccable audit</div><div class="v score">7<small>/20</small></div><span class="band poor">Poor — major overhaul</span><p class="d">Accessibility 1 · Performance 1 · Responsive 2 · Theming 1 · Integrity 2.</p></div>
+  <div class="tile"><div class="k">Issues logged</div><div class="v score">32</div><span class="band acc">4 P0 · 11 P1 · 11 P2 · 6 P3</span><p class="d">Counted once each even where they repeat across 24 marketing pages.</p></div>
+</div>
+
+<h3>The five findings that matter most</h3>
+<ol>
+  <li><b>The homepage does not make the pitch.</b> The headline (“Connecting the Dots to Build a Smarter, More Connected World”) is a slogan, not a claim; both hero buttons (“View IoT Solutions” and “Talk to Expert”) jump to the same contact form; the strongest proof the company has (Ministry of Defence, Indian Army, IIT Delhi, IIT Jammu, BigBasket) is hidden in a small logo marquee below the fold.</li>
+  <li><b>There is no information architecture, only a list.</b> “Our Products” is a flat strip of 21 chips mixing hardware (IIoT Bridge), sectors (Defence), courses (Drone Pilot) and software (AID-ERP). The nav item “Industries” points to a page about contract manufacturing, while the homepage “Industries” section is a carousel of Healthcare/Defence/Education. Footer lists do not match either. Nothing tells a visitor whether to think in terms of <em>problems, sectors, products</em> or <em>services</em>.</li>
+  <li><b>The software half of the business is invisible.</b> AID-IoT ships dashboards, an ERP, TraceCraft, a four-app fuel suite (FSMS/DEPOT/RAVEN/QUEST), convoy and vending software — but there is no “Software” or “Platform” anywhere in the navigation, and “Cloud &amp; SaaS Platforms” is one of four equal-weight cartoon cards.</li>
+  <li><b>Two websites are wearing one logo.</b> The homepage is a warm-peach template with stock cartoon scientists and a 3D avatar; the product pages are dark, technical and photographic, and each picks its own accent (orange, teal, yellow, green). Four font families load. Every colour is hard-coded inline; there is no design system to scale.</li>
+  <li><b>Mobile is actively hostile on first visit.</b> A fixed “GET A QUOTE” tab overlaps the hero headline on every page at 390px, and the cookie banner takes ~30% of the viewport until dismissed. Together they cover roughly half of the first screen a phone visitor sees.</li>
+</ol>
+
+<h3>What to keep</h3>
+<ul>
+  <li><b>The product page template.</b> Challenge → How we help → Architecture → Features → Specs → Use cases → Built for → CTA is a strong, repeatable narrative. It needs a business-outcome layer on top, not replacement.</li>
+  <li><b>The device photography and system diagrams</b> on the Defence, IIoT Bridge, Industries and Education pages. They are specific to AID-IoT in a way nothing on the homepage is.</li>
+  <li><b>The proof points already written</b> (“fielded with the Indian Army”, “5,000+ SKUs, zero stock variance”, “−12.4% fuel burn”) — currently buried three scrolls deep on individual pages.</li>
+  <li><b>Next.js and the Store’s separate app shell.</b> The stack is right; the theming and content model on top of it are not.</li>
+</ul>
+
+<div class="callout navy">
+  <div class="eyebrow">Recommendation in one line</div>
+  Do not restyle the current site. Re-architect it around four questions an executive asks — <b>What do you do? For whom? Prove it. How do we start?</b> — build one visual system for every page, and rewrite every entry-point in plain language, with engineering detail kept one click deeper.
+</div>
+</section>
+
+<!-- ============ 02 ============ -->
+<section class="sec" id="s2">
+<h2><span class="num">02</span>What the site is today</h2>
+<p class="sub">Thirty-one live URLs, one navigation model that describes none of them, and a homepage that carries the weakest version of the story.</p>
+
+<h3>Site inventory</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Area</th><th>Live pages</th><th>Template / visual world</th><th>Reachable from primary nav?</th></tr></thead>
+<tbody>
+<tr><td>Home</td><td class="n">1</td><td>Warm-peach template, cartoon illustrations</td><td>Yes</td></tr>
+<tr><td>Industrial products</td><td class="n">5</td><td>IIoT Bridge, IoT Edge Lite, Ethernet Bridge, AID-Auto, AidFresh — dark navy hero (AidFresh: light mint)</td><td>Only via “Our Products → Industry” submenu or home chips</td></tr>
+<tr><td>Defence</td><td class="n">7</td><td>Defence hub, NavIC CMS, AID-Fuel, AID-Fuel-Marine, TrackNet, VMS-O, VFMS-O — black / dark green / olive heroes</td><td>Only via submenu</td></tr>
+<tr><td>Software</td><td class="n">2</td><td>AID-ERP (light, orange), TraceCraft (dark, filed under /education/pcb)</td><td><b>No</b> — no “Software” in nav</td></tr>
+<tr><td>Services</td><td class="n">2</td><td>/industries (contract manufacturing), /services/pcb-design</td><td>“Industries” label — misleading</td></tr>
+<tr><td>Education</td><td class="n">4</td><td>Hub + 3 drone programmes</td><td>Submenu only</td></tr>
+<tr><td>Vending</td><td class="n">1</td><td>Photo hero, teal accent</td><td>Home chips only</td></tr>
+<tr><td>Store</td><td class="n">1</td><td>Separate app shell; 210 products on one page</td><td>Yes</td></tr>
+<tr><td>Portal</td><td class="n">4</td><td>/products (app launcher), /login, /register, /forgot-password</td><td>“Login”; /products is publicly visible</td></tr>
+<tr><td>Legal &amp; contact</td><td class="n">4</td><td>Contact, Privacy, Terms, Shipping &amp; Refund</td><td>Contact yes; rest footer</td></tr>
+</tbody></table></div>
+
+<h3>Above the fold, every page, both viewports</h3>
+<div class="shots">
+<figure style="grid-column:span 3"><img src="img/folds-desktop.jpg" alt="Contact sheet of the first viewport of all 26 marketing pages at 1440px width" loading="lazy"><figcaption><b>Desktop first screens.</b> One peach homepage, one white contact page, one light ERP page, one mint AidFresh page — and twenty dark pages, each with its own accent colour. The orange “GET A QUOTE” tab and the cookie banner appear on all of them.</figcaption></figure>
+<figure style="grid-column:span 3"><img src="img/folds-mobile.jpg" alt="Contact sheet of the first viewport of all 26 marketing pages at 390px width" loading="lazy"><figcaption><b>Mobile first screens.</b> The cookie banner occupies the bottom third of every page; the “GET A QUOTE” tab sits over the headline. On Convoy, VMS-O, Ethernet Bridge and TrackNet the headline is physically clipped.</figcaption></figure>
+</div>
+
+<h3>Navigation model as it exists</h3>
+<ul>
+  <li><b>Home · What we do · Our Products ▾ · Industries · Store · Login · Contact Us</b> — seven items, two of which (“What we do”, “Industries”) are anchors to homepage sections when on the homepage and go elsewhere on subpages.</li>
+  <li><b>“Our Products” dropdown</b> has three sub-menus: <em>Education, Industry, Defence</em>. Education is not a product; Industry is a sector; AID-ERP, Vending, TraceCraft and PCB Design fit in none of them.</li>
+  <li><b>“Industries”</b> leads to /industries, whose H1 is “Your product. Built in India. Delivered to the world.” — the contract-manufacturing offer. The homepage section with the same name is a carousel of Healthcare, Defence, Education and “Monitoring Solutions”, two of which have no page. Its card images (<code>MONITOR.svg</code>, <code>EDU.svg</code>, <code>healthx.svg</code>) fail to render — the cards show as blank boxes.</li>
+  <li><b>Footer</b> lists Industries: Defence, Industry 4.0, Healthcare, Education; Products: IoT Gateway, AID-Fuel, NAVIC, OBD, Vending Machine. “OBD” and “Healthcare” have no page; “NAVIC” and “NavIC CMS” are treated as different things.</li>
+  <li><b>Product picker on home:</b> 21 flat chips — IIoT Bridge, AID-Auto, AidFresh, AID-Fuel, AID-Fuel-Marine, TrackNet, VMS-O, VFMS-O, IoT Edge Lite, Ethernet Bridge, Defence, NavIC CMS, NAVIC, OBD, Education, Drone Designing, Drone Pilot, IdeaLab FDP, Vending Machine, PCB Milling, AID-ERP. On mobile the strip scrolls sideways and the selected product’s image leaves a ~700px empty area beneath it.</li>
+</ul>
+<div class="shots">
+<figure><img src="img/home-products.jpg" alt="Homepage product picker with 21 chips and the industries carousel with blank image areas" loading="lazy"><figcaption>21 chips, no grouping; blank carousel cards below.</figcaption></figure>
+<figure><img src="img/mobile-products.jpg" alt="Mobile product picker: chips clipped, large empty space under selected product" loading="lazy"><figcaption>Mobile: chips clipped at the edge, ~700px of dead space.</figcaption></figure>
+<figure><img src="img/portal-leak.jpg" alt="The /products URL shows a customer app launcher with Demo User Enterprise visible without login" loading="lazy"><figcaption><code>/products</code> is the customer portal launcher — publicly visible, logged in as “Demo User · Enterprise”.</figcaption></figure>
+</div>
+</section>
+
+<!-- ============ 03 ============ -->
+<section class="sec" id="s3">
+<h2><span class="num">03</span>Heuristic evaluation</h2>
+<p class="sub">Scored against Nielsen’s ten heuristics on the impeccable 0–4 scale, in <em>Persuade</em> mode (the visitor’s success is deciding to get in touch). Two heuristics that do not apply to a marketing surface are marked n/a, so the maximum is 32.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>#</th><th>Heuristic</th><th>Score</th><th>Key evidence</th></tr></thead>
+<tbody>
+<tr><td class="n">1</td><td>Visibility of system status</td><td class="n">2</td><td>Breadcrumbs and sticky section tabs on product pages are good. The nav never shows where you are (“Our Products” is not highlighted on product pages); carousels have no position indicator; the product picker gives no sense of “x of 21”.</td></tr>
+<tr><td class="n">2</td><td>Match between system and the real world</td><td class="n">1</td><td>Entry-point copy is engineering vocabulary: Modbus, RS-485, MQTT, NavIC, FEFO, LoRa mesh, constraint node, sovereign backhaul. Product names are internal codes (VMS-O, VFMS-O, NavIC CMS) with no plain descriptor. “Industries” means two different things.</td></tr>
+<tr><td class="n">3</td><td>User control and freedom</td><td class="n">2</td><td>Breadcrumbs exist. The fixed “GET A QUOTE” tab cannot be dismissed and covers content; the cookie banner blocks a third of mobile until acted on; the Store loads all 210 products with no way to page.</td></tr>
+<tr><td class="n">4</td><td>Consistency and standards</td><td class="n">1</td><td>Two visual worlds; accent colour changes per page; three heading typefaces; ten different CTA labels for the same action (Request a quote · Request brochure · Brief us · Explore product · Learn more · Know More · Tell us what to build · Discuss your deployment · Request a pilot · Talk to Expert); nav, footer and chip lists disagree.</td></tr>
+<tr><td class="n">5</td><td>Error prevention</td><td class="n">2</td><td>Contact form uses placeholder-only labels (disappear on typing), no inline validation, no required markers on the main form (the drawer form has them). Both hero CTAs go to <code>#contact</code>, so the “safe” exploratory click lands in a form.</td></tr>
+<tr><td class="n">6</td><td>Recognition rather than recall</td><td class="n">1</td><td>The visitor must already know that “TrackNet” is people-tracking, “VFMS-O” is fuel, “AidFresh” is cold-chain. Nothing groups products by problem, sector or type. Nav labels require remembering that “Industries” is manufacturing.</td></tr>
+<tr><td class="n">7</td><td>Flexibility and efficiency</td><td class="n">n/a</td><td>Persuade surface; the Store’s filters and search are adequate for the engineer persona.</td></tr>
+<tr><td class="n">8</td><td>Aesthetic and minimalist design</td><td class="n">2</td><td>Product pages are disciplined. The homepage is generic: bento cards captioned “Realtime data for accurate insights”, “Connectivity around world”; four cartoon-scientist illustrations; a 3D avatar with a coffee cup introducing the contact form on a defence-supplier website.</td></tr>
+<tr><td class="n">9</td><td>Help users recognise, diagnose and recover from errors</td><td class="n">2</td><td>A 404 page exists (“You’ve drifted into deep space”) — tonally wrong for the audience but functional. Form error states could not be observed; no success confirmation copy is visible in the markup.</td></tr>
+<tr><td class="n">10</td><td>Help and documentation</td><td class="n">n/a</td><td>Persuade surface. (Note for later: datasheets/brochures are promised on several pages; <code>/brochures/pcb-brochure.pdf</code> returns 404.)</td></tr>
+<tr><td></td><td><b>Total</b></td><td class="n"><b>13 / 32</b></td><td><span class="band poor">Poor</span> &nbsp;Bands used: 29–32 excellent · 23–28 good · 16–22 acceptable · 8–15 poor · 0–7 critical.</td></tr>
+</tbody></table></div>
+
+<h3>Cognitive load checklist (homepage)</h3>
+<ul class="check">
+  <li class="fail"><b>Single focus</b> — hero, three bento cards, a cityscape photo and a cookie banner compete in the first screen.</li>
+  <li class="fail"><b>Chunking</b> — 21 product chips in one group; 7 nav items.</li>
+  <li class="fail"><b>Grouping</b> — chips are not grouped; footer groups disagree with nav groups.</li>
+  <li class="fail"><b>Visual hierarchy</b> — four “What we do” cards of equal weight; “Cloud &amp; SaaS” (the software story) is the smallest.</li>
+  <li class="pass"><b>One thing at a time</b> — sections do proceed in sequence.</li>
+  <li class="fail"><b>Minimal choices</b> — 21 options at the product decision point; 7 in nav; 4 in each dropdown level.</li>
+  <li class="fail"><b>Working memory</b> — visitor must remember what “Industries” meant on the last page.</li>
+  <li class="fail"><b>Progressive disclosure</b> — specs and jargon are exposed at the same level as the pitch.</li>
+</ul>
+<p><b>7 of 8 failed → high cognitive load.</b> This is the measurable version of “everything is all over the place”.</p>
+
+<h3>Persona walkthroughs</h3>
+<div class="grid g2">
+  <div class="persona"><p class="who">Meera — CEO, cold-chain logistics (non-IT)</p><p class="role">Arrives from a referral. Wants to know: can these people reduce my spoilage, and are they credible?</p><ul>
+    <li>Reads “Connecting the Dots…” — learns nothing about her problem.</li>
+    <li>Clicks “View IoT Solutions” → lands on a blank contact form. Backs out.</li>
+    <li>Sees 21 chips; “AidFresh” is chip 3 but nothing says “cold-chain” or “spoilage”.</li>
+    <li>Never sees that BigBasket is a collaborator (it’s in a marquee below the carousel). <b>Abandons at ~40 seconds.</b></li></ul></div>
+  <div class="persona"><p class="who">Col. Arjun (retd.) — procurement lead, defence PSU</p><p class="role">Needs: indigenous credentials, MoD track record, security posture, a named contact.</p><ul>
+    <li>Defence page is strong and speaks his language; “Fielded with Ministry of Defence · Indian Army” is one thin line.</li>
+    <li>Looks for About / Certifications / Case studies — none exist.</li>
+    <li>Hits the 404 “drifted into deep space” page from a footer link. Credibility dips.</li>
+    <li>Fixed “GET A QUOTE” tab is the only path; no named engineering contact or programme office.</li></ul></div>
+  <div class="persona"><p class="who">Sana — Head of Operations, manufacturing plant</p><p class="role">Question: can you connect my PLCs to a dashboard, how long, roughly what does it cost?</p><ul>
+    <li>Nav “Industries” takes her to contract manufacturing — wrong.</li>
+    <li>IIoT Bridge page answers her question well, but only if she finds chip #1.</li>
+    <li>No engagement model, timeline or pricing band anywhere on the site.</li>
+    <li>Contact form asks for “Subject” with no hint of what a good subject is.</li></ul></div>
+  <div class="persona"><p class="who">Dev — embedded engineer evaluating hardware</p><p class="role">Wants pin-outs, protocols, datasheets, a dev board to buy.</p><ul>
+    <li>Best-served persona: spec tables, protocol lists, Store.</li>
+    <li>Store: 210 products render at once (4,446 DOM nodes); mobile page is 116,813px tall.</li>
+    <li>Brochure PDF link 404s; no datasheet downloads.</li>
+    <li>Contrast on orange labels (3.1:1) makes spec eyebrows hard to read.</li></ul></div>
+</div>
+</section>
+
+<!-- ============ 04 ============ -->
+<section class="sec" id="s4">
+<h2><span class="num">04</span>Priority issues</h2>
+<p class="sub">P0 blocks the site’s purpose. P1 must be fixed before a relaunch. P2 is the next pass. P3 is polish. Each carries the impeccable command that would address it in a build.</p>
+
+<h3>P0 — blocking</h3>
+
+<div class="issue"><header><span class="tag P0">P0</span><h4>The homepage does not say what AID-IoT does for a buyer</h4></header><div class="row">
+<b>Where</b><p>/ hero, “What we do”, product picker</p>
+<b>Why it matters</b><p>Executives decide in the first screen whether to keep reading. The hero is a slogan; the sub-line (“End-to-end IoT solutions combining hardware, software, and cloud intelligence”) is the actual pitch but is set as body copy. Both CTAs go to <code>#contact</code>, so exploration is punished.</p>
+<b>Fix</b><p>Lead with a claim + proof: “We design the device, write the software and run the cloud — so your operation gets one accountable partner. Fielded with the Indian Army, IIT Delhi and BigBasket.” Primary CTA “See how we work”, secondary “Talk to an engineer”. Put the logo strip directly under the hero.</p>
+<b>Command</b><p><code>/impeccable shape</code> then <code>/impeccable clarify</code></p></div></div>
+
+<div class="issue"><header><span class="tag P0">P0</span><h4>No information architecture — product list instead of a model</h4></header><div class="row">
+<b>Where</b><p>Nav, “Our Products” dropdown, 21-chip picker, footer</p>
+<b>Why it matters</b><p>Visitors cannot map their problem to a page. The same word (“Industries”) means two things; software is unfindable; sectors, products, courses and services share one list.</p>
+<b>Fix</b><p>Adopt the five-item model in §08: Solutions · Products · Software · Services · Company, with Store and Login as utilities. Every page belongs to exactly one branch; footer mirrors the nav.</p>
+<b>Command</b><p><code>/impeccable shape</code></p></div></div>
+
+<div class="issue"><header><span class="tag P0">P0</span><h4>Customer portal is publicly exposed at /products</h4></header><div class="row">
+<b>Where</b><p>/products — app launcher showing “Demo User · Enterprise”, Launch buttons for NavIC, Vending, AID-Fuel</p>
+<b>Why it matters</b><p>Looks like a leaked internal tool; confuses the “Products” concept; robots.txt already tries to hide it, which confirms it was not meant to be public.</p>
+<b>Fix</b><p>Move the launcher behind authentication at <code>/app</code> or <code>/portal</code>; free the <code>/products</code> URL for the marketing catalogue.</p>
+<b>Command</b><p><code>/impeccable harden</code></p></div></div>
+
+<div class="issue"><header><span class="tag P0">P0</span><h4>Mobile first screen is covered by two fixed elements</h4></header><div class="row">
+<b>Where</b><p>All pages at ≤ 430px: fixed “GET A QUOTE” tab (right edge, ~60% down) + cookie banner (bottom third)</p>
+<b>Why it matters</b><p>The tab sits on top of the headline on 20+ pages and clips it on at least four. With the banner, ~50% of the first viewport is chrome. Half of B2B traffic from India is mobile.</p>
+<b>Fix</b><p>Remove the tab on mobile (the header CTA already exists); collapse the cookie notice to a single 56px bar with “Accept · Manage”; remember the choice.</p>
+<b>Command</b><p><code>/impeccable adapt</code></p></div></div>
+
+<figure><img src="img/mobile-overlap.jpg" alt="TrackNet page on mobile: the fixed GET A QUOTE tab overlaps the hero headline and the cookie banner covers the call to action" loading="lazy" style="max-width:360px"><figcaption>TrackNet at 390px: the “GET A QUOTE” tab over the headline, the primary button hidden under the cookie banner. Also note the typo “every assets”.</figcaption></figure>
+
+<h3>P1 — fix before relaunch</h3>
+
+<div class="issue"><header><span class="tag P1">P1</span><h4>Software is invisible as an offer</h4></header><div class="row">
+<b>Where</b><p>Site-wide</p>
+<b>Why it matters</b><p>Your stated differentiator — “not just a hardware company” — has no page, no nav item and no proof. AID-ERP, TraceCraft, the AID-IoT dashboard, FSMS/DEPOT/RAVEN/QUEST, NavIC CMS software and the vending cloud exist only inside hardware pages.</p>
+<b>Fix</b><p>A top-level <b>Software</b> branch with a platform overview (“one dashboard for every device we ship”), individual product pages and real screenshots; a “Hardware + Software + Cloud” diagram on the homepage.</p>
+<b>Command</b><p><code>/impeccable shape</code></p></div></div>
+
+<div class="issue"><header><span class="tag P1">P1</span><h4>Two visual worlds, no design system</h4></header><div class="row">
+<b>Where</b><p>Home/Contact/ERP/AidFresh (light, cartoon) vs every other page (dark, photographic); accents per page: #FF5A1F, #00B4B4, #FFB020, green</p>
+<b>Why it matters</b><p>Brand recognition resets on every click. Every colour is an inline <code>style=""</code> or Tailwind arbitrary value; four font families (Inter, Manrope, JetBrains Mono, Lucide) load inconsistently. Nothing can be changed globally.</p>
+<b>Fix</b><p>One token set (§09), one type pairing, one accent; dark used only for “instrument” moments (device UI, diagrams, spec strips), not as a per-page theme.</p>
+<b>Command</b><p><code>/impeccable document</code> → <code>/impeccable extract</code></p></div></div>
+
+<div class="issue"><header><span class="tag P1">P1</span><h4>Brand colours fail contrast on text</h4></header><div class="row">
+<b>Where</b><p>Orange #FF5A1F on white = 3.1:1; #DB620A on #FFF1E6 = 3.3:1; teal #00B4B4 on white = 2.6:1; yellow #FFB020 on white = 1.8:1</p>
+<b>Why it matters</b><p>WCAG 1.4.3 requires 4.5:1 for text. axe flagged 411 nodes on Store, 77 on Education, 69 on IIoT Bridge, 17 on Home. Every eyebrow label, chip and accent headline is affected.</p>
+<b>Fix</b><p>Use a darker orange for text on light (#B4400E = 5.7:1) and keep the bright orange for fills and large display only; drop teal as a text colour.</p>
+<b>Command</b><p><code>/impeccable colorize</code></p></div></div>
+
+<div class="issue"><header><span class="tag P1">P1</span><h4>Page weight 7–8 MB on the two most-visited pages</h4></header><div class="row">
+<b>Where</b><p>Home 7.6 MB / 68 requests; /industries 7.8 MB; Store 6.6 MB; Vending 3.9 MB</p>
+<b>Why it matters</b><p>Hero images are served at 2880×1920 and 3072×1658 and displayed at 280×143 and 560×211 — 10× oversized. Load took 8–11 s on a fast connection in testing. LCP on a 4G phone will be well over 4 s.</p>
+<b>Fix</b><p>Serve responsive sizes via <code>next/image</code> with real <code>sizes</code>, convert to AVIF/WebP, budget 1.5 MB per page, preload only the LCP image.</p>
+<b>Command</b><p><code>/impeccable optimize</code></p></div></div>
+
+<div class="issue"><header><span class="tag P1">P1</span><h4>Store renders the whole catalogue in one page</h4></header><div class="row">
+<b>Where</b><p>/store — 210 product cards, 4,446 DOM nodes, 465 interactive targets, 38,491px tall on desktop, 116,813px on mobile</p>
+<b>Why it matters</b><p>Scrolling and filtering stutter; screen readers announce 210 headings; the page is un-navigable on a phone.</p>
+<b>Fix</b><p>Paginate or virtualise at 24 per page; category landing pages; sort <code>&lt;select&gt;</code> needs an accessible name.</p>
+<b>Command</b><p><code>/impeccable optimize</code> + <code>/impeccable layout</code></p></div></div>
+
+<div class="issue"><header><span class="tag P1">P1</span><h4>Entry-point copy is written for engineers</h4></header><div class="row">
+<b>Where</b><p>Home, section hubs, every hero sub-line</p>
+<b>Why it matters</b><p>See §07. A CXO cannot evaluate “constraint-locked EDGE devices with a 5-year audit trail” but can evaluate “every litre of fuel accounted for, with a record that stands up in an audit”.</p>
+<b>Fix</b><p>Three-layer copy model: outcome (hero) → how it works (plain) → specification (engineers). Rewrite all heroes and hub intros; keep spec tables.</p>
+<b>Command</b><p><code>/impeccable clarify</code></p></div></div>
+
+<div class="issue"><header><span class="tag P1">P1</span><h4>Proof is buried; company has no About, case studies or credentials page</h4></header><div class="row">
+<b>Where</b><p>Logo marquee below industries carousel; “Fielded with MoD / Indian Army” one-liner on /defence; metrics scattered on product pages</p>
+<b>Why it matters</b><p>Executives buy on trust. The site has excellent proof (MoD, Indian Army, IIT Delhi, IIT Jammu, BigBasket, KHub, JetOne, Precision; Delhi + Canada offices) and no place to put it.</p>
+<b>Fix</b><p>Company branch: About, Why AID-IoT (indigenous, MoD-fielded, IIT-partnered), Case studies (3 to launch), Partners, Contact. Logo strip under the homepage hero.</p>
+<b>Command</b><p><code>/impeccable shape</code></p></div></div>
+
+<div class="issue"><header><span class="tag P1">P1</span><h4>Broken and dead links in primary surfaces</h4></header><div class="row">
+<b>Where</b><p>Homepage industries carousel images (0×0, blank cards); footer “OBD”, “Healthcare”, “IoT Gateway”, “NAVIC” (no pages or ambiguous); <code>/brochures/pcb-brochure.pdf</code> 404; /about, /careers, /blog 404</p>
+<b>Why it matters</b><p>Blank cards and 404s on the homepage read as an abandoned site.</p>
+<b>Fix</b><p>Fix asset paths; regenerate footer from the new sitemap; add real PDFs or remove the links.</p>
+<b>Command</b><p><code>/impeccable harden</code></p></div></div>
+
+<div class="issue"><header><span class="tag P1">P1</span><h4>Keyboard and screen-reader basics are missing</h4></header><div class="row">
+<b>Where</b><p>Site-wide: no skip link; no <code>:focus-visible</code> styles except Store; carousel arrows are unnamed <code>&lt;button&gt;</code>s; <code>&lt;main&gt;</code> landmark missing on most product pages (axe “region” up to 124 nodes); heading levels skip (h1 → h3, h4 in cookie banner); form inputs labelled by placeholder only</p>
+<b>Why it matters</b><p>WCAG 2.4.1, 2.4.7, 4.1.2, 1.3.1, 3.3.2. Also a procurement checkbox in government tenders.</p>
+<b>Fix</b><p>Layout component with skip link + landmarks; global focus ring; visible labels on every input; name every icon button.</p>
+<b>Command</b><p><code>/impeccable harden</code></p></div></div>
+
+<div class="issue"><header><span class="tag P1">P1</span><h4>Product names carry no meaning</h4></header><div class="row">
+<b>Where</b><p>VMS-O, VFMS-O, NavIC CMS, TrackNet, AidFresh, AID-Auto, IIoT Bridge, IoT Edge Lite</p>
+<b>Why it matters</b><p>A chip that says “VFMS-O” asks the visitor to already be a customer.</p>
+<b>Fix</b><p>Name + descriptor everywhere they appear as a choice: “VFMS-O — offline fuel monitoring for vehicle fleets”. Group by problem in the catalogue.</p>
+<b>Command</b><p><code>/impeccable clarify</code></p></div></div>
+
+<div class="issue"><header><span class="tag P1">P1</span><h4>Ten CTA labels for one action</h4></header><div class="row">
+<b>Where</b><p>Request a quote · Request brochure · Brief us · Explore product · Learn more · Know More · Tell us what to build · Discuss your deployment · Request a pilot · Talk to Expert · Send Message · Submit Request</p>
+<b>Why it matters</b><p>Each new label is a new decision. The visitor cannot predict what happens.</p>
+<b>Fix</b><p>Three verbs only: <b>Talk to an engineer</b> (primary, everywhere), <b>See how it works</b> (in-page), <b>Download datasheet</b> (when a real file exists).</p>
+<b>Command</b><p><code>/impeccable clarify</code></p></div></div>
+
+<h3>P2 — next pass</h3>
+<div class="tablewrap"><table>
+<thead><tr><th></th><th>Issue</th><th>Where</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td><span class="tag P2">P2</span></td><td>Cartoon scientists and a 3D avatar with coffee introduce a defence supplier</td><td>Home “What we do”, every “Have a problem?” contact block</td><td>Replace with device photography, dashboard screenshots and one diagram style (§09)</td></tr>
+<tr><td><span class="tag P2">P2</span></td><td>Contact page repeats phone/email three times and shows two forms</td><td>/contact</td><td>One form, one office block, one “what happens next” note</td></tr>
+<tr><td><span class="tag P2">P2</span></td><td>Text at 7–10px</td><td>Spec eyebrows, chips, footer; AidFresh and Industries hit 7px on mobile</td><td>Minimum 12px for labels, 14px for body on mobile</td></tr>
+<tr><td><span class="tag P2">P2</span></td><td>20–37 tap targets under 44px on every page</td><td>Chips, section tabs, breadcrumb links, footer</td><td>Min 44×44 touch area; tabs become a select on mobile</td></tr>
+<tr><td><span class="tag P2">P2</span></td><td>Product-page section tabs overflow and are clipped on mobile</td><td>All product pages (“Challenge · How we help · Capabilities …”)</td><td>Scrollable with fade + snap, or an in-page “Jump to” menu</td></tr>
+<tr><td><span class="tag P2">P2</span></td><td>Copy bugs</td><td>“Track every <b>assets</b>” (TrackNet); raw <code>don’t</code> rendered on /education; Terms numbering jumps 2→4→7→8→9→11 with mixed casing; Industries stat “<b>0</b> Third parties in the middle” reads as a zero</td><td>Copy QA pass; fix the escaping bug in the content source</td></tr>
+<tr><td><span class="tag P2">P2</span></td><td>No <code>prefers-reduced-motion</code> handling (except /industries); 66–451 animated elements per page</td><td>Site-wide</td><td>Global reduced-motion rule preserving state changes</td></tr>
+<tr><td><span class="tag P2">P2</span></td><td>404 tone (“You’ve drifted into deep space”) and a full quote form on the error page</td><td>/404</td><td>Plain 404 with search and the five branch links</td></tr>
+<tr><td><span class="tag P2">P2</span></td><td>Collaborator logos are mixed raster/vector, low-res, uneven sizes</td><td>Home marquee</td><td>Monochrome SVG set, one cap-height, permission confirmed</td></tr>
+<tr><td><span class="tag P2">P2</span></td><td>“What we do” card copy mismatches its title (“IoT Hardware Design” describes integration)</td><td>Home</td><td>Rewrite the four capability cards as one “how we build” story</td></tr>
+<tr><td><span class="tag P2">P2</span></td><td>No engagement model, timeline or pricing guidance anywhere</td><td>Site-wide</td><td>“How we work” page: discovery → pilot → deployment, with typical durations</td></tr>
+</tbody></table></div>
+
+<h3>P3 — polish</h3>
+<ul>
+  <li><span class="tag P3">P3</span> Newsletter block in the footer has more visual weight than the contact details; demote it.</li>
+  <li><span class="tag P3">P3</span> Logo SVG loaded at 106×96 and displayed at 48×44 on every page; ship the right size.</li>
+  <li><span class="tag P3">P3</span> Footer tagline repeats the hero slogan; use the one-line positioning instead.</li>
+  <li><span class="tag P3">P3</span> Store hero says “2026 collection” — dated copy in a permanent hero.</li>
+  <li><span class="tag P3">P3</span> Page titles are 44–78 characters; several exceed the 60-character SERP cut.</li>
+  <li><span class="tag P3">P3</span> Login page header differs from the main header; unify.</li>
+</ul>
+</section>
+
+<!-- ============ 05 ============ -->
+<section class="sec" id="s5">
+<h2><span class="num">05</span>Technical audit</h2>
+<p class="sub">The impeccable audit’s five dimensions, scored 0–4 from measured data: axe-core 4.10 (WCAG 2.x A/AA + best-practice), Performance API timings, computed-style scans and a keyboard walk on ten representative pages at both viewports.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>#</th><th>Dimension</th><th>Score</th><th>Key finding</th></tr></thead>
+<tbody>
+<tr><td class="n">1</td><td>Accessibility</td><td class="n">1</td><td>Contrast failures on every page (up to 411 nodes); no skip link; no focus styles; unnamed buttons/select; missing landmarks; placeholder-only labels.</td></tr>
+<tr><td class="n">2</td><td>Performance</td><td class="n">1</td><td>7.6–7.8 MB pages; 10× oversized hero images; Store with 4,446 nodes; 28–31 script chunks per page.</td></tr>
+<tr><td class="n">3</td><td>Responsive design</td><td class="n">2</td><td>No horizontal overflow (good); fixed tab overlaps content; 20–37 sub-44px targets per page; 7–10px text; clipped tab strips.</td></tr>
+<tr><td class="n">4</td><td>Theming</td><td class="n">1</td><td>No tokens; hard-coded hex in inline styles and Tailwind arbitrary values; per-page palettes; no dark/light system (dark is a page choice, not a theme).</td></tr>
+<tr><td class="n">5</td><td>Implementation integrity</td><td class="n">2</td><td>Product template is coherent and product-specific; homepage is template-generic; blank carousel images; escape bug; typos; duplicate “Supported Peripherals” list on AID-ERP.</td></tr>
+<tr><td></td><td><b>Total</b></td><td class="n"><b>7 / 20</b></td><td><span class="band poor">Poor — major overhaul</span></td></tr>
+</tbody></table></div>
+
+<h3>Measured page data (desktop unless noted)</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Page</th><th>Transfer</th><th>Requests</th><th>DOM nodes</th><th>axe contrast</th><th>axe other</th><th>Focus styles</th><th>Reduced motion</th></tr></thead>
+<tbody>
+<tr><td>/</td><td class="n">7.6 MB</td><td class="n">68</td><td class="n">485</td><td class="n">17</td><td>button-name ×2, heading-order, region</td><td>No</td><td>No</td></tr>
+<tr><td>/industries</td><td class="n">7.8 MB</td><td class="n">72</td><td class="n">1,048</td><td class="n">27</td><td>heading-order ×2, region ×65</td><td>No</td><td>Yes</td></tr>
+<tr><td>/store</td><td class="n">6.6 MB</td><td class="n">41</td><td class="n">4,446</td><td class="n">411</td><td>select-name, heading-order, region ×11</td><td>Yes</td><td>No</td></tr>
+<tr><td>/vending</td><td class="n">3.9 MB</td><td class="n">70</td><td class="n">644</td><td class="n">16</td><td>heading-order, region</td><td>No</td><td>No</td></tr>
+<tr><td>/products/industrial/iiot-bridge</td><td class="n">3.4 MB</td><td class="n">67</td><td class="n">924</td><td class="n">69</td><td>heading-order, region ×49</td><td>No</td><td>No</td></tr>
+<tr><td>/education</td><td class="n">2.0 MB</td><td class="n">72</td><td class="n">1,161</td><td class="n">77</td><td>scrollable-region-focusable, region ×124</td><td>No</td><td>No</td></tr>
+<tr><td>/defence</td><td class="n">1.5 MB</td><td class="n">67</td><td class="n">1,864</td><td class="n">36</td><td>heading-order, region ×88</td><td>No</td><td>No</td></tr>
+<tr><td>/products/aid-erp</td><td class="n">1.4 MB</td><td class="n">66</td><td class="n">758</td><td class="n">20</td><td>heading-order, region</td><td>No</td><td>No</td></tr>
+<tr><td>/contact</td><td class="n">1.4 MB</td><td class="n">66</td><td class="n">424</td><td class="n">17</td><td>heading-order, region</td><td>No</td><td>No</td></tr>
+</tbody></table></div>
+
+<h3>Notable specifics</h3>
+<ul>
+  <li><b>Images:</b> <code>aid-iot-world-connectivity.jpg</code> 2880×1920 shown at 280×143; <code>aid-iot-smart-iot.jpg</code> 3072×1658 shown at 560×211; <code>iiot-bridge.png</code> 1299×1211 loaded twice on /industries. Product images on /industries are 1024×1536 PNGs shown at 264×198. Logo SVG at 106×96 for a 48px slot.</li>
+  <li><b>Fonts:</b> Inter (100–900 variable) on every page; Manrope on Industries/Education/Defence heroes; JetBrains Mono + Lucide font in the Store; the Store also re-declares Inter at six static weights. Two display faces plus a mismatched fallback stack (<code>'inter'</code> lowercase appears as a family name).</li>
+  <li><b>Styling model:</b> Tailwind arbitrary values (<code>text-[#00B4B4]</code>, <code>rounded-[20px]</code>) and long inline <code>style=""</code> strings coexist; the Industries page declares CSS variables (<code>var(--hair)</code>) that other pages do not share. Effectively three CSS systems.</li>
+  <li><b>Landmarks:</b> <code>&lt;main&gt;</code> present on Home, Contact, Store; absent on IIoT Bridge, Industries and most product pages. No <code>&lt;nav aria-label&gt;</code> distinctions between primary nav, breadcrumb and section tabs.</li>
+  <li><b>Keyboard walk:</b> Tab order is logical; focus is visible only through the browser default 1–3px auto outline, which the orange-on-peach header nearly hides. Cookie banner buttons are not the first focusable elements, so keyboard users must tab through the nav before dismissing it.</li>
+  <li><b>Head/SEO:</b> Titles and descriptions exist on all pages (good). Sitemap lists 13 URLs; 18 live pages are missing from it (Vending, Education, all training pages, PCB Design, VMS-O, VFMS-O, ERP is present, Store absent). <code>lang</code> attribute missing on /aidfresh.</li>
+  <li><b>Third-party:</b> reCAPTCHA v2 (“I’m not a robot”) on login — six iframes load on most pages for analytics/captcha before any interaction.</li>
+</ul>
+
+<h3>Positive findings to keep</h3>
+<ul>
+  <li>Zero cumulative layout shift measured on every page — the layout is stable once loaded.</li>
+  <li>No horizontal overflow at 390px on any page.</li>
+  <li>All images carry alt text (some decorative ones over-describe, but nothing is missing).</li>
+  <li>Breadcrumbs with correct hierarchy on every subpage.</li>
+  <li>Sticky section tabs on product pages track the visitor’s position — a good pattern to standardise.</li>
+</ul>
+</section>
+
+<!-- ============ 06 ============ -->
+<section class="sec" id="s6">
+<h2><span class="num">06</span>Responsive findings — desktop and mobile together</h2>
+<p class="sub">You asked to solve both at once. The good news: the layouts reflow; nothing overflows. The problems are chrome, density and touch — all fixable in one component pass.</p>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Finding</th><th>Desktop 1440</th><th>Mobile 390</th><th>Fix once, in the component</th></tr></thead>
+<tbody>
+<tr><td>Fixed “GET A QUOTE” tab</td><td>Sits over hero imagery on 20 pages; on Defence it covers the map screenshot</td><td>Overlaps or clips headlines on every page</td><td>Remove; the header CTA and end-of-page CTA already exist. If a persistent CTA is wanted, use a bottom bar on mobile only, 56px, appearing after 50% scroll.</td></tr>
+<tr><td>Cookie banner</td><td>Full-width band, 110px, covers section headings while scrolling</td><td>~250px, ~30% of viewport</td><td>Single-line bar, no heading, “Accept · Manage”; persist choice; give it first focus.</td></tr>
+<tr><td>Product-page section tabs</td><td>Fit in one row</td><td>Overflow, cut mid-word, no scroll affordance</td><td>Horizontal scroll with edge fade and scroll-snap; or “On this page” dropdown under 640px.</td></tr>
+<tr><td>Product picker chips</td><td>Three rows of 21</td><td>Sideways strip, cut at edge; 700px empty area under selection</td><td>Replace with grouped catalogue cards (§08); fix image aspect ratio.</td></tr>
+<tr><td>Hero image cards (home)</td><td>Bento of 3 small cards + photo; captions at 12px</td><td>Stack; cityscape photo cropped to 190px band</td><td>One image, one claim; drop the caption cards.</td></tr>
+<tr><td>“What we do” cards</td><td>2×2 with unequal widths; illustration ~50% of card</td><td>Each card ~900px tall (illustration below text)</td><td>Compact capability rows with a small icon; one shared diagram instead of four illustrations.</td></tr>
+<tr><td>Touch targets &lt; 44px</td><td>28–37 per page (chips, tabs, footer links)</td><td>20–37 per page; Store 460</td><td>Min height 44px on chips/tabs; 12px vertical padding on footer links.</td></tr>
+<tr><td>Smallest text</td><td>7–10px (eyebrows, spec labels, chips)</td><td>Same values — not scaled</td><td>Type scale floor: 12px labels, 15px body on mobile.</td></tr>
+<tr><td>Contact block on every page</td><td>3D avatar + form, ~900px</td><td>Avatar + form, ~1,400px</td><td>Compact CTA band with “Talk to an engineer”; full form only on /contact.</td></tr>
+<tr><td>Store catalogue</td><td>38,491px page</td><td>116,813px page; category list of 20 above the products</td><td>Paginate; collapsible filters; sticky “Filter” button on mobile.</td></tr>
+<tr><td>Header</td><td>Pill header with 7 items; “Store” in orange competes with the CTA</td><td>Hamburger; menu is a centred list with no product access without an extra tap</td><td>Five items + two utilities; mobile menu lists branches with their top children visible.</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- ============ 07 ============ -->
+<section class="sec" id="s7">
+<h2><span class="num">07</span>Content &amp; copy for a non-technical executive</h2>
+<p class="sub">The site is written by engineers for engineers — which is exactly right one level down, and exactly wrong at the entrance. The fix is not to remove the engineering; it is to put an outcome layer above it.</p>
+
+<h3>What the copy currently does</h3>
+<ul>
+  <li><b>Slogans where claims should be.</b> “Connecting the Dots to Build a Smarter, More Connected World”, “Transforming Industries with Intelligent Connectivity and Seamless Automation”, “Empowering the IoT Revolution”. None is falsifiable, so none is persuasive.</li>
+  <li><b>Jargon at the door.</b> Homepage and hub pages use: IoT, IIoT, Industry 4.0, AIoT, embedded, firmware, SaaS, OTA, FEFO, NavIC, LoRa, Modbus, RS-485, RS-232, MQTT, SCADA, PLC, VFD, PID, edge, telemetry, sovereign backhaul, constraint node, air-gapped, AES-256, AIS-140, MIL-STD, GRBL, Gerber, CPLD, DSP. A CEO recognises perhaps five.</li>
+  <li><b>Features without consequences.</b> “Sensor-direct, cryptographically signed, command-ready.” The reader must infer why that matters. The Marine page does it right: “Cut fuel burn at sea” is an outcome.</li>
+  <li><b>Category copy on the homepage, specific copy on subpages.</b> The homepage services cards could belong to any IoT vendor (“seamless integration with existing systems”). The IIoT Bridge page could belong only to AID-IoT.</li>
+  <li><b>Tone swings.</b> Warm and playful on home (“Have a problem?”, coffee avatar), martial on Defence (“for the next battlefield”), quirky on 404 (“drifted into deep space”). An executive reads this as three companies.</li>
+</ul>
+
+<h3>Writing principles for the rebuild</h3>
+<ol>
+  <li><b>Three layers on every page.</b> Layer 1 (hero, 30 words): the outcome, for whom, and proof. Layer 2 (“how it works”, 150 words): plain-language mechanism with one diagram. Layer 3 (specs, tables): the engineering, untouched.</li>
+  <li><b>Outcome verbs, business nouns.</b> Cut, account for, prove, track, keep running, never lose. Fuel, stock, vehicles, spoilage, downtime, audit.</li>
+  <li><b>Define or defer.</b> Any term not in a business dictionary is either explained inline once (“NavIC — India’s own satellite positioning system”) or moved to layer 3.</li>
+  <li><b>Say who it is for in the first sentence.</b> “For fleet operators…”, “For plants running PLCs…”, “For defence programmes that cannot depend on public networks…”.</li>
+  <li><b>One voice.</b> Confident, plain, specific, calm. No exclamation marks, no space jokes, no “revolution”.</li>
+  <li><b>Numbers over adjectives.</b> “5,000 SKUs, zero stock variance” beats “comprehensive”. Every page gets at least one real number.</li>
+  <li><b>Name the next step.</b> A CTA says what happens: “Talk to an engineer — a 30-minute call, no sales deck.”</li>
+</ol>
+
+<h3>Before / after</h3>
+<div class="copy">
+<div class="before"><div class="lbl">Now — homepage hero</div><q>Connecting the Dots to Build a Smarter, More Connected World. End-to-end IoT solutions combining hardware, software, and cloud intelligence.</q></div>
+<div class="after"><div class="lbl">Proposed</div><q><b>We build the devices, the software and the cloud behind connected operations — as one accountable partner.</b><br>Indian-designed hardware and software, fielded with the Indian Army, IIT Delhi and BigBasket. From a single sensor to a nationwide fleet.</q><div class="why">Says what, for whom, and proof — in the first screen. “One accountable partner” is the executive-level benefit of doing hardware and software together.</div></div>
+
+<div class="before"><div class="lbl">Now — “What we do”</div><q>Embedded Systems · IoT Hardware Design · Cloud &amp; SaaS Platforms · Data, Analytics &amp; Automation</q></div>
+<div class="after"><div class="lbl">Proposed — “Three ways to work with us”</div><q><b>Buy a proven device.</b> Gateways, trackers and controllers that are already in the field.<br><b>Have us build your solution.</b> We design the hardware, write the software, run the cloud and manufacture in India.<br><b>Run on our software.</b> Dashboards, ERP and fleet apps that work with our devices — or yours.</q><div class="why">Maps to how a buyer actually decides, and makes software a first-class choice.</div></div>
+
+<div class="before"><div class="lbl">Now — AID-Fuel hero</div><q>Every litre accounted. Every action verified. AID-Fuel is an end-to-end fuel automation system that replaces paper-based registers with a secure, wireless, tamper-proof digital ecosystem…</q></div>
+<div class="after"><div class="lbl">Proposed</div><q><b>Every litre of fuel accounted for — with a record that holds up in an audit.</b><br>For depots and fleets that still run on paper registers. Sensors record each transaction automatically, stamp it with satellite time, and keep it for five years. Nothing leaves your network.</q><div class="why">Keeps the good headline; replaces “cryptographically signed / sovereign backhaul” with their consequences. Engineers still get the ten-reason section below.</div></div>
+
+<div class="before"><div class="lbl">Now — VFMS-O</div><q>VFMS-O — Offline Vehicle Fuel Monitoring System. Know every litre. Catch every drain.</q></div>
+<div class="after"><div class="lbl">Proposed — catalogue card</div><q><b>VFMS-O</b> · Fuel monitoring for vehicles with no network<br>Detects fills and drains on the vehicle; syncs when it reaches the depot. No SIM, no cloud.</q><div class="why">Code name kept for the engineers; descriptor added for everyone else.</div></div>
+
+<div class="before"><div class="lbl">Now — contact section</div><q>Have a problem? We design, deploy, and scale the solution. [Name] [Company] [Email] [Phone] [Subject] [How can we help you?] Send Message</q></div>
+<div class="after"><div class="lbl">Proposed</div><q><b>Talk to an engineer.</b> Tell us what you operate and what is going wrong. You’ll hear from an engineer — not a sales desk — within one business day.<br>Name · Work email · Company · What are you trying to solve? (optional: phone)<br>[Send] — “We’ll reply within one business day. No newsletter.”</q><div class="why">Fewer fields, visible labels, the promise stated, the next step named.</div></div>
+</div>
+
+<h3>Jargon glossary to enforce</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Term used now</th><th>Layer 1–2 replacement</th><th>Keep in layer 3?</th></tr></thead>
+<tbody>
+<tr><td>IoT / IIoT / AIoT / Industry 4.0</td><td>“connected devices”, “connected operations”, “connected factory”</td><td>Yes (IIoT only)</td></tr>
+<tr><td>Edge device / edge logging</td><td>“works on-site even when the internet is down”</td><td>Yes</td></tr>
+<tr><td>NavIC</td><td>“India’s own satellite positioning system (NavIC)” — once per page</td><td>Yes</td></tr>
+<tr><td>FEFO</td><td>“first-to-expire is picked first”</td><td>Yes</td></tr>
+<tr><td>LoRa mesh / sub-GHz mesh</td><td>“a private radio network that needs no SIM or internet”</td><td>Yes</td></tr>
+<tr><td>Modbus / RS-485 / MQTT / SCADA / PLC</td><td>“the machines and control systems you already have”</td><td>Yes</td></tr>
+<tr><td>Sovereign backhaul / air-gapped / constraint node</td><td>“your data never leaves your network”</td><td>Yes</td></tr>
+<tr><td>OTA</td><td>“updated remotely”</td><td>Yes</td></tr>
+<tr><td>AES-256 / AIS-140 / MIL-STD</td><td>“bank-grade encryption”, “meets Indian vehicle-tracking and military standards”</td><td>Yes</td></tr>
+<tr><td>Telemetry</td><td>“live readings”</td><td>Yes</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- ============ 08 ============ -->
+<section class="sec" id="s8">
+<h2><span class="num">08</span>Proposed information architecture</h2>
+<p class="sub">Five branches that answer the executive’s four questions, with the engineering catalogue one click deeper. Every current page has a home; nothing is lost.</p>
+
+<h3>Navigation model</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Primary nav</th><th>Answers</th><th>Contains</th></tr></thead>
+<tbody>
+<tr><td><b>Solutions</b></td><td>“Do you solve my problem?”</td><td>By sector: Manufacturing &amp; plants · Fleet &amp; fuel · Defence &amp; secure sites · Cold-chain &amp; retail · Smart vending · Education &amp; skills. Each sector page: problem → what we deploy (products + software) → proof → CTA.</td></tr>
+<tr><td><b>Products</b></td><td>“What can I buy today?”</td><td>Hardware catalogue grouped by job: Gateways &amp; edge (IIoT Bridge, Ethernet Bridge, IoT Edge Lite) · Fleet &amp; fuel (AID-Fuel, AID-Fuel-Marine, VMS-O, VFMS-O, AID-Auto) · Tracking &amp; convoy (TrackNet, NavIC CMS) · Freshness &amp; retail (AidFresh, Vending controller) · Defence systems (link to Defence hub).</td></tr>
+<tr><td><b>Software</b></td><td>“Do you do the software too?”</td><td>Platform overview (AID-IoT Dashboard/Cloud) · AID-ERP · TraceCraft · Fuel suite (FSMS, DEPOT, RAVEN, QUEST) · Convoy &amp; fleet apps · Vending cloud · Custom software.</td></tr>
+<tr><td><b>Services</b></td><td>“Will you build it for us?”</td><td>End-to-end product development (how we work: discovery → pilot → deployment) · PCB design · On-demand manufacturing (today’s /industries) · Training &amp; education (today’s /education).</td></tr>
+<tr><td><b>Company</b></td><td>“Can I trust you?”</td><td>About · Why AID-IoT (indigenous, MoD-fielded, IIT partnerships) · Case studies · Partners · Careers · Contact.</td></tr>
+<tr><td><em>Utilities</em></td><td></td><td>Store (separate app shell) · Log in (portal) · <b>Talk to an engineer</b> (primary button).</td></tr>
+</tbody></table></div>
+
+<h3>Sitemap</h3>
+<pre class="mermaid">
+flowchart TD
+  H[Home]
+  H --> S[Solutions]
+  H --> P[Products]
+  H --> SW[Software]
+  H --> SV[Services]
+  H --> C[Company]
+  H -.-> ST[Store app]
+  H -.-> LG[Log in → portal /app]
+
+  S --> S1[Manufacturing & plants]
+  S --> S2[Fleet & fuel]
+  S --> S3[Defence & secure sites]
+  S --> S4[Cold-chain & retail]
+  S --> S5[Smart vending]
+  S --> S6[Education & skills]
+
+  P --> P1[Gateways & edge<br/>IIoT Bridge · Ethernet Bridge · IoT Edge Lite]
+  P --> P2[Fleet & fuel<br/>AID-Fuel · Marine · VMS-O · VFMS-O · AID-Auto]
+  P --> P3[Tracking & convoy<br/>TrackNet · NavIC CMS]
+  P --> P4[Freshness & retail<br/>AidFresh · Vending controller]
+  P --> P5[Defence systems<br/>drones · counter-UAS · radar · munitions]
+
+  SW --> W1[AID-IoT platform & dashboard]
+  SW --> W2[AID-ERP]
+  SW --> W3[TraceCraft]
+  SW --> W4[Fuel suite<br/>FSMS · DEPOT · RAVEN · QUEST]
+  SW --> W5[Custom software]
+
+  SV --> V1[Product development<br/>how we work]
+  SV --> V2[PCB design]
+  SV --> V3[On-demand manufacturing]
+  SV --> V4[Training<br/>Drone design · Drone pilot · IdeaLab FDP]
+
+  C --> C1[About]
+  C --> C2[Why AID-IoT]
+  C --> C3[Case studies]
+  C --> C4[Contact]
+</pre>
+
+<h3>Page templates (ten, designed desktop + mobile together)</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Template</th><th>Used by</th><th>Section sequence</th></tr></thead>
+<tbody>
+<tr><td>Home</td><td>/</td><td>Claim + proof logos → Three ways to work with us → Solutions by sector (6 tiles) → How we build (hardware + firmware + cloud + apps + manufacturing diagram) → Featured case study with numbers → Products snapshot (grouped) → Software strip → Talk to an engineer</td></tr>
+<tr><td>Solution (sector)</td><td>6 pages</td><td>Outcome hero → The problem in your world → What we deploy (products + software cards) → How it works (one diagram) → Proof → Related services → CTA</td></tr>
+<tr><td>Product (hardware)</td><td>~14 pages</td><td>Keep the current arc, add layer 1: Outcome hero + spec strip → Who it’s for → Challenge → How we help → Architecture → Features → Specs → Use cases → Software it runs with → Datasheet + CTA</td></tr>
+<tr><td>Software product</td><td>~6 pages</td><td>Outcome hero with real screenshot → Who uses it → Modules → Works with (devices) → Security &amp; hosting (self-hosted/cloud) → Proof → CTA</td></tr>
+<tr><td>Service</td><td>4 pages</td><td>Promise → How we work (steps with typical durations) → What you get → Capabilities → Work we’ve shipped → CTA</td></tr>
+<tr><td>Hub (branch index)</td><td>Solutions, Products, Software, Services</td><td>One-paragraph framing → grouped cards with name + descriptor → cross-links</td></tr>
+<tr><td>Case study</td><td>3 to launch</td><td>Client + sector + numbers → Situation → What we built (hardware/software/cloud) → Result → Quote → Related</td></tr>
+<tr><td>Company</td><td>About, Why, Partners</td><td>Story → Credentials (MoD, IIT, indigenous) → Offices → Team → CTA</td></tr>
+<tr><td>Contact</td><td>/contact</td><td>Form with visible labels → What happens next → Offices → Direct lines</td></tr>
+<tr><td>Legal / utility</td><td>Privacy, Terms, Shipping, 404</td><td>Reading template; 404 with branch links and search</td></tr>
+</tbody></table></div>
+
+<h3>URL plan and redirects</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Current</th><th>New</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td class="n">/products (portal)</td><td class="n">/app</td><td>Behind auth; 301 for logged-in users only, else to /products catalogue</td></tr>
+<tr><td class="n">/products/industrial/*</td><td class="n">/products/&lt;slug&gt;</td><td>Flatten; group in the hub, not the URL</td></tr>
+<tr><td class="n">/products/defence/*, /defence/navic-cms</td><td class="n">/products/&lt;slug&gt;</td><td>Same</td></tr>
+<tr><td class="n">/defence</td><td class="n">/solutions/defence</td><td>Hub keeps its content</td></tr>
+<tr><td class="n">/industries</td><td class="n">/services/manufacturing</td><td>Rename to what it is</td></tr>
+<tr><td class="n">/services/pcb-design</td><td class="n">/services/pcb-design</td><td>Unchanged</td></tr>
+<tr><td class="n">/education, /education/training/*</td><td class="n">/services/training, /services/training/&lt;slug&gt;</td><td></td></tr>
+<tr><td class="n">/education/pcb (TraceCraft)</td><td class="n">/software/tracecraft</td><td>It is a software product</td></tr>
+<tr><td class="n">/products/aid-erp</td><td class="n">/software/aid-erp</td><td></td></tr>
+<tr><td class="n">/vending</td><td class="n">/solutions/vending + /products/vending-controller</td><td>Split pitch from device</td></tr>
+<tr><td class="n">/store</td><td class="n">/store</td><td>Unchanged; separate shell</td></tr>
+<tr><td class="n">— (new)</td><td class="n">/solutions/*, /software, /company/*, /case-studies/*</td><td>Add to sitemap.xml</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- ============ 09 ============ -->
+<section class="sec" id="s9">
+<h2><span class="num">09</span>Brand &amp; visual language</h2>
+<p class="sub">What exists is not a brand but two moods. The proposal keeps what is recognisable — the tri-colour mark and orange — and gives it a system that scales across sixty pages, a store and a portal.</p>
+
+<h3>Current state</h3>
+<div class="swatches">
+<div class="sw"><div class="c" style="background:#FF5A1F"></div><div class="t"><b>Orange</b><code>#FF5A1F</code><small>Text on white 3.1:1 — fails AA</small></div></div>
+<div class="sw"><div class="c" style="background:#DB620A"></div><div class="t"><b>Orange 2</b><code>#DB620A</code><small>Second orange, used interchangeably</small></div></div>
+<div class="sw"><div class="c" style="background:#00B4B4"></div><div class="t"><b>Teal</b><code>#00B4B4</code><small>Headline accent, 2.6:1 — fails</small></div></div>
+<div class="sw"><div class="c" style="background:#FFB020"></div><div class="t"><b>Yellow</b><code>#FFB020</code><small>Defence/Education accent, 1.8:1</small></div></div>
+<div class="sw"><div class="c" style="background:#FFE8D8"></div><div class="t"><b>Peach</b><code>#FFE8D8</code><small>Homepage ground</small></div></div>
+<div class="sw"><div class="c" style="background:#020817"></div><div class="t"><b>Near-black</b><code>#020817</code><small>Product-page ground</small></div></div>
+<div class="sw"><div class="c" style="background:#0B2540"></div><div class="t"><b>Navy</b><code>#0B2540</code><small>Store/Industries headings</small></div></div>
+<div class="sw"><div class="c" style="background:#1F5F3A"></div><div class="t"><b>Dark green</b><code>#1F5F3A</code><small>TrackNet/VMS-O ground</small></div></div>
+</div>
+<ul>
+  <li><b>Logo:</b> the triangle mark in blue/green/orange is distinctive and worth keeping. The wordmark “AID-IoT” with a stylised “o” is fine at header size; the “IoT” legibility drops below 24px.</li>
+  <li><b>Type:</b> Inter everywhere, Manrope on some heroes, JetBrains Mono in the Store. Headline sizes vary from 34px to 72px with no scale.</li>
+  <li><b>Imagery:</b> four styles at once — stock cityscape photo, flat cartoon scientists, a 3D avatar, and (the good one) real device photography with UI overlays plus dark technical diagrams.</li>
+  <li><b>Shape language:</b> pill header, 10–20px radii, cards on everything including the entire homepage sections.</li>
+</ul>
+
+<h3>Direction: “Precision, plainly.”</h3>
+<p>AID-IoT’s real character is the thing already visible on its best pages: engineered objects photographed honestly, systems explained with diagrams, numbers stated without adjectives. The brand should look like a well-made instrument panel that a non-engineer can read. One visual world, in which <b>light is the reading and selling surface</b> and <b>dark is reserved for instruments</b> — device UIs, diagrams, spec strips, dashboard screenshots — so dark panels signal “this is the technology” rather than “this is a different page”.</p>
+
+<h4>Palette (AA-tested)</h4>
+<div class="swatches">
+<div class="sw"><div class="c" style="background:#0B1F3A"></div><div class="t"><b>Navy ink</b><code>#0B1F3A</code><small>Text on light 16.5:1 · instrument ground</small></div></div>
+<div class="sw"><div class="c" style="background:#E8541C"></div><div class="t"><b>Signal orange</b><code>#E8541C</code><small>Fills, large display, on navy 4.5:1</small></div></div>
+<div class="sw"><div class="c" style="background:#B4400E"></div><div class="t"><b>Orange ink</b><code>#B4400E</code><small>Orange as text on white 5.7:1</small></div></div>
+<div class="sw"><div class="c" style="background:#F3F4F6;border-bottom:1px solid #D7DCE6"></div><div class="t"><b>Ground</b><code>#F3F4F6</code><small>Page background, cool-neutral</small></div></div>
+<div class="sw"><div class="c" style="background:#FFFFFF;border-bottom:1px solid #D7DCE6"></div><div class="t"><b>Surface</b><code>#FFFFFF</code><small>Cards, tables</small></div></div>
+<div class="sw"><div class="c" style="background:#5B6573"></div><div class="t"><b>Muted</b><code>#5B6573</code><small>Secondary text 5.9:1</small></div></div>
+<div class="sw"><div class="c" style="background:#9FB3C8"></div><div class="t"><b>Instrument muted</b><code>#9FB3C8</code><small>Labels on navy 7.7:1</small></div></div>
+<div class="sw"><div class="c" style="background:#1F7A6D"></div><div class="t"><b>Status green</b><code>#1F7A6D</code><small>Semantic only — never decoration</small></div></div>
+</div>
+<ul>
+  <li><b>One accent.</b> Orange only. Teal, yellow and green leave the brand palette; green survives only as a semantic “online/OK” status in instrument panels.</li>
+  <li><b>Two oranges, by role.</b> Signal orange for buttons and large numerals; orange ink for links, eyebrows and small text. Never bright orange text on a light ground.</li>
+  <li><b>Sector tinting, if wanted,</b> comes from photography and diagram content, not from changing the accent per page.</li>
+</ul>
+
+<h4>Typography</h4>
+<div class="typo">
+  <p class="h">Every litre of fuel accounted for.</p>
+  <p class="b">One family for everything, set at three weights — the discipline is in the scale, not the font count. Body 17px/1.6 on desktop, 16px/1.55 on mobile; headline scale 1.25 ratio from 16 → 20 → 25 → 31 → 39 → 49 → 61.</p>
+  <p class="m">SPEC · 12–24 V DC · RS-485 ×2 · 4G/2G · −20 to 60 °C — monospace for anything that is data</p>
+</div>
+<ul>
+  <li><b>Recommendation:</b> <b>Geist</b> for headings and body (ships with <code>next/font</code>, free, a clean grotesque with an engineering feel and excellent numerals) and <b>Geist Mono</b> for spec strips, tables and labels. This replaces Inter + Manrope + JetBrains Mono with one pairing that already fits the stack. If a warmer voice is wanted, <b>Instrument Sans</b> + <b>IBM Plex Mono</b> is the alternative; do not use two display faces.</li>
+  <li><b>Floor:</b> 12px for labels, 14px for captions, 16px for body on mobile. Eyebrow labels in mono, uppercase, +0.08em tracking, never below 12px.</li>
+  <li><b>Headlines:</b> sentence case, tight tracking (−0.02em), <code>text-wrap: balance</code>, maximum 12 words.</li>
+</ul>
+
+<h4>Imagery and illustration</h4>
+<ul>
+  <li><b>Photography:</b> real AID-IoT devices on neutral sweeps, and in situ (panel rooms, vehicles, depots, campuses). Stock cityscapes, cartoon scientists and 3D avatars are retired.</li>
+  <li><b>Diagrams:</b> one style — navy ground, 1.5px strokes, orange for the AID-IoT component, muted grey for the customer’s existing equipment, mono labels. This is the “how it works” visual on every page and the strongest way to explain hardware + software + cloud to a non-engineer.</li>
+  <li><b>Software screenshots:</b> real dashboards in a consistent device frame; annotated with two or three callouts maximum.</li>
+  <li><b>Icons:</b> Lucide (already used), single weight, 20px in cards, 24px in navigation. No emoji, no gradient icons.</li>
+  <li><b>Proof logos:</b> monochrome navy SVG set at one cap-height.</li>
+</ul>
+
+<h4>Layout and components</h4>
+<ul>
+  <li>12-column grid, 1200px max, 24px gutters; 8px spacing scale; section rhythm 96px desktop / 64px mobile.</li>
+  <li>Cards are for things you can choose between (products, sectors, case studies). Sections are not cards. Radius 8px; shadow only on hover/interactive.</li>
+  <li>Instrument panel component: navy surface with mono labels, used for spec strips, live-status mockups and diagrams.</li>
+  <li>Button hierarchy: one primary (signal orange, white text), one secondary (navy outline), text links in orange ink. Every button ≥ 44px tall.</li>
+  <li>Header: logo · Solutions · Products · Software · Services · Company · [Store] [Log in] [Talk to an engineer]. Mega-menus show child pages with descriptors, not just names.</li>
+  <li>Tokens live in one <code>theme.css</code> (CSS variables) consumed by Tailwind’s theme; no inline hex, no arbitrary values.</li>
+</ul>
+
+<h4>Voice</h4>
+<p>Plain, specific, calm, Indian-made and proud of it without slogans. The brand sounds like the engineer who built the thing explaining it to a client they respect.</p>
+</section>
+
+<!-- ============ 10 ============ -->
+<section class="sec" id="s10">
+<h2><span class="num">10</span>Build plan in phases</h2>
+<p class="sub">Six phases; the first one ships fixes to the live site inside two weeks while the rebuild is scoped. Desktop and mobile are designed and reviewed together at every step — no separate “mobile pass”.</p>
+
+<div class="phase"><div class="ph">Phase 0<b>Stop the bleeding</b><small>Weeks 1–2 · live site</small></div><div>
+<h4>Fix the P0s and the cheap P1s without redesigning</h4>
+<ul>
+  <li>Point “View IoT Solutions” at the products section; keep “Talk to Expert” on contact.</li>
+  <li>Hide the “GET A QUOTE” tab below 768px; shrink the cookie banner to one line and persist the choice.</li>
+  <li>Put <code>/products</code> launcher behind auth; redirect anonymous traffic to home.</li>
+  <li>Fix carousel image paths; fix footer links (remove OBD/Healthcare, point NAVIC at NavIC CMS); remove the dead brochure link.</li>
+  <li>Serve hero images at display size (next/image sizes + AVIF); expect −5 MB on home.</li>
+  <li>Change orange text colour to #B4400E and teal headline text to navy; add global focus ring and skip link; name the carousel buttons; add <code>&lt;main&gt;</code> in the layout.</li>
+  <li>Copy QA: “every assets”, <code>’</code>, Terms numbering, Industries “0” stat.</li>
+</ul>
+<div class="out">Outcome: mobile first-screen visible; page weight under 2.5 MB; zero axe critical; no dead links from the homepage.</div></div></div>
+
+<div class="phase"><div class="ph">Phase 1<b>Strategy &amp; content</b><small>Weeks 2–5</small></div><div>
+<h4>Decide what the site says before deciding how it looks</h4>
+<ul>
+  <li>Positioning workshop: one-sentence claim, three proof points, the “three ways to work with us” model.</li>
+  <li>Validate the IA in §08 with 6–8 people who match the personas: a 20-minute tree test (“where would you find fuel monitoring for trucks?”). Adjust labels before design.</li>
+  <li>Content inventory → content model (fields for Product, Software, Solution, Service, Case study, Person, Partner).</li>
+  <li>Copy deck: every hero, hub intro and CTA rewritten to the §07 principles; product layer-3 content migrated as-is.</li>
+  <li>Proof gathering: logo permissions, three case studies with numbers, datasheet PDFs, real dashboard screenshots.</li>
+</ul>
+<div class="out">Deliverables: messaging document, validated sitemap, content model, copy deck v1, asset list. Gate: CEO sign-off on the homepage copy.</div></div></div>
+
+<div class="phase"><div class="ph">Phase 2<b>Brand &amp; design system</b><small>Weeks 4–8</small></div><div>
+<h4>One visual world, built as tokens first</h4>
+<ul>
+  <li>Refine the mark and wordmark for small sizes; lock the palette in §09 with contrast tests; choose the type pairing.</li>
+  <li>Figma library: tokens (colour, type, spacing, radius, elevation), 20 core components (header, mega-menu, buttons, cards ×4, instrument panel, spec table, diagram frame, tabs, forms, CTA band, footer, logo strip, stat, breadcrumb, pagination, cookie bar).</li>
+  <li>Ten page templates from §08, each designed at 1440 and 390 side by side. Review both together in one session.</li>
+  <li>Diagram style guide with three example diagrams (gateway → cloud, offline fleet mesh, hardware + software + cloud stack).</li>
+  <li>Photography brief and shoot list for the ten most-sold devices.</li>
+</ul>
+<div class="out">Deliverables: brand guide (12 pages), Figma library, ten templates × two viewports, diagram kit. Gate: heuristic re-score of the Figma home + product templates ≥ 24/32.</div></div></div>
+
+<div class="phase"><div class="ph">Phase 3<b>Build</b><small>Weeks 8–13</small></div><div>
+<h4>Rebuild on the existing Next.js stack, content-driven</h4>
+<ul>
+  <li>Design tokens → <code>theme.css</code> + Tailwind theme; delete inline styles and arbitrary values as templates are rebuilt.</li>
+  <li>Content in a headless CMS or typed MDX collections, so product/software/case-study pages are data, not hand-built pages.</li>
+  <li>Templates built mobile-and-desktop together with a shared component library; Storybook or equivalent for every component at both widths.</li>
+  <li>Performance budget enforced in CI: ≤ 1.5 MB per page, LCP ≤ 2.5 s on simulated 4G, no layout shift; axe-core in CI with zero serious/critical.</li>
+  <li>Forms: visible labels, inline validation, success state, spam protection without a visible captcha; submissions to CRM.</li>
+  <li>Store: keep the shell, paginate the catalogue, fix accessibility; portal moved to <code>/app</code>.</li>
+  <li>Redirect map from §08, new sitemap.xml, structured data (Organization, Product, BreadcrumbList).</li>
+</ul>
+<div class="out">Deliverables: staging site with all templates and migrated content; CI gates green. Gate: impeccable audit ≥ 15/20.</div></div></div>
+
+<div class="phase"><div class="ph">Phase 4<b>QA &amp; launch</b><small>Weeks 13–15</small></div><div>
+<h4>Test with the people it is for</h4>
+<ul>
+  <li>Five moderated sessions with non-technical executives on the staging site: “What does this company do? What would you click? Would you contact them?” Fix what fails.</li>
+  <li>Accessibility audit (manual keyboard + screen reader on home, a product, software, contact); WCAG 2.2 AA statement published.</li>
+  <li>Device lab pass: iPhone SE/15, Android mid-range, iPad, 1366 laptop, 1920 desktop.</li>
+  <li>Analytics events: CTA clicks, form starts/completions, scroll depth on home, datasheet downloads.</li>
+  <li>Launch with redirects; monitor 404s and Core Web Vitals for two weeks.</li>
+</ul>
+<div class="out">Outcome: live site; Lighthouse ≥ 90 on all four categories, mobile and desktop.</div></div></div>
+
+<div class="phase"><div class="ph">Phase 5<b>Grow</b><small>Ongoing, quarterly</small></div><div>
+<h4>The site as a living sales asset</h4>
+<ul>
+  <li>One case study per quarter; one software product page per new release; datasheets kept current from the same content model.</li>
+  <li>Quarterly heuristic re-score and audit; keep the score visible to the team.</li>
+  <li>Sector landing pages for outbound campaigns reuse the Solution template.</li>
+  <li>Localisation readiness (Hindi, and French for Canada) built into the content model, activated when needed.</li>
+</ul>
+<div class="out">Metrics to track: qualified contact-form submissions per month, share of visitors reaching a Solution or Software page, time-to-first-CTA on mobile, bounce rate on home.</div></div></div>
+
+<h3>Prioritisation logic</h3>
+<p>If budget forces a choice, the order is: <b>homepage + navigation + Software branch + Company branch</b> (the executive path), then <b>Solution pages</b>, then re-skinning the existing product pages (which already work), then the Store. The product pages are the last thing to touch because they are the best thing on the site.</p>
+</section>
+
+<!-- ============ 11 ============ -->
+<section class="sec" id="s11">
+<h2><span class="num">11</span>Appendix — page-by-page notes</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Page</th><th>Height D / M (px)</th><th>Targets &lt; 44px D / M</th><th>Min font</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>/</td><td class="n">6,579 / 9,004</td><td class="n">28 / 21</td><td class="n">12 / 10</td><td>Both CTAs → #contact; 21 chips; blank carousel images; four illustration styles; 7.6 MB</td></tr>
+<tr><td>/contact</td><td class="n">2,471 / 3,700</td><td class="n">29 / 22</td><td class="n">10</td><td>Contact details ×3; two forms; placeholder labels</td></tr>
+<tr><td>/products/industrial/iiot-bridge</td><td class="n">9,506 / 16,610</td><td class="n">34 / 20</td><td class="n">10</td><td>Best page on the site; needs outcome layer; 69 contrast failures; no &lt;main&gt;</td></tr>
+<tr><td>/products/industrial/iot-edge-lite</td><td class="n">8,624 / 13,298</td><td class="n">28 / 20</td><td class="n">9.5</td><td>Pure engineer page — correct one level down; needs descriptor in catalogue</td></tr>
+<tr><td>/products/industrial/ethernet-bridge</td><td class="n">7,081 / 11,308</td><td class="n">34 / 20</td><td class="n">9.5</td><td>Headline clipped by quote tab on mobile</td></tr>
+<tr><td>/products/industrial/aid-auto</td><td class="n">8,907 / 14,817</td><td class="n">34 / 20</td><td class="n">10</td><td>Good outcome headline (“Only a sober driver starts the engine”)</td></tr>
+<tr><td>/products/industrial/aidfresh</td><td class="n">9,130 / 17,235</td><td class="n">29 / 20</td><td class="n">7</td><td>Different (mint) world; H1 includes eyebrow text; 7px text; no lang attr</td></tr>
+<tr><td>/products/aid-erp</td><td class="n">6,596 / 10,214</td><td class="n">29 / 21</td><td class="n">10</td><td>Light world; “Supported Peripherals” list duplicated; belongs in Software</td></tr>
+<tr><td>/defence</td><td class="n">9,163 / 18,776</td><td class="n">34 / 21</td><td class="n">8</td><td>Strong; proof line too small; 1,864 nodes; yellow accent fails contrast</td></tr>
+<tr><td>/defence/navic-cms</td><td class="n">9,997 / 16,331</td><td class="n">35 / 20</td><td class="n">10</td><td>Headline clipped on mobile</td></tr>
+<tr><td>/products/defence/aidfuel</td><td class="n">10,799 / 19,876</td><td class="n">28 / 20</td><td class="n">9.5</td><td>Longest product page; jargon-dense hero; excellent layer-3 content</td></tr>
+<tr><td>/products/defence/aidfuel-marine</td><td class="n">9,508 / 18,637</td><td class="n">28 / 20</td><td class="n">8.5</td><td>Best outcome copy on the site (“Cut fuel burn at sea”); 8.5px text</td></tr>
+<tr><td>/products/defence/tracknet</td><td class="n">12,689 / 21,509</td><td class="n">28 / 20</td><td class="n">9.5</td><td>Typo “every assets”; green world; 21,509px on mobile</td></tr>
+<tr><td>/products/defence/vms-o, /vfms-o</td><td class="n">~10,100 / ~17,900</td><td class="n">37 / 28</td><td class="n">10</td><td>Codes without descriptors; headline clipped on mobile; share a security section verbatim</td></tr>
+<tr><td>/industries</td><td class="n">8,419 / 15,248</td><td class="n">27 / 20</td><td class="n">10 / 7</td><td>Mislabelled in nav; 7.8 MB; “0 third parties” stat; own CSS variable system</td></tr>
+<tr><td>/services/pcb-design</td><td class="n">8,621 / 15,914</td><td class="n">35 / 27</td><td class="n">10</td><td>Only reachable from /industries; brochure PDF 404</td></tr>
+<tr><td>/vending</td><td class="n">8,928 / 10,693</td><td class="n">33 / 22</td><td class="n">10</td><td>Photo hero with low-contrast overlaid teal headline; 3.9 MB</td></tr>
+<tr><td>/education, /education/training/*</td><td class="n">10,002 / 17,955</td><td class="n">53 / 33</td><td class="n">9.5</td><td>124 landmark failures; raw ’; Manrope headings; strong content</td></tr>
+<tr><td>/education/pcb (TraceCraft)</td><td class="n">9,072 / 11,166</td><td class="n">33 / 22</td><td class="n">10</td><td>A software product filed under education</td></tr>
+<tr><td>/store</td><td class="n">38,491 / 116,813</td><td class="n">463 / 460</td><td class="n">9</td><td>210 products, 4,446 nodes, 411 contrast failures, unnamed sort select</td></tr>
+<tr><td>/products (portal)</td><td class="n">1,009 / 1,750</td><td class="n">3 / 3</td><td class="n">10</td><td>Public app launcher, “Demo User · Enterprise”</td></tr>
+<tr><td>/login, /register, /forgot-password</td><td class="n">900 / 844</td><td class="n">3 / 3</td><td class="n">12–14</td><td>Different header; reCAPTCHA v2; “Empowering the IoT Revolution”</td></tr>
+<tr><td>/privacy, /terms, /shipping-refund</td><td class="n">3,400–9,700</td><td class="n">—</td><td class="n">—</td><td>Terms numbering gaps and mixed casing; store-oriented terms apply to whole site</td></tr>
+<tr><td>404</td><td class="n">900</td><td class="n">—</td><td class="n">—</td><td>“You’ve drifted into deep space”; full quote form; no links to branches</td></tr>
+</tbody></table></div>
+
+<h3>Evidence retained</h3>
+<p>Full-page screenshots of all 26 marketing pages at both viewports, the crawl (headings, links, images, computed fonts and colours per page), axe-core JSON and performance timings are saved in the session scratchpad (<code>shots/</code>, <code>site/crawl.json</code>, <code>site/audit.json</code>, <code>site/responsive-findings.json</code>) and can be exported on request.</p>
+
+<div class="foot">AID-IoT website audit · prepared 12 September 2026 · impeccable critique + audit playbooks (v4.3.1), Nielsen heuristics, WCAG 2.2 AA via axe-core 4.10.2, Playwright with Chrome 140.</div>
+</section>
+
+</main>
+</div>
+</div>

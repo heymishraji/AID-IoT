@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+  <style>
+  :root{--navy:#0B1F3A;--orange:#E8541C;--orange-ink:#B4400E;--ground:#F3F4F6;--surface:#FFFFFF;--muted:#5B6573;--line:#D8DDE6;--im:#9FB3C8;--green:#1F7A6D;--ink:#0B1F3A;--navy2:#132B4D}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Geist","Segoe UI",Helvetica,Arial,sans-serif;color:#0B1F3A;background:#F3F4F6;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.55}
+  a{color:#B4400E;text-decoration:none} a:hover{color:#8F3209}
+  .mono{font-family:"Geist Mono",ui-monospace,Menlo,monospace}
+  .eyebrow{font-family:"Geist Mono",ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#B4400E;font-weight:500}
+  .eyebrow.im{color:#9FB3C8}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;font-weight:600;font-size:15px;white-space:nowrap}
+  .btn.primary{background:#E8541C;color:#FFFFFF}
+  .btn.secondary{background:transparent;color:#0B1F3A;border:1.5px solid #0B1F3A}
+  .btn.onnavy{background:transparent;color:#FFFFFF;border:1.5px solid rgba(255,255,255,.5)}
+  .card{background:#FFFFFF;border:1px solid #D8DDE6;border-radius:8px}
+  .instr{background:#0B1F3A;color:#E9EEF6;border-radius:10px}
+  .instr .lbl{font-family:"Geist Mono",ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9FB3C8}
+  .instr .val{font-family:"Geist Mono",ui-monospace,Menlo,monospace;font-size:14px;color:#FFFFFF}
+  .h2{font-size:40px;line-height:1.08;letter-spacing:-.02em;font-weight:600;margin:0;text-wrap:balance}
+  .h3{font-size:20px;line-height:1.25;letter-spacing:-.01em;font-weight:600;margin:0}
+  .sub{font-size:18px;line-height:1.5;color:#5B6573;margin:0;max-width:60ch}
+  .p{font-size:16px;line-height:1.55;color:#3A465C;margin:0}
+  .small{font-size:14px;line-height:1.5;color:#5B6573;margin:0}
+  .chip{display:inline-flex;align-items:center;height:28px;padding:0 10px;border-radius:6px;background:#F3F4F6;border:1px solid #D8DDE6;font-family:"Geist Mono",ui-monospace,Menlo,monospace;font-size:12px;color:#3A465C;white-space:nowrap}
+  .stat{font-size:44px;line-height:1;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin:0}
+  .navlink{font-size:15px;font-weight:500;color:#0B1F3A}
+  .logo-ph{font-family:"Geist Mono",ui-monospace,Menlo,monospace;font-size:13px;letter-spacing:.04em;color:#5B6573;border:1px dashed #B9C1CF;border-radius:6px;padding:8px 14px;white-space:nowrap}
+  .spec td{padding:9px 0;border-bottom:1px solid #D8DDE6;font-size:14px;vertical-align:top}
+  .spec td:first-child{font-family:"Geist Mono",ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#5B6573;width:38%;padding-right:10px;padding-top:11px}
+  .spec tr:last-child td{border-bottom:0}
+  .arrow{display:inline-block;width:16px;height:16px;vertical-align:middle}
+  .m .h2{font-size:30px}.m .sub{font-size:17px}.m .stat{font-size:38px}
+</style>
+</helmet>
+
+<div style="width:1440px;background:#F3F4F6">
+
+<header style="display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 64px;background:#FFFFFF;border-bottom:1px solid #D8DDE6">
+  <div style="display:flex;align-items:center;gap:10px"><img src="logo.svg" alt="AID-IoT" style="width:32px;height:29px;display:block"><span style="font-weight:700;font-size:20px;letter-spacing:-.02em;color:#0B1F3A">AID-IoT</span></div>
+  <nav style="display:flex;gap:28px;align-items:center">
+    <a class="navlink" href="#" style="color:#0B1F3A;">Solutions</a><a class="navlink" href="#" style="color:#0B1F3A;">Products</a><a class="navlink" href="#" style="color:#0B1F3A;">Software</a><a class="navlink" href="#" style="color:#0B1F3A;">Services</a><a class="navlink" href="#" style="color:#0B1F3A;">Company</a>
+  </nav>
+  <div style="display:flex;gap:18px;align-items:center">
+    <a class="navlink" href="#" style="color:#5B6573">Store</a>
+    <a class="navlink" href="#" style="color:#5B6573">Log in</a>
+    <a class="btn primary" href="#" style="height:44px;padding:0 18px;font-size:14px">Talk to an engineer</a>
+  </div>
+</header>
+<section style="padding:80px 64px 56px">
+  <div style="display:grid;grid-template-columns:minmax(0, 7fr) minmax(0, 5fr);gap:64px;align-items:center;max-width:1312px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div class="eyebrow">Hardware · Software · Cloud · Designed and built in India</div>
+      <h1 style="font-size:56px;line-height:1.04;letter-spacing:-.025em;font-weight:600;margin:0;text-wrap:balance">We build the devices, the software and the cloud behind connected operations — as one accountable partner.</h1>
+      <p class="sub">From a single sensor in a panel room to a nationwide fleet: one team designs the hardware, writes the software and keeps it running.</p>
+      <div style="display:flex;gap:12px;margin-top:6px">
+        <a class="btn primary" href="#">Talk to an engineer</a>
+        <a class="btn secondary" href="#">See how we work</a>
+      </div>
+    </div>
+    <div style="position:relative">
+      <div class="card" style="padding:28px;background:#FFFFFF;border-radius:12px;display:flex;align-items:center;justify-content:center"><img src="device.jpg" alt="AID-IoT IIoT Bridge gateway in its industrial enclosure" style="width:100%;height:auto;display:block;border-radius:6px"></div>
+      <div class="instr" style="position:absolute;left:-24px;bottom:24px;padding:12px 16px;display:flex;gap:22px;box-shadow:0 12px 32px rgba(11,31,58,.25)">
+        <div><div class="lbl">Device</div><div class="val">IIoT Bridge</div></div>
+        <div><div class="lbl">Status</div><div class="val" style="color:#7BD0A3">● Online · 14d 03h</div></div>
+        <div><div class="lbl">Links</div><div class="val">4G · Wi-Fi · LAN</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section style="padding:0 64px 72px">
+  <div style="display:flex;align-items:center;gap:32px;max-width:1312px;margin:0 auto;padding-top:28px;border-top:1px solid #D8DDE6">
+    <div class="eyebrow" style="color:#5B6573;white-space:nowrap">Fielded with</div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap"><span class="logo-ph">Ministry of Defence</span><span class="logo-ph">Indian Army</span><span class="logo-ph">IIT Delhi</span><span class="logo-ph">IIT Jammu</span><span class="logo-ph">BigBasket</span><span class="logo-ph">KHub</span></div>
+  </div>
+</section>
+
+<section style="padding:0 64px 96px">
+  <div style="max-width:1312px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="eyebrow">Three ways to work with us</div><h2 class="h2" style="max-width:20ch">Start with a device, a problem, or the software.</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:20px">
+      <div class="card" style="padding:28px;display:flex;flex-direction:column;gap:14px;min-height:220px"><div class="mono" style="font-size:12px;color:#B4400E;letter-spacing:.08em">01</div><h3 class="h3">Buy a proven device</h3><p class="p" style="flex-grow:1">Gateways, trackers and controllers that are already in the field — shipped with the software they need.</p><a href="#" style="font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:6px">Browse products <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div><div class="card" style="padding:28px;display:flex;flex-direction:column;gap:14px;min-height:220px"><div class="mono" style="font-size:12px;color:#B4400E;letter-spacing:.08em">02</div><h3 class="h3">Have us build your solution</h3><p class="p" style="flex-grow:1">We design the hardware, write the firmware and apps, run the cloud and manufacture in India. One contract.</p><a href="#" style="font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:6px">See how we work <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div><div class="card" style="padding:28px;display:flex;flex-direction:column;gap:14px;min-height:220px"><div class="mono" style="font-size:12px;color:#B4400E;letter-spacing:.08em">03</div><h3 class="h3">Run on our software</h3><p class="p" style="flex-grow:1">Dashboards, ERP and fleet applications that work with our devices — or the ones you already own.</p><a href="#" style="font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:6px">Explore software <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 64px 96px">
+  <div style="max-width:1312px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px"><div style="display:flex;flex-direction:column;gap:12px"><div class="eyebrow">Solutions by sector</div><h2 class="h2" style="max-width:22ch">Built for operations that cannot afford blind spots.</h2></div><a href="#" style="font-weight:600;white-space:nowrap;display:inline-flex;align-items:center;gap:6px">All solutions <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+    <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:20px">
+      <div class="card" style="padding:24px;display:flex;flex-direction:column;gap:12px;min-height:200px"><h3 class="h3">Manufacturing & plants</h3><p class="p" style="flex-grow:1">See every machine live, without re-wiring the plant.</p><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="chip">IIoT Bridge</span><span class="chip">AID-IoT platform</span></div></div><div class="card" style="padding:24px;display:flex;flex-direction:column;gap:12px;min-height:200px"><h3 class="h3">Fleet & fuel</h3><p class="p" style="flex-grow:1">Every litre and every vehicle accounted for — even with no network.</p><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="chip">AID-Fuel</span><span class="chip">VMS-O</span><span class="chip">VFMS-O</span></div></div><div class="card" style="padding:24px;display:flex;flex-direction:column;gap:12px;min-height:200px"><h3 class="h3">Defence & secure sites</h3><p class="p" style="flex-grow:1">Indigenous systems that never depend on a public network.</p><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="chip">NavIC CMS</span><span class="chip">TrackNet</span><span class="chip">Counter-UAS</span></div></div><div class="card" style="padding:24px;display:flex;flex-direction:column;gap:12px;min-height:200px"><h3 class="h3">Cold-chain & retail</h3><p class="p" style="flex-grow:1">Pick first-to-expire first; know the temperature the whole way.</p><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="chip">AidFresh</span><span class="chip">AID-ERP</span></div></div><div class="card" style="padding:24px;display:flex;flex-direction:column;gap:12px;min-height:200px"><h3 class="h3">Smart vending</h3><p class="p" style="flex-grow:1">Cashless, stock-aware machines you can run from one screen.</p><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="chip">Vending controller</span><span class="chip">Vending cloud</span></div></div><div class="card" style="padding:24px;display:flex;flex-direction:column;gap:12px;min-height:200px"><h3 class="h3">Education & skills</h3><p class="p" style="flex-grow:1">Hands-on drone, PCB and IoT programmes for campuses.</p><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="chip">TraceCraft</span><span class="chip">Drone programmes</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 64px 96px">
+  <div class="instr" style="max-width:1312px;margin:0 auto;padding:56px;display:flex;flex-direction:column;gap:40px;border-radius:14px">
+    <div style="display:grid;grid-template-columns:minmax(0, 5fr) minmax(0, 7fr);gap:48px;align-items:end">
+      <div style="display:flex;flex-direction:column;gap:12px"><div class="eyebrow im">How we build</div><h2 class="h2" style="color:#FFFFFF">We own every layer. You get one team, one contract, one number to call.</h2></div>
+      <p class="sub" style="color:#9FB3C8">Most vendors sell one layer and hand you the rest. AID-IoT designs the device, writes the firmware, builds the cloud and the apps, and manufactures in India — so nothing falls between suppliers.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));gap:12px">
+      <div style="background:#132B4D;border:1px solid #2A3F63;border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:8px;min-height:150px"><div class="lbl" style="color:#9FB3C8">01 · yours</div><div style="font-weight:600;font-size:17px;color:#FFFFFF">Machines & sensors</div><div style="font-size:13.5px;color:#9FB3C8;line-height:1.45">What you already run</div></div><div style="background:#132B4D;border:1px solid #E8541C;border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:8px;min-height:150px"><div class="lbl" style="color:#FF8A55">02 · AID-IoT</div><div style="font-weight:600;font-size:17px;color:#FFFFFF">Device</div><div style="font-size:13.5px;color:#9FB3C8;line-height:1.45">Our hardware and firmware</div></div><div style="background:#132B4D;border:1px solid #E8541C;border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:8px;min-height:150px"><div class="lbl" style="color:#FF8A55">03 · AID-IoT</div><div style="font-weight:600;font-size:17px;color:#FFFFFF">Connectivity</div><div style="font-size:13.5px;color:#9FB3C8;line-height:1.45">4G, Wi-Fi, satellite or a private mesh — keeps working offline</div></div><div style="background:#132B4D;border:1px solid #E8541C;border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:8px;min-height:150px"><div class="lbl" style="color:#FF8A55">04 · AID-IoT</div><div style="font-weight:600;font-size:17px;color:#FFFFFF">Platform</div><div style="font-size:13.5px;color:#9FB3C8;line-height:1.45">Our cloud, or on your own servers</div></div><div style="background:#132B4D;border:1px solid #E8541C;border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:8px;min-height:150px"><div class="lbl" style="color:#FF8A55">05 · AID-IoT</div><div style="font-weight:600;font-size:17px;color:#FFFFFF">Apps & dashboards</div><div style="font-size:13.5px;color:#9FB3C8;line-height:1.45">What your team actually sees</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 64px 96px">
+  <div style="max-width:1312px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="eyebrow">Results in the field</div><h2 class="h2" style="max-width:20ch">Numbers our customers report.</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:20px">
+      <div class="card" style="padding:28px;display:flex;flex-direction:column;gap:10px"><p class="stat">5,000+</p><p class="p" style="font-weight:500;color:#0B1F3A">SKUs at zero stock variance</p><p class="small mono" style="font-size:12px">AID-ERP · multi-branch distributor · [CLIENT]</p></div><div class="card" style="padding:28px;display:flex;flex-direction:column;gap:10px"><p class="stat">−12.4%</p><p class="p" style="font-weight:500;color:#0B1F3A">fuel burn on an optimised voyage</p><p class="small mono" style="font-size:12px">AID-Fuel-Marine · [CLIENT / VESSEL]</p></div><div class="card" style="padding:28px;display:flex;flex-direction:column;gap:10px"><p class="stat">0</p><p class="p" style="font-weight:500;color:#0B1F3A">SIM cards to track a whole fleet</p><p class="small mono" style="font-size:12px">VMS-O · offline vehicle tracking · [CLIENT]</p></div>
+    </div>
+    <a href="#" style="font-weight:600;display:inline-flex;align-items:center;gap:6px">Read the case studies <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  </div>
+</section>
+
+<section style="padding:0 64px 96px">
+  <div style="max-width:1312px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px"><div style="display:flex;flex-direction:column;gap:12px"><div class="eyebrow">Products</div><h2 class="h2" style="max-width:22ch">Devices already proven in the field.</h2></div><a href="#" style="font-weight:600;white-space:nowrap;display:inline-flex;align-items:center;gap:6px">Full catalogue <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+    <div style="display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:20px">
+      <div style="display:flex;flex-direction:column;gap:10px"><div class="eyebrow" style="color:#0B1F3A;padding-bottom:10px;border-bottom:1px solid #B9C1CF">Gateways & edge</div><a href="#" class="card" style="padding:14px 16px;display:flex;flex-direction:column;gap:3px;color:#0B1F3A"><span style="font-weight:600;font-size:15px">IIoT Bridge</span><span class="small">Connects plant machines to one dashboard</span></a><a href="#" class="card" style="padding:14px 16px;display:flex;flex-direction:column;gap:3px;color:#0B1F3A"><span style="font-weight:600;font-size:15px">Ethernet Bridge</span><span class="small">Adds a network layer to your product</span></a><a href="#" class="card" style="padding:14px 16px;display:flex;flex-direction:column;gap:3px;color:#0B1F3A"><span style="font-weight:600;font-size:15px">IoT Edge Lite</span><span class="small">Small sensor board, every protocol onboard</span></a></div><div style="display:flex;flex-direction:column;gap:10px"><div class="eyebrow" style="color:#0B1F3A;padding-bottom:10px;border-bottom:1px solid #B9C1CF">Fleet & fuel</div><a href="#" class="card" style="padding:14px 16px;display:flex;flex-direction:column;gap:3px;color:#0B1F3A"><span style="font-weight:600;font-size:15px">AID-Fuel</span><span class="small">Fuel accounting for depots and fleets</span></a><a href="#" class="card" style="padding:14px 16px;display:flex;flex-direction:column;gap:3px;color:#0B1F3A"><span style="font-weight:600;font-size:15px">AID-Fuel-Marine</span><span class="small">AI fuel advisory for ships</span></a><a href="#" class="card" style="padding:14px 16px;display:flex;flex-direction:column;gap:3px;color:#0B1F3A"><span style="font-weight:600;font-size:15px">VMS-O / VFMS-O</span><span class="small">Vehicle and fuel tracking with no network</span></a><a href="#" class="card" style="padding:14px 16px;display:flex;flex-direction:column;gap:3px;color:#0B1F3A"><span style="font-weight:600;font-size:15px">AID-Auto</span><span class="small">Only a sober driver starts the engine</span></a></div><div style="display:flex;flex-direction:column;gap:10px"><div class="eyebrow" style="color:#0B1F3A;padding-bottom:10px;border-bottom:1px solid #B9C1CF">Tracking & convoy</div><a href="#" class="card" style="padding:14px 16px;display:flex;flex-direction:column;gap:3px;color:#0B1F3A"><span style="font-weight:600;font-size:15px">TrackNet</span><span class="small">People and asset tracking inside a perimeter</span></a><a href="#" class="card" style="padding:14px 16px;display:flex;flex-direction:column;gap:3px;color:#0B1F3A"><span style="font-weight:600;font-size:15px">NavIC CMS</span><span class="small">Convoy command when the network goes dark</span></a></div><div style="display:flex;flex-direction:column;gap:10px"><div class="eyebrow" style="color:#0B1F3A;padding-bottom:10px;border-bottom:1px solid #B9C1CF">Freshness & retail</div><a href="#" class="card" style="padding:14px 16px;display:flex;flex-direction:column;gap:3px;color:#0B1F3A"><span style="font-weight:600;font-size:15px">AidFresh</span><span class="small">Per-item shelf-life from receiving to pick</span></a><a href="#" class="card" style="padding:14px 16px;display:flex;flex-direction:column;gap:3px;color:#0B1F3A"><span style="font-weight:600;font-size:15px">Vending controller</span><span class="small">Connected, cashless vending</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:0 64px 96px">
+  <div style="max-width:1312px;margin:0 auto;display:grid;grid-template-columns:minmax(0, 5fr) minmax(0, 7fr);gap:48px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div class="eyebrow">Software</div>
+      <h2 class="h2">Every device we ship runs with software we wrote.</h2>
+      <p class="sub">Hosted by us or installed on your own servers. Works with our hardware — and, through standard interfaces, with the equipment you already own.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:6px"><div style="display:flex;gap:12px;align-items:flex-start"><span style="margin-top:4px"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="#1F7A6D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span><div><span style="font-weight:600">AID-IoT platform</span> <span class="p">— One dashboard for every device we ship — hosted by us or on your servers.</span></div></div><div style="display:flex;gap:12px;align-items:flex-start"><span style="margin-top:4px"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="#1F7A6D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span><div><span style="font-weight:600">AID-ERP</span> <span class="p">— Inventory, attendance and operations for multi-branch businesses.</span></div></div><div style="display:flex;gap:12px;align-items:flex-start"><span style="margin-top:4px"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="#1F7A6D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span><div><span style="font-weight:600">TraceCraft</span> <span class="p">— From a PCB design file to a milled board in one app.</span></div></div><div style="display:flex;gap:12px;align-items:flex-start"><span style="margin-top:4px"><svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="#1F7A6D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3 3 7-7"/></svg></span><div><span style="font-weight:600">Fuel suite</span> <span class="p">— FSMS · DEPOT · RAVEN · QUEST — the applications behind AID-Fuel.</span></div></div></div>
+      <a href="#" style="font-weight:600;display:inline-flex;align-items:center;gap:6px;margin-top:4px">Explore software <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+    <div class="instr" style="padding:22px;display:flex;flex-direction:column;gap:16px;min-height:380px">
+      <div style="display:flex;justify-content:space-between;align-items:center"><div class="lbl">AID-IoT platform · Plant 2 · Line B</div><div class="val" style="color:#7BD0A3">● 8 devices online</div></div>
+      <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:12px">
+        <div style="background:#132B4D;border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:4px"><div class="lbl">Furnace 1</div><div style="font-family:'Geist Mono',monospace;font-size:22px;color:#FFFFFF">842 °C</div><div class="lbl" style="text-transform:none;letter-spacing:0">set 850</div></div><div style="background:#132B4D;border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:4px"><div class="lbl">VFD 3</div><div style="font-family:'Geist Mono',monospace;font-size:22px;color:#FFFFFF">47.2 Hz</div><div class="lbl" style="text-transform:none;letter-spacing:0">nominal</div></div><div style="background:#132B4D;border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:4px"><div class="lbl">Scale A</div><div style="font-family:'Geist Mono',monospace;font-size:22px;color:#FFFFFF">1,206 kg</div><div class="lbl" style="text-transform:none;letter-spacing:0">last 09:41</div></div>
+      </div>
+      <div style="background:#132B4D;border-radius:8px;padding:14px;flex-grow:1;display:flex;flex-direction:column;gap:10px">
+        <div class="lbl">Uptime · last 24 h</div>
+        <svg viewBox="0 0 600 120" width="100%" height="120" preserveAspectRatio="none"><polyline points="0,90 60,80 120,84 180,50 240,56 300,40 360,44 420,30 480,36 540,22 600,26" fill="none" stroke="#E8541C" stroke-width="2.5"/><polyline points="0,90 60,80 120,84 180,50 240,56 300,40 360,44 420,30 480,36 540,22 600,26 600,120 0,120" fill="#E8541C" opacity=".12"/></svg>
+      </div>
+      <div style="text-align:center" class="lbl">Real dashboard screenshot goes here — this is a placeholder layout</div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#0B1F3A;color:#FFFFFF;padding:80px 64px">
+  <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:48px;align-items:center;max-width:1312px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="eyebrow im">Next step</div>
+      <h2 class="h2" style="color:#FFFFFF">Talk to an engineer.</h2>
+      <p class="sub" style="color:#9FB3C8">Tell us what you operate and what is going wrong. You’ll hear from an engineer — not a sales desk — within one business day.</p>
+    </div>
+    <div class="card" style="padding:24px;display:flex;flex-direction:column;gap:12px;border:0">
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#0B1F3A">Work email<div style="height:46px;border:1px solid #B9C1CF;border-radius:8px;padding:0 12px;display:flex;align-items:center;color:#8A93A3;font-size:15px">you@company.com</div></label>
+      <label style="display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:#0B1F3A">What are you trying to solve?<div style="height:84px;border:1px solid #B9C1CF;border-radius:8px;padding:10px 12px;color:#8A93A3;font-size:15px">e.g. We run 40 trucks and lose track of fuel</div></label>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:4px"><span class="small">Reply within one business day. No newsletter.</span><a class="btn primary" href="#">Send</a></div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#FFFFFF;border-top:1px solid #D8DDE6;padding:56px 64px 32px">
+  <div style="display:grid;grid-template-columns:repeat(6, minmax(0, 1fr));gap:32px;max-width:1312px;margin:0 auto">
+    <div style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;align-items:center;gap:10px"><img src="logo.svg" alt="AID-IoT" style="width:28px;height:25px;display:block"><span style="font-weight:700;font-size:18px;letter-spacing:-.02em;color:#0B1F3A">AID-IoT</span></div><p class="small">Devices, software and cloud for connected operations. Designed and built in India.</p></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><div class="eyebrow" style="color:#0B1F3A">Solutions</div><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Manufacturing & plants</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Fleet & fuel</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Defence & secure sites</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Cold-chain & retail</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Smart vending</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Education & skills</a></div><div style="display:flex;flex-direction:column;gap:8px"><div class="eyebrow" style="color:#0B1F3A">Products</div><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Gateways & edge</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Fleet & fuel devices</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Tracking & convoy</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Freshness & retail</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Defence systems</a></div><div style="display:flex;flex-direction:column;gap:8px"><div class="eyebrow" style="color:#0B1F3A">Software</div><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">AID-IoT platform</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">AID-ERP</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">TraceCraft</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Fuel suite</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Custom software</a></div><div style="display:flex;flex-direction:column;gap:8px"><div class="eyebrow" style="color:#0B1F3A">Services</div><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Product development</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">PCB design</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">On-demand manufacturing</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Training</a></div><div style="display:flex;flex-direction:column;gap:8px"><div class="eyebrow" style="color:#0B1F3A">Company</div><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">About</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Why AID-IoT</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Case studies</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Careers</a><a href="#" style="font-size:14px;color:#3A465C;line-height:1.4;padding:3px 0">Contact</a></div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:32px;max-width:1312px;margin:40px auto 0;padding-top:24px;border-top:1px solid #D8DDE6">
+    <div style="display:flex;gap:48px">
+      <div><div class="eyebrow" style="color:#0B1F3A">India — HQ</div><p class="small" style="margin-top:6px">BP-5, MLU Plots, DDA, Bindapur, Pocket-3, Dwarka, Delhi 110059<br>+91 98701 83306 · hi@aid-iot.com</p></div>
+      <div><div class="eyebrow" style="color:#0B1F3A">Canada</div><p class="small" style="margin-top:6px">7880 22 Sideroad, Acton ON L7J 2M1<br>+1 437 551 5139</p></div>
+    </div>
+    <p class="small mono" style="font-size:12px">© 2026 AID-IoT · Privacy · Terms · Shipping &amp; refunds · Store · Log in</p>
+  </div>
+</footer>
+</div>
+</x-dc>
+</body>
+</html>

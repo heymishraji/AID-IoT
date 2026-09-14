@@ -1,0 +1,14 @@
+{
+  "artboards": [
+    { "file": "Tokens.dc.html", "x": 0, "y": 0, "w": 1440, "h": 1120, "title": "Design system · tokens" },
+    { "file": "Main.dc.html", "x": 0, "y": 1260, "w": 1440, "h": 5190, "title": "Home · desktop 1440" },
+    { "file": "HomeMobile.dc.html", "x": 1540, "y": 1260, "w": 390, "h": 8430, "title": "Home · mobile 390" },
+    { "file": "ProductDesktop.dc.html", "x": 0, "y": 9840, "w": 1440, "h": 4510, "title": "Product · IIoT Bridge · desktop 1440" },
+    { "file": "ProductMobile.dc.html", "x": 1540, "y": 9840, "w": 390, "h": 7360, "title": "Product · IIoT Bridge · mobile 390" }
+  ],
+  "annotations": [
+    { "id": "note-assumptions", "x": 1540, "y": 0, "w": 380, "text": "Assumptions\n· Existing tri-colour mark kept; wordmark set in Geist.\n· One accent: signal orange #E8541C for fills, orange ink #B4400E for text (AA).\n· Navy panels = instruments only (devices, diagrams, specs, dashboards).\n· [CLIENT] tags and the 'Fielded with' names are placeholders until logo permissions and case-study numbers are confirmed.\n· Dashboard panels are layout placeholders for real screenshots." },
+    { "id": "note-product", "x": 1540, "y": 9620, "w": 380, "text": "Product template: the current Challenge → How we help → Specs → Use cases arc is kept; a plain-language outcome layer (hero, who it's for, what you get) sits above it. Same template serves every hardware product." }
+  ],
+  "launch": { "view": "canvas" }
+}
