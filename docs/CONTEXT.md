@@ -9,11 +9,11 @@ technical evaluators, builder clients, educators, store shoppers, existing custo
 Goal for this phase: a complete, working, motion-led site built here, then shown to the CEO.
 
 ## Where we are (phase)
-Phase 0 — Direction lock. Three WORKING prototypes built: prototypes/a (Open the device, Three.js exploded
-device), prototypes/b (Panel room, live mimic diagram), prototypes/c (Field log, parallax photo chapters).
-Run: `cd prototypes && npm run dev` → http://localhost:4173. Awaiting the user's pick of A / B / C.
-Earlier static boards (design/canvases/02-directions) are superseded by the prototypes.
-Platform name decided: Signal. GitHub repo still to be created by the user (remote already set).
+Phase 0→1. The real build has started in `site/` (Next.js 15 + Tailwind v4 + shadcn/ui + Motion + GSAP + Lenis + R3F)
+with ONE component system and THREE world token files (data-theme a/b/c) switchable from a review control.
+Run: `cd site && npm run dev` → http://localhost:3311. Homepage complete with story-led copy (docs/copy/).
+Awaiting: the user's pick of world A / B / C on the real build. prototypes/ and design/canvases/ are frozen anti-references.
+GitHub repo still to be created by the user (remote set to git@github.com:heymishraji/aid-iot-website.git).
 
 ## Fixed decisions (see docs/DECISIONS.md for why)
 - Architecture: L1 = Solutions · Products · Software · Services · Company + Store / Log in / Talk to an engineer.
@@ -37,6 +37,12 @@ Platform name decided: Signal. GitHub repo still to be created by the user (remo
 - B "Panel room": control-room mimic diagram, live values, hover nodes, pinned walk-the-line; paper + ink + one live green; Khand + Ranade + Martian Mono.
 - C "Field log": documentary photography with parallax chapters; paper register → Signal ledger crossfade; Zodiak + Author + Martian Mono.
 Typography rule: no AI-default faces (Inter, Geist, Manrope, Space Grotesk, Fraunces, Playfair, DM Sans, Plus Jakarta, Instrument Sans). Prefer Indian Type Foundry (Fontshare) families.
+
+## Design system
+See docs/brand/DESIGN-SYSTEM.md: tokens → primitives (shadcn) → sections → templates → content model. Rules: no caps eyebrows, no "·" strings, no "→", no single accented word, numbers only for real sequences, one motion moment per page. QA after every screen → docs/QA.md (Home: 25/32).
+
+## Skills
+docs/SKILLS.md — frontend-design, copywriting/copy-editing/product-marketing/site-architecture/cro, ui-ux-pro-max (checklist), apple-design (HIG). `.claude/product-marketing.md` is the shared context the copy skills read.
 
 ## Motion primitives (to build once; blueprint §07)
 ExplodedDevice · SignalTrace · ScrollChapter · InstrumentPanel · FlowDiagram · Turntable · Reveal · PageTransition.
