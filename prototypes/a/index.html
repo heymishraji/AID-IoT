@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AID-IoT — Direction A · Open the device</title>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800&f[]=switzer@400,500,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&display=swap">
+<style>
+:root{--ground:#F1F2F4;--ink:#101317;--ink2:#3B414B;--muted:#6A717D;--line:#CDD1D8;--orange:#F04E1A;--orange-ink:#B4390B;--paper:#FFFFFF;--green:#1E6B45}
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"Switzer",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.display{font-family:"Cabinet Grotesk","Switzer",sans-serif;font-weight:800;letter-spacing:-.03em;line-height:.98;margin:0}
+.mono{font-family:"Martian Mono",ui-monospace,monospace}
+.lbl{font-family:"Martian Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+@media(max-width:700px){.wrap{padding:0 18px}}
+header{position:fixed;inset:0 0 auto 0;z-index:50;height:68px;display:flex;align-items:center;transition:background .3s,box-shadow .3s}
+header.solid{background:rgba(241,242,244,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Cabinet Grotesk";font-weight:800;font-size:20px;letter-spacing:-.02em}
+.brand img{width:30px;height:27px}
+nav.primary{display:flex;gap:26px}
+nav.primary a{font-weight:500;font-size:15px;position:relative}
+nav.primary a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:2px;background:var(--orange);transition:right .25s}
+nav.primary a:hover::after{right:0}
+.util{display:flex;gap:18px;align-items:center;font-size:14px;color:var(--ink2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 22px;border-radius:4px;font-weight:600;font-size:15px;border:1.5px solid transparent;transition:transform .15s,background .2s}
+.btn:active{transform:scale(.98)}
+.btn.ink{background:var(--ink);color:#fff}.btn.ink:hover{background:#000}
+.btn.line{border-color:var(--ink);color:var(--ink)}.btn.line:hover{background:#fff}
+.btn.sm{height:42px;padding:0 16px;font-size:14px}
+.plate{display:inline-flex;align-items:center;height:26px;padding:0 9px;background:var(--ink);color:#F1F2F4;border-radius:3px;font-family:"Martian Mono";font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.plate.or{background:var(--orange);color:var(--ink)}
+@media(max-width:1000px){nav.primary,.util .hide{display:none}}
+
+/* HERO */
+#hero{position:relative;height:100vh;overflow:hidden}
+#hero .wrap{height:100%;display:grid;grid-template-columns:minmax(0,46%) minmax(0,54%);gap:32px;align-items:center;padding-top:68px}
+#hero .copy{display:flex;flex-direction:column;gap:22px;max-width:560px}
+#hero h1{font-size:clamp(44px,5.2vw,74px)}
+#hero p.lead{font-size:19px;color:var(--ink2);margin:0;max-width:30em}
+#hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+#hero .proof{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+#hero .proof div{display:flex;gap:8px;flex-wrap:wrap}
+#hero .proof span{font-family:"Martian Mono";font-size:11.5px;letter-spacing:.04em;border:1px solid var(--line);padding:6px 10px;border-radius:3px;background:rgba(255,255,255,.6)}
+#stage{position:relative;height:calc(100vh - 100px);background:var(--orange);border-radius:6px;overflow:hidden}
+#stage canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block}
+#stage .corner{position:absolute;z-index:2}
+#stage .corner.tl{left:20px;top:18px}#stage .corner.tr{right:20px;top:18px}#stage .corner.bl{left:20px;bottom:18px;display:flex;gap:16px;flex-wrap:wrap}
+@media(max-width:1000px){#stage .corner.tr{display:none}#stage .corner.bl{display:none}}
+#stage .corner .lbl{color:var(--ink)}
+#labels{position:absolute;inset:0;pointer-events:none;z-index:3}
+.tag{position:absolute;transform:translate(0,-50%);opacity:0;transition:opacity .25s;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.tag .dot{width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.tag .line{width:44px;height:1.5px;background:var(--ink)}
+.tag .txt{background:var(--ink);color:#F1F2F4;padding:8px 12px;border-radius:3px;display:flex;flex-direction:column;gap:2px;max-width:220px;white-space:normal}
+.tag .txt b{font-family:"Cabinet Grotesk";font-weight:700;font-size:15px;letter-spacing:-.01em}
+.tag .txt small{font-family:"Martian Mono";font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#C9CDD5}
+.tag.show{opacity:1}
+#scrollhint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:2;display:flex;align-items:center;gap:8px;color:var(--ink);font-family:"Martian Mono";font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+#scrollhint i{display:block;width:1px;height:28px;background:var(--ink);animation:drop 1.4s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media(max-width:1000px){#hero{height:auto;padding-top:80px}#hero .wrap{display:flex;flex-direction:column;gap:22px;align-items:stretch;padding-top:0;height:auto}#stage{height:64vh}#hero h1{font-size:44px}}
+
+/* sections */
+section.s{padding:112px 0}
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.eyebrow .lbl{color:var(--orange-ink)}
+.eyebrow i{width:28px;height:1.5px;background:var(--orange)}
+h2{font-size:clamp(34px,3.8vw,54px);max-width:20ch;text-wrap:balance}
+.sub{font-size:18px;color:var(--ink2);max-width:58ch;margin:16px 0 0}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(18px)}
+
+/* beats + trace */
+#beats{position:relative}
+#trace{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.beats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;position:relative;z-index:1;margin-top:56px}
+.beat{background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.beat img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:saturate(.9)}
+.beat .b{padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.beat .b .n{font-family:"Martian Mono";font-size:11px;color:var(--orange-ink);letter-spacing:.08em}
+.beat .b h3{font-size:26px;font-weight:800}
+.beat .b p{margin:0;font-size:15px;color:var(--ink2);line-height:1.5}
+@media(max-width:1000px){.beats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.beats{grid-template-columns:1fr}}
+
+/* sectors */
+.sectors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:48px}
+.sector{position:relative;aspect-ratio:4/3;border-radius:6px;overflow:hidden;background:#222;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;isolation:isolate}
+.sector img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.sector::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,19,23,0) 30%,rgba(16,19,23,.85));z-index:-1}
+.sector:hover img{transform:scale(1.05)}
+.sector h3{font-size:26px;font-weight:800;margin-bottom:6px}
+.sector p{margin:0;font-size:14.5px;opacity:.9;max-width:34ch}
+.sector .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;opacity:0;transform:translateY(8px);transition:.3s}
+.sector:hover .chips{opacity:1;transform:none}
+.sector .chips span{font-family:"Martian Mono";font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;background:var(--orange);color:var(--ink);padding:4px 8px;border-radius:3px}
+@media(max-width:1000px){.sectors{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.sectors{grid-template-columns:1fr}}
+
+/* platform */
+#platform .grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:center}
+@media(max-width:1000px){#platform .grid{grid-template-columns:1fr}}
+.panel{background:var(--ink);color:#E9ECF1;border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:0 30px 60px -30px rgba(16,19,23,.5)}
+.panel .top{display:flex;justify-content:space-between;align-items:center}
+.panel .top .lbl{color:#9AA3B2}
+.panel .ok{color:#7BD0A3;font-family:"Martian Mono";font-size:12px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.tile{background:#1A1F26;border-radius:6px;padding:14px;display:flex;flex-direction:column;gap:4px}
+.tile .lbl{color:#9AA3B2}
+.tile .v{font-family:"Martian Mono";font-size:24px;color:#fff;font-variant-numeric:tabular-nums}
+.tile .v.warn{color:#FF9A6E}
+.tile small{font-family:"Martian Mono";font-size:10.5px;color:#9AA3B2}
+.chart{background:#1A1F26;border-radius:6px;padding:14px;min-height:170px;display:flex;flex-direction:column;gap:8px}
+.chart canvas{width:100%;height:130px;display:block}
+.events{display:flex;flex-direction:column;gap:6px;font-family:"Martian Mono";font-size:11.5px;color:#C9CDD5}
+.events div{display:flex;gap:12px}.events span:first-child{color:#9AA3B2;width:60px}
+.mods{display:flex;flex-direction:column;gap:12px;margin-top:22px}
+.mod{display:flex;gap:12px;align-items:flex-start;font-size:15.5px}
+.mod i{width:10px;height:10px;border-radius:2px;background:var(--orange);margin-top:8px;flex:none}
+.mod b{font-weight:600}
+
+/* results */
+.results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:48px}
+.res{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:26px;display:flex;flex-direction:column;gap:8px}
+.res .num{font-family:"Cabinet Grotesk";font-weight:800;font-size:64px;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.res .num sup{font-size:.45em;vertical-align:top;top:.4em;position:relative}
+.res p{margin:0;font-size:15.5px}
+.res small{font-family:"Martian Mono";font-size:11px;color:var(--muted);letter-spacing:.04em}
+@media(max-width:800px){.results{grid-template-columns:1fr}}
+
+/* products */
+.prods{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:48px}
+.group .lbl{color:var(--ink);padding-bottom:10px;border-bottom:1.5px solid var(--ink);display:block;margin-bottom:12px}
+.prod{display:flex;gap:12px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:6px;background:var(--paper);margin-bottom:8px;transition:transform .2s,border-color .2s}
+.prod:hover{transform:translateY(-2px);border-color:var(--ink)}
+.prod img{width:56px;height:56px;object-fit:cover;border-radius:4px;background:#E6E8EC;flex:none}
+.prod b{display:block;font-weight:600;font-size:15px}
+.prod small{font-size:12.5px;color:var(--muted)}
+@media(max-width:1000px){.prods{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.prods{grid-template-columns:1fr}}
+
+/* cta */
+#cta{background:var(--ink);color:#F1F2F4}
+#cta .grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:900px){#cta .grid{grid-template-columns:1fr}}
+#cta h2{color:#fff}
+#cta .sub{color:#B7BEC9}
+form.f{background:#fff;color:var(--ink);border-radius:8px;padding:22px;display:flex;flex-direction:column;gap:12px}
+form.f label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600}
+form.f input,form.f textarea{font:inherit;font-size:15px;font-weight:400;border:1px solid var(--line);border-radius:4px;padding:12px;background:#fff}
+form.f input:focus,form.f textarea:focus{outline:2px solid var(--orange);outline-offset:1px;border-color:transparent}
+form.f .row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+form.f .row small{color:var(--muted);font-size:13px}
+footer{padding:48px 0 32px;border-top:1px solid var(--line);font-size:14px;color:var(--ink2)}
+footer .cols{display:grid;grid-template-columns:2fr repeat(5,1fr);gap:24px}
+footer .cols a{display:block;padding:3px 0}
+footer .cols .lbl{color:var(--ink);margin-bottom:8px;display:block}
+@media(max-width:900px){footer .cols{grid-template-columns:1fr 1fr}}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;background:var(--ink);color:#fff;padding:12px 18px;border-radius:6px;font-size:14px;transition:.3s;z-index:60}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}#scrollhint i{animation:none}}
+</style>
+</head>
+<body>
+<header id="hdr"><div class="wrap">
+  <a class="brand" href="#"><img src="../assets/brand/aid-iot-mark.svg" alt="">AID-IoT</a>
+  <nav class="primary"><a href="#sectors">Solutions</a><a href="#products">Products</a><a href="#platform">Software</a><a href="#beats">Services</a><a href="#results">Company</a></nav>
+  <div class="util"><a class="hide" href="#">Store</a><a class="hide" href="#">Log in</a><a class="btn ink sm" href="#cta">Talk to an engineer</a></div>
+</div></header>
+
+<section id="hero">
+  <div class="wrap">
+    <div class="copy">
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="plate or">Hardware</span><span class="plate">Firmware</span><span class="plate">Signal platform</span><span class="plate">Made in India</span></div>
+      <h1>We own the signal, end to end.</h1>
+      <p class="lead">The device on your machine, the code inside it, the link that carries the data, the platform that decides, the app your team reads. One company designs, writes, runs and manufactures all of it — in India.</p>
+      <div class="ctas"><a class="btn ink" href="#cta">Talk to an engineer</a><a class="btn line" href="#beats" id="openbtn">See what's inside ↓</a></div>
+      <div class="proof"><span class="lbl">Fielded with</span><div><span>Ministry of Defence</span><span>Indian Army</span><span>IIT Delhi</span><span>IIT Jammu</span><span>BigBasket</span></div></div>
+    </div>
+    <div id="stage">
+      <div class="corner tl"><span class="lbl" id="stagelbl">IIoT Bridge · closed · scroll to open</span></div>
+      <div class="corner tr"><span class="lbl" id="layercount">01 / 06 layers</span></div>
+      <div class="corner bl"><span class="lbl">RS-485 ×2</span><span class="lbl">Modbus</span><span class="lbl">4G · Wi-Fi · LAN</span><span class="lbl">12–24 V DC</span></div>
+      <div id="labels"></div>
+      <div id="scrollhint"><i></i>Scroll</div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="beats">
+  <div class="wrap" style="position:relative">
+    <svg id="trace" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><path id="tracepath" d="M0 60 C 200 60, 220 340, 420 340 S 620 60, 780 60 S 980 340, 1000 340" fill="none" stroke="#F04E1A" stroke-width="2" stroke-dasharray="1 1"/></svg>
+    <div class="eyebrow reveal"><i></i><span class="lbl">How the signal travels</span></div>
+    <h2 class="reveal">Connect. Communicate. Automate. Scale.</h2>
+    <p class="sub reveal">Four things every operation needs from its data — and the one company in India that does all four with its own hardware and its own software.</p>
+    <div class="beats">
+      <div class="beat reveal"><img src="../assets/img/control-room.webp" alt="Electrical control room"><div class="b"><span class="n">01 · Connect</span><h3>Get the data off the machines.</h3><p>PLCs, drives, scales, meters, tanks — things that were never designed to share. Our gateways speak their languages.</p><span class="plate" style="align-self:flex-start">IIoT Bridge · Edge Lite</span></div></div>
+      <div class="beat reveal"><img src="../assets/img/truck-mountain.webp" alt="Truck on a mountain road in Himachal Pradesh"><div class="b"><span class="n">02 · Communicate</span><h3>Reach the people who decide.</h3><p>4G, Wi-Fi, satellite, or a private radio mesh with no SIM at all. When there is no network, the record still gets home.</p><span class="plate" style="align-self:flex-start">VMS-O · NavIC CMS</span></div></div>
+      <div class="beat reveal"><img src="../assets/img/tanker-rear.webp" alt="Fuel tanker rear with painted signage"><div class="b"><span class="n">03 · Automate</span><h3>Act before a human has to.</h3><p>A drain flagged, an engine that will not start for an impaired driver, first-to-expire picked first. Rules run on the device.</p><span class="plate" style="align-self:flex-start">AID-Fuel · AID-Auto · AidFresh</span></div></div>
+      <div class="beat reveal"><img src="../assets/img/soldering.webp" alt="Technician soldering a circuit board"><div class="b"><span class="n">04 · Scale</span><h3>From one unit to a nationwide rollout.</h3><p>Designed in Delhi, manufactured in India across 25+ processes, fielded with the Indian Army and running 5,000-SKU distributors.</p><span class="plate" style="align-self:flex-start">Manufacturing · Signal cloud</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="sectors" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="head"><div><div class="eyebrow reveal"><i></i><span class="lbl">Solutions by sector</span></div><h2 class="reveal">Built for operations that cannot afford blind spots.</h2></div><a class="btn line reveal" href="#">All solutions →</a></div>
+    <div class="sectors">
+      <a class="sector reveal" href="#"><img src="../assets/img/control-room.webp" alt=""><h3>Manufacturing &amp; plants</h3><p>See every machine live, without re-wiring the plant.</p><div class="chips"><span>IIoT Bridge</span><span>Signal</span></div></a>
+      <a class="sector reveal" href="#"><img src="../assets/img/rail-tankers.webp" alt=""><h3>Fleet &amp; fuel</h3><p>Every litre and every vehicle accounted for — even with no network.</p><div class="chips"><span>AID-Fuel</span><span>VMS-O</span><span>VFMS-O</span></div></a>
+      <a class="sector reveal" href="#"><img src="../assets/img/trucks-fog.webp" alt=""><h3>Defence &amp; secure sites</h3><p>Indigenous systems that never depend on a public network.</p><div class="chips"><span>NavIC CMS</span><span>TrackNet</span><span>Counter-UAS</span></div></a>
+      <a class="sector reveal" href="#"><img src="../assets/img/forklift-warehouse.webp" alt=""><h3>Cold-chain &amp; retail</h3><p>Pick first-to-expire first; know the temperature the whole way.</p><div class="chips"><span>AidFresh</span><span>AID-ERP</span></div></a>
+      <a class="sector reveal" href="#"><img src="../assets/img/vending-photo.webp" alt=""><h3>Smart vending</h3><p>Cashless, stock-aware machines you run from one screen.</p><div class="chips"><span>Vending controller</span><span>Vending cloud</span></div></a>
+      <a class="sector reveal" href="#"><img src="../assets/img/edu-lab.webp" alt=""><h3>Campuses &amp; education</h3><p>Hands-on drone, PCB and IoT programmes for institutions.</p><div class="chips"><span>TraceCraft</span><span>Drone programmes</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="platform">
+  <div class="wrap"><div class="grid">
+    <div>
+      <div class="eyebrow reveal"><i></i><span class="lbl">Software · Signal</span></div>
+      <h2 class="reveal">Every device we ship runs on software we wrote.</h2>
+      <p class="sub reveal">Signal is the platform behind all of it — hosted by us, or installed on your own servers. It works with our hardware and, through standard interfaces, with the equipment you already own.</p>
+      <div class="mods reveal">
+        <div class="mod"><i></i><div><b>Signal dashboard</b> — one screen for every device, every site.</div></div>
+        <div class="mod"><i></i><div><b>Fleet &amp; fuel apps</b> — FSMS, DEPOT, RAVEN, QUEST: the applications behind AID-Fuel.</div></div>
+        <div class="mod"><i></i><div><b>AID-ERP</b> — inventory, attendance and operations for multi-branch businesses.</div></div>
+        <div class="mod"><i></i><div><b>TraceCraft</b> — from a PCB design file to a milled board in one app.</div></div>
+      </div>
+      <a class="btn line reveal" href="#" style="margin-top:22px">Explore Signal →</a>
+    </div>
+    <div class="panel reveal" id="panel">
+      <div class="top"><span class="lbl">Signal · Plant 2 · Line B</span><span class="ok">● 8 devices online</span></div>
+      <div class="tiles">
+        <div class="tile"><span class="lbl">Furnace 1 · TT-101</span><span class="v" data-v="842" data-unit=" °C" data-jit="3">842 °C</span><small>set 850 · ramp 2 °C/min</small></div>
+        <div class="tile"><span class="lbl">VFD 3 · SC-203</span><span class="v" data-v="47.2" data-unit=" Hz" data-jit="0.3" data-dec="1">47.2 Hz</span><small>nominal</small></div>
+        <div class="tile"><span class="lbl">Scale A · WT-310</span><span class="v warn" data-v="1206" data-unit=" kg" data-jit="4" data-fmt="int">1,206 kg</span><small>over 1,200 · conveyor slowed</small></div>
+      </div>
+      <div class="chart"><span class="lbl">Furnace 1 · last 60 min</span><canvas id="spark" width="600" height="130"></canvas></div>
+      <div class="events" id="events">
+        <div><span>14:22:06</span><span>WT-310 over 1,200 kg → conveyor slowed (rule on device)</span></div>
+        <div><span>14:21:40</span><span>SC-203 ramp complete · 47.2 Hz</span></div>
+        <div><span>14:19:12</span><span>Bridge-02 reconnected · 4G → LAN failover, 0 records lost</span></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<section class="s" id="results" style="background:#fff;border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="eyebrow reveal"><i></i><span class="lbl">Results in the field</span></div>
+    <h2 class="reveal">Numbers our customers report.</h2>
+    <div class="results">
+      <div class="res reveal"><span class="num"><span data-count="5000">0</span><sup>+</sup></span><p>SKUs running at zero stock variance on AID-ERP across a multi-branch distributor.</p><small>AID-ERP · [CLIENT TO CONFIRM]</small></div>
+      <div class="res reveal"><span class="num">−<span data-count="12.4" data-dec="1">0</span>%</span><p>fuel burn on an optimised voyage with AID-Fuel-Marine's onboard advisory.</p><small>AID-Fuel-Marine · [VESSEL TO CONFIRM]</small></div>
+      <div class="res reveal"><span class="num"><span data-count="0">0</span></span><p>SIM cards needed to track an entire vehicle fleet with VMS-O — a private mesh, no carrier.</p><small>VMS-O · Indian Army trials</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="products">
+  <div class="wrap">
+    <div class="head"><div><div class="eyebrow reveal"><i></i><span class="lbl">Products</span></div><h2 class="reveal">Devices already proven in the field.</h2></div><a class="btn line reveal" href="#">Full catalogue →</a></div>
+    <div class="prods">
+      <div class="group reveal"><span class="lbl">Gateways &amp; edge</span>
+        <a class="prod" href="#"><img src="../assets/img/iiot-bridge.webp" alt=""><div><b>IIoT Bridge</b><small>Connects plant machines to one dashboard</small></div></a>
+        <a class="prod" href="#"><img src="../assets/img/edge-device.webp" alt=""><div><b>IoT Edge Lite</b><small>Small sensor board, every protocol onboard</small></div></a>
+        <a class="prod" href="#"><img src="../assets/img/pcb-gateway.webp" alt=""><div><b>Ethernet Bridge</b><small>Adds a network layer to your product</small></div></a></div>
+      <div class="group reveal"><span class="lbl">Fleet &amp; fuel</span>
+        <a class="prod" href="#"><img src="../assets/img/aidfuel-hardware.webp" alt=""><div><b>AID-Fuel</b><small>Fuel accounting for depots and fleets</small></div></a>
+        <a class="prod" href="#"><img src="../assets/img/cargo-ship.webp" alt=""><div><b>AID-Fuel-Marine</b><small>AI fuel advisory for ships</small></div></a>
+        <a class="prod" href="#"><img src="../assets/img/convoy-india.webp" alt=""><div><b>VMS-O / VFMS-O</b><small>Vehicle and fuel tracking with no network</small></div></a></div>
+      <div class="group reveal"><span class="lbl">Tracking &amp; convoy</span>
+        <a class="prod" href="#"><img src="../assets/img/tracknet-tag.webp" alt=""><div><b>TrackNet</b><small>People and asset tracking inside a perimeter</small></div></a>
+        <a class="prod" href="#"><img src="../assets/img/navic.webp" alt=""><div><b>NavIC CMS</b><small>Convoy command when the network goes dark</small></div></a></div>
+      <div class="group reveal"><span class="lbl">Freshness &amp; retail</span>
+        <a class="prod" href="#"><img src="../assets/img/forklift-pallets.webp" alt=""><div><b>AidFresh</b><small>Per-item shelf-life from receiving to pick</small></div></a>
+        <a class="prod" href="#"><img src="../assets/img/vending-photo.webp" alt=""><div><b>Vending controller</b><small>Connected, cashless vending</small></div></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="cta">
+  <div class="wrap"><div class="grid">
+    <div><div class="eyebrow reveal"><i></i><span class="lbl" style="color:#FF9A6E">Next step</span></div><h2 class="reveal">Talk to an engineer.</h2><p class="sub reveal">Tell us what you operate and what is going wrong. You'll hear from an engineer — not a sales desk — within one business day.</p></div>
+    <form class="f reveal" onsubmit="event.preventDefault();document.getElementById('toast').classList.add('show');setTimeout(()=>document.getElementById('toast').classList.remove('show'),3000);this.reset()">
+      <label>Work email<input type="email" required placeholder="you@company.com"></label>
+      <label>What are you trying to solve?<textarea rows="3" required placeholder="e.g. We run 40 trucks and lose track of fuel"></textarea></label>
+      <div class="row"><small>Reply within one business day. No newsletter.</small><button class="btn ink" type="submit">Send</button></div>
+    </form>
+  </div></div>
+</section>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><div class="brand" style="margin-bottom:10px"><img src="../assets/brand/aid-iot-mark.svg" alt="">AID-IoT</div><p style="margin:0;max-width:30ch">Devices, software and cloud for connected operations. Designed and built in India.</p></div>
+    <div><span class="lbl">Solutions</span><a href="#">Manufacturing &amp; plants</a><a href="#">Fleet &amp; fuel</a><a href="#">Defence &amp; secure sites</a><a href="#">Cold-chain &amp; retail</a><a href="#">Smart vending</a><a href="#">Campuses</a></div>
+    <div><span class="lbl">Products</span><a href="#">Gateways &amp; edge</a><a href="#">Fleet &amp; fuel</a><a href="#">Tracking &amp; convoy</a><a href="#">Freshness &amp; retail</a><a href="#">Defence systems</a></div>
+    <div><span class="lbl">Software</span><a href="#">Signal platform</a><a href="#">Fleet &amp; fuel apps</a><a href="#">AID-ERP</a><a href="#">TraceCraft</a></div>
+    <div><span class="lbl">Services</span><a href="#">Product development</a><a href="#">PCB design</a><a href="#">Manufacturing</a><a href="#">Training</a></div>
+    <div><span class="lbl">Company</span><a href="#">About</a><a href="#">Why AID-IoT</a><a href="#">Case studies</a><a href="#">Careers</a><a href="#">Contact</a></div>
+  </div>
+  <p class="mono" style="font-size:11.5px;margin-top:36px;color:var(--muted)">© 2026 AID-IoT · Delhi · Acton ON · Prototype A — "Open the device" · images: AID-IoT + Pexels (see assets/img/CREDITS.md)</p>
+</div></footer>
+<div class="toast" id="toast">Sent — an engineer will reply within one business day.</div>
+
+<script src="../vendor/gsap.min.js"></script>
+<script src="../vendor/ScrollTrigger.min.js"></script>
+<script src="../vendor/lenis.min.js"></script>
+<script type="importmap">{"imports":{"three":"../vendor/three.module.js"}}</script>
+<script type="module">
+import * as THREE from 'three';
+gsap.registerPlugin(ScrollTrigger);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isMobile = matchMedia('(max-width: 1000px)').matches;
+
+/* ---------- smooth scroll ---------- */
+if(!reduce){ const lenis = new Lenis({ lerp: 0.1, smoothWheel: true }); lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0); }
+
+/* ---------- header ---------- */
+const hdr=document.getElementById('hdr'); ScrollTrigger.create({start:60,onUpdate:s=>hdr.classList.toggle('solid',s.scroll()>60)});
+
+/* ---------- 3D device ---------- */
+const stage=document.getElementById('stage');
+const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio, isMobile?1.5:2)); renderer.outputColorSpace=THREE.SRGBColorSpace;
+stage.appendChild(renderer.domElement);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(30,1,0.1,100);
+scene.add(new THREE.HemisphereLight(0xffffff,0x553322,1.1));
+const key=new THREE.DirectionalLight(0xffffff,1.6); key.position.set(4,7,5); scene.add(key);
+const fill=new THREE.DirectionalLight(0xffe0cc,0.6); fill.position.set(-5,2,-3); scene.add(fill);
+
+const INK=0x101317, ORANGE=0xF04E1A, GREEN=0x1E6B45, GREY=0xD9DCE0;
+const std=(c,o={})=>new THREE.MeshStandardMaterial({color:c,roughness:.55,metalness:.05,...o});
+function canvasTex(draw,w=512,h=384){const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');draw(x,w,h);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t;}
+
+const device=new THREE.Group(); scene.add(device);
+const W=3.2,D=2.6;
+// layers
+const layers=[]; // {group, base, spread, title, desc}
+function addLayer(group,title,desc){ device.add(group); layers.push({group,title,desc}); return group; }
+
+// 0 Enclosure base + lid (lid is separate object that lifts)
+const enc=new THREE.Group();
+const base=new THREE.Mesh(new THREE.BoxGeometry(W,0.5,D),std(GREY)); base.position.y=-0.25; enc.add(base);
+const inner=new THREE.Mesh(new THREE.BoxGeometry(W-0.3,0.42,D-0.3),std(0xC4C8CE)); inner.position.y=-0.2; enc.add(inner);
+addLayer(enc,'Enclosure','IP-rated housing we design');
+const lid=new THREE.Mesh(new THREE.BoxGeometry(W,0.08,D),new THREE.MeshPhysicalMaterial({color:0xffffff,transparent:true,opacity:.28,roughness:.05,metalness:0,clearcoat:1})); lid.position.y=0.04; device.add(lid);
+[[-1,-1],[1,-1],[-1,1],[1,1]].forEach(([sx,sz])=>{const s=new THREE.Mesh(new THREE.CylinderGeometry(.09,.09,.06,16),std(0x2F5BD6));s.position.set(sx*(W/2-.2),.09,sz*(D/2-.2));lid.add(s);});
+
+// 1 Board
+const bd=new THREE.Group();
+const pcb=new THREE.Mesh(new THREE.BoxGeometry(2.5,0.06,1.9),std(GREEN,{roughness:.4})); bd.add(pcb);
+const chip=new THREE.Mesh(new THREE.BoxGeometry(.6,.1,.6),std(INK,{roughness:.3})); chip.position.set(.2,.08,0); bd.add(chip);
+for(let i=0;i<5;i++){const tb=new THREE.Mesh(new THREE.BoxGeometry(.22,.16,.2),std(ORANGE,{roughness:.6}));tb.position.set(-1.05+i*.25,.11,-.75);bd.add(tb);}
+for(let i=0;i<3;i++){const tb=new THREE.Mesh(new THREE.BoxGeometry(.2,.16,.2),std(0x2A9D6C));tb.position.set(-1.1,.11,-.2+i*.3);bd.add(tb);}
+const led1=new THREE.Mesh(new THREE.SphereGeometry(.05,12,12),new THREE.MeshStandardMaterial({color:0x33ff88,emissive:0x33ff88,emissiveIntensity:1.2}));led1.position.set(.9,.08,.7);bd.add(led1);
+const led2=led1.clone();led2.material=led1.material.clone();led2.material.color.set(0x3388ff);led2.material.emissive.set(0x3388ff);led2.position.x=1.05;bd.add(led2);
+const sd=new THREE.Mesh(new THREE.BoxGeometry(.3,.05,.4),std(0x333));sd.position.set(1.05,.06,-.5);bd.add(sd);
+const ant=new THREE.Mesh(new THREE.CylinderGeometry(.04,.04,1.1,12),std(INK,{roughness:.8}));ant.rotation.z=Math.PI/2;ant.position.set(1.55,.15,.4);bd.add(ant);
+const antb=new THREE.Mesh(new THREE.CylinderGeometry(.12,.12,.25,16),std(0xB08D57,{metalness:.7,roughness:.3}));antb.rotation.z=Math.PI/2;antb.position.set(1.3,.15,.4);bd.add(antb);
+addLayer(bd,'Board','Hardware we design');
+
+// 2 Firmware
+const fwTex=canvasTex((x,w,h)=>{x.fillStyle='#101317';x.fillRect(0,0,w,h);x.strokeStyle='#F04E1A';x.lineWidth=2;for(let i=0;i<14;i++){x.beginPath();let y=20+i*26;x.moveTo(20,y);let px=20;while(px<w-20){px+=30+Math.random()*80;x.lineTo(px,y);if(Math.random()<.4){y+=Math.random()<.5?12:-12;x.lineTo(px,y);}}x.stroke();}x.fillStyle='#C9CDD5';x.font='500 18px "Martian Mono", monospace';x.fillText('rule: WT-310 > 1200 kg → slow conveyor',24,h-24);});
+const fw=new THREE.Mesh(new THREE.BoxGeometry(2.5,.03,1.9),new THREE.MeshStandardMaterial({map:fwTex,roughness:.6}));
+addLayer(new THREE.Group().add(fw),'Firmware','Code we write, on the device');
+
+// 3 Link
+const lk=new THREE.Group();
+[0.5,0.85,1.2].forEach((r,i)=>{const t=new THREE.Mesh(new THREE.TorusGeometry(r,.02,10,64),new THREE.MeshStandardMaterial({color:INK,emissive:ORANGE,emissiveIntensity:.35}));t.rotation.x=Math.PI/2;t.position.y=i*.02;lk.add(t);});
+const lkc=new THREE.Mesh(new THREE.SphereGeometry(.1,16,16),std(INK));lk.add(lkc);
+addLayer(lk,'Link','4G · Wi-Fi · LoRa mesh we manage');
+
+// 4 Signal platform
+const plTex=canvasTex((x,w,h)=>{x.fillStyle='#F04E1A';x.fillRect(0,0,w,h);x.strokeStyle='rgba(16,19,23,.35)';x.lineWidth=1;for(let i=0;i<=w;i+=32){x.beginPath();x.moveTo(i,0);x.lineTo(i,h);x.stroke();}for(let j=0;j<=h;j+=32){x.beginPath();x.moveTo(0,j);x.lineTo(w,j);x.stroke();}x.fillStyle='#101317';x.font='700 44px "Cabinet Grotesk", sans-serif';x.fillText('Signal',24,60);x.font='500 16px "Martian Mono", monospace';x.fillText('CLOUD OR ON-PREM · RULES · HISTORY · API',24,90);});
+const pl=new THREE.Mesh(new THREE.BoxGeometry(2.5,.04,1.9),new THREE.MeshStandardMaterial({map:plTex,roughness:.7}));
+addLayer(new THREE.Group().add(pl),'Signal platform','Cloud or on-prem — we run it');
+
+// 5 App
+const apTex=canvasTex((x,w,h)=>{x.fillStyle='#101317';x.fillRect(0,0,w,h);x.fillStyle='#1A1F26';x.fillRect(24,24,w-48,h-48);x.fillStyle='#9AA3B2';x.font='500 16px "Martian Mono", monospace';x.fillText('FURNACE 1 · TT-101',48,70);x.fillStyle='#FFFFFF';x.font='700 96px "Cabinet Grotesk", sans-serif';x.fillText('842 °C',48,190);x.fillStyle='#7BD0A3';x.font='500 18px "Martian Mono", monospace';x.fillText('● ONLINE · 14D 03H',48,240);x.strokeStyle='#F04E1A';x.lineWidth=4;x.beginPath();const pts=[300,290,300,260,265,245,250,230,235,215,210,205];pts.forEach((p,i)=>{i?x.lineTo(48+i*38,p):x.moveTo(48,p)});x.stroke();},512,384);
+const ap=new THREE.Mesh(new THREE.BoxGeometry(1.6,.04,1.2),new THREE.MeshStandardMaterial({map:apTex,roughness:.5}));
+addLayer(new THREE.Group().add(ap),'App','What your team reads');
+
+// labels DOM
+const labelsEl=document.getElementById('labels');
+const tags=layers.map((L,i)=>{const d=document.createElement('div');d.className='tag';d.innerHTML=`<span class="dot"></span><span class="line"></span><span class="txt"><b>${L.title}</b><small>${L.desc}</small></span>`;labelsEl.appendChild(d);return d;});
+
+let progress=0, targetP=0;
+const GAP_CLOSED=0.12, GAP_OPEN=0.95;
+function layout(p){
+  const e=p<.5?2*p*p:-1+(4-2*p)*p; // easeInOut
+  const gap=GAP_CLOSED+(GAP_OPEN-GAP_CLOSED)*e;
+  layers.forEach((L,i)=>{
+    if(i===0){ L.group.position.y=0; return; }
+    if(i===1){ L.group.position.y = -0.08 + e*gap; return; } // board sits inside the enclosure when closed
+    const k=Math.max(0, Math.min(1, (e-0.08-(i-2)*0.06)/0.35)); // upper layers emerge one after another
+    L.group.position.y = -0.1 + k*(i*gap) ; L.group.visible = k>0.001; L.group.scale.setScalar(0.6+0.4*k);
+    L.group.traverse(o=>{ if(o.material){ o.material.transparent=true; o.material.opacity=Math.min(1,k*1.6);} });
+  });
+  lid.position.y = 0.04 + e*(GAP_OPEN*6.4) ; lid.material.opacity = .28*(1-e*.7)+.05; lid.material.transparent=true;
+  device.position.y = -e*2.3;
+  const a=-0.4+e*0.6; const r=7.6 + e*2.2;
+  camera.position.set(Math.sin(a)*r, 2.4+e*2.6, Math.cos(a)*r); camera.lookAt(isMobile?0.4*e:1.1*e, 0.1+e*0.3, 0);
+  document.getElementById('layercount').textContent = (e<.15?'01':e<.5?'03':'06')+' / 06 layers';
+  document.getElementById('stagelbl').textContent = e<.15?'IIoT Bridge · closed · scroll to open':e<.85?'IIoT Bridge · opening':'IIoT Bridge · open · six layers, one company';
+  document.getElementById('scrollhint').style.opacity = e<.1?1:0;
+}
+function projectLabels(){
+  const rect=renderer.domElement.getBoundingClientRect(); const v=new THREE.Vector3();
+  const show=progress>0.62;
+  layers.forEach((L,i)=>{ L.group.getWorldPosition(v); v.x+=1.35; v.y+=0.05; v.project(camera); const x=(v.x*.5+.5)*rect.width, y=(-v.y*.5+.5)*rect.height; const t=tags[i]; t.style.left=x+'px'; t.style.top=y+'px'; t.classList.toggle('show',show && (progress-0.62)*8 > (5-i)*0.35); });
+}
+function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+addEventListener('resize',resize); resize();
+let t0=performance.now();
+function frame(now){ const dt=(now-t0)/1000; t0=now; progress += (targetP-progress)*Math.min(1,dt*6); layout(progress); device.rotation.y = Math.sin(now/4000)*0.06; lkc.position.y=Math.sin(now/600)*.03; renderer.render(scene,camera); projectLabels(); requestAnimationFrame(frame); }
+requestAnimationFrame(frame);
+
+if(reduce){ targetP=1; progress=1; }
+else if(!isMobile){
+  ScrollTrigger.create({ trigger:'#hero', start:'top top', end:'+=220%', pin:true, scrub:true, onUpdate:s=>{ targetP=s.progress; } });
+}else{
+  ScrollTrigger.create({ trigger:'#stage', start:'top 70%', end:'bottom 30%', scrub:true, onUpdate:s=>{ targetP=s.progress; } });
+}
+document.getElementById('openbtn').addEventListener('click',e=>{ if(!isMobile&&!reduce){ e.preventDefault(); window.scrollTo({top: innerHeight*2.2, behavior:'smooth'}); } });
+
+/* ---------- reveals ---------- */
+if(!reduce){ gsap.utils.toArray('.reveal').forEach(el=>{ gsap.to(el,{opacity:1,y:0,duration:.8,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 88%'}}); }); }
+else document.querySelectorAll('.reveal').forEach(el=>{el.style.opacity=1;el.style.transform='none'});
+
+/* ---------- trace ---------- */
+const tp=document.getElementById('tracepath'); const len=tp.getTotalLength(); tp.style.strokeDasharray=len; tp.style.strokeDashoffset=len;
+gsap.to(tp,{strokeDashoffset:0,ease:'none',scrollTrigger:{trigger:'#beats',start:'top 70%',end:'bottom 60%',scrub:true}});
+
+/* ---------- counters ---------- */
+document.querySelectorAll('[data-count]').forEach(el=>{const end=+el.dataset.count,dec=+(el.dataset.dec||0);ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:()=>{const o={v:0};gsap.to(o,{v:end,duration:1.6,ease:'power3.out',onUpdate:()=>{el.textContent=dec?o.v.toFixed(dec):Math.round(o.v).toLocaleString('en-IN')}})}})});
+
+/* ---------- live panel ---------- */
+const sp=document.getElementById('spark'),sx=sp.getContext('2d'); const series=Array.from({length:60},(_,i)=>835+Math.sin(i/6)*6+Math.random()*3);
+function drawSpark(){const w=sp.width,h=sp.height;sx.clearRect(0,0,w,h);const min=825,max=855;sx.strokeStyle='#2A313B';sx.lineWidth=1;[830,840,850].forEach(g=>{const y=h-(g-min)/(max-min)*h;sx.beginPath();sx.moveTo(0,y);sx.lineTo(w,y);sx.stroke();});sx.beginPath();series.forEach((v,i)=>{const x=i/(series.length-1)*w,y=h-(v-min)/(max-min)*h;i?sx.lineTo(x,y):sx.moveTo(x,y)});sx.strokeStyle='#F04E1A';sx.lineWidth=2.5;sx.stroke();sx.lineTo(w,h);sx.lineTo(0,h);sx.closePath();sx.fillStyle='rgba(240,78,26,.12)';sx.fill();}
+drawSpark();
+const vals=document.querySelectorAll('#panel .v[data-v]'); const evs=document.getElementById('events');
+setInterval(()=>{vals.forEach(el=>{const b=+el.dataset.v,j=+el.dataset.jit,dec=+(el.dataset.dec||0);const v=b+(Math.random()-.5)*2*j;el.textContent=(el.dataset.fmt==='int'?Math.round(v).toLocaleString('en-IN'):v.toFixed(dec))+el.dataset.unit;});series.push(835+Math.sin(Date.now()/4000)*6+Math.random()*3);series.shift();drawSpark();},1400);
+setInterval(()=>{const d=new Date();const t=d.toTimeString().slice(0,8);const msgs=['Bridge-05 heartbeat · uplink 4G · RSSI −71 dBm','TT-101 within band · 842 °C','Depot 4 · 210.4 L dispensed · signed · NavIC time','SC-203 nominal · 47.2 Hz'];const div=document.createElement('div');div.innerHTML=`<span>${t}</span><span>${msgs[Math.floor(Math.random()*msgs.length)]}</span>`;evs.prepend(div);while(evs.children.length>4)evs.lastChild.remove();},4200);
+</script>
+</body>
+</html>

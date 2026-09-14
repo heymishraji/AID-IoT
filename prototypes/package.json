@@ -1,0 +1,18 @@
+{
+  "name": "aid-iot-prototypes",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "node serve.js 4173"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "lenis": "^1.3.4",
+    "three": "^0.170.0"
+  },
+  "private": true
+}

@@ -9,8 +9,11 @@ technical evaluators, builder clients, educators, store shoppers, existing custo
 Goal for this phase: a complete, working, motion-led site built here, then shown to the CEO.
 
 ## Where we are (phase)
-Phase 0 — Direction lock. Three direction boards produced and published (design/canvases/02-directions; canvas: https://claude.ai/code/artifact/8c7d2072-257c-4c78-9f59-b9319e54d918).
-Awaiting the user's pick of A / B / C. Platform name decided: Signal.
+Phase 0 — Direction lock. Three WORKING prototypes built: prototypes/a (Open the device, Three.js exploded
+device), prototypes/b (Panel room, live mimic diagram), prototypes/c (Field log, parallax photo chapters).
+Run: `cd prototypes && npm run dev` → http://localhost:4173. Awaiting the user's pick of A / B / C.
+Earlier static boards (design/canvases/02-directions) are superseded by the prototypes.
+Platform name decided: Signal. GitHub repo still to be created by the user (remote already set).
 
 ## Fixed decisions (see docs/DECISIONS.md for why)
 - Architecture: L1 = Solutions · Products · Software · Services · Company + Store / Log in / Talk to an engineer.
@@ -29,10 +32,11 @@ Awaiting the user's pick of A / B / C. Platform name decided: Signal.
 - docs/research/*.json — crawl of current site, axe/perf data, benchmark data.
 - design/canvases/01-redesign-v1 — first mockups (anti-reference: the generic rut).
 
-## Directions on the table (boards in design/canvases/02-directions)
-- A "Open the device" (recommended): real hardware opens on scroll into the layers AID-IoT makes; signal trace as page spine; committed orange fields; grotesque + mono.
-- B "Panel room": control-room mimic-diagram grammar in warm paper/ink; live-ish diagram as hero.
-- C "Field log": editorial, documentary photography, paper → signal before/after; serif display.
+## Directions on the table (working prototypes in prototypes/)
+- A "Open the device" (recommended): device opens on scroll into the six layers AID-IoT makes; signal trace spine; committed orange field on cool off-white; Cabinet Grotesk + Switzer + Martian Mono.
+- B "Panel room": control-room mimic diagram, live values, hover nodes, pinned walk-the-line; paper + ink + one live green; Khand + Ranade + Martian Mono.
+- C "Field log": documentary photography with parallax chapters; paper register → Signal ledger crossfade; Zodiak + Author + Martian Mono.
+Typography rule: no AI-default faces (Inter, Geist, Manrope, Space Grotesk, Fraunces, Playfair, DM Sans, Plus Jakarta, Instrument Sans). Prefer Indian Type Foundry (Fontshare) families.
 
 ## Motion primitives (to build once; blueprint §07)
 ExplodedDevice · SignalTrace · ScrollChapter · InstrumentPanel · FlowDiagram · Turntable · Reveal · PageTransition.
