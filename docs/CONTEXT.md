@@ -9,7 +9,7 @@ technical evaluators, builder clients, educators, store shoppers, existing custo
 Goal for this phase: a complete, working, motion-led site built here, then shown to the CEO.
 
 ## Where we are (phase)
-Phase 0 — Direction lock. Three direction boards produced (design/canvases/02-directions).
+Phase 0 — Direction lock. Three direction boards produced and published (design/canvases/02-directions; canvas: https://claude.ai/code/artifact/8c7d2072-257c-4c78-9f59-b9319e54d918).
 Awaiting the user's pick of A / B / C. Platform name decided: Signal.
 
 ## Fixed decisions (see docs/DECISIONS.md for why)
@@ -52,4 +52,5 @@ CI: Lighthouse ≥ 90 mobile, axe 0 serious, Playwright screenshots 390/1440.
 
 ## Tooling notes
 - Corporate proxy blocks some downloads (Playwright Chromium, impeccable binary); use `channel: 'chrome'` with Playwright.
-- gh CLI installed at ~/.local/bin/gh (if present); SSH to GitHub works as heymishraji.
+- gh CLI cannot be downloaded through the proxy; SSH push to GitHub works as heymishraji (repo must be created in the GitHub UI).
+- Design canvases: re-seed from `design/canvases/<name>/` with the Claude Design skill helper (`build.js` regenerates the artboards; `canvas.json` is the layout).

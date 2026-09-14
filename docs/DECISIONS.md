@@ -13,3 +13,5 @@
 - 2026-09-15 · Build the whole site end to end before CEO review · CEO is technical, time-poor and gives better feedback on a working thing · intermittent approvals
 - 2026-09-15 · Documentation = CONTEXT (rewritten, ≤150 lines) + NEXT + DECISIONS (append-only) + research/ (never auto-loaded) · keeps a fresh chat's context small; portable via GitHub · single growing log
 - 2026-09-15 · Project lives in a GitHub repo (heymishraji/aid-iot-website) with docs, design canvases, assets and later the Next.js site · work from any machine · local-only
+- 2026-09-15 · Direction boards built as first viewport + 3 scroll stops of the signature interaction + 4 story beats, at 1440 and 390 · judge the idea/world/voice, not polish · full-page mockups per direction
+- 2026-09-15 · Direction A uses layered isometric SVG as a stand-in for the 3D model; B is pure SVG; C uses a generated-gradient photo placeholder · no CAD/photos yet; keeps the choice about the idea · wait for assets
