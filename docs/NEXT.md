@@ -1,10 +1,6 @@
 # Next steps (rewritten every session)
 
-1. **Pick a direction (A / B / C) from the boards** — everything downstream (asset production,
-   the 3D spike, the design system) depends on the visual world; deciding it first avoids
-   redoing work. Boards are deliberately first-viewport only so the choice is about the idea, not polish.
-2. **Run the 3D spike for the chosen signature interaction** (e.g. ExplodedDevice for A) with a
-   reference model — it is the single biggest technical risk; proving 60 fps on a phone before
-   designing eight templates prevents a late fallback.
-3. **Write docs/brand/DESIGN.md + PRODUCT.md from the chosen direction**, then start the copy deck
-   (blueprint §09 prompts) — copy and tokens are inputs to every template, so they come before layout.
+1. **Create the GitHub repo and push** — on github.com: New repository → name `aid-iot-website`, private, no README/.gitignore (the repo already has them). Then in this folder: `git push -u origin main`. Why first: everything else we produce should land in version control from now on, and it makes the project portable to another machine immediately.
+2. **Pick a direction (A / B / C) from the boards** — https://claude.ai/code/artifact/8c7d2072-257c-4c78-9f59-b9319e54d918. Why now: the visual world decides which assets to produce (3D models vs diagrams vs photography), which technical spike to run, and what the design system's tokens are. Deciding it first prevents redoing all three.
+3. **After the pick: run the technical spike for that direction's signature interaction** (A: scroll-driven exploded glTF in React Three Fiber with a reference model; B: the live diagram component; C: the pinned before/after). Why: it is the single biggest technical risk in the plan; proving 60 fps on a phone before designing eight templates avoids a late fallback.
+4. **Then write docs/brand/DESIGN.md from the chosen direction and start the copy deck** (blueprint §09 prompts). Why: tokens and copy are inputs to every template; templates come after both.
