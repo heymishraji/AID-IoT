@@ -14,7 +14,7 @@ export default function Page() {
       <Mechanism data={home.mechanism} />
       <Sectors data={home.sectors} />
       <Platform data={home.platform} />
-      <IconGrid eyebrow="Getting started" heading={home.steps.heading} items={home.steps.items} cols={3} tone="card" numbered />
+      <IconGrid heading={home.steps.heading} items={home.steps.items} cols={3} tone="card" numbered />
       <Results heading={home.results.heading} items={home.results.items} />
       <Faq items={home.faq.items} />
       <Cta data={home.cta} />

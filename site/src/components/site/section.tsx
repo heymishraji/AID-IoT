@@ -12,6 +12,6 @@ export function Section({ id, children, className, tone = "default" }: { id?: st
 
 export function Heading({ children, level = 2, className }: { children: ReactNode; level?: 1 | 2 | 3; className?: string }) {
   const Tag = (`h${level}`) as "h1" | "h2" | "h3";
-  const size = level === 1 ? "text-[length:var(--t-7)] md:text-[length:var(--t-8)]" : level === 2 ? "text-[length:var(--t-5)] md:text-[length:var(--t-6)]" : "text-[length:var(--t-3)]";
+  const size = level === 1 ? "text-[length:var(--t-6)] md:text-[length:var(--t-7)]" : level === 2 ? "text-[length:var(--t-5)] md:text-[length:var(--t-6)]" : "text-[length:var(--t-3)]";
   return <Tag className={cn("display max-w-[22ch]", size, className)}>{children}</Tag>;
 }

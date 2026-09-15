@@ -1,3 +1,4 @@
+@font-face{font-family:"Cabinet Fallback";src:local("Arial Black"),local("Arial Bold");size-adjust:96%;ascent-override:90%;descent-override:22%;line-gap-override:0%}
 /* ===== AID-IoT tokens: shared roles, three worlds (data-theme="a"|"b"|"c") =====
    Every text/ground pair below is ≥ 4.5:1. One accent per world. ok/warn are semantic, not accents. */
 
@@ -20,7 +21,7 @@
   --muted:#ECECE9; --muted-foreground:#5C6169; --accent:#F04E1A; --accent-foreground:#FFFFFF;
   --destructive:#B42318; --border:#E0E0DC; --input:#D3D3CE; --ring:#F04E1A;
   --panel:#0F1115; --panel-foreground:#F5F5F3; --panel-muted:#9AA0A8; --ok:#17A35B; --warn:#B4390B; --accent-ink:#C2410C;
-  --font-display:"Cabinet Grotesk","Helvetica Neue",Arial,sans-serif; --font-sans:"Switzer",system-ui,sans-serif;
+  --font-display:"Cabinet Grotesk","Cabinet Fallback","Helvetica Neue",Arial,sans-serif; --font-sans:"Switzer","Switzer Fallback",system-ui,sans-serif;
   --display-weight:700; --display-tracking:-0.025em; --display-leading:1.02; --radius:0.625rem; --btn-radius:10px;
 }
 /* ---------- B · Panel room ---------- */
@@ -81,11 +82,37 @@ body{font-family:var(--font-sans);font-size:var(--t-1);line-height:1.55;-webkit-
 .tile{background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:0 1px 2px rgba(15,17,21,.04)}
 .tile-hover{transition:transform var(--d-2) var(--ease),box-shadow var(--d-2) var(--ease),border-color var(--d-2)}
 .tile-hover:hover{transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(15,17,21,.35);border-color:#CFCFCA}
-.eyebrow-dot{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--muted-foreground)}
-.eyebrow-dot::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
 .live{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ok)}
 .live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 18%,transparent)}
 .photo-tile{position:relative;overflow:hidden;border-radius:16px;background:#1a1d22}
 .photo-tile img{object-fit:cover;transition:transform var(--d-4) var(--ease)}
 .photo-tile:hover img{transform:scale(1.04)}
 .photo-tile .cap{position:absolute;inset:auto 0 0 0;padding:18px;color:#fff;background:linear-gradient(to top,rgba(15,17,21,.9),rgba(15,17,21,.35) 60%,transparent)}
+
+/* ---------- browser surfaces belong to the design ---------- */
+::selection{background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--foreground)}
+html{caret-color:var(--accent);scrollbar-color:#C9C9C4 transparent;scrollbar-width:thin}
+::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#C9C9C4;border-radius:999px;border:2px solid var(--background)}::-webkit-scrollbar-track{background:transparent}
+a{text-underline-offset:.18em;text-decoration-thickness:1px}
+.tabular{font-variant-numeric:tabular-nums lining-nums}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.btn:focus-visible{outline-offset:3px}
+/* tap targets: text links in nav/footer get a 44px hit area without changing their visual size */
+.tap{position:relative;display:inline-flex;align-items:center;min-height:44px}
+/* section rhythm: more above a heading than below */
+.section+.section{border-top:0}
+/* form states */
+.field{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}
+.field input,.field textarea{font-weight:400;font-size:16px;line-height:1.4;border:1px solid var(--input);border-radius:10px;padding:12px 14px;background:var(--card);transition:border-color var(--d-2),box-shadow var(--d-2)}
+.field input:hover,.field textarea:hover{border-color:#B8B8B3}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+.field[data-invalid="true"] input,.field[data-invalid="true"] textarea{border-color:var(--destructive);box-shadow:0 0 0 4px color-mix(in srgb,var(--destructive) 14%,transparent)}
+.field .err{font-size:13px;font-weight:500;color:var(--destructive)}
+.btn[aria-busy="true"]{opacity:.75;pointer-events:none}
+.btn .spin{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.btn .spin{animation:none}}
+
+/* the one authored entrance: the hero visual eases in from a visible default; copy never waits */
+@media (prefers-reduced-motion:no-preference){.enter{animation:enter .9s var(--ease) both}}
+@keyframes enter{from{opacity:.001;transform:translateY(14px) scale(.985);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}

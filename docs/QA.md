@@ -52,3 +52,22 @@ Changes: palette cut to paper/ink/one accent (signal orange) + live-green semant
 | | **Total** | **30/32** | Excellent band; remaining: form validation/errors, real Signal screenshots, real product 3D on product pages. |
 
 HIG: hierarchy by size/weight not colour; 44px targets; focus rings; skip link; alt on content images, empty alt on decorative. Bundle: 435 kB first-load JS — reduce (drop Lenis on export? tree-shake motion) before launch.
+
+## 2026-09-17 · impeccable pass (critique → audit → polish · harden · adapt · optimize), all 7 pages, 1440 + 390
+Method: playbooks run by hand (launcher binary blocked by proxy); axe-core 4.10 + Playwright measurements + Lighthouse 12 mobile (slow-4G simulation) on the static export served with gzip.
+
+Craft-floor violations found and fixed: eyebrow labels above headings (removed everywhere); same-size icon-card grids as page structure (rows variant on Product, Services, Company, Fleet); hero copy parked at opacity 0 behind JS (now server-rendered, only the visual eases in via CSS); unthemed browser surfaces (selection, caret, scrollbar, focus ring, underline offset now from the palette); no form states (validation with inline errors, busy, success, failure); 11 px labels (12 px floor); nav/footer tap targets < 44 px; accent numbers at 3.1:1 (now accent-ink 5.2:1); ink text on the orange ask instead of white (4.9:1).
+Performance: wildcard lucide import (990 kB) → static icon map; responsive images 480/960/1800 with srcset + reserved dimensions + lazy; unused three/gsap/R3F removed; four unused font families dropped; fonts self-hosted, preloaded, metric-matched fallbacks; robots + sitemap + per-page metadata.
+
+| Page (mobile) | Perf | A11y | BP | SEO | LCP | CLS |
+|---|---|---|---|---|---|---|
+| Home | 96 | 100 | 100 | 100 | 2.8 s | 0 |
+| Products / IIoT Bridge | 99 | 100 | 100 | 100 | 2.1 s | 0 |
+| Software / Signal | 97 | 100 | 100 | 100 | 2.6 s | 0 |
+| Services | 97 | 100 | 100 | 100 | 2.5 s | 0 |
+| Solutions / Fleet & fuel | 95 | 100 | 100 | 100 | 2.9 s | 0 |
+
+Before this pass (home, mobile): perf 57, LCP 14.8 s, JS 1.55 MB, images 4 MB, 33 small targets, 5 contrast failures. After: JS 680 kB (209 kB first-load gz), images 1.9 MB across the full page, 0 axe violations, 0 small targets (skip link is sr-only by design).
+
+Heuristics (Persuade, /32): 31 — error recovery now 4 (form failure state + 404), remaining point on error prevention (no server-side validation yet — no backend).
+Open before launch: real Signal screenshots; real product photography/CAD; logo permissions; form backend (currently simulated); case-study numbers `[CONFIRM]`.

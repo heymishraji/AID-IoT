@@ -34,3 +34,6 @@
 - 2026-09-16 · Palette reduced to paper / ink / one accent (signal orange) + green as live-status semantic; icons neutral · "ten colours" read as unprofessional; 21st.dev house style is one accent · four-colour offer system
 - 2026-09-16 · Full first flow = Home, Solutions/Fleet & fuel, Products/IIoT Bridge, Software/Signal, Services, Company, Contact, 404, on one section vocabulary · enough for CEO feedback on structure, story and world · homepage only
 - 2026-09-16 · Hosting = static export to GitHub Pages via Actions (NEXT_PUBLIC_BASE_PATH=/aid-iot-website) · no accounts or secrets needed beyond the repo · Vercel (needs an account), artifact (CSP blocks Fontshare)
+- 2026-09-17 · impeccable pass applied: craft-floor rules now enforced (no eyebrows, no card-grid-as-structure, browser surfaces themed, form states, content never parked at opacity 0) · shippable quality bar · leave as demo
+- 2026-09-17 · Fonts self-hosted from Fontshare with preload and metric-matched fallbacks; body uses font-display: fallback, display uses swap · LCP was a font-swap repaint at 5 s on slow 4G · Fontshare CSS link (render-blocking)
+- 2026-09-17 · Icons bundled from a static map, never a wildcard import · a wildcard shipped 990 kB · lucide-react/dynamic

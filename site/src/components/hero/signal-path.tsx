@@ -22,15 +22,15 @@ export function SignalPath() {
   useEffect(() => { const id = setInterval(() => setTick((t) => t + 1), 1600); return () => clearInterval(id); }, []);
   const temp = 842 + ((tick * 7) % 5) - 2;
   return (
-    <div ref={container} className="relative h-full min-h-[420px] w-full overflow-hidden rounded-2xl border border-border bg-card lg:min-h-[560px]">
+    <div ref={container} className="relative h-full min-h-[440px] w-full overflow-hidden rounded-2xl border border-border bg-card lg:min-h-[560px]">
       <DotPattern className="[mask-image:radial-gradient(60%_60%_at_50%_50%,white,transparent)] text-[#D9D9D4]" />
-      <div className="relative grid h-full grid-cols-[1fr_auto_1fr] items-center gap-4 p-5 sm:gap-8 sm:p-8">
+      <div className="relative grid h-full grid-cols-1 items-center gap-5 p-4 sm:grid-cols-[1fr_auto_1fr] sm:gap-8 sm:p-8">
         {/* sources */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-row gap-3 sm:flex-col sm:gap-4">
           {SOURCES.map((s, i) => (
-            <div key={s.label} ref={src[i]} className="tile flex items-center gap-3 p-2.5 pr-4">
-              <img src={asset(s.img)} alt="" className="h-11 w-11 rounded-lg object-cover" />
-              <div className="min-w-0"><div className="text-[14px] font-semibold">{s.label}</div><div className="truncate text-[12px] text-muted-foreground">{s.sub}</div></div>
+            <div key={s.label} ref={src[i]} className="tile flex min-w-0 flex-1 items-center gap-3 p-2.5 sm:flex-none sm:pr-4">
+              <img src={asset(s.img.replace(".webp","-480.webp"))} alt="" width={44} height={44} className="h-11 w-11 flex-none rounded-lg object-cover" />
+              <div className="min-w-0"><div className="text-[14px] font-semibold">{s.label}</div><div className="hidden truncate text-[12px] text-muted-foreground sm:block">{s.sub}</div></div>
             </div>
           ))}
         </div>
@@ -40,12 +40,12 @@ export function SignalPath() {
           <div className="text-center text-[12px] font-semibold leading-tight">Device · link<br />· Signal</div>
         </div>
         {/* outputs */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3 sm:gap-4">
           <div ref={screen} className="tile overflow-hidden">
             <div className="flex items-center justify-between border-b border-border px-3 py-2 text-[12px]"><span className="font-semibold">Signal</span><span className="live">live</span></div>
             <div className="grid grid-cols-2 gap-2 p-3">
-              <div className="rounded-lg bg-secondary p-2"><div className="text-[11px] text-muted-foreground">Furnace 1</div><div className="display text-[20px] tabular">{temp} °C</div></div>
-              <div className="rounded-lg bg-secondary p-2"><div className="text-[11px] text-muted-foreground">Depot 4</div><div className="display text-[20px] tabular">18,4{(tick % 9)}0 L</div></div>
+              <div className="rounded-lg bg-secondary p-2"><div className="text-[12px] text-muted-foreground">Furnace 1</div><div className="display text-[20px] tabular">{temp} °C</div></div>
+              <div className="rounded-lg bg-secondary p-2"><div className="text-[12px] text-muted-foreground">Depot 4</div><div className="display text-[20px] tabular">18,4{(tick % 9)}0 L</div></div>
               <div className="col-span-2 rounded-lg px-2 py-1.5 text-[12px] font-medium" style={{ background: "#FFE6DC", color: "var(--accent-ink)" }}>−38 L drain flagged · supervisor notified</div>
             </div>
           </div>

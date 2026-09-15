@@ -12,7 +12,7 @@ Goal for this phase: a complete, working, motion-led site built here, then shown
 Phase 0→1. The real build has started in `site/` (Next.js 15 + Tailwind v4 + shadcn/ui + Motion + GSAP + Lenis + R3F)
 World A locked. One component system; B/C tokens kept in theme.css for reference only.
 Run: `cd site && npm run dev` → http://localhost:3311. Homepage complete with story-led copy (docs/copy/).
-Full flow v3 built: Home, /solutions/fleet-and-fuel, /products/iiot-bridge, /software/signal, /services, /company, /contact, 404 — one section vocabulary, one accent, neutral icon tiles, signal-path hero. Static export (`npm run build` → site/out; `npm run preview` → :3311). GitHub Pages workflow ready (.github/workflows/pages.yml). prototypes/ and design/canvases/ are frozen anti-references.
+Full flow v3 built and polished (impeccable pass 2026-09-17: Lighthouse mobile 95–99 / 100 / 100 / 100, 0 axe violations): Home, /solutions/fleet-and-fuel, /products/iiot-bridge, /software/signal, /services, /company, /contact, 404 — one section vocabulary, one accent, neutral icon tiles, signal-path hero. Static export (`npm run build` → site/out; `npm run preview` → :3311). GitHub Pages workflow ready (.github/workflows/pages.yml). prototypes/ and design/canvases/ are frozen anti-references.
 GitHub repo still to be created by the user (remote set to git@github.com:heymishraji/aid-iot-website.git).
 
 ## Fixed decisions (see docs/DECISIONS.md for why)

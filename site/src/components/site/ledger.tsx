@@ -5,7 +5,7 @@ const rows = [["12 Jun 09:41", "HR 55 AB 1200", "210 L", "210.4 L", "signed", fa
 export function Ledger() {
   return (
     <Section id="ledger" tone="card">
-      <span className="eyebrow-dot">Before and after</span><Heading className="mt-3">The register, and the record.</Heading>
+      <Heading>The register, and the record.</Heading>
       <div className="mt-10 grid gap-4 lg:grid-cols-2">
         <div className="tile p-5"><p className="text-[14px] font-semibold text-muted-foreground">Paper register · Depot 4</p>
           <table className="mt-3 w-full text-[15px]"><thead><tr className="text-left text-[12px] text-muted-foreground"><th className="py-2 font-medium">Date</th><th className="font-medium">Vehicle</th><th className="text-right font-medium">Litres</th><th className="pl-4 font-medium">Sign</th></tr></thead>

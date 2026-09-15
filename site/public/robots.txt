@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://heymishraji.github.io/aid-iot-website/sitemap.xml
