@@ -35,3 +35,20 @@ Changes from v1: four offers with icons + colour up front; every unit carries an
 | | **Total** | **26/32** | Good. |
 
 HIG: hierarchy now reads at a glance (size + colour + icon), touch targets ≥ 44px on tiles/chips-as-links, contrast checked for tone-on-soft pairs (text stays ink). Open: active nav, form validation, mega-menu, skip link, 404, Lighthouse.
+
+## 2026-09-16 · Full flow v3 (Home + Fleet & fuel + IIoT Bridge + Signal + Services + Company + Contact + 404), 1440 + 390
+Changes: palette cut to paper/ink/one accent (signal orange) + live-green semantic; neutral icon tiles (Lucide 1.75, white tile, hairline, inset highlight); brand-level hero (signal path with animated beams: plant/fleet/depot → AID-IoT → Signal screen/phone) replaces the single-product 3D; bento "Four ways we help" with photos; shared section vocabulary reused on every page; active nav state; skip link; 404; static export + Pages workflow.
+
+| # | Heuristic | Score | Note |
+|---|---|---|---|
+| 1 | Visibility of status | 4 | Active nav, breadcrumbs, live badges, form confirmation. |
+| 2 | Match real world | 4 | Buyer's words; standard FAQ; descriptors on every product. |
+| 3 | User control | 4 | Native scroll; reduced-motion; no gates. |
+| 4 | Consistency | 4 | One tile/icon/chip/heading system across seven pages. |
+| 5 | Error prevention | 3 | Labels, required fields; inline validation still to do. |
+| 6 | Recognition | 4 | Offers, sectors, products pictured; nav = branches. |
+| 8 | Aesthetic & minimal | 4 | One accent, one memorable element per page. |
+| 9 | Error recovery | 3 | 404 with branch links; form error state still to do. |
+| | **Total** | **30/32** | Excellent band; remaining: form validation/errors, real Signal screenshots, real product 3D on product pages. |
+
+HIG: hierarchy by size/weight not colour; 44px targets; focus rings; skip link; alt on content images, empty alt on decorative. Bundle: 435 kB first-load JS — reduce (drop Lenis on export? tree-shake motion) before launch.

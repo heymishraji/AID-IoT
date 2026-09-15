@@ -1,32 +1,15 @@
-"use client";
-import { useRef, useState } from "react";
-import dynamic from "next/dynamic";
-import { useScroll, useMotionValueEvent } from "motion/react";
-import type { Home } from "@/content/home";
-const DeviceScene = dynamic(() => import("./device-scene").then((m) => m.DeviceScene), { ssr: false });
+import { SignalPath } from "./signal-path";
+import { BlurFade } from "@/components/ui/blur-fade";
 
-export function Hero({ data }: { data: Home["hero"] }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const progress = useRef(0);
-  const [labels, setLabels] = useState(false);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  useMotionValueEvent(scrollYProgress, "change", (v) => { progress.current = v; setLabels(v > 0.62); });
+export function Hero({ data }: { data: { headline: string; sub: string; cta: string; ctaNote: string; secondary: string; secondaryHref?: string } }) {
   return (
-    <div ref={ref} className="relative lg:h-[260vh]">
-      <div className="grid items-center gap-8 pt-[92px] lg:sticky lg:top-0 lg:h-screen lg:grid-cols-12 lg:pt-[68px]">
-        <div className="container-x lg:col-span-6">
-          <div className="flex max-w-[600px] flex-col gap-6">
-            <h1 className="display text-[length:var(--t-7)] md:text-[length:var(--t-8)]">{data.headline}</h1>
-            <p className="prose-lead">{data.sub}</p>
-            <div className="flex flex-wrap items-center gap-3"><a href="#contact" className="btn btn-primary">{data.cta}</a><a href="#offers" className="btn btn-outline">{data.secondary}</a></div>
-            <p className="max-w-[44ch] text-[14px] text-muted-foreground">{data.ctaNote}</p>
-          </div>
-        </div>
-        <div className="relative mx-[var(--gutter)] mt-6 h-[56vh] overflow-hidden rounded-2xl bg-[var(--c-orange)] lg:col-span-6 lg:mr-5 lg:ml-0 lg:mt-0 lg:h-[calc(100vh-100px)]">
-          <div className="absolute left-5 top-4 z-10 rounded-md bg-[rgba(16,19,23,.85)] px-3 py-1.5 text-[13px] text-white">{labels ? "IIoT Bridge, open — six layers, one company" : "IIoT Bridge — scroll to open"}</div>
-          <DeviceScene progress={progress} labels={labels} />
-        </div>
+    <div className="container-x grid items-center gap-10 pt-[112px] pb-12 lg:min-h-[92vh] lg:grid-cols-12 lg:pt-[68px]">
+      <div className="flex max-w-[600px] flex-col gap-6 lg:col-span-6">
+        <BlurFade delay={0.05}><h1 className="display text-[length:var(--t-7)] md:text-[length:var(--t-8)]">{data.headline}</h1></BlurFade>
+        <BlurFade delay={0.15}><p className="prose-lead">{data.sub}</p></BlurFade>
+        <BlurFade delay={0.25}><div className="flex flex-wrap items-center gap-3"><a href="/contact" className="btn btn-primary">{data.cta}</a><a href={data.secondaryHref ?? "#offers"} className="btn btn-outline">{data.secondary}</a></div><p className="mt-4 max-w-[44ch] text-[14px] text-muted-foreground">{data.ctaNote}</p></BlurFade>
       </div>
+      <BlurFade delay={0.2} className="lg:col-span-6"><div className="h-[460px] lg:h-[calc(100vh-140px)] lg:max-h-[640px]"><SignalPath /></div></BlurFade>
     </div>
   );
 }

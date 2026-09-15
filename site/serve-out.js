@@ -1,0 +1,4 @@
+// Serves the static export (out/) the way GitHub Pages will: node serve-out.js [port]
+const http=require('http'),fs=require('fs'),path=require('path');const root=path.join(__dirname,'out'),port=+(process.argv[2]||3311);
+const t={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.webp':'image/webp','.png':'image/png','.svg':'image/svg+xml','.ico':'image/x-icon','.txt':'text/plain','.json':'application/json','.woff2':'font/woff2'};
+http.createServer((q,r)=>{let p=decodeURIComponent(q.url.split('?')[0]);let f=path.join(root,p);if(fs.existsSync(f)&&fs.statSync(f).isDirectory())f=path.join(f,'index.html');if(!fs.existsSync(f))f=path.join(root,'404.html');r.writeHead(fs.existsSync(f)?200:404,{'Content-Type':t[path.extname(f)]||'application/octet-stream'});fs.createReadStream(f).pipe(r);}).listen(port,()=>console.log('http://localhost:'+port));

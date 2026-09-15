@@ -3,34 +3,34 @@ export const home = {
   hero: {
     headline: "Find out now, not in tomorrow's shift report.",
     sub: "A small AID-IoT device on the machines, vehicles and tanks you already run — reporting every reading home and acting before anyone has to. Hardware, software and platform from one team, built in India.",
-    cta: "Talk to an engineer", ctaNote: "30 minutes with the people who build it. Reply within one business day.", secondary: "See what we do",
+    cta: "Talk to an engineer", ctaNote: "30 minutes with the people who build it. Reply within one business day.", secondary: "See what we do", secondaryHref: "#offers",
   },
   proof: ["Indian Army", "Ministry of Defence", "IIT Delhi", "IIT Jammu", "BigBasket", "KHub"],
   offers: {
     heading: "Four ways we help.",
     items: [
-      { key: "solutions", tone: "orange", icon: "Compass", title: "Solutions", line: "Fix a specific operational blind spot, by sector.", links: ["Manufacturing & plants", "Fleet & fuel", "Defence & secure sites", "Cold-chain & retail", "Smart vending", "Campuses"] },
-      { key: "products", tone: "blue", icon: "Cpu", title: "Products", line: "Field-proven devices you can buy today.", links: ["Gateways & edge", "Fleet & fuel devices", "Tracking & convoy", "Freshness & retail", "Defence systems"] },
-      { key: "software", tone: "green", icon: "Layers", title: "Software", line: "Signal — the platform behind every device.", links: ["Signal platform", "Fleet & fuel apps", "AID-ERP", "TraceCraft"] },
-      { key: "services", tone: "amber", icon: "Wrench", title: "Services", line: "We design, build and manufacture yours.", links: ["Product development", "PCB design", "Manufacturing in India", "Training"] },
+      { key: "solutions", href: "/solutions/fleet-and-fuel", icon: "Compass", title: "Solutions", line: "Fix a specific operational blind spot, by sector.", img: "/img/rail-tankers.webp", links: ["Manufacturing & plants", "Fleet & fuel", "Defence & secure sites", "Cold-chain & retail", "Smart vending", "Campuses"] },
+      { key: "products", href: "/products/iiot-bridge", icon: "Cpu", title: "Products", line: "Field-proven devices you can buy today.", img: "/img/iiot-bridge.webp", links: ["Gateways & edge", "Fleet & fuel devices", "Tracking & convoy", "Freshness & retail", "Defence systems"] },
+      { key: "software", href: "/software/signal", icon: "Layers", title: "Software", line: "Signal — the platform behind every device.", img: "/img/tracknet-dashboard.webp", links: ["Signal platform", "Fleet & fuel apps", "AID-ERP", "TraceCraft"] },
+      { key: "services", href: "/services", icon: "Wrench", title: "Services", line: "We design, build and manufacture yours.", img: "/img/soldering.webp", links: ["Product development", "PCB design", "Manufacturing in India", "Training"] },
     ],
   },
   scenes: {
     heading: "How you find out today.",
     items: [
-      { icon: "PhoneCall", tone: "orange", title: "The phone call", line: "The furnace drifted at 2 a.m. You hear at 7.", img: "/img/control-room.webp", alt: "Electrical control panels" },
-      { icon: "ClipboardList", tone: "amber", title: "The register", line: "38 litres left Depot 4. The paper says 195.", img: "/img/tanker-rear.webp", alt: "Fuel tanker" },
-      { icon: "WifiOff", tone: "blue", title: "The silence", line: "Five vehicles between towers. Nobody knows where.", img: "/img/trucks-fog.webp", alt: "Trucks on a foggy road" },
+      { icon: "PhoneCall", title: "The phone call", line: "The furnace drifted at 2 a.m. You hear at 7.", img: "/img/control-room.webp", alt: "Electrical control panels" },
+      { icon: "ClipboardList", title: "The register", line: "38 litres left Depot 4. The paper says 195.", img: "/img/tanker-rear.webp", alt: "Fuel tanker" },
+      { icon: "WifiOff", title: "The silence", line: "Five vehicles between towers. Nobody knows where.", img: "/img/trucks-fog.webp", alt: "Trucks on a foggy road" },
     ],
     close: "The data existed. It just never reached you.",
   },
   outcomes: {
     heading: "What changes when the signal gets through.",
     items: [
-      { icon: "Eye", tone: "blue", title: "See it as it happens", line: "Every machine, on one screen, live.", products: [["IIoT Bridge", "/img/iiot-bridge.webp"], ["IoT Edge Lite", "/img/edge-device.webp"]] },
-      { icon: "RadioTower", tone: "orange", title: "See it with no network", line: "Private mesh. No SIM. Record gets home.", products: [["VMS-O", "/img/convoy-india.webp"], ["NavIC CMS", "/img/navic.webp"], ["TrackNet", "/img/tracknet-tag.webp"]] },
-      { icon: "Zap", tone: "green", title: "It acts before you do", line: "Drains flagged. Conveyors slowed. Engines locked.", products: [["AID-Fuel", "/img/aidfuel-hardware.webp"], ["AID-Auto", "/img/aid-fuel.webp"], ["AidFresh", "/img/forklift-pallets.webp"]] },
-      { icon: "Factory", tone: "amber", title: "Scale without a second vendor", line: "One device to a national rollout, made in India.", products: [["Signal", "/img/pcb-hero.webp"], ["Manufacturing", "/img/soldering.webp"]] },
+      { icon: "Eye", title: "See it as it happens", line: "Every machine, on one screen, live.", products: [["IIoT Bridge", "/img/iiot-bridge.webp"], ["IoT Edge Lite", "/img/edge-device.webp"]] },
+      { icon: "RadioTower", title: "See it with no network", line: "Private mesh. No SIM. Record gets home.", products: [["VMS-O", "/img/convoy-india.webp"], ["NavIC CMS", "/img/navic.webp"], ["TrackNet", "/img/tracknet-tag.webp"]] },
+      { icon: "Zap", title: "It acts before you do", line: "Drains flagged. Conveyors slowed. Engines locked.", products: [["AID-Fuel", "/img/aidfuel-hardware.webp"], ["AID-Auto", "/img/aid-fuel.webp"], ["AidFresh", "/img/forklift-pallets.webp"]] },
+      { icon: "Factory", title: "Scale without a second vendor", line: "One device to a national rollout, made in India.", products: [["Signal", "/img/pcb-hero.webp"], ["Manufacturing", "/img/soldering.webp"]] },
     ],
   },
   mechanism: {
@@ -48,12 +48,12 @@ export const home = {
   sectors: {
     heading: "Built for the sectors that can't afford blind spots.",
     items: [
-      { icon: "Factory", tone: "orange", title: "Manufacturing & plants", line: "Every machine live, no re-wiring.", img: "/img/sparks.webp" },
-      { icon: "Fuel", tone: "amber", title: "Fleet & fuel", line: "Every litre and vehicle accounted for.", img: "/img/rail-tankers.webp" },
-      { icon: "Shield", tone: "blue", title: "Defence & secure sites", line: "Indigenous. Offline. Inside your perimeter.", img: "/img/truck-mountain.webp" },
-      { icon: "Snowflake", tone: "green", title: "Cold-chain & retail", line: "First to expire, first to leave.", img: "/img/forklift-warehouse.webp" },
-      { icon: "ShoppingBag", tone: "orange", title: "Smart vending", line: "Cashless, stock-aware, one screen.", img: "/img/vending-photo.webp" },
-      { icon: "GraduationCap", tone: "blue", title: "Campuses & education", line: "Drones, PCBs and IoT, hands-on.", img: "/img/edu-lab.webp" },
+      { icon: "Factory", title: "Manufacturing & plants", line: "Every machine live, no re-wiring.", img: "/img/sparks.webp" },
+      { icon: "Fuel", title: "Fleet & fuel", line: "Every litre and vehicle accounted for.", img: "/img/rail-tankers.webp" },
+      { icon: "Shield", title: "Defence & secure sites", line: "Indigenous. Offline. Inside your perimeter.", img: "/img/truck-mountain.webp" },
+      { icon: "Snowflake", title: "Cold-chain & retail", line: "First to expire, first to leave.", img: "/img/forklift-warehouse.webp" },
+      { icon: "ShoppingBag", title: "Smart vending", line: "Cashless, stock-aware, one screen.", img: "/img/vending-photo.webp" },
+      { icon: "GraduationCap", title: "Campuses & education", line: "Drones, PCBs and IoT, hands-on.", img: "/img/edu-lab.webp" },
     ],
   },
   steps: {
@@ -67,9 +67,9 @@ export const home = {
   results: {
     heading: "Numbers from the field.",
     items: [
-      { value: 5000, suffix: "+", tone: "green", label: "SKUs at zero stock variance", tag: "AID-ERP · client to confirm" },
-      { value: 12.4, prefix: "−", suffix: "%", decimals: 1, tone: "blue", label: "fuel on an optimised voyage", tag: "AID-Fuel-Marine · vessel to confirm" },
-      { value: 0, tone: "orange", label: "SIM cards to track a whole fleet", tag: "VMS-O · Indian Army trials" },
+      { value: 5000, suffix: "+", label: "SKUs at zero stock variance", tag: "AID-ERP · client to confirm" },
+      { value: 12.4, prefix: "−", suffix: "%", decimals: 1, label: "fuel on an optimised voyage", tag: "AID-Fuel-Marine · vessel to confirm" },
+      { value: 0, label: "SIM cards to track a whole fleet", tag: "VMS-O · Indian Army trials" },
     ],
   },
   platform: {
