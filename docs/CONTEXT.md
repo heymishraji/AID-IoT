@@ -10,9 +10,9 @@ Goal for this phase: a complete, working, motion-led site built here, then shown
 
 ## Where we are (phase)
 Phase 0→1. The real build has started in `site/` (Next.js 15 + Tailwind v4 + shadcn/ui + Motion + GSAP + Lenis + R3F)
-with ONE component system and THREE world token files (data-theme a/b/c) switchable from a review control.
+World A locked. One component system; B/C tokens kept in theme.css for reference only.
 Run: `cd site && npm run dev` → http://localhost:3311. Homepage complete with story-led copy (docs/copy/).
-Awaiting: the user's pick of world A / B / C on the real build. prototypes/ and design/canvases/ are frozen anti-references.
+Homepage v2 (visual-first) done: four offers up front with icons + colour, sectors, outcomes, mechanism, Signal panel, steps, results, FAQ, CTA. prototypes/ and design/canvases/ are frozen anti-references.
 GitHub repo still to be created by the user (remote set to git@github.com:heymishraji/aid-iot-website.git).
 
 ## Fixed decisions (see docs/DECISIONS.md for why)

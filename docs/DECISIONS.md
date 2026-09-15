@@ -26,3 +26,7 @@
 - 2026-09-16 · Headline: "Find out now, not in tomorrow's shift report." · problem-framed in the executive's words; passes "Now you can" · alternates recorded in docs/copy/01-homepage.md
 - 2026-09-16 · Next.js site scaffolded in site/ with the three-world token system and a review-only world switch; prototypes/ frozen · one structure, three worlds proves the system · three separate codebases
 - 2026-09-16 · QA rule: every screen gets a Nielsen + HIG review logged in docs/QA.md before it is called done · user request · ad-hoc review
+- 2026-09-16 · World A locked as the base; B/C token sets kept in theme.css for reference, switch removed · user choice · keep switch
+- 2026-09-16 · Homepage v2 is visual-first: four offers with icons and colour in the first screens, ≤ 1 line per unit, photos with badges, drawn comparisons · CXO readers scan, they do not read; v1 read as a wireframe · text-led v1
+- 2026-09-16 · Colour system = the mark's amber/blue/green + signal orange, each colour assigned to one offer (Solutions orange · Products blue · Software green · Services amber) · colour carries meaning; uses the palette the company already owns · monochrome ink-only system
+- 2026-09-16 · Section label "Frequently asked questions" (industry standard) replaces "Questions executives ask us" · user feedback · custom label

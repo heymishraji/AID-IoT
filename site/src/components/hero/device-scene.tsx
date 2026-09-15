@@ -14,7 +14,7 @@ const LAYERS = [
   { name: "The app", who: "what your team reads", color: "#101317" },
 ];
 
-function Rig({ progress }: { progress: React.MutableRefObject<number> }) {
+function Rig({ progress, labels }: { progress: React.MutableRefObject<number>; labels: boolean }) {
   const group = useRef<THREE.Group>(null);
   const lid = useRef<THREE.Mesh>(null);
   const plates = useRef<(THREE.Group | null)[]>([]);
@@ -74,7 +74,7 @@ function Rig({ progress }: { progress: React.MutableRefObject<number> }) {
       {/* 5 app */}
       <group ref={(el) => { plates.current[5] = el; }}><mesh material={mats.ink}><boxGeometry args={[1.6, 0.04, 1.2]} /></mesh>
         <mesh material={mats.light} position={[0, 0.03, 0]}><boxGeometry args={[1.3, 0.01, 0.9]} /></mesh>
-        <Html center position={[0, 0.06, 0]} transform occlude={false} rotation={[-Math.PI / 2, 0, 0]} scale={0.35} style={{ pointerEvents: "none" }}><div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 64, color: "#101317", whiteSpace: "nowrap" }}>842 °C</div></Html>
+        {labels && <Html center position={[0, 0.06, 0]} transform occlude={false} rotation={[-Math.PI / 2, 0, 0]} scale={0.35} style={{ pointerEvents: "none" }}><div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 64, color: "#101317", whiteSpace: "nowrap" }}>842 °C</div></Html>}
       </group>
     </group>
   );
@@ -87,7 +87,7 @@ export function DeviceScene({ progress, labels }: { progress: React.MutableRefOb
         <hemisphereLight intensity={1.1} color="#ffffff" groundColor="#553322" />
         <directionalLight intensity={1.6} position={[4, 7, 5]} />
         <directionalLight intensity={0.6} color="#ffe0cc" position={[-5, 2, -3]} />
-        <Rig progress={progress} />
+        <Rig progress={progress} labels={labels} />
       </Canvas>
       <ol className={`pointer-events-none absolute right-5 top-1/2 flex -translate-y-1/2 flex-col-reverse gap-2 transition-opacity duration-500 ${labels ? "opacity-100" : "opacity-0"}`} aria-hidden={!labels}>
         {LAYERS.map((l) => <li key={l.name} className="rounded-[3px] bg-[#101317] px-3 py-2 text-[#F1F2F4]"><span className="display block text-[15px]">{l.name}</span><span className="block text-[12px] text-[#C9CDD5]">{l.who}</span></li>)}

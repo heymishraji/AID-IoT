@@ -16,7 +16,7 @@ export function SiteHeader() {
           <img src="/brand/aid-iot-mark.svg" alt="" width={30} height={27} />AID-IoT
         </Link>
         <nav aria-label="Primary" className="hidden gap-7 lg:flex">
-          {NAV.map((n) => <Link key={n} href={`#${n.toLowerCase()}`} className="text-[15px] font-medium hover:text-[var(--accent-ink)]">{n}</Link>)}
+          {NAV.map((n) => <Link key={n} href={`#${({Solutions:"sectors-list",Products:"solutions",Software:"software",Services:"services",Company:"company"} as Record<string,string>)[n]}`} className="text-[15px] font-medium hover:text-[var(--accent-ink)]">{n}</Link>)}
         </nav>
         <div className="hidden items-center gap-5 lg:flex">
           <Link href="#" className="text-sm text-muted-foreground">Store</Link>
@@ -28,7 +28,7 @@ export function SiteHeader() {
           <SheetContent side="right" className="bg-background">
             <SheetTitle className="display text-[length:var(--t-3)]">Menu</SheetTitle>
             <nav className="mt-6 flex flex-col gap-1">
-              {NAV.map((n) => <Link key={n} href={`#${n.toLowerCase()}`} className="py-3 text-[19px] font-medium">{n}</Link>)}
+              {NAV.map((n) => <Link key={n} href={`#${({Solutions:"sectors-list",Products:"solutions",Software:"software",Services:"services",Company:"company"} as Record<string,string>)[n]}`} className="py-3 text-[19px] font-medium">{n}</Link>)}
               <Link href="#" className="py-3 text-muted-foreground">Store</Link>
               <Link href="#" className="py-3 text-muted-foreground">Log in</Link>
               <a href="#contact" className="btn btn-primary mt-4">Talk to an engineer</a>
