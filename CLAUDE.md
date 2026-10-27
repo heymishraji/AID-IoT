@@ -1,11 +1,11 @@
 # AID brand system + design system — working rules
 
 Project: building, from scratch, one brand system and one end-to-end design system for AID, shared by
-two brands — **AID IoT** (IoT hardware, software and combined solutions) and **AID Defense** (specialised
+two separate brands of Inordinate Industrial Innovation Pvt Ltd — **AID IoT** (IoT hardware, software and combined solutions) and **AID Defence** (specialised
 defence products such as NAVIC and the Lighthouse solution built on it). The output is a versioned
 "digital library" that people and LLM agents read to produce on-brand work: websites, product UI,
 banners, brochures, pamphlets, datasheets, presentations, social, print.
-Owner: Product/design lead at AID (the user). Approver: CEO (technical, non-designer).
+Owner: product/design lead (the user), sole owner of brand releases and versioning. Approver: CEO (technical, non-designer).
 
 The previous website rebuild was removed on 2026-10-27; it is recoverable from git tag `archive/website-v3`.
 aid-iot.com is a domain reference only — not a design or positioning reference.
@@ -18,7 +18,8 @@ Do NOT load `docs/research/*` unless a task needs the evidence; they are large r
 
 ## Non-negotiables for the system
 - One source of truth: brand changes (logo, colour, type) are made in one place and propagate everywhere.
-- Multi-brand by design: parent + AID IoT + AID Defense are themes of one system, not forks.
+- One engine, separate identities: AID IoT and AID Defence have their own visuals, imagery and voice on a shared core (type family, structure, components); each brand exports as a self-contained package for its own repo.
+- Spell it "AID Defence" (Indian usage).
 - LLM-readable: every rule is written as text an agent can follow, with rationale and do/don't examples.
 - Keep the current logo (`assets/brand/aid-iot-mark.*`) until the team decides otherwise.
 

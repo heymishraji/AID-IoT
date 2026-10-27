@@ -1,9 +1,7 @@
 # Next steps
 
-1. **User answers the decisions + discovery questionnaire** (artifact sections 04 and 11).
-   Why: strategy and naming must exist before identity work can be justified; names get hard-coded into every asset.
-2. **Set up the library skeleton and freeze the token schema, with a fake brand built in CI.**
-   Why: every template, component and skill depends on token names; the fake brand proves rebrand-in-one-place.
-3. **Write DESIGN.md + VOICE.md per brand, then prove the pipeline on a NAVIC datasheet, an AID IoT deck slide
-   and a LinkedIn banner.**
-   Why: most portable files for any AI tool, and three formats across both brands test propagation end to end.
+Waiting on the user's choice from the task menu given on 2026-10-27 (competitor benchmark, brand strategy v0,
+naming system, logo routes, type study, colour, Figma mood boards, library skeleton).
+Recommended first: competitor + inspiration benchmark, then the strategy v0 for both brands,
+because every visual choice (logo, type, colour, imagery) needs a positioning to be judged against.
+Leadership answers (Q1–6, proof, legal) arrive later and are slotted into the strategy when they come.
