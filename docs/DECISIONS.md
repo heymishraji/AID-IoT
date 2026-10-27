@@ -1,39 +1,6 @@
-# Decision log (append-only; one line each: date · decision · why · alternatives rejected)
+# Decisions (append-only)
 
-- 2026-09-12 · Audit the current site before designing · to ground the rebuild in evidence (heuristic 13/32, technical 7/20) · redesign-by-taste
-- 2026-09-12 · Keep the existing tri-colour mark and orange; systematise rather than rebrand · government clients recognise it; lowest risk · refresh mark; full rebrand
-- 2026-09-12 · Keep the current product-page narrative arc (challenge → how we help → specs → use cases) and add an outcome layer above it · it is the strongest content on the site · full rewrite
-- 2026-09-14 · First mockups (design/canvases/01-redesign-v1) judged generic (category default) · they executed the navy/orange/device-on-sweep rut · treated as anti-reference, kept for record
-- 2026-09-14 · Architecture: 5 branches (Solutions · Products · Software · Services · Company) + Store / Log in / Talk to an engineer; 3 levels; L3 never in header · matches how visitors 1–3 think; benchmarks (Samsara, Skydio, Anduril) · flat product list; "Industries" label
-- 2026-09-14 · Story spine = Connect · Communicate · Automate · Scale (the CEO's vision, verbatim) · makes the vision navigable and provable · generic "end-to-end IoT"
-- 2026-09-14 · Motion must explain a mechanism; no loaders, enter screens, audio gates or scroll-jacking · Awwwards data + B2B audience · agency-style theatrics
-- 2026-09-15 · Platform name: **Signal** · physical word non-IT readers understand; names what customers care about; gives the site its visual spine · Loop, Grid
-- 2026-09-15 · Show all three visual directions (A Open the device · B Panel room · C Field log) as boards before choosing · the user wants to see, not read, the options · pick A directly
-- 2026-09-15 · CAD availability unconfirmed → use reference models/photos from the internet or self-made 3D for the build; swap for real CAD later · unblocks the end-to-end build · wait for CAD
-- 2026-09-15 · Build the whole site end to end before CEO review · CEO is technical, time-poor and gives better feedback on a working thing · intermittent approvals
-- 2026-09-15 · Documentation = CONTEXT (rewritten, ≤150 lines) + NEXT + DECISIONS (append-only) + research/ (never auto-loaded) · keeps a fresh chat's context small; portable via GitHub · single growing log
-- 2026-09-15 · Project lives in a GitHub repo (heymishraji/aid-iot-website) with docs, design canvases, assets and later the Next.js site · work from any machine · local-only
-- 2026-09-15 · Direction boards built as first viewport + 3 scroll stops of the signature interaction + 4 story beats, at 1440 and 390 · judge the idea/world/voice, not polish · full-page mockups per direction
-- 2026-09-15 · Direction A uses layered isometric SVG as a stand-in for the 3D model; B is pure SVG; C uses a generated-gradient photo placeholder · no CAD/photos yet; keeps the choice about the idea · wait for assets
-- 2026-09-15 · Static design-canvas boards replaced by three working HTML prototypes (prototypes/a,b,c) · the user could not judge feel/motion from static boards; a scrollable prototype answers "does this work" · more static boards
-- 2026-09-15 · Typography moved off AI-default faces (Inter/Geist/Manrope/Fraunces/etc.) to Indian Type Foundry families via Fontshare — A: Cabinet Grotesk + Switzer; B: Khand + Ranade; C: Zodiak + Author; data in Martian Mono · distinctive, free for commercial use, and an Indian-foundry story for an Indian engineering brand · Geist/Inter; paid faces (Söhne, Aeonik) deferred until a direction is chosen
-- 2026-09-15 · Prototype imagery = AID-IoT's own product photos + Pexels documentary photos (credited in assets/img/CREDITS.md); 3D device is procedural until CAD/photogrammetry · unblocks realistic prototypes now · wait for assets
-- 2026-09-15 · Prototype stack = static HTML + vendored three.js / GSAP ScrollTrigger / Lenis served by node · zero build step, runs anywhere, same libraries the benchmarks use · Next.js now (premature before direction lock)
-- 2026-09-16 · Prototypes/a,b,c judged awful by the user: no design system, no structure, keyword copy · hand-rolled CSS repeated every "AI tell" the frontend-design skill lists · kept as anti-reference
-- 2026-09-16 · Design system = shadcn/ui (Tailwind v4) primitives + Tailark/ShadcnBlocks sections + Motion Primitives & Magic UI motion + GSAP/Lenis/R3F for signature moments; tokens as CSS variables with three world files (A/B/C) on ONE component system · research (Untitled UI 2026 library review; shadcn is the ecosystem standard; blocks compose better than improvising) · Mantine/MUI (version drift), Webflow/Relume (not code-owned)
-- 2026-09-16 · Skills adopted: frontend-design (Anthropic), copywriting/copy-editing/product-marketing/site-architecture/cro (marketingskills), ui-ux-pro-max (checklist only), apple-design (HIG review after every screen); impeccable playbooks by hand · docs/SKILLS.md · Rob Palmer direct-response skills (wrong register for defence/CXO)
-- 2026-09-16 · Homepage copy rewritten as a story (Human Action Model: discomfort → vision → path; scenes → outcomes → mechanism → steps → proof → objections → ask) · docs/copy/ · keyword-led sections
-- 2026-09-16 · Headline: "Find out now, not in tomorrow's shift report." · problem-framed in the executive's words; passes "Now you can" · alternates recorded in docs/copy/01-homepage.md
-- 2026-09-16 · Next.js site scaffolded in site/ with the three-world token system and a review-only world switch; prototypes/ frozen · one structure, three worlds proves the system · three separate codebases
-- 2026-09-16 · QA rule: every screen gets a Nielsen + HIG review logged in docs/QA.md before it is called done · user request · ad-hoc review
-- 2026-09-16 · World A locked as the base; B/C token sets kept in theme.css for reference, switch removed · user choice · keep switch
-- 2026-09-16 · Homepage v2 is visual-first: four offers with icons and colour in the first screens, ≤ 1 line per unit, photos with badges, drawn comparisons · CXO readers scan, they do not read; v1 read as a wireframe · text-led v1
-- 2026-09-16 · Colour system = the mark's amber/blue/green + signal orange, each colour assigned to one offer (Solutions orange · Products blue · Software green · Services amber) · colour carries meaning; uses the palette the company already owns · monochrome ink-only system
-- 2026-09-16 · Section label "Frequently asked questions" (industry standard) replaces "Questions executives ask us" · user feedback · custom label
-- 2026-09-16 · Hero is the system, not a product: signal-path diagram (real operations → AID-IoT → Signal screen) with animated beams · a single product in the hero misrepresents the company and procedural 3D undermines credibility with a technical CEO · exploded IIoT Bridge (moved to product pages, to be rebuilt from real CAD)
-- 2026-09-16 · Palette reduced to paper / ink / one accent (signal orange) + green as live-status semantic; icons neutral · "ten colours" read as unprofessional; 21st.dev house style is one accent · four-colour offer system
-- 2026-09-16 · Full first flow = Home, Solutions/Fleet & fuel, Products/IIoT Bridge, Software/Signal, Services, Company, Contact, 404, on one section vocabulary · enough for CEO feedback on structure, story and world · homepage only
-- 2026-09-16 · Hosting = static export to GitHub Pages via Actions (NEXT_PUBLIC_BASE_PATH=/aid-iot-website) · no accounts or secrets needed beyond the repo · Vercel (needs an account), artifact (CSP blocks Fontshare)
-- 2026-09-17 · impeccable pass applied: craft-floor rules now enforced (no eyebrows, no card-grid-as-structure, browser surfaces themed, form states, content never parked at opacity 0) · shippable quality bar · leave as demo
-- 2026-09-17 · Fonts self-hosted from Fontshare with preload and metric-matched fallbacks; body uses font-display: fallback, display uses swap · LCP was a font-swap repaint at 5 s on slow 4G · Fontshare CSS link (render-blocking)
-- 2026-09-17 · Icons bundled from a static map, never a wildcard import · a wildcard shipped 990 kB · lucide-react/dynamic
+2026-10-27 · Removed the website rebuild and all prior docs; kept only the logo · user asked for a fresh start toward a brand + design system · alternative (keep site as reference) rejected by user; history kept in tag archive/website-v3
+2026-10-27 · Scope is a multi-brand system (AID, AID IoT, AID Defense) published as an LLM-readable library · user goal: any agent produces consistent output across products and collateral · single-brand or website-only scope rejected
+2026-10-27 · Research run as six parallel agents (Opus for brand, DS survey, LLM library; Sonnet for tokens, domain, collateral) · breadth with depth per topic · single combined report rejected as too shallow
+2026-10-27 · Lighthouse = software side of the NAVIC convoy management system · confirmed by user · overrides research inference

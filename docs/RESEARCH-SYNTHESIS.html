@@ -1,0 +1,498 @@
+<title>AID Brand System Research</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: engineering-datasheet report. Sticky contents rail on wide screens; each section is a numbered sheet.
+   Brand colours from the mark encode the architecture: orange = AID parent / shared, green = AID IoT, blue = AID Defense. */
+:root{
+  --bg:#F4F5F2; --surface:#FFFFFF; --sunk:#ECEEEA; --ink:#14181C; --muted:#56606A; --line:#D8DCD8;
+  --orange:#B65F00; --orange-mark:#F29A1F; --green:#1E7A35; --green-mark:#3DAA4F; --blue:#2463B8; --blue-mark:#4A8FE7;
+  --orange-tint:#FBEBD6; --green-tint:#DDF0E1; --blue-tint:#DCE8F8; --warn:#8A4B00; --warn-tint:#FFF1DC;
+  --f-display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --step--1:.8125rem; --step-0:1rem; --step-1:1.1875rem; --step-2:1.5rem; --step-3:2.125rem; --step-4:clamp(2.25rem,5vw,3.5rem);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#101316; --surface:#171B1F; --sunk:#1D2227; --ink:#E6E9EB; --muted:#9AA4AD; --line:#2B3238;
+  --orange:#F4A647; --green:#62C47A; --blue:#79AAF0; --orange-tint:#3A2A14; --green-tint:#17301E; --blue-tint:#172B45;
+  --warn:#F4B860; --warn-tint:#33280F; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#101316; --surface:#171B1F; --sunk:#1D2227; --ink:#E6E9EB; --muted:#9AA4AD; --line:#2B3238;
+  --orange:#F4A647; --green:#62C47A; --blue:#79AAF0; --orange-tint:#3A2A14; --green-tint:#17301E; --blue-tint:#172B45;
+  --warn:#F4B860; --warn-tint:#33280F; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--step-0);line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:56px;padding-block:40px 96px}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr);gap:24px;padding-block:24px 64px}}
+h1,h2,h3{font-family:var(--f-display);line-height:1.1;text-wrap:balance;margin:0}
+h1{font-size:var(--step-4);font-weight:700;letter-spacing:-.01em}
+h2{font-size:var(--step-3);font-weight:600}
+h3{font-size:var(--step-1);font-weight:600;margin-top:8px}
+p{margin:0;max-width:68ch}
+a{color:var(--blue);text-underline-offset:3px}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
+code,.mono{font-family:var(--f-mono);font-size:.875em}
+.label{font-family:var(--f-mono);font-size:var(--step--1);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+/* rail */
+nav.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;display:flex;flex-direction:column;gap:2px}
+nav.rail .mark{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+nav.rail a{color:var(--muted);text-decoration:none;font-size:.875rem;padding:6px 0 6px 12px;border-left:2px solid var(--line);display:flex;gap:10px}
+nav.rail a span{font-family:var(--f-mono);font-size:.75rem;min-width:1.6em}
+nav.rail a:hover{color:var(--ink);border-left-color:var(--ink)}
+@media (max-width:900px){nav.rail{position:static;flex-direction:row;flex-wrap:wrap;gap:6px}
+  nav.rail .mark{width:100%;margin-bottom:8px} nav.rail a{border:1px solid var(--line);border-radius:4px;padding:6px 10px;min-height:44px;align-items:center}}
+
+main{display:flex;flex-direction:column;gap:72px;min-width:0}
+section{display:flex;flex-direction:column;gap:20px;scroll-margin-top:24px;min-width:0}
+.sec-head{display:flex;flex-direction:column;gap:8px;border-top:2px solid var(--ink);padding-top:14px}
+.lede{font-size:var(--step-1);color:var(--ink);max-width:62ch}
+.muted{color:var(--muted)}
+
+/* hero */
+.hero{display:flex;flex-direction:column;gap:20px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 24px}
+.meta div{display:flex;flex-direction:column}
+.meta b{font-family:var(--f-mono);font-weight:500;font-size:.875rem}
+
+/* tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{font-family:var(--f-mono);font-weight:500;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--sunk);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+tr.hl td{background:var(--orange-tint)}
+
+/* brand chips */
+.chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:.75rem;padding:2px 8px;border-radius:999px;white-space:nowrap;font-weight:500}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.c-parent{color:var(--orange);background:var(--orange-tint)} .c-iot{color:var(--green);background:var(--green-tint)} .c-def{color:var(--blue);background:var(--blue-tint)}
+.p0{color:var(--orange);background:var(--orange-tint)} .p1{color:var(--blue);background:var(--blue-tint)} .p2{color:var(--muted);background:var(--sunk)}
+.star{color:var(--orange);font-weight:600}
+
+/* stack diagram */
+.stack{display:flex;flex-direction:column;gap:6px}
+.layer{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px;align-items:baseline}
+.layer .label{color:var(--ink)}
+.layer p{color:var(--muted);font-size:.9375rem}
+.layer.src{border-color:var(--orange);box-shadow:inset 4px 0 0 var(--orange-mark)}
+@media (max-width:600px){.layer{grid-template-columns:minmax(0,1fr);gap:4px}}
+
+/* architecture tree */
+.tree{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.node{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px}
+.node b{font-family:var(--f-display);font-size:1.125rem}
+.node .muted{font-size:.9rem}
+.lvl1{padding-left:24px;border-left:1px dashed var(--line);margin-left:6px}
+.lvl2{padding-left:24px;border-left:1px dashed var(--line);margin-left:6px}
+
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.grid2,.grid3{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.panel ul,.panel ol{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:4px;font-size:.9375rem}
+.panel.iot{border-top:3px solid var(--green-mark)} .panel.def{border-top:3px solid var(--blue-mark)} .panel.par{border-top:3px solid var(--orange-mark)}
+
+.flag{background:var(--warn-tint);border:1px solid color-mix(in srgb,var(--warn) 35%,transparent);border-radius:6px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.flag h3{color:var(--warn);margin:0;font-size:1.0625rem}
+.flag p{font-size:.9375rem}
+
+details{background:var(--surface);border:1px solid var(--line);border-radius:6px}
+summary{cursor:pointer;padding:12px 16px;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:600;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--f-mono);color:var(--muted)}
+details[open] summary::after{content:"−"}
+details .body{padding:0 16px 16px;display:flex;flex-direction:column;gap:6px}
+details ol{margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:6px;font-size:.9375rem}
+.owner{font-family:var(--f-mono);font-size:.75rem;color:var(--muted);font-weight:400}
+
+pre{margin:0;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:16px;overflow-x:auto;font-family:var(--f-mono);font-size:.8125rem;line-height:1.55;color:var(--ink)}
+pre .k{color:var(--orange)} pre .c{color:var(--muted)}
+
+.steps{display:flex;flex-direction:column;gap:12px;counter-reset:s}
+.steps li{list-style:none;display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px}
+.steps li::before{counter-increment:s;content:counter(s);font-family:var(--f-display);font-size:1.75rem;font-weight:700;color:var(--orange);line-height:1}
+.steps ol{padding:0;margin:0}
+.steps b{display:block;margin-bottom:4px}
+.steps p{font-size:.9375rem;color:var(--muted)}
+
+.decision{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface)}
+.decision > div{padding:16px;display:flex;flex-direction:column;gap:6px}
+.decision > div + div{border-left:1px solid var(--line)}
+.decision .q{grid-column:1/-1;border-bottom:1px solid var(--line);background:var(--sunk);font-weight:600}
+@media (max-width:600px){.decision{grid-template-columns:minmax(0,1fr)} .decision > div + div{border-left:0;border-top:1px solid var(--line)}}
+.decision p{font-size:.9375rem}
+.rec{font-family:var(--f-mono);font-size:.75rem;color:var(--orange)}
+
+.files{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px}
+.files div{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.files code{font-size:.8rem;word-break:break-all}
+.files span{font-size:.875rem;color:var(--muted)}
+.conf{font-family:var(--f-mono);font-size:.75rem;color:var(--muted)}
+</style>
+
+<div class="wrap">
+<nav class="rail" aria-label="Contents">
+  <div class="mark">
+    <svg width="34" height="31" viewBox="0 0 106 96" aria-hidden="true">
+      <g stroke-linecap="round" stroke-width="13" fill="none">
+        <line x1="44" y1="24" x2="20" y2="66" stroke="#3DAA4F"/>
+        <line x1="62" y1="24" x2="86" y2="66" stroke="#4A8FE7"/>
+        <line x1="34" y1="84" x2="72" y2="84" stroke="#F29A1F"/>
+      </g>
+      <circle cx="53" cy="10" r="8" fill="#F29A1F"/><circle cx="12" cy="84" r="8" fill="#4A8FE7"/><circle cx="94" cy="84" r="8" fill="#3DAA4F"/>
+    </svg>
+    <span class="label" style="color:var(--ink)">AID · Research</span>
+  </div>
+  <a href="#answer"><span>01</span>The short answer</a>
+  <a href="#architecture"><span>02</span>Brand architecture</a>
+  <a href="#brand-system"><span>03</span>What a brand system holds</a>
+  <a href="#inputs"><span>04</span>What we need from you</a>
+  <a href="#base"><span>05</span>Which design system to build on</a>
+  <a href="#end-to-end"><span>06</span>End-to-end scope</a>
+  <a href="#tokens"><span>07</span>Rebrand-proof tokens</a>
+  <a href="#llm"><span>08</span>The LLM library</a>
+  <a href="#collateral"><span>09</span>Collateral</a>
+  <a href="#risks"><span>10</span>Risks found</a>
+  <a href="#decide"><span>11</span>Decisions for you</a>
+  <a href="#next"><span>12</span>Next steps</a>
+</nav>
+
+<main>
+<header class="hero">
+  <span class="label">Research synthesis · 27 October 2026 · six research reports</span>
+  <h1>AID brand and design system: what it takes to build</h1>
+  <p class="lede">What a complete, rebrand-proof brand system and design system for AID needs, which free systems to build on, and how to package it so any AI agent produces on-brand websites, product screens, decks, datasheets, banners and print.</p>
+  <div class="meta">
+    <div><span class="label">Brands</span><b>AID · AID IoT · AID Defense</b></div>
+    <div><span class="label">Products in scope</span><b>NAVIC (devices) · Lighthouse (software)</b></div>
+    <div><span class="label">Kept</span><b>Current triangle mark</b></div>
+    <div><span class="label">Previous work</span><b>Removed · git tag archive/website-v3</b></div>
+  </div>
+</header>
+
+<!-- 01 -->
+<section id="answer">
+  <div class="sec-head"><span class="label">01</span><h2>The short answer</h2></div>
+  <p class="lede">Build one system with three layers of truth: brand strategy in plain text, every visual value as a design token, and templates that only ever reference tokens. Agents read the text, tools read the tokens, and a rebrand edits one folder.</p>
+  <div class="stack" aria-label="System layers, top to bottom">
+    <div class="layer"><span class="label">Strategy</span><p>Purpose, positioning per brand, messaging house, voice, naming rules. Written as Markdown agents can follow.</p></div>
+    <div class="layer"><span class="label">Identity</span><p>Logo system, colour, type, imagery, iconography, motion, grids, graphic devices. Each rule has a reason and do/don't examples.</p></div>
+    <div class="layer src"><span class="label">Tokens · source</span><p>Every value lives here once, in the W3C design-token format (stable since Oct 2025). Brand × mode × density are switches, not copies. <b>This is what makes a rebrand cheap.</b></p></div>
+    <div class="layer"><span class="label">Components</span><p>AID-owned code built on Base UI primitives, in the shadcn registry format: one set, re-skinned per brand. Patterns borrowed from Astro (defence consoles), Siemens iX and Carbon (IoT).</p></div>
+    <div class="layer"><span class="label">Templates</span><p>Deck, datasheet, brochure, social, roll-up, label. Each is a fixed layout that takes content as JSON; the AI fills the fields and doesn't design the layout.</p></div>
+    <div class="layer"><span class="label">Agent layer</span><p>DESIGN.md per brand, AGENTS.md / CLAUDE.md routers, AID agent skills, llms.txt, and later an MCP server. One source, with generated versions for Claude, Cursor, Figma, Canva and others.</p></div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section id="architecture">
+  <div class="sec-head"><span class="label">02</span><h2>Brand architecture</h2></div>
+  <p>Both reports agree: one family. They disagree on how close the two brands should sit. Colours below follow the mark: orange for the parent, green for IoT, blue for Defense.</p>
+  <div class="tree">
+    <div class="node"><span class="chip c-parent">parent</span><b>AID</b><span class="muted">triangle mark + wordmark · corporate, investors, careers</span></div>
+    <div class="lvl1">
+      <div class="node"><span class="chip c-iot">sub-brand</span><b>AID IoT</b><span class="muted">gateways (IIoT Bridge), edge devices, the Signal platform, industrial solutions</span></div>
+    </div>
+    <div class="lvl1">
+      <div class="node"><span class="chip c-def">sub-brand</span><b>AID Defense</b><span class="muted">specialised defence products</span></div>
+      <div class="lvl2" style="margin-top:10px">
+        <div class="node"><span class="chip c-def">product line</span><b>NAVIC</b><span class="muted">NavIC-based tracking hardware: vehicle tracker, belt pager, PTT handheld, SatCom unit</span></div>
+        <div class="lvl2" style="margin-top:10px">
+          <div class="node"><span class="chip c-def">software</span><b>Lighthouse</b><span class="muted">the software side of the convoy management system: command, tracking, route fencing, SOS</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="panel iot">
+      <span class="label">AID IoT expression</span>
+      <ul>
+        <li>Full four-colour mark; leads with orange and green</li>
+        <li>Lighter type weights, more air</li>
+        <li>Plants, cities, assets, people using the product</li>
+        <li>Graphic device: signal flow from device to cloud</li>
+        <li>Voice: optimistic, practical, talks about return on investment</li>
+        <li>Proof: case studies, uptime, savings</li>
+      </ul>
+    </div>
+    <div class="panel def">
+      <span class="label">AID Defense expression</span>
+      <ul>
+        <li>Single-colour mark by default; deep neutral ground, one blue accent</li>
+        <li>Tighter, heavier type; monospace for specs and codes</li>
+        <li>Product renders over photos; operators obscured; export-cleared</li>
+        <li>Graphic device: coordinates, bearings, grids (navigation-led)</li>
+        <li>Voice: calm, exact, understated; never glorifies force</li>
+        <li>Proof: trials, certifications, indigenous content, lifecycle support</li>
+      </ul>
+    </div>
+  </div>
+  <p class="muted">Shared by both: type families, grid, components, motion easing, functional colours, data-viz logic. Products and solutions get typographic lockups, not their own logos.</p>
+</section>
+
+<!-- 03 -->
+<section id="brand-system">
+  <div class="sec-head"><span class="label">03</span><h2>What a complete brand system holds</h2></div>
+  <p>Four layers, about 50 items. <span class="star">★</span> marks the minimum first release.</p>
+  <div class="grid2">
+    <div class="panel par"><span class="label">Strategy: why and what we say</span>
+      <ul><li><span class="star">★</span> Purpose, mission, values (with "we do / we don't")</li><li><span class="star">★</span> Positioning: parent + one per sub-brand</li><li><span class="star">★</span> Brand promise and audiences / personas</li><li><span class="star">★</span> Messaging house: umbrella, 3–4 pillars, proof points</li><li><span class="star">★</span> Tone of voice with sliders per sub-brand</li><li><span class="star">★</span> Naming architecture and trademark process</li><li>Vision, personality, brand story, elevator pitches, boilerplate</li><li>Competitive frame; editorial style guide (spelling, units, acronyms)</li></ul></div>
+    <div class="panel par"><span class="label">Identity: how we look and sound</span>
+      <ul><li><span class="star">★</span> Logo system, lockups, sub-brand and co-brand lockups</li><li><span class="star">★</span> Clear space and minimum sizes (the mark's dot is a natural unit)</li><li><span class="star">★</span> Logo misuse (8–12 illustrated don'ts)</li><li><span class="star">★</span> Colour: core, sub-brand, neutrals, functional, data-viz; HEX/RGB/CMYK/Pantone/OKLCH</li><li><span class="star">★</span> Typography incl. Devanagari, licences</li><li><span class="star">★</span> Photography and imagery; <span class="star">★</span> layout grids per format</li><li>Icons, illustration and diagrams, 3D renders, data viz, motion, sonic, graphic devices, accessibility</li></ul></div>
+    <div class="panel par"><span class="label">Application: real artefacts</span>
+      <ul><li><span class="star">★</span> Digital: web patterns, product UI, email, favicons, OG images</li><li><span class="star">★</span> Presentations: master deck, RFP template, investor deck</li><li><span class="star">★</span> Collateral: datasheet, solution brief, case study, brochure, flyer, whitepaper</li><li>Social, stationery, events and booths, signage</li><li>Product: enclosure CMF, nameplates, regulatory marks, packaging, manuals</li><li>Defence-specific: classification banners, export notices, rugged marking</li><li>Recruitment, merchandise, co-branding (Make in India, iDEX)</li></ul></div>
+    <div class="panel par"><span class="label">Governance: how it stays right</span>
+      <ul><li><span class="star">★</span> Named owner and a brand council</li><li><span class="star">★</span> Approval workflow with turnaround times</li><li><span class="star">★</span> Single source of truth in one versioned repo</li><li><span class="star">★</span> Semantic versioning and a changelog</li><li><span class="star">★</span> AI usage rules: who may generate what; human review for defence</li><li>Asset library with export-control status per asset</li><li>Training, quarterly audits, trademark register</li></ul></div>
+  </div>
+  <p class="muted">Study list: IBM Design Language, Mailchimp content style guide, Atlassian, Uber, Shopify, GE (one monogram across three split companies), Siemens, NASA 1975 manual; Anduril, Palantir, Helsing, Shield AI for defence restraint. Source: report 01.</p>
+</section>
+
+<!-- 04 -->
+<section id="inputs">
+  <div class="sec-head"><span class="label">04</span><h2>What we need from you before designing</h2></div>
+  <p>Agencies gather these before any identity work. The answers decide architecture, tone and which templates ship first. 34 questions, grouped by who should answer.</p>
+  <details><summary>Business and ambition <span class="owner">CEO, founders</span></summary><div class="body"><ol>
+    <li>In one sentence, why does AID exist? What would the world miss without it?</li>
+    <li>Revenue split today and in three years: IoT hardware / IoT software / IoT solutions / defence products / defence solutions.</li>
+    <li>Is AID Defense a division, a separate legal entity, or planned to become one? Any JV, outside investor or sale plans?</li>
+    <li>What must the brand make possible in 24 months? (Win a tender, raise a round, export, hire.)</li>
+    <li>What is AID not? Markets or work you will refuse.</li>
+    <li>Where does manufacturing happen; is "made in India" central to the story?</li></ol></div></details>
+  <details><summary>Offer and proof <span class="owner">product, engineering, sales</span></summary><div class="body"><ol start="7">
+    <li>Full list of products, platforms, solutions and services, with current names and owners.</li>
+    <li>For each: problem, for whom, outcome, proof (deployments, numbers, certifications).</li>
+    <li>Certifications held: ISO 9001, AS9100, ISO 27001, CE, BIS, DGQA/CEMILAC, iDEX, MIL-STD test reports.</li>
+    <li>Which customers may be named publicly; which only as "a tri-service customer"?</li>
+    <li>What can only AID claim, and can each claim be proved?</li></ol></div></details>
+  <details><summary>Audiences <span class="owner">sales, BD, customers</span></summary><div class="body"><ol start="12">
+    <li>Who buys, uses, influences and signs, for IoT and for Defense separately?</li>
+    <li>What do they worry about when choosing a supplier?</li>
+    <li>How do they find suppliers: tenders/GeM, shows, referrals, integrators, search?</li>
+    <li>What do customers say about us unprompted? (5–10 quotes per brand.)</li>
+    <li>Why have we lost deals?</li></ol></div></details>
+  <details><summary>Competition and category <span class="owner">BD, marketing</span></summary><div class="body"><ol start="17">
+    <li>Top five competitors per brand, Indian and global. Who do we want to be compared with?</li>
+    <li>Which category conventions must we keep to be trusted, and which can we break?</li></ol></div></details>
+  <details><summary>Personality and voice <span class="owner">leadership workshop</span></summary><div class="body"><ol start="19">
+    <li>If AID IoT and AID Defense were people at the same dinner, how would they differ?</li>
+    <li>Place each on sliders: formal–conversational, technical–plain, reserved–bold, serious–warm, established–challenger.</li>
+    <li>Three brands you admire and why; three you would hate to resemble.</li>
+    <li>Words we always or never use.</li></ol></div></details>
+  <details><summary>Identity assets <span class="owner">design</span></summary><div class="body"><ol start="23">
+    <li>Original vector logo files; the meaning of the triangle and its colours; which parts leadership is attached to.</li>
+    <li>Existing fonts, colours, templates, photo library, with licences.</li>
+    <li>Which assets have customer recognition and must survive any redesign?</li>
+    <li>Physical product: enclosure colours, logo placement, label constraints.</li></ol></div></details>
+  <details><summary>Legal, naming and compliance <span class="owner">legal, export control</span></summary><div class="body"><ol start="27">
+    <li>Registered trademarks and applications for AID, AID IoT, AID Defense, NAVIC, Lighthouse, Signal; domains and handles.</li>
+    <li>Is "AID" cleared in the target classes? It is a common word and a weak standalone mark.</li>
+    <li>Export-control classification of each defence product (SCOMET; any ITAR/EAR content).</li>
+    <li>Who signs off public release of defence images and specifications today?</li></ol></div></details>
+  <details><summary>Operations and governance <span class="owner">leadership</span></summary><div class="body"><ol start="31">
+    <li>Who owns the brand day to day? Who arbitrates between IoT and Defense?</li>
+    <li>Which tools do teams make material in: PowerPoint, Google Slides, Canva, Figma? This decides template formats.</li>
+    <li>Which outside agencies produce material for us?</li>
+    <li>Appetite and limits for AI-generated content, especially for Defense.</li></ol></div></details>
+</section>
+
+<!-- 05 -->
+<section id="base">
+  <div class="sec-head"><span class="label">05</span><h2>Which design system to build on</h2></div>
+  <p class="lede">No single free system fits both a marketing site and a defence console. The recommendation is to own the tokens and component code, and borrow patterns from the best of each.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Rank</th><th>System</th><th>Licence</th><th>Strongest at</th><th>Weakest at</th><th>Score /5</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="num">1</td><td><b>shadcn/ui pattern on Base UI</b></td><td>MIT</td><td>Brand control, agent tooling (MCP, registry), code ownership</td><td>Mission consoles out of the box</td><td class="num">3.90</td></tr>
+      <tr><td class="num">2</td><td>Siemens iX</td><td>MIT</td><td>Industrial IoT, dark UI, data grids, web components</td><td>Marketing sites; Siemens look shows through</td><td class="num">3.85</td></tr>
+      <tr><td class="num">3=</td><td>IBM Carbon</td><td>Apache-2.0</td><td>Data visualisation, docs maturity, free Figma kit</td><td>Looks like IBM; v12 redesign in progress</td><td class="num">3.75</td></tr>
+      <tr><td class="num">3=</td><td>Ant Design</td><td>MIT</td><td>Breadth of admin components, seed-based theming</td><td>Very recognisable; weak for marketing</td><td class="num">3.75</td></tr>
+      <tr><td class="num">5</td><td>Mantine</td><td>MIT</td><td>Balanced, good theming</td><td>Thin Figma support</td><td class="num">3.70</td></tr>
+      <tr><td class="num">14</td><td>Astro UXDS</td><td>MIT</td><td><b>Only 5/5 for mission consoles</b>: status, classification, timelines</td><td>No longer maintained since Oct 2025</td><td class="num">3.20</td></tr>
+    </tbody></table></div>
+  <p class="conf">Weights: IoT dashboards 20%, defence consoles 20%, multi-brand 15%, agent-friendliness 15%, marketing 10%, licence 10%, Figma 10%. 30+ systems scored in report 02.</p>
+  <div class="flag"><h3>Excluded on licence</h3><p>Atlassian (assets only for Atlassian add-ons), Shopify Polaris (Shopify apps only), Nord (Nordhealth only), Elastic EUI (not open source), Tailwind Plus (paid). Bosch's licence could not be confirmed.</p></div>
+  <h3>What to borrow from each</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>From</th><th>Borrow</th><th>For</th></tr></thead>
+    <tbody>
+      <tr><td>Astro UXDS</td><td>Six-level status scale (off → critical) using shape and colour, classification banners, dual UTC/local clock, timeline, alert acknowledgement</td><td><span class="chip c-def">Lighthouse</span></td></tr>
+      <tr><td>Siemens iX</td><td>Industrial app frame, event list, device/asset tree, KPI tiles, grid and chart themes</td><td><span class="chip c-iot">device fleets</span></td></tr>
+      <tr><td>Carbon</td><td>Data-viz palettes and rules; expressive vs productive type; dark zone inside a light app</td><td><span class="chip c-parent">both</span></td></tr>
+      <tr><td>Material 3</td><td>Tonal palette generation from seed colours; ref/sys/comp token naming</td><td><span class="chip c-parent">tokens</span></td></tr>
+      <tr><td>Grafana Saga</td><td>Time-range picker, synchronised cursors across charts</td><td><span class="chip c-iot">telemetry</span></td></tr>
+      <tr><td>SAP Fiori</td><td>Comfortable/compact density, object page</td><td><span class="chip c-iot">enterprise admin</span></td></tr>
+      <tr><td>GOV.UK / USWDS</td><td>Pattern documentation template, error messages, plain-language rules</td><td><span class="chip c-parent">docs site</span></td></tr>
+      <tr><td>Primer, Nord</td><td>Primer's MCP server (19 tools incl. CSS lint); Nord's llms.txt and SKILL.md</td><td><span class="chip c-parent">agent layer</span></td></tr>
+    </tbody></table></div>
+  <p class="muted">Fallback if defence customers need framework-agnostic web components: Siemens iX re-themed with AID tokens for the console product line.</p>
+</section>
+
+<!-- 06 -->
+<section id="end-to-end">
+  <div class="sec-head"><span class="label">06</span><h2>What "end-to-end" covers</h2></div>
+  <p>Foundations and components are two of thirteen parts. The full scope, from report 02:</p>
+  <div class="grid3">
+    <div class="panel"><span class="label">Principles</span><p>Design principles, brand-to-product bridge, decision rationale</p></div>
+    <div class="panel"><span class="label">Foundations</span><p>Colour, type, space, grid, elevation, shape, motion, icons, illustration, imagery, sound</p></div>
+    <div class="panel"><span class="label">Tokens</span><p>Primitive → brand → semantic → component; modes, density, platforms</p></div>
+    <div class="panel"><span class="label">Components</span><p>Inputs, navigation, overlays, feedback, data display, maps, media</p></div>
+    <div class="panel"><span class="label">Patterns</span><p>Forms, search and filter, empty/error/loading, notifications, onboarding, alerts and acknowledgement</p></div>
+    <div class="panel"><span class="label">Templates</span><p>Page layouts: marketing pages, dashboards, consoles, settings, detail pages</p></div>
+    <div class="panel"><span class="label">Content design</span><p>Voice in UI, microcopy, error messages, terminology, British English</p></div>
+    <div class="panel"><span class="label">Data visualisation</span><p>Chart types, palettes, annotations, real-time telemetry, maps</p></div>
+    <div class="panel"><span class="label">Accessibility</span><p>WCAG 2.2 AA, keyboard, screen readers, reduced motion, colour-blind-safe status</p></div>
+    <div class="panel"><span class="label">Internationalisation</span><p>Hindi/Devanagari, Indian number and date formats, right-to-left readiness</p></div>
+    <div class="panel"><span class="label">Platforms</span><p>Web, mobile, rugged handhelds, embedded HMI screens, kiosks, offline/air-gapped builds</p></div>
+    <div class="panel"><span class="label">Tooling and AI</span><p>Docs site, Figma library, Storybook, registry, MCP, llms.txt, lint rules</p></div>
+    <div class="panel"><span class="label">Operating model</span><p>Ownership, contribution, versioning, deprecation, adoption metrics</p></div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section id="tokens">
+  <div class="sec-head"><span class="label">07</span><h2>Making a rebrand a one-folder change</h2></div>
+  <p class="lede">Components never name a colour or font. They name a role, the role points to a brand value, and the brand value points to a raw value. Change the raw values and everything downstream follows.</p>
+  <pre><span class="c">// primitive       →  brand role              →  semantic                       →  CSS</span>
+color.orange.500  →  color.brand.primary    →  color.action.primary.bg        →  --aid-color-action-primary-bg
+<span class="c">// switches, orthogonal (no explosion of combinations)</span>
+<span class="k">brand</span>    aid · aid-iot · aid-defense
+<span class="k">mode</span>     light · dark · night (low-light / NVG) · high-contrast
+<span class="k">density</span>  comfortable · compact (consoles default to compact)
+<span class="k">platform</span> output format only: CSS, Tailwind, Figma, PowerPoint theme, print swatches, embedded C/QML, LLM Markdown
+<span class="c">// protected: no brand file may override these</span>
+color.status.*   color.symbology.*   focus-ring</pre>
+  <div class="grid2">
+    <div class="panel"><span class="label">Colour</span><ul><li>Author in OKLCH; generate full scales from the three logo colours</li><li>Gate on WCAG 2.x AA; report APCA alongside</li><li>Status colours are separate from brand colours: the brand blue and green would otherwise clash with military symbology colours</li><li>Pantone and CMYK come from a hand-approved table, checked for colour distance</li></ul></div>
+    <div class="panel"><span class="label">Pipeline</span><ul><li>Git holds the source; DTCG 2025.10 format</li><li>Style Dictionary v5 builds every output; trial Terrazzo</li><li>CI: lint → scale generation → contrast matrix → print check → build → visual regression → versioned release</li><li><b>A "fake brand" built in CI proves nothing is hard-coded</b></li></ul></div>
+  </div>
+  <p class="muted">Type candidates (open licence, with Devanagari): IBM Plex family; Inter with Noto Sans Devanagari; Mukta or Hind. Source: report 03.</p>
+</section>
+
+<!-- 08 -->
+<section id="llm">
+  <div class="sec-head"><span class="label">08</span><h2>The library LLMs read</h2></div>
+  <p class="lede">There is no single standard yet, but a stable stack has formed. No two AI tools take the same file, so AID keeps one source and generates a version for each tool.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Format</th><th>What it does</th><th>Read by</th></tr></thead>
+    <tbody>
+      <tr><td><code>*.tokens.json</code></td><td>Exact values, W3C DTCG 2025.10</td><td>Build tools, Figma, any agent</td></tr>
+      <tr><td><code>DESIGN.md</code></td><td>Google Labs format (Apr 2026): tokens in a YAML header plus written reasons; has a linter and exports</td><td>Stitch, Claude, Cursor, any "paste a file" tool</td></tr>
+      <tr><td><code>AGENTS.md</code> / <code>CLAUDE.md</code></td><td>Short always-on instructions pointing agents at the brand</td><td>Claude Code, Codex, Cursor, Copilot</td></tr>
+      <tr><td><code>SKILL.md</code></td><td>Agent Skills, now an open standard: "make an AID datasheet" as a repeatable capability</td><td>Claude, Codex, Cursor, Copilot, v0</td></tr>
+      <tr><td>MCP server</td><td>Live queries: find a token, get a component, lint CSS, review copy</td><td>Any MCP client</td></tr>
+      <tr><td><code>llms.txt</code></td><td>Index of the hosted docs, with a Markdown twin of every page</td><td>Web-browsing tools</td></tr>
+      <tr><td>shadcn registry</td><td>Installable AID components</td><td>Claude, Cursor, v0, Lovable</td></tr>
+    </tbody></table></div>
+  <h3>Proposed repo shape</h3>
+  <pre>aid-brand/
+├── AGENTS.md  CLAUDE.md  INDEX.md   <span class="c"># short routers: "need X → read Y"</span>
+├── brand/      master/ aid-iot/ aid-defense/  → DESIGN.md · VOICE.md · ARCHITECTURE.md
+├── <span class="k">tokens/</span>     primitives/ brands/ semantic/ modes/ aid.resolver.json   <span class="c"># the only place values live</span>
+├── assets/     logos/ fonts/ icons/ imagery/ (each AI image keeps its prompt)
+├── components/ + registry.json        <span class="c"># AID-owned code, shadcn format</span>
+├── templates/  deck/ datasheet/ brochure/ social/ banner/ roll-up/ label/ email-signature/
+├── examples/   do/ dont/ golden/      <span class="c"># approved finished work agents learn from</span>
+├── prompts/    image grammar, copy briefs, recipes
+├── qa/         rubric.md, lint configs, visual regression
+├── skills/     aid-brand · aid-ui · aid-collateral · aid-imagery · aid-voice · aid-brand-review
+└── dist/       css · tailwind · figma-variables · pptx theme · canva kit · llms.txt   <span class="c"># generated</span></pre>
+  <div class="grid2">
+    <div class="panel"><span class="label">Skills to install or adapt, in order</span>
+      <ol><li>skill-creator: builds and tests every AID skill</li><li>brand-guidelines → fork into <code>aid-brand</code></li><li>theme-factory → fork into <code>aid-themes</code></li><li>pptx, docx, pdf with AID masters</li><li>Figma skills (library, Code Connect): already installed</li><li>impeccable as an automated anti-generic check</li><li>New <code>aid-brand-review</code>: lint + rubric</li><li>canvas-design, web-artifacts-builder; mcp-builder in phase 2</li></ol></div>
+    <div class="panel"><span class="label">Tools that can import a brand</span>
+      <ul><li><b>Claude Design:</b> imports a repo, checks output, can lock a team to it</li><li><b>Lovable:</b> repo or <code>system.md</code>; scans for raw colours</li><li><b>v0:</b> shadcn registry; <b>Figma Make:</b> Guidelines.md</li><li><b>Stitch:</b> DESIGN.md; <b>Gamma:</b> theme from .pptx</li><li><b>Canva:</b> Brand Kit via MCP (Autofill needs Enterprise)</li><li><b>Firefly:</b> custom style models for imagery</li></ul></div>
+  </div>
+  <p class="muted">Quality control in three layers: automated lint (DESIGN.md, Stylelint, ESLint, Vale for copy), then screenshot comparison, then an LLM judge using a six-part rubric where unsupported claims are a critical failure for Defense.</p>
+</section>
+
+<!-- 09 -->
+<section id="collateral">
+  <div class="sec-head"><span class="label">09</span><h2>Collateral the system must produce</h2></div>
+  <p class="lede">The AI fills a fixed set of fields and never designs: each collateral type has a schema with character limits, and one command renders it for either brand.</p>
+  <pre>aid-make datasheet content.json --brand defense   <span class="c"># validate → render → print preflight</span></pre>
+  <div class="tbl"><table>
+    <thead><tr><th>Touchpoint</th><th>Format</th><th>Key spec</th><th>Built with</th><th>Priority</th></tr></thead>
+    <tbody>
+      <tr><td>Website and components</td><td>Responsive</td><td>Tokens, AA, reduced motion</td><td>Next.js + token build</td><td><span class="chip p0">P0</span></td></tr>
+      <tr><td>Datasheet</td><td>A4, 1–2 pp</td><td>PDF/X-4, fonts embedded</td><td>HTML → Paged.js</td><td><span class="chip p0">P0</span></td></tr>
+      <tr><td>Pitch / sales deck</td><td>16:9 PPTX</td><td>Real masters, both brands, editable by sales</td><td>python-pptx on a master</td><td><span class="chip p0">P0</span></td></tr>
+      <tr><td>Social and OG images</td><td>1200×627, 1080×1350, 1080×1920</td><td>Safe zones</td><td>Satori</td><td><span class="chip p0">P0</span></td></tr>
+      <tr><td>Email signature</td><td>HTML ≤600 px</td><td>Text-based</td><td>HTML template</td><td><span class="chip p0">P0</span></td></tr>
+      <tr><td>Roll-up for Aero India / DefExpo</td><td>850×2000 mm</td><td>5–10 mm bleed, CMYK</td><td>HTML at mm scale → PDF</td><td><span class="chip p0">P0</span></td></tr>
+      <tr><td>AI image guidelines</td><td>Prompt library</td><td>Banned tropes, prompt logged per image</td><td>Prompt YAML</td><td><span class="chip p0">P0</span></td></tr>
+      <tr><td>Product UI (Signal, Lighthouse)</td><td>Web app</td><td>Shared tokens, compact density</td><td>React + registry</td><td><span class="chip p1">P1</span></td></tr>
+      <tr><td>Brochure, case study, whitepaper</td><td>A4</td><td>3 mm bleed, CMYK</td><td>Paged.js / Typst</td><td><span class="chip p1">P1</span></td></tr>
+      <tr><td>Proposal / RFP response</td><td>A4</td><td>Export-control markings</td><td>Typst + Word fallback</td><td><span class="chip p1">P1</span></td></tr>
+      <tr><td>Flyer, cards, stationery</td><td>A5, DL, 85×55 mm</td><td>3 mm bleed</td><td>Paged.js + data merge</td><td><span class="chip p1">P1</span></td></tr>
+      <tr><td>Labels and nameplates</td><td>Per SKU</td><td>CE/BIS marks, Data Matrix</td><td>SVG + data merge</td><td><span class="chip p1">P1</span> P0 before shipping</td></tr>
+      <tr><td>Video intro, lower-thirds</td><td>1080p, 9:16</td><td>Safe zones</td><td>HyperFrames</td><td><span class="chip p1">P1</span></td></tr>
+      <tr><td>Hardware colour/material guide</td><td>PDF + samples</td><td>Pantone/RAL</td><td>Manual</td><td><span class="chip p1">P1</span></td></tr>
+      <tr><td>Web banners, newsletter, packaging, manuals</td><td>Various</td><td>IAB sizes, dielines</td><td>HTML, MJML, Markdown</td><td><span class="chip p2">P2</span></td></tr>
+    </tbody></table></div>
+  <p class="conf">Print and social specs are partly from background knowledge; confirm with AID's printers and current platform specs before freezing (report 06).</p>
+</section>
+
+<!-- 10 -->
+<section id="risks">
+  <div class="sec-head"><span class="label">10</span><h2>Risks the research found</h2></div>
+  <div class="flag"><h3>The name NAVIC clashes with ISRO's NavIC</h3><p>NavIC is the operating name of India's satellite navigation system. A navigation product called NAVIC reads as ISRO-affiliated, risks trademark refusal, and can never outrank ISRO in search. The current site already uses it as a technology prefix ("NavIC CMS"). Options: rename the product line and say "NavIC-enabled" as a feature (preferred), or keep it only after legal clearance.</p></div>
+  <div class="flag"><h3>"Defense" or "Defence"</h3><p>The house style is British English, and the Indian MoD, DRDO and press use "Defence". The current site URL is <code>/defence</code>. This is baked into every lockup, so decide before logo work.</p></div>
+  <div class="flag"><h3>Defence claims need evidence before the brand repeats them</h3><p>The current site lists a loitering munition, grenade module and remote weapon station, and claims "seven systems fielded" with MoD and Army, MIL-STD-810G and AIS-140, with no named customers or certificates. Unproven claims are the biggest credibility risk with defence buyers, and may have export-control implications.</p></div>
+  <div class="flag"><h3>Smaller items</h3><p>"Lighthouse" collides with Google Lighthouse and India's Directorate General of Lighthouses and Lightships, so a descriptor helps (e.g. "Lighthouse Command"). The electronics store and training courses on the current site blur both brands. Astro UXDS is unmaintained, so copy its patterns rather than depend on the package. Reports flagged that NavIC constellation health is disputed in secondary sources, so avoid "sovereign accuracy" claims until checked.</p></div>
+  <p class="conf">Confidence: competitor visuals, MIL-STD colour tables, some print specs and font licences came from background knowledge, not fetched sources. Each report tags verified vs unverified claims.</p>
+</section>
+
+<!-- 11 -->
+<section id="decide">
+  <div class="sec-head"><span class="label">11</span><h2>Decisions only you can make</h2></div>
+  <div class="decision">
+    <div class="q">How close should AID IoT and AID Defense sit?</div>
+    <div><span class="rec">Report 01 · branded house</span><p>"AID IoT" and "AID Defense" are descriptors of one brand. Same mark, type, grid; different colour emphasis, imagery and voice. Cheaper, and IoT credibility lends weight to Defense.</p></div>
+    <div><span class="rec">Report 05 · endorsed brand</span><p>Shared foundations, but distinct colour, tone and imagery, a separate defence site, and a quiet "an AID company" line. Better if some enterprise customers or investors avoid defence association.</p></div>
+  </div>
+  <p>My recommendation: start as a branded house and write down the triggers for moving Defense to endorsed (separate legal entity, JV or foreign partner, customer or ESG pressure). Tokens make that later move cheap.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Decision</th><th>Why it matters now</th></tr></thead>
+    <tbody>
+      <tr><td>NAVIC: rename, or keep with legal clearance?</td><td>Names are hard-coded into every later asset</td></tr>
+      <tr><td>Defense or Defence?</td><td>Fixes the sub-brand lockup</td></tr>
+      <tr><td>Separate <code>aid-brand</code> repo, or this repo?</td><td>Every skill and file path depends on it</td></tr>
+      <tr><td>Which tools do sales and marketing use (PowerPoint, Google Slides, Canva, Figma)?</td><td>Decides which template formats ship first</td></tr>
+      <tr><td>Figma plan, and is Figma or code the design source?</td><td>Variables API and Code Connect need paid plans</td></tr>
+      <tr><td>Does Lighthouse show tactical symbology, classification banners or night mode?</td><td>Adds protected colour namespaces and a night mode</td></tr>
+      <tr><td>Embedded screens on NAVIC devices: which toolkit (LVGL, Qt)?</td><td>Adds a token output target</td></tr>
+      <tr><td>Hindi / Devanagari support now or later?</td><td>Narrows the font choice</td></tr>
+      <tr><td>Can the library be public, or internal only?</td><td>Decides how agents outside AID can reach it</td></tr>
+      <tr><td>Who owns the brand and approves changes?</td><td>Required for versioned releases</td></tr>
+    </tbody></table></div>
+</section>
+
+<!-- 12 -->
+<section id="next">
+  <div class="sec-head"><span class="label">12</span><h2>Next steps</h2></div>
+  <ol class="steps">
+    <li><div><b>Answer the decisions in section 11 and the discovery questions in section 04</b><p>Strategy has to exist before identity choices can be defended to the CEO, and naming is cheap to fix now and expensive once in every asset.</p></div></li>
+    <li><div><b>Set up the library skeleton and token schema, with a fake brand in CI</b><p>Every template, component and skill depends on the token names. Freezing them first means later design work goes straight into the single source of truth.</p></div></li>
+    <li><div><b>Write strategy, then identity, into DESIGN.md and VOICE.md per brand</b><p>These are the most portable files: every AI tool can read them on day one, before any component code exists.</p></div></li>
+    <li><div><b>Prove the pipeline on three real pieces: a NAVIC datasheet, an AID IoT deck slide, a LinkedIn banner</b><p>Three formats across both brands show whether one token change really propagates, and give the CEO finished work to review rather than abstract guidelines.</p></div></li>
+    <li><div><b>Then components, registry and MCP server</b><p>These are the largest effort and depend on settled tokens and identity, so they come last.</p></div></li>
+  </ol>
+  <h3>Full reports in the repo</h3>
+  <div class="files">
+    <div><code>docs/research/01-brand-system-anatomy.md</code><span>Checklist, questionnaire, architecture, naming, defence specifics</span></div>
+    <div><code>docs/research/02-open-source-design-systems.md</code><span>30+ systems surveyed and scored; end-to-end taxonomy</span></div>
+    <div><code>docs/research/03-token-architecture-multibrand.md</code><span>DTCG format, tooling, colour science, pipeline</span></div>
+    <div><code>docs/research/04-llm-friendly-design-systems-and-skills.md</code><span>DESIGN.md, Skills, MCP, llms.txt, repo shape</span></div>
+    <div><code>docs/research/05-domain-and-landscape.md</code><span>Current site, products, competitors, buyers</span></div>
+    <div><code>docs/research/06-collateral-and-templates.md</code><span>Specs per touchpoint, generation stack, imagery rules</span></div>
+  </div>
+</section>
+</main>
+</div>

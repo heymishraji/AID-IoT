@@ -1,32 +1,34 @@
-# AID-IoT website rebuild — working rules
+# AID brand system + design system — working rules
 
-Project: rebuilding https://www.aid-iot.com from scratch as a modern, motion-led site that sells
-AID-IoT as an end-to-end IoT company (hardware + firmware + software platform "Signal" + cloud + manufacturing).
-Owner: Product/design lead at AID-IoT (the user). Approver: CEO (technical, non-designer) — sees the
-finished build, not intermediate questions.
+Project: building, from scratch, one brand system and one end-to-end design system for AID, shared by
+two brands — **AID IoT** (IoT hardware, software and combined solutions) and **AID Defense** (specialised
+defence products such as NAVIC and the Lighthouse solution built on it). The output is a versioned
+"digital library" that people and LLM agents read to produce on-brand work: websites, product UI,
+banners, brochures, pamphlets, datasheets, presentations, social, print.
+Owner: Product/design lead at AID (the user). Approver: CEO (technical, non-designer).
 
-## Read this first, in this order (≈150 lines total)
-1. `docs/CONTEXT.md` — current state of the project (rewritten every session; never grows).
-2. `docs/NEXT.md` — the next 1–3 steps and why they are the right steps.
+The previous website rebuild was removed on 2026-10-27; it is recoverable from git tag `archive/website-v3`.
+aid-iot.com is a domain reference only — not a design or positioning reference.
+
+## Read this first, in this order
+1. `docs/CONTEXT.md` — current state (rewritten every session; ≤150 lines).
+2. `docs/NEXT.md` — the next 1–3 steps and why.
 3. `docs/DECISIONS.md` — append-only decision log; scan the last 10 entries only.
 Do NOT load `docs/research/*` unless a task needs the evidence; they are large reports.
 
-## Documentation discipline (keeps context small)
-- End of every working session: rewrite `docs/CONTEXT.md` (≤ 150 lines), rewrite `docs/NEXT.md`,
-  append to `docs/DECISIONS.md` (one line per decision: date · decision · why · alternatives rejected).
-- Never paste research into CONTEXT; link to the file in `docs/research/` instead.
-- Brand/visual rules live in `docs/brand/DESIGN.md` once a direction is chosen; product truth in `docs/brand/PRODUCT.md`.
+## Non-negotiables for the system
+- One source of truth: brand changes (logo, colour, type) are made in one place and propagate everywhere.
+- Multi-brand by design: parent + AID IoT + AID Defense are themes of one system, not forks.
+- LLM-readable: every rule is written as text an agent can follow, with rationale and do/don't examples.
+- Keep the current logo (`assets/brand/aid-iot-mark.*`) until the team decides otherwise.
+
+## Documentation discipline
+- End of every working session: rewrite `docs/CONTEXT.md`, rewrite `docs/NEXT.md`,
+  append to `docs/DECISIONS.md` (one line: date · decision · why · alternatives rejected).
+- Never paste research into CONTEXT; link to `docs/research/` instead.
 - Every deliverable ends with "Next steps" and the reason each step is next.
 
-## Repo layout
-- `docs/` — CONTEXT, NEXT, DECISIONS, brand/, research/ (audit, blueprint, crawl + benchmark JSON)
-- `design/canvases/<nn-name>/` — design-canvas working files (`*.dc.html`, `canvas.json`, `build.js`);
-  re-seedable with the Claude Design skill from any machine.
-- `assets/` — brand mark, reference photos, generated imagery (with the prompt used, in a sidecar `.md`)
-- `site/` — the Next.js application (created in Phase 3)
-
 ## Conventions
-- Copy: outcome first, plain language for non-IT executives; engineering detail one level down. British English.
-- Design: no category defaults (navy + orange glow + device on a sweep + bento). Motion explains a mechanism.
-- Accessibility: AA contrast, 44px targets, reduced-motion states designed, HTML crawlable.
+- British English. Plain language first, engineering detail one level down.
+- Accessibility: WCAG 2.2 AA minimum, 44px targets, reduced-motion states designed.
 - Commit small and often; commit messages say what and why.
