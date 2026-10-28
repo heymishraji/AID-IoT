@@ -1,0 +1,45 @@
+{
+  "$description": "Tier 2 · semantic · shape. Shared across brands (structure is core).",
+  "radius": {
+    "control": {
+      "$value": "{radius.md}",
+      "$description": "Buttons, inputs, chips."
+    },
+    "container": {
+      "$value": "{radius.lg}",
+      "$description": "Cards, panels, dialogs."
+    },
+    "pill": {
+      "$value": "{radius.full}",
+      "$description": "Badges and status pills."
+    }
+  },
+  "border-width": {
+    "default": {
+      "$value": "{border-width.thin}"
+    },
+    "emphasis": {
+      "$value": "{border-width.thick}"
+    }
+  },
+  "motion": {
+    "feedback": {
+      "duration": {
+        "$value": "{motion.duration.fast}",
+        "$description": "Hover, press, toggle."
+      },
+      "easing": {
+        "$value": "{motion.easing.standard}"
+      }
+    },
+    "transition": {
+      "duration": {
+        "$value": "{motion.duration.base}",
+        "$description": "Panels, dialogs, route changes."
+      },
+      "easing": {
+        "$value": "{motion.easing.standard}"
+      }
+    }
+  }
+}

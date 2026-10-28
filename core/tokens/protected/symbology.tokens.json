@@ -1,0 +1,82 @@
+{
+  "$description": "PROTECTED optional module `symbology` · tactical symbology for operator UI. Included only for brands that list it in brand.json `modules`. PLACEHOLDER: MIL-STD-2525 / APP-6 light-fill reference values; the standard Lighthouse must follow is not yet confirmed.",
+  "symbology": {
+    "$type": "color",
+    "$extensions": {
+      "org.aid.library": {
+        "protected": true,
+        "placeholder": true
+      }
+    },
+    "affiliation": {
+      "friend": {
+        "fill": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.502,
+              0.8784,
+              1
+            ],
+            "hex": "#80e0ff"
+          }
+        },
+        "frame": {
+          "$value": "{color.neutral.1000}"
+        }
+      },
+      "hostile": {
+        "fill": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              0.502,
+              0.502
+            ],
+            "hex": "#ff8080"
+          }
+        },
+        "frame": {
+          "$value": "{color.neutral.1000}"
+        }
+      },
+      "neutral": {
+        "fill": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              0.6667,
+              1,
+              0.6667
+            ],
+            "hex": "#aaffaa"
+          }
+        },
+        "frame": {
+          "$value": "{color.neutral.1000}"
+        }
+      },
+      "unknown": {
+        "fill": {
+          "$type": "color",
+          "$value": {
+            "colorSpace": "srgb",
+            "components": [
+              1,
+              1,
+              0.502
+            ],
+            "hex": "#ffff80"
+          }
+        },
+        "frame": {
+          "$value": "{color.neutral.1000}"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "$description": "Tier 2 · semantic · layout grid and minimum target size. PLACEHOLDER values.",
+  "grid": {
+    "columns": {
+      "$type": "number",
+      "$value": 12
+    },
+    "gutter": {
+      "$value": "{space.6}"
+    },
+    "margin": {
+      "$value": "{space.6}"
+    },
+    "max-width": {
+      "$type": "dimension",
+      "$value": {
+        "value": 1280,
+        "unit": "px"
+      }
+    }
+  },
+  "size": {
+    "target": {
+      "min": {
+        "$type": "dimension",
+        "$value": {
+          "value": 44,
+          "unit": "px"
+        },
+        "$description": "Minimum interactive target (house rule, stricter than WCAG 2.2 AA 24px)."
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$description": "Tier 2 · semantic · density COMFORTABLE (default): marketing, collateral, touch.",
+  "space": {
+    "inset": {
+      "xs": {
+        "$value": "{space.1}"
+      },
+      "sm": {
+        "$value": "{space.2}"
+      },
+      "md": {
+        "$value": "{space.4}"
+      },
+      "lg": {
+        "$value": "{space.6}"
+      }
+    },
+    "stack": {
+      "xs": {
+        "$value": "{space.1}"
+      },
+      "sm": {
+        "$value": "{space.2}"
+      },
+      "md": {
+        "$value": "{space.4}"
+      },
+      "lg": {
+        "$value": "{space.6}"
+      },
+      "xl": {
+        "$value": "{space.10}"
+      }
+    },
+    "inline": {
+      "xs": {
+        "$value": "{space.1}"
+      },
+      "sm": {
+        "$value": "{space.2}"
+      },
+      "md": {
+        "$value": "{space.4}"
+      }
+    }
+  },
+  "size": {
+    "control": {
+      "height": {
+        "$type": "dimension",
+        "$value": {
+          "value": 44,
+          "unit": "px"
+        },
+        "$description": "Meets the 44px target rule."
+      }
+    }
+  }
+}

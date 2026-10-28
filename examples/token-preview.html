@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-GB" data-mode="light" data-density="comfortable">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Token preview</title>
+  <!-- Everything visual on this page comes from built CSS variables. No colour literals allowed (npm run check). -->
+  <link rel="stylesheet" href="../dist/all.css">
+  <link rel="stylesheet" href="../core/components/components.css">
+  <script src="../dist/manifest.js"></script>
+  <style>
+    body { margin: 0; }
+    header, main { padding: var(--aid-space-inset-lg); max-width: var(--aid-grid-max-width); margin-inline: auto; }
+    header { display: flex; flex-wrap: wrap; gap: var(--aid-space-inline-md); align-items: end; }
+    h1 { font-family: var(--aid-type-display-family); font-size: var(--aid-type-heading-1-size); font-weight: var(--aid-type-heading-1-weight); line-height: var(--aid-type-heading-1-line-height); margin: 0 auto 0 0; }
+    h2 { font-size: var(--aid-type-heading-3-size); font-weight: var(--aid-type-heading-3-weight); margin: var(--aid-space-stack-xl) 0 var(--aid-space-stack-sm); }
+    h3 { font-size: var(--aid-type-label-size); font-weight: var(--aid-type-label-weight); color: var(--aid-color-text-secondary); margin: var(--aid-space-stack-md) 0 var(--aid-space-stack-xs); }
+    label { display: grid; gap: var(--aid-space-stack-xs); font-size: var(--aid-type-label-size); color: var(--aid-color-text-secondary); }
+    .note { color: var(--aid-color-text-muted); font-size: var(--aid-type-body-small-size); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: var(--aid-space-inline-sm); }
+    .swatch { display: grid; grid-template-rows: 56px auto; border: var(--aid-border-width-default) solid var(--aid-color-border-default); border-radius: var(--aid-radius-control); overflow: hidden; background: var(--aid-color-surface-default); }
+    .swatch code { padding: var(--aid-space-inset-xs) var(--aid-space-inset-sm); font-family: var(--aid-type-code-family); font-size: var(--aid-type-caption-size); overflow-wrap: anywhere; }
+    .row { display: flex; flex-wrap: wrap; gap: var(--aid-space-inline-sm); align-items: center; }
+    .type-row { display: grid; grid-template-columns: minmax(96px, 160px) 1fr; gap: var(--aid-space-inline-md); align-items: baseline; padding-block: var(--aid-space-stack-xs); border-bottom: var(--aid-border-width-default) solid var(--aid-color-border-subtle); }
+    .bar { height: var(--aid-space-inset-sm); background: var(--aid-color-action-primary-bg); border-radius: var(--aid-radius-pill); }
+    @media (max-width: 480px) { .type-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body class="aid-surface">
+  <header>
+    <h1 id="title">Token preview</h1>
+    <label>Brand <select id="brand" class="aid-field"></select></label>
+    <label>Mode <select id="mode" class="aid-field"></select></label>
+    <label>Density <select id="density" class="aid-field"></select></label>
+  </header>
+  <main>
+    <p class="note" id="note"></p>
+    <h2>Components (core structure, brand tokens)</h2>
+    <div class="row">
+      <button class="aid-button aid-button--primary">Primary action</button>
+      <button class="aid-button aid-button--secondary">Secondary</button>
+      <input class="aid-field" placeholder="Field" aria-label="Example field">
+    </div>
+    <div class="row" id="status" style="margin-top: var(--aid-space-stack-sm)"></div>
+    <div id="classification" style="margin-top: var(--aid-space-stack-sm)"></div>
+    <div class="aid-card" style="margin-top: var(--aid-space-stack-md)">
+      <strong>Card</strong> · surface.raised, border.default, radius.container, inset.lg.
+    </div>
+    <h2>Type roles</h2>
+    <div id="type"></div>
+    <h2>Spacing (density)</h2>
+    <div id="space"></div>
+    <h2>Colour tokens</h2>
+    <div id="swatches"></div>
+  </main>
+  <script>
+    const lib = window.AID_LIBRARY;
+    const root = document.documentElement;
+    const $ = (id) => document.getElementById(id);
+    const params = new URLSearchParams(location.search);
+    const fill = (sel, items, pick) => { sel.innerHTML = items.map((v) => `<option value="${v[0]}">${v[1]}</option>`).join(''); sel.value = pick ?? items[0][0]; };
+    fill($('brand'), lib.brands.map((b) => [b.id, b.name]), params.get('brand') ?? lib.brands.find((b) => b.role === 'brand')?.id);
+    fill($('mode'), lib.modes.map((m) => [m, m]), params.get('mode'));
+    fill($('density'), lib.densities.map((d) => [d, d]), params.get('density'));
+    const value = (name) => getComputedStyle(root).getPropertyValue(name).trim() || 'not defined for this brand';
+
+    function render() {
+      const brand = lib.brands.find((b) => b.id === $('brand').value);
+      root.dataset.brand = brand.id; root.dataset.mode = $('mode').value; root.dataset.density = $('density').value;
+      $('title').textContent = `${brand.name} · tokens`;
+      $('note').textContent = `Library v${lib.version} · role: ${brand.role} · modules: ${brand.modules.join(', ') || 'none'} · all values are PLACEHOLDERS.`;
+      $('status').innerHTML = ['off', 'standby', 'normal', 'caution', 'serious', 'critical'].map((s) => `<span class="aid-status" data-status="${s}">${s}</span>`).join('');
+      $('classification').innerHTML = brand.modules.includes('classification')
+        ? ['unclassified', 'restricted', 'confidential', 'secret', 'top-secret'].map((l) => `<span class="aid-classification" data-level="${l}">${l.replace('-', ' ')} · placeholder</span>`).join('')
+        : '<p class="note">No classification module for this brand.</p>';
+      $('type').innerHTML = brand.typeRoles.map((r) => `<div class="type-row"><code>${r}</code><span style="font-family:var(--aid-type-${r}-family);font-size:var(--aid-type-${r}-size);font-weight:var(--aid-type-${r}-weight);line-height:var(--aid-type-${r}-line-height)">Convoy position updated 12 s ago</span></div>`).join('');
+      $('space').innerHTML = brand.spacing.map((v) => `<div class="type-row"><code>${v.replace('--aid-', '')} · ${value(v)}</code><div class="bar" style="width:var(${v})"></div></div>`).join('');
+      $('swatches').innerHTML = Object.entries(brand.swatches).map(([group, names]) =>
+        `<h3>${group}</h3><div class="grid">${names.map((n) => `<div class="swatch"><div style="background:var(${n})"></div><code>${n.replace('--aid-', '')}<br>${value(n)}</code></div>`).join('')}</div>`).join('');
+    }
+    ['brand', 'mode', 'density'].forEach((id) => $(id).addEventListener('change', render));
+    render();
+  </script>
+</body>
+</html>

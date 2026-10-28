@@ -1,0 +1,97 @@
+{
+  "$description": "PROTECTED optional module `classification` · security classification banners. Included only for brands that list it in brand.json `modules`. PLACEHOLDER levels and colours: the customer-mandated marking scheme must replace these before any real use.",
+  "classification": {
+    "$type": "color",
+    "$extensions": {
+      "org.aid.library": {
+        "protected": true,
+        "placeholder": true
+      }
+    },
+    "unclassified": {
+      "bg": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0.4784,
+            0.2
+          ],
+          "hex": "#007a33"
+        }
+      },
+      "fg": {
+        "$value": "{color.neutral.0}"
+      }
+    },
+    "restricted": {
+      "bg": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.3569,
+            0.2471,
+            0.6
+          ],
+          "hex": "#5b3f99"
+        }
+      },
+      "fg": {
+        "$value": "{color.neutral.0}"
+      }
+    },
+    "confidential": {
+      "bg": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0.2,
+            0.6275
+          ],
+          "hex": "#0033a0"
+        }
+      },
+      "fg": {
+        "$value": "{color.neutral.0}"
+      }
+    },
+    "secret": {
+      "bg": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.7843,
+            0.0627,
+            0.1804
+          ],
+          "hex": "#c8102e"
+        }
+      },
+      "fg": {
+        "$value": "{color.neutral.0}"
+      }
+    },
+    "top-secret": {
+      "bg": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.549,
+            0
+          ],
+          "hex": "#ff8c00"
+        }
+      },
+      "fg": {
+        "$value": "{color.neutral.1000}"
+      }
+    }
+  }
+}

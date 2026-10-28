@@ -1,0 +1,85 @@
+{
+  "$description": "Brand-private primitives for this brand only. PLACEHOLDER: a single ink ramp. Minimal identity for legal documents only.",
+  "palette": {
+    "$type": "color",
+    "$extensions": {
+      "org.aid.library": {
+        "placeholder": true
+      }
+    },
+    "placeholder-ink": {
+      "100": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9137,
+            0.9137,
+            0.9255
+          ],
+          "hex": "#e9e9ec"
+        }
+      },
+      "300": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.6627,
+            0.6627,
+            0.702
+          ],
+          "hex": "#a9a9b3"
+        }
+      },
+      "500": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.3647,
+            0.3647,
+            0.4196
+          ],
+          "hex": "#5d5d6b"
+        }
+      },
+      "700": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.1843,
+            0.1843,
+            0.2275
+          ],
+          "hex": "#2f2f3a"
+        }
+      },
+      "800": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.1333,
+            0.1333,
+            0.1686
+          ],
+          "hex": "#22222b"
+        }
+      },
+      "900": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0824,
+            0.0824,
+            0.1059
+          ],
+          "hex": "#15151b"
+        }
+      }
+    }
+  }
+}

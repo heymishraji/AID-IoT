@@ -1,0 +1,145 @@
+{
+  "$description": "Tier 2 · semantic · type roles. Components and templates use these, never font.size.* directly. display uses the brand accent face (defaults to the shared family).",
+  "type": {
+    "display": {
+      "family": {
+        "$value": "{brand.font.accent}"
+      },
+      "size": {
+        "$value": "{font.size.900}"
+      },
+      "line-height": {
+        "$value": "{font.line-height.tight}"
+      },
+      "weight": {
+        "$value": "{font.weight.semibold}"
+      }
+    },
+    "heading-1": {
+      "family": {
+        "$value": "{font.family.sans}"
+      },
+      "size": {
+        "$value": "{font.size.800}"
+      },
+      "line-height": {
+        "$value": "{font.line-height.tight}"
+      },
+      "weight": {
+        "$value": "{font.weight.semibold}"
+      }
+    },
+    "heading-2": {
+      "family": {
+        "$value": "{font.family.sans}"
+      },
+      "size": {
+        "$value": "{font.size.700}"
+      },
+      "line-height": {
+        "$value": "{font.line-height.snug}"
+      },
+      "weight": {
+        "$value": "{font.weight.semibold}"
+      }
+    },
+    "heading-3": {
+      "family": {
+        "$value": "{font.family.sans}"
+      },
+      "size": {
+        "$value": "{font.size.600}"
+      },
+      "line-height": {
+        "$value": "{font.line-height.snug}"
+      },
+      "weight": {
+        "$value": "{font.weight.semibold}"
+      }
+    },
+    "body-large": {
+      "family": {
+        "$value": "{font.family.sans}"
+      },
+      "size": {
+        "$value": "{font.size.400}"
+      },
+      "line-height": {
+        "$value": "{font.line-height.normal}"
+      },
+      "weight": {
+        "$value": "{font.weight.regular}"
+      }
+    },
+    "body": {
+      "family": {
+        "$value": "{font.family.sans}"
+      },
+      "size": {
+        "$value": "{font.size.300}"
+      },
+      "line-height": {
+        "$value": "{font.line-height.normal}"
+      },
+      "weight": {
+        "$value": "{font.weight.regular}"
+      }
+    },
+    "body-small": {
+      "family": {
+        "$value": "{font.family.sans}"
+      },
+      "size": {
+        "$value": "{font.size.200}"
+      },
+      "line-height": {
+        "$value": "{font.line-height.normal}"
+      },
+      "weight": {
+        "$value": "{font.weight.regular}"
+      }
+    },
+    "label": {
+      "family": {
+        "$value": "{font.family.sans}"
+      },
+      "size": {
+        "$value": "{font.size.200}"
+      },
+      "line-height": {
+        "$value": "{font.line-height.snug}"
+      },
+      "weight": {
+        "$value": "{font.weight.medium}"
+      }
+    },
+    "caption": {
+      "family": {
+        "$value": "{font.family.sans}"
+      },
+      "size": {
+        "$value": "{font.size.100}"
+      },
+      "line-height": {
+        "$value": "{font.line-height.snug}"
+      },
+      "weight": {
+        "$value": "{font.weight.regular}"
+      }
+    },
+    "code": {
+      "family": {
+        "$value": "{font.family.mono}"
+      },
+      "size": {
+        "$value": "{font.size.200}"
+      },
+      "line-height": {
+        "$value": "{font.line-height.normal}"
+      },
+      "weight": {
+        "$value": "{font.weight.regular}"
+      }
+    }
+  }
+}

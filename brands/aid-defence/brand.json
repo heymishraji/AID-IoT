@@ -1,0 +1,8 @@
+{
+  "id": "aid-defence",
+  "name": "AID Defence",
+  "role": "brand",
+  "status": "draft",
+  "modules": ["symbology", "classification"],
+  "description": "Specialised defence products (NAVIC CMS, Lighthouse, ADS). Voice: mature, clear, discreet. No visual decisions yet; all values are placeholders."
+}

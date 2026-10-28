@@ -1,0 +1,81 @@
+{
+  "$description": "Brand roles. The ONLY place this brand's identity enters the system: semantic tokens reference brand.*, never palette.*. A rebrand edits this file and palette.tokens.json; nothing else changes.",
+  "brand": {
+    "color": {
+      "primary": {
+        "base": {
+          "$value": "{palette.placeholder-logo-orange.700}",
+          "$description": "Primary brand colour on light surfaces (actions, links)."
+        },
+        "hover": {
+          "$value": "{palette.placeholder-logo-orange.800}"
+        },
+        "subtle": {
+          "$value": "{palette.placeholder-logo-orange.100}",
+          "$description": "Tinted brand surface."
+        },
+        "on": {
+          "$value": "{color.neutral.0}",
+          "$description": "Text/icon on primary.base."
+        }
+      },
+      "primary-dark": {
+        "base": {
+          "$value": "{palette.placeholder-logo-orange.300}",
+          "$description": "Primary brand colour on dark surfaces."
+        },
+        "hover": {
+          "$value": "{palette.placeholder-logo-orange.100}"
+        },
+        "subtle": {
+          "$value": "{palette.placeholder-logo-orange.900}"
+        },
+        "on": {
+          "$value": "{color.neutral.1000}"
+        }
+      },
+      "accent": {
+        "base": {
+          "$value": "{palette.placeholder-logo-green.700}",
+          "$description": "Secondary brand colour: highlights and illustration, used sparingly."
+        },
+        "on": {
+          "$value": "{color.neutral.0}"
+        },
+        "dark": {
+          "$value": "{palette.placeholder-logo-green.300}"
+        },
+        "on-dark": {
+          "$value": "{color.neutral.1000}"
+        }
+      },
+      "data-viz": {
+        "1": {
+          "$value": "{palette.placeholder-logo-orange.500}"
+        },
+        "2": {
+          "$value": "{palette.placeholder-logo-blue.500}"
+        },
+        "3": {
+          "$value": "{palette.placeholder-logo-green.500}"
+        },
+        "4": {
+          "$value": "{palette.placeholder-logo-orange.300}"
+        },
+        "5": {
+          "$value": "{palette.placeholder-logo-blue.300}"
+        },
+        "6": {
+          "$value": "{palette.placeholder-logo-green.300}"
+        }
+      }
+    },
+    "font": {
+      "accent": {
+        "$type": "fontFamily",
+        "$value": "{font.family.sans}",
+        "$description": "Optional per-brand accent face (display only). Defaults to the shared family."
+      }
+    }
+  }
+}

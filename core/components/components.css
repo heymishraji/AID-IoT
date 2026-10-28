@@ -1,0 +1,100 @@
+/*
+ * Core reference components · STRUCTURE ONLY, shared by every brand.
+ * Rule: reference semantic or protected tokens only (var(--aid-color-*), --aid-type-*, --aid-space-inset-*, …).
+ * Never a hex/rgb/hsl literal, never a primitive (--aid-color-neutral-*, --aid-space-<n>), never --aid-palette-* or --aid-brand-*.
+ * `npm run check` enforces this. A brand changes how these look only by changing its tokens.
+ */
+
+.aid-surface {
+  background: var(--aid-color-surface-canvas);
+  color: var(--aid-color-text-primary);
+  font-family: var(--aid-type-body-family);
+  font-size: var(--aid-type-body-size);
+  line-height: var(--aid-type-body-line-height);
+}
+
+.aid-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--aid-space-inline-sm);
+  min-height: var(--aid-size-control-height);
+  min-width: var(--aid-size-control-height);
+  padding-inline: var(--aid-space-inset-md);
+  border: var(--aid-border-width-default) solid transparent;
+  border-radius: var(--aid-radius-control);
+  font: inherit;
+  font-size: var(--aid-type-label-size);
+  font-weight: var(--aid-type-label-weight);
+  line-height: var(--aid-type-label-line-height);
+  cursor: pointer;
+  transition: background-color var(--aid-motion-feedback-duration) var(--aid-motion-feedback-easing);
+}
+.aid-button--primary { background: var(--aid-color-action-primary-bg); color: var(--aid-color-action-primary-fg); }
+.aid-button--primary:hover { background: var(--aid-color-action-primary-bg-hover); }
+.aid-button--secondary {
+  background: var(--aid-color-action-secondary-bg);
+  color: var(--aid-color-action-secondary-fg);
+  border-color: var(--aid-color-action-secondary-border);
+}
+.aid-button--secondary:hover { background: var(--aid-color-action-secondary-bg-hover); }
+
+:where(.aid-button, .aid-field, a):focus-visible {
+  outline: var(--aid-focus-ring-width) solid var(--aid-focus-ring-color);
+  outline-offset: var(--aid-focus-ring-offset);
+  box-shadow: 0 0 0 var(--aid-focus-ring-offset) var(--aid-focus-ring-halo);
+}
+
+.aid-field {
+  min-height: var(--aid-size-control-height);
+  padding-inline: var(--aid-space-inset-sm);
+  border: var(--aid-border-width-default) solid var(--aid-color-border-strong);
+  border-radius: var(--aid-radius-control);
+  background: var(--aid-color-surface-default);
+  color: var(--aid-color-text-primary);
+  font: inherit;
+}
+
+.aid-card {
+  background: var(--aid-color-surface-raised);
+  color: var(--aid-color-text-primary);
+  border: var(--aid-border-width-default) solid var(--aid-color-border-default);
+  border-radius: var(--aid-radius-container);
+  padding: var(--aid-space-inset-lg);
+}
+
+/* Status pill: protected six-level model. <span class="aid-status" data-status="caution">Caution</span> */
+.aid-status {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--aid-space-inset-xs) var(--aid-space-inset-sm);
+  border-radius: var(--aid-radius-pill);
+  font-size: var(--aid-type-caption-size);
+  font-weight: var(--aid-type-label-weight);
+}
+.aid-status[data-status="off"] { background: var(--aid-status-off-fill); color: var(--aid-status-off-on-fill); }
+.aid-status[data-status="standby"] { background: var(--aid-status-standby-fill); color: var(--aid-status-standby-on-fill); }
+.aid-status[data-status="normal"] { background: var(--aid-status-normal-fill); color: var(--aid-status-normal-on-fill); }
+.aid-status[data-status="caution"] { background: var(--aid-status-caution-fill); color: var(--aid-status-caution-on-fill); }
+.aid-status[data-status="serious"] { background: var(--aid-status-serious-fill); color: var(--aid-status-serious-on-fill); }
+.aid-status[data-status="critical"] { background: var(--aid-status-critical-fill); color: var(--aid-status-critical-on-fill); }
+
+/* Classification banner: only defined for brands with the `classification` module. */
+.aid-classification {
+  display: block;
+  padding-block: var(--aid-space-inset-xs);
+  text-align: center;
+  font-size: var(--aid-type-label-size);
+  font-weight: var(--aid-type-heading-3-weight);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.aid-classification[data-level="unclassified"] { background: var(--aid-classification-unclassified-bg); color: var(--aid-classification-unclassified-fg); }
+.aid-classification[data-level="restricted"] { background: var(--aid-classification-restricted-bg); color: var(--aid-classification-restricted-fg); }
+.aid-classification[data-level="confidential"] { background: var(--aid-classification-confidential-bg); color: var(--aid-classification-confidential-fg); }
+.aid-classification[data-level="secret"] { background: var(--aid-classification-secret-bg); color: var(--aid-classification-secret-fg); }
+.aid-classification[data-level="top-secret"] { background: var(--aid-classification-top-secret-bg); color: var(--aid-classification-top-secret-fg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .aid-button { transition: none; }
+}

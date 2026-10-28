@@ -1,0 +1,120 @@
+{
+  "$description": "PROTECTED namespace `status` · no brand may override. Astro UXDS six-level status model. Values are Astro reference fills used as PLACEHOLDERS until contrast-tested in every mode.",
+  "status": {
+    "$type": "color",
+    "$extensions": {
+      "org.aid.library": {
+        "protected": true,
+        "placeholder": true
+      }
+    },
+    "off": {
+      "fill": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.6431,
+            0.6706,
+            0.7137
+          ],
+          "hex": "#a4abb6"
+        },
+        "$description": "Unavailable, disabled or not reporting."
+      },
+      "on-fill": {
+        "$value": "{color.neutral.1000}"
+      }
+    },
+    "standby": {
+      "fill": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.1765,
+            0.8,
+            1
+          ],
+          "hex": "#2dccff"
+        },
+        "$description": "Available but not active."
+      },
+      "on-fill": {
+        "$value": "{color.neutral.1000}"
+      }
+    },
+    "normal": {
+      "fill": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.3373,
+            0.9412,
+            0
+          ],
+          "hex": "#56f000"
+        },
+        "$description": "Operating as expected."
+      },
+      "on-fill": {
+        "$value": "{color.neutral.1000}"
+      }
+    },
+    "caution": {
+      "fill": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9882,
+            0.9098,
+            0.2275
+          ],
+          "hex": "#fce83a"
+        },
+        "$description": "Needs attention soon; not yet degrading the mission."
+      },
+      "on-fill": {
+        "$value": "{color.neutral.1000}"
+      }
+    },
+    "serious": {
+      "fill": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.702,
+            0.0078
+          ],
+          "hex": "#ffb302"
+        },
+        "$description": "Degraded; act now."
+      },
+      "on-fill": {
+        "$value": "{color.neutral.1000}"
+      }
+    },
+    "critical": {
+      "fill": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.2196,
+            0.2196
+          ],
+          "hex": "#ff3838"
+        },
+        "$description": "Failure or threat; act immediately."
+      },
+      "on-fill": {
+        "$value": "{color.neutral.1000}"
+      }
+    }
+  }
+}

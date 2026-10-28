@@ -1,0 +1,44 @@
+{
+  "$description": "PROTECTED namespace `focus` · accessibility. No brand may override. Two-tone ring (colour + halo) so it is visible on any surface in any mode. PLACEHOLDER colour.",
+  "focus": {
+    "$extensions": {
+      "org.aid.library": {
+        "protected": true,
+        "placeholder": true
+      }
+    },
+    "ring": {
+      "color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.0431,
+            0.3725,
+            1
+          ],
+          "hex": "#0b5fff"
+        },
+        "$description": "Focus ring colour."
+      },
+      "halo": {
+        "$value": "{color.neutral.0}",
+        "$description": "Inner halo that separates the ring from the component."
+      },
+      "width": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2,
+          "unit": "px"
+        }
+      },
+      "offset": {
+        "$type": "dimension",
+        "$value": {
+          "value": 2,
+          "unit": "px"
+        }
+      }
+    }
+  }
+}

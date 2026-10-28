@@ -1,0 +1,162 @@
+{
+  "$description": "Tier 2 · semantic colour · NIGHT mode (Lighthouse and operator consoles). BRAND-IMMUNE by design: no brand.* references, low luminance, red-shifted. Status/symbology/classification keep their protected values; a night-adapted protected set is an open question.",
+  "color": {
+    "text": {
+      "primary": {
+        "$value": "{color.night.800}"
+      },
+      "secondary": {
+        "$value": "{color.night.700}"
+      },
+      "muted": {
+        "$value": "{color.night.500}"
+      },
+      "inverse": {
+        "$value": "{color.night.50}"
+      },
+      "link": {
+        "$value": "{color.night.900}"
+      },
+      "on-action": {
+        "$value": "{color.night.50}"
+      }
+    },
+    "surface": {
+      "canvas": {
+        "$value": "{color.night.0}"
+      },
+      "default": {
+        "$value": "{color.night.50}"
+      },
+      "raised": {
+        "$value": "{color.night.100}"
+      },
+      "sunken": {
+        "$value": "{color.night.0}"
+      },
+      "inverse": {
+        "$value": "{color.night.800}"
+      },
+      "brand": {
+        "$value": "{color.night.200}"
+      }
+    },
+    "border": {
+      "subtle": {
+        "$value": "{color.night.100}"
+      },
+      "default": {
+        "$value": "{color.night.200}"
+      },
+      "strong": {
+        "$value": "{color.night.300}"
+      }
+    },
+    "action": {
+      "primary": {
+        "bg": {
+          "$value": "{color.night.700}"
+        },
+        "bg-hover": {
+          "$value": "{color.night.800}"
+        },
+        "fg": {
+          "$value": "{color.night.50}"
+        }
+      },
+      "secondary": {
+        "bg": {
+          "$value": "{color.night.50}"
+        },
+        "bg-hover": {
+          "$value": "{color.night.100}"
+        },
+        "fg": {
+          "$value": "{color.night.800}"
+        },
+        "border": {
+          "$value": "{color.night.300}"
+        }
+      },
+      "accent": {
+        "bg": {
+          "$value": "{color.night.500}"
+        },
+        "fg": {
+          "$value": "{color.night.900}"
+        }
+      }
+    },
+    "feedback": {
+      "info": {
+        "fg": {
+          "$value": "{color.night.800}"
+        },
+        "bg": {
+          "$value": "{color.night.100}"
+        },
+        "border": {
+          "$value": "{color.night.300}"
+        }
+      },
+      "success": {
+        "fg": {
+          "$value": "{color.night.800}"
+        },
+        "bg": {
+          "$value": "{color.night.100}"
+        },
+        "border": {
+          "$value": "{color.night.300}"
+        }
+      },
+      "warning": {
+        "fg": {
+          "$value": "{color.night.900}"
+        },
+        "bg": {
+          "$value": "{color.night.200}"
+        },
+        "border": {
+          "$value": "{color.night.500}"
+        }
+      },
+      "danger": {
+        "fg": {
+          "$value": "{color.night.900}"
+        },
+        "bg": {
+          "$value": "{color.night.300}"
+        },
+        "border": {
+          "$value": "{color.night.700}"
+        }
+      }
+    },
+    "data-viz": {
+      "categorical": {
+        "1": {
+          "$value": "{color.night.900}"
+        },
+        "2": {
+          "$value": "{color.night.800}"
+        },
+        "3": {
+          "$value": "{color.night.700}"
+        },
+        "4": {
+          "$value": "{color.night.500}"
+        },
+        "5": {
+          "$value": "{color.night.300}"
+        },
+        "6": {
+          "$value": "{color.night.200}"
+        }
+      },
+      "neutral": {
+        "$value": "{color.night.300}"
+      }
+    }
+  }
+}

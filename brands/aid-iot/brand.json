@@ -1,0 +1,8 @@
+{
+  "id": "aid-iot",
+  "name": "AID IoT",
+  "role": "brand",
+  "status": "draft",
+  "modules": [],
+  "description": "IoT products and solutions (hardware, software, or both). Voice: a solver that understands the problem first. No visual decisions yet; all values are placeholders."
+}

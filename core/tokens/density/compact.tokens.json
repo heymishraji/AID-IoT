@@ -1,0 +1,59 @@
+{
+  "$description": "Tier 2 · semantic · density COMPACT: pointer-driven operator consoles and data tables only. Never for touch surfaces.",
+  "space": {
+    "inset": {
+      "xs": {
+        "$value": "{space.1}"
+      },
+      "sm": {
+        "$value": "{space.1}"
+      },
+      "md": {
+        "$value": "{space.2}"
+      },
+      "lg": {
+        "$value": "{space.4}"
+      }
+    },
+    "stack": {
+      "xs": {
+        "$value": "{space.1}"
+      },
+      "sm": {
+        "$value": "{space.1}"
+      },
+      "md": {
+        "$value": "{space.2}"
+      },
+      "lg": {
+        "$value": "{space.4}"
+      },
+      "xl": {
+        "$value": "{space.6}"
+      }
+    },
+    "inline": {
+      "xs": {
+        "$value": "{space.1}"
+      },
+      "sm": {
+        "$value": "{space.1}"
+      },
+      "md": {
+        "$value": "{space.2}"
+      }
+    }
+  },
+  "size": {
+    "control": {
+      "height": {
+        "$type": "dimension",
+        "$value": {
+          "value": 32,
+          "unit": "px"
+        },
+        "$description": "Pointer-only. Interactive hit area must still be padded to size.target.min where touch is possible."
+      }
+    }
+  }
+}

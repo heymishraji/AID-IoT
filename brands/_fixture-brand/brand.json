@@ -1,0 +1,8 @@
+{
+  "id": "_fixture-brand",
+  "name": "Fixture Brand",
+  "role": "fixture",
+  "status": "draft",
+  "modules": ["symbology", "classification"],
+  "description": "TEST FIXTURE, never shipped. Deliberately garish values and a different accent face; CI builds it to prove nothing hard-codes a real brand's values."
+}

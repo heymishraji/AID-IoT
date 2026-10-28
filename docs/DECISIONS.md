@@ -11,3 +11,6 @@
 2026-10-27 · Library is internal; the user is the sole owner of releases and versioning · user decision
 2026-10-27 · Logo kept for now, but open to evolution or full replacement with a story · it currently has no meaning or customer recognition · locking the current mark rejected
 2026-10-27 · AI imagery is the default (ChatGPT image gen, Figma); mood boards in Figma · real sites and kit cannot be shown · photo shoots deferred
+2026-10-28 · Library lives in this repo (core/ + brands/), each brand exportable as a self-contained package checked for isolation · user requirement for separate brand repos · a separate aid-brand repo rejected for now (export covers it)
+2026-10-28 · Full VOICE.md and STRATEGY.md live in brands/<brand>/ so they travel with the export; cross-brand rules stay in docs/brand/ · export must carry them · keeping them under docs/brand rejected
+2026-10-28 · Brand folders never name the other brand ("the parent company's other brand") · enforced by the isolation check · allowing names rejected because exports would leak
