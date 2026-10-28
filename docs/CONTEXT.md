@@ -29,9 +29,8 @@ _Last rewritten: 2026-10-28_
 ## Research (do not auto-load): docs/research/
 01 brand anatomy · 02 open-source DS · 03 tokens · 04 LLM library + skills · 05 domain · 06 collateral ·
 07 IoT competitors · 08 defence competitors · 09 multi-product/multi-brand · 10 modern brands, rebrands, fonts.
-Synthesis page (written before the house-of-brands decision; sections 02 and 11 are out of date):
-https://claude.ai/artifact/HH6YJ7DN16ZXoF9GUJSr7w is the questionnaire; the synthesis is
-https://claude.ai/artifact/HG3jJSpQnwoMZ4YnwW4zUM
+Synthesis page (reports 01–06 only; written before the house-of-brands decision, so sections 02 and 11
+are out of date): https://claude.ai/artifact/HG3jJSpQnwoMZ4YnwW4zUM
 
 ## Working recommendations (not yet approved)
 - Strategy v0: AID IoT "Understood first. Built to fit."; CTA "Tell us the problem". AID Defence "established
