@@ -24,12 +24,29 @@ Do NOT load `docs/research/*` unless a task needs the evidence; they are large r
 - Keep the current logo (`assets/brand/aid-iot-mark.*`) until the team decides otherwise.
 
 ## Documentation discipline
-- End of every working session: rewrite `docs/CONTEXT.md`, rewrite `docs/NEXT.md`,
-  append to `docs/DECISIONS.md` (one line: date · decision · why · alternatives rejected).
+- End of every working session: rewrite `docs/CONTEXT.md`, rewrite `docs/NEXT.md`, and update
+  `docs/DECISIONS.md` (open items under "Open"; decided items appended to "Log").
+- After any change to DECISIONS.md: run `npm run decisions` and republish `docs/decisions.html` to the
+  decision tracker artifact (https://claude.ai/artifact/XJfR1n8t9czc79kuS1ARhA).
 - Never paste research into CONTEXT; link to `docs/research/` instead.
 - Every deliverable ends with "Next steps" and the reason each step is next.
+
+## New machine or cloud session
+- Run `bash scripts/setup.sh` once (installs the graphify CLI and npm dependencies).
+- After changing docs or code, run `graphify update .` and commit `graphify-out/`.
 
 ## Conventions
 - British English. Plain language first, engineering detail one level down.
 - Accessibility: WCAG 2.2 AA minimum, 44px targets, reduced-motion states designed.
-- Commit small and often; commit messages say what and why.
+- Commit small and often; commit messages say what and why. Push to GitHub when each piece of work is done.
+
+## graphify
+
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+
+Rules:
+- When graphify-out/graph.json exists, run `graphify query "<question>"` before your first grep, search or source-file read for a codebase question, and put this rule in every subagent prompt that explores code. Read raw files only for lines the graph or an earlier read already located. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
+- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
+- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
+- A committed graphify-out/graph.json is rewritten whole on every build, so a large diff to it in a pull request is expected. Do not flag it as churn or suggest skipping the graph rebuild or its hooks.

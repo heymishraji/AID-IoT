@@ -3,3 +3,5 @@ node_modules/
 *.log
 .env*
 dist/
+graphify-out/.graphify_python
+graphify-out/.graphify_root

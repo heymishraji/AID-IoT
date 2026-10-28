@@ -200,6 +200,43 @@ await test('export isolation + standalone build for each brand', async () => {
   return { problems, detail: details.join(' · ') };
 });
 
+// WCAG 2.x contrast for the semantic pairs people actually read. Text needs 4.5:1, non-text UI 3:1.
+const CONTRAST_PAIRS = [
+  ...['primary', 'secondary', 'muted'].flatMap((t) => ['canvas', 'default', 'sunken'].map((s) => [`text-${t}`, `surface-${s}`, 4.5])),
+  ['text-link', 'surface-default', 4.5],
+  ['text-inverse', 'surface-inverse', 4.5],
+  ['action-primary-fg', 'action-primary-bg', 4.5],
+  ['action-primary-fg', 'action-primary-bg-hover', 4.5],
+  ['action-secondary-fg', 'action-secondary-bg', 4.5],
+  ['action-accent-fg', 'action-accent-bg', 4.5],
+  ...['info', 'success', 'warning', 'danger'].map((f) => [`feedback-${f}-fg`, `feedback-${f}-bg`, 4.5]),
+  ['border-strong', 'surface-default', 3],
+];
+const luminance = (hex) => {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+    .map((c) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+const ratio = (a, b) => { const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x); return (hi + 0.05) / (lo + 0.05); };
+
+await test('colour contrast (WCAG AA) for every brand × mode', () => {
+  const problems = [];
+  let pairs = 0;
+  for (const b of real) for (const mode of MODES) {
+    const file = path.join(ROOT, 'dist', b.id, 'json', `${mode}.json`);
+    if (!fs.existsSync(file)) continue;
+    const t = readJson(file);
+    for (const [fg, bg, min] of CONTRAST_PAIRS) {
+      const [f, k] = [t[`aid-color-${fg}`], t[`aid-color-${bg}`]];
+      if (!/^#[0-9a-f]{6}/i.test(f ?? '') || !/^#[0-9a-f]{6}/i.test(k ?? '')) continue;
+      pairs++;
+      const r = ratio(f, k);
+      if (r < min) problems.push(`${b.id}/${mode}: ${fg} on ${bg} = ${r.toFixed(2)}:1 (needs ${min}:1)`);
+    }
+  }
+  return { problems, detail: `${pairs} pairs` };
+});
+
 let failed = 0;
 for (const [status, name, info] of results) {
   if (status === 'FAIL') failed++;

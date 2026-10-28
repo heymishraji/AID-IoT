@@ -1,6 +1,6 @@
 # Context — AID brand system + design system
 
-_Last rewritten: 2026-10-28_
+_Last rewritten: 2026-10-28 (graphify, decision tracker, contrast check)_
 
 ## State
 - Fresh start on 2026-10-27; the old website work is in git tag `archive/website-v3`.
@@ -15,6 +15,12 @@ _Last rewritten: 2026-10-28_
 - "Defence" spelling. One Google Fonts sans family for all brands. Logo open to evolve or be replaced.
 - Tools: Google Slides, Figma (paid, MCP), Canva, Claude, ChatGPT, Codex, Claude Code. Internal library;
   the user owns releases. AI imagery by default. Lighthouse needs symbology, classification banners, night mode.
+
+## Tooling
+- graphify knowledge graph in `graphify-out/` (507 nodes, 23 groups). Query it before reading research:
+  `graphify query "<question>"`. Setup on a new machine: `bash scripts/setup.sh`.
+- Decision tracker: `npm run decisions` → docs/decisions.html → https://claude.ai/artifact/XJfR1n8t9czc79kuS1ARhA
+- `npm run check` now includes WCAG AA contrast for every brand × mode (180 pairs, all passing).
 
 ## Where things live
 - `AGENTS.md`, `INDEX.md`: agent routers. `docs/LIBRARY.md`: how the library works.
@@ -41,4 +47,5 @@ are out of date): https://claude.ai/artifact/HG3jJSpQnwoMZ4YnwW4zUM
 - Naming risks: NAVIC (ISRO), Cortex (Arm), Lighthouse (Google, DGLL).
 
 ## Pending with the user
-Usage fix: approve settings change 1 (CLAUDE_CODE_SUBAGENT_MODEL=sonnet) and/or memory change 2.
+- Usage fix: approve settings change 1 (CLAUDE_CODE_SUBAGENT_MODEL=sonnet) and/or memory change 2.
+- Approve a SessionStart hook in .claude/settings.json that runs scripts/setup.sh (blocked by auto mode).

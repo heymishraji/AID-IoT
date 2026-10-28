@@ -484,26 +484,14 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.4784,
-            0.1216,
-            0.102
+            0.6588,
+            0.1882,
+            0.1647
           ],
-          "hex": "#7a1f1a"
+          "hex": "#a8302a"
         }
       },
       "700": {
-        "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.7098,
-            0.2078,
-            0.1686
-          ],
-          "hex": "#b5352b"
-        }
-      },
-      "800": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
@@ -515,7 +503,7 @@
           "hex": "#d9584a"
         }
       },
-      "900": {
+      "800": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
@@ -525,6 +513,18 @@
             0.4784
           ],
           "hex": "#f08a7a"
+        }
+      },
+      "900": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1.0,
+            0.7216,
+            0.6706
+          ],
+          "hex": "#ffb8ab"
         }
       },
       "$description": "PLACEHOLDER night-mode ramp: low-luminance, red-shifted to protect dark adaptation (operator consoles, NVG-adjacent use). Brand-immune."

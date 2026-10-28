@@ -1,0 +1,326 @@
+{
+  "brands/_fixture-brand/brand.json": {
+    "mtime": 1793115035.9848077,
+    "seen": 1793179247.637568,
+    "ast_hash": "90ef600af02cd7f153aae440deeca05c",
+    "semantic_hash": "90ef600af02cd7f153aae440deeca05c"
+  },
+  "brands/aid-defence/brand.json": {
+    "mtime": 1793115035.9640558,
+    "seen": 1793179247.6375759,
+    "ast_hash": "f2010b052b5fb14b04d29adf575f1907",
+    "semantic_hash": "f2010b052b5fb14b04d29adf575f1907"
+  },
+  "brands/aid-iot/brand.json": {
+    "mtime": 1793115035.9475012,
+    "seen": 1793179247.637578,
+    "ast_hash": "c533586e254156b8d2c2828290937bbd",
+    "semantic_hash": "c533586e254156b8d2c2828290937bbd"
+  },
+  "brands/inordinate/brand.json": {
+    "mtime": 1793115035.9733424,
+    "seen": 1793179247.637579,
+    "ast_hash": "57a67d4b13eae4052ad3b4dccbb1ea3a",
+    "semantic_hash": "57a67d4b13eae4052ad3b4dccbb1ea3a"
+  },
+  "package.json": {
+    "mtime": 1793179098.7619238,
+    "seen": 1793179247.63758,
+    "ast_hash": "51237127dbccd607fa35acbfbfd0d69c",
+    "semantic_hash": "51237127dbccd607fa35acbfbfd0d69c"
+  },
+  "scripts/build.mjs": {
+    "mtime": 1793177100.9789798,
+    "seen": 1793179247.637581,
+    "ast_hash": "b3500729027207ad3cb0fc2ec92da01d",
+    "semantic_hash": "b3500729027207ad3cb0fc2ec92da01d"
+  },
+  "scripts/check.mjs": {
+    "mtime": 1793179135.1938326,
+    "seen": 1793179247.637582,
+    "ast_hash": "dd9777a32dc546fc8163880bba3d31e9",
+    "semantic_hash": "dd9777a32dc546fc8163880bba3d31e9"
+  },
+  "scripts/export.mjs": {
+    "mtime": 1793115198.2675457,
+    "seen": 1793179247.637582,
+    "ast_hash": "afee9211fecefdefd5c94ab7c47e4457",
+    "semantic_hash": "afee9211fecefdefd5c94ab7c47e4457"
+  },
+  "scripts/lib.mjs": {
+    "mtime": 1793114944.8415458,
+    "seen": 1793179247.637583,
+    "ast_hash": "dfe4b39b945b68cd90938c6295dd1116",
+    "semantic_hash": "dfe4b39b945b68cd90938c6295dd1116"
+  },
+  "scripts/setup.sh": {
+    "mtime": 1793178969.4718952,
+    "seen": 1793179247.637584,
+    "ast_hash": "9a6628e9ec49c93b8abaa75b7bfd6c93",
+    "semantic_hash": "9a6628e9ec49c93b8abaa75b7bfd6c93"
+  },
+  "AGENTS.md": {
+    "mtime": 1793115307.5582836,
+    "seen": 1793179247.637585,
+    "ast_hash": "2df9d45e0f4e7bbbf90ef11e4abb8bca",
+    "semantic_hash": "2df9d45e0f4e7bbbf90ef11e4abb8bca"
+  },
+  "CHANGELOG.md": {
+    "mtime": 1793115309.1101348,
+    "seen": 1793179247.637585,
+    "ast_hash": "11a4aa6ce962f6da5ce5f9ebce50a081",
+    "semantic_hash": "11a4aa6ce962f6da5ce5f9ebce50a081"
+  },
+  "CLAUDE.md": {
+    "mtime": 1793178918.2773993,
+    "seen": 1793179247.6375859,
+    "ast_hash": "8a8682f7e254eb148d7cb3673335afc8",
+    "semantic_hash": "8a8682f7e254eb148d7cb3673335afc8"
+  },
+  "INDEX.md": {
+    "mtime": 1793115308.3306515,
+    "seen": 1793179247.6375868,
+    "ast_hash": "dde1538676f66ef682e04eaf547526df",
+    "semantic_hash": "dde1538676f66ef682e04eaf547526df"
+  },
+  "README.md": {
+    "mtime": 1793108176.5540805,
+    "seen": 1793179247.637588,
+    "ast_hash": "fdede63a89f961e56a594fc3d0e815d5",
+    "semantic_hash": "fdede63a89f961e56a594fc3d0e815d5"
+  },
+  "brands/aid-defence/AGENTS.md": {
+    "mtime": 1793115380.3035543,
+    "seen": 1793179247.637588,
+    "ast_hash": "e78835efa8fd6f09762d660f8f5ca1ea",
+    "semantic_hash": "e78835efa8fd6f09762d660f8f5ca1ea"
+  },
+  "brands/aid-defence/DESIGN.md": {
+    "mtime": 1793179202.0330057,
+    "seen": 1793179247.637589,
+    "ast_hash": "49bb54795dfab17c4a22c6392d79218e",
+    "semantic_hash": "49bb54795dfab17c4a22c6392d79218e"
+  },
+  "brands/aid-defence/STRATEGY.md": {
+    "mtime": 1793177250.4724994,
+    "seen": 1793179247.63759,
+    "ast_hash": "1bf3d2e6701445740859cff98eb027c1",
+    "semantic_hash": "1bf3d2e6701445740859cff98eb027c1"
+  },
+  "brands/aid-defence/VOICE.md": {
+    "mtime": 1793177250.4509408,
+    "seen": 1793179247.63759,
+    "ast_hash": "b186c741c190d87d9ef80610f7e01d93",
+    "semantic_hash": "b186c741c190d87d9ef80610f7e01d93"
+  },
+  "brands/aid-defence/assets/README.md": {
+    "mtime": 1793115380.3218105,
+    "seen": 1793179247.6375911,
+    "ast_hash": "4b4cfc44e90e389680a563aa2477d65d",
+    "semantic_hash": "4b4cfc44e90e389680a563aa2477d65d"
+  },
+  "brands/aid-defence/skills/aid-defence-brand/SKILL.md": {
+    "mtime": 1793115380.3640404,
+    "seen": 1793179247.637592,
+    "ast_hash": "d40f61a7c6515e6cb03537fb546998cd",
+    "semantic_hash": "d40f61a7c6515e6cb03537fb546998cd"
+  },
+  "brands/aid-defence/templates/README.md": {
+    "mtime": 1793115380.342239,
+    "seen": 1793179247.637593,
+    "ast_hash": "a391972d314995d19c5dec32eb286f13",
+    "semantic_hash": "a391972d314995d19c5dec32eb286f13"
+  },
+  "brands/aid-iot/AGENTS.md": {
+    "mtime": 1793115350.5716202,
+    "seen": 1793179247.6375942,
+    "ast_hash": "ebbf87f499fedfecd941c91b31fb75da",
+    "semantic_hash": "ebbf87f499fedfecd941c91b31fb75da"
+  },
+  "brands/aid-iot/DESIGN.md": {
+    "mtime": 1793179202.1266816,
+    "seen": 1793179247.6375942,
+    "ast_hash": "8646d7ea1d1796669573193cb8048ce6",
+    "semantic_hash": "8646d7ea1d1796669573193cb8048ce6"
+  },
+  "brands/aid-iot/STRATEGY.md": {
+    "mtime": 1793177250.4397953,
+    "seen": 1793179247.637595,
+    "ast_hash": "62b666c3faa432027179389c8df84bf3",
+    "semantic_hash": "62b666c3faa432027179389c8df84bf3"
+  },
+  "brands/aid-iot/VOICE.md": {
+    "mtime": 1793177250.402552,
+    "seen": 1793179247.637596,
+    "ast_hash": "7a2874dd8510cb52940c9e8703f6e8e1",
+    "semantic_hash": "7a2874dd8510cb52940c9e8703f6e8e1"
+  },
+  "brands/aid-iot/assets/README.md": {
+    "mtime": 1793115350.5851576,
+    "seen": 1793179247.6375968,
+    "ast_hash": "b3f926457748861000ef7733e4c59901",
+    "semantic_hash": "b3f926457748861000ef7733e4c59901"
+  },
+  "brands/aid-iot/skills/aid-iot-brand/SKILL.md": {
+    "mtime": 1793115350.6423073,
+    "seen": 1793179247.637598,
+    "ast_hash": "367debdd8cd1bfb359fa402a4139718a",
+    "semantic_hash": "367debdd8cd1bfb359fa402a4139718a"
+  },
+  "brands/aid-iot/templates/README.md": {
+    "mtime": 1793115350.5985432,
+    "seen": 1793179247.637598,
+    "ast_hash": "1dcf7cfc5dfb65df07bb24e7aadb00eb",
+    "semantic_hash": "1dcf7cfc5dfb65df07bb24e7aadb00eb"
+  },
+  "brands/inordinate/AGENTS.md": {
+    "mtime": 1793115405.3091786,
+    "seen": 1793179247.637599,
+    "ast_hash": "e1ee533a50230019a1de9600058c40c6",
+    "semantic_hash": "e1ee533a50230019a1de9600058c40c6"
+  },
+  "brands/inordinate/DESIGN.md": {
+    "mtime": 1793179202.227732,
+    "seen": 1793179247.6376,
+    "ast_hash": "f20a986d9dbffc478ec599d833c7e588",
+    "semantic_hash": "f20a986d9dbffc478ec599d833c7e588"
+  },
+  "brands/inordinate/VOICE.md": {
+    "mtime": 1793115405.296427,
+    "seen": 1793179247.6376011,
+    "ast_hash": "5732d3c51f4fba71cb0f7772f0304331",
+    "semantic_hash": "5732d3c51f4fba71cb0f7772f0304331"
+  },
+  "brands/inordinate/assets/README.md": {
+    "mtime": 1793115405.3240502,
+    "seen": 1793179247.6376011,
+    "ast_hash": "dbe6fd9f16294a088171a8687c698416",
+    "semantic_hash": "dbe6fd9f16294a088171a8687c698416"
+  },
+  "brands/inordinate/skills/inordinate-legal-docs/SKILL.md": {
+    "mtime": 1793115405.3869736,
+    "seen": 1793179247.637602,
+    "ast_hash": "64d0ed7c0bc677336bc7375d016e9222",
+    "semantic_hash": "64d0ed7c0bc677336bc7375d016e9222"
+  },
+  "brands/inordinate/templates/README.md": {
+    "mtime": 1793115405.3434935,
+    "seen": 1793179247.637603,
+    "ast_hash": "8121c950f8afa87a6c22146fc105fda1",
+    "semantic_hash": "8121c950f8afa87a6c22146fc105fda1"
+  },
+  "core/README.md": {
+    "mtime": 1793115321.9770017,
+    "seen": 1793179247.637604,
+    "ast_hash": "ac500502e11fe9f74f2777504efa7aa7",
+    "semantic_hash": "ac500502e11fe9f74f2777504efa7aa7"
+  },
+  "docs/CONTEXT.md": {
+    "mtime": 1793177286.3237727,
+    "seen": 1793179247.637604,
+    "ast_hash": "877c022e739257e111dca1a5e98cb962",
+    "semantic_hash": "877c022e739257e111dca1a5e98cb962"
+  },
+  "docs/DECISIONS.md": {
+    "mtime": 1793179060.136085,
+    "seen": 1793179247.6376052,
+    "ast_hash": "ec053d2d57dd20edfd806fc648518214",
+    "semantic_hash": "ec053d2d57dd20edfd806fc648518214"
+  },
+  "docs/LIBRARY.md": {
+    "mtime": 1793115440.080649,
+    "seen": 1793179247.637606,
+    "ast_hash": "7a96edff5f4f8b752ffdffdf2dd17e7c",
+    "semantic_hash": "7a96edff5f4f8b752ffdffdf2dd17e7c"
+  },
+  "docs/NEXT.md": {
+    "mtime": 1793177279.0316594,
+    "seen": 1793179247.6376069,
+    "ast_hash": "70ff20435f2890c9d8508d73ff0c4185",
+    "semantic_hash": "70ff20435f2890c9d8508d73ff0c4185"
+  },
+  "docs/PRODUCT-FACTS.md": {
+    "mtime": 1793112801.8183804,
+    "seen": 1793179247.6376069,
+    "ast_hash": "eb07968651fcab76070377f36bf4668d",
+    "semantic_hash": "eb07968651fcab76070377f36bf4668d"
+  },
+  "docs/brand/DISCOVERY.md": {
+    "mtime": 1793112801.8085973,
+    "seen": 1793179247.637608,
+    "ast_hash": "492307042af4f469b2067768336d0f9b",
+    "semantic_hash": "492307042af4f469b2067768336d0f9b"
+  },
+  "docs/brand/PARENT.md": {
+    "mtime": 1793114726.397833,
+    "seen": 1793179247.637609,
+    "ast_hash": "3cd7875d4d56defde66c4f58c7986925",
+    "semantic_hash": "3cd7875d4d56defde66c4f58c7986925"
+  },
+  "docs/brand/STRATEGY-CONTRAST.md": {
+    "mtime": 1793114736.4467165,
+    "seen": 1793179247.63761,
+    "ast_hash": "2dce544fee1c9c895347b5894956ce90",
+    "semantic_hash": "2dce544fee1c9c895347b5894956ce90"
+  },
+  "docs/research/01-brand-system-anatomy.md": {
+    "mtime": 1793107609.1723566,
+    "seen": 1793179247.637611,
+    "ast_hash": "18fd23d29ad5cf02501d52840a379589",
+    "semantic_hash": "18fd23d29ad5cf02501d52840a379589"
+  },
+  "docs/research/02-open-source-design-systems.md": {
+    "mtime": 1793107915.110009,
+    "seen": 1793179247.637612,
+    "ast_hash": "b247801e61a09512b051a114154619c3",
+    "semantic_hash": "b247801e61a09512b051a114154619c3"
+  },
+  "docs/research/03-token-architecture-multibrand.md": {
+    "mtime": 1793107318.6399114,
+    "seen": 1793179247.637612,
+    "ast_hash": "55c6e8a0887107e21d8fc698464104ed",
+    "semantic_hash": "55c6e8a0887107e21d8fc698464104ed"
+  },
+  "docs/research/04-llm-friendly-design-systems-and-skills.md": {
+    "mtime": 1793107935.6027842,
+    "seen": 1793179247.637613,
+    "ast_hash": "e9e6b6d42b4650a8a4a531daec8e2ff7",
+    "semantic_hash": "e9e6b6d42b4650a8a4a531daec8e2ff7"
+  },
+  "docs/research/05-domain-and-landscape.md": {
+    "mtime": 1793107378.4578211,
+    "seen": 1793179247.637614,
+    "ast_hash": "ddfc963fc3c4cd30d49b9ebfa84db449",
+    "semantic_hash": "ddfc963fc3c4cd30d49b9ebfa84db449"
+  },
+  "docs/research/06-collateral-and-templates.md": {
+    "mtime": 1793107288.3837109,
+    "seen": 1793179247.6376152,
+    "ast_hash": "e8edded0697dd316b1bfd76e1cb8c86f",
+    "semantic_hash": "e8edded0697dd316b1bfd76e1cb8c86f"
+  },
+  "docs/research/07-iot-competitors-and-exemplars.md": {
+    "mtime": 1793114735.2669044,
+    "seen": 1793179247.6376152,
+    "ast_hash": "1bc8a56eca0756ca64242af5f2cd1e97",
+    "semantic_hash": "1bc8a56eca0756ca64242af5f2cd1e97"
+  },
+  "docs/research/08-defence-competitors-and-exemplars.md": {
+    "mtime": 1793115022.3099098,
+    "seen": 1793179247.6376162,
+    "ast_hash": "a64fae7f18e3da768a236221d2acd3f2",
+    "semantic_hash": "a64fae7f18e3da768a236221d2acd3f2"
+  },
+  "docs/research/09-multi-product-and-multi-brand-exemplars.md": {
+    "mtime": 1793115424.3472517,
+    "seen": 1793179247.6376169,
+    "ast_hash": "f2a36aa28afd9c3b2739b8a8df553ea1",
+    "semantic_hash": "f2a36aa28afd9c3b2739b8a8df553ea1"
+  },
+  "docs/research/10-modern-brands-and-rebrands.md": {
+    "mtime": 1793115519.218774,
+    "seen": 1793179247.6376169,
+    "ast_hash": "29b66c1bfa2204907a044dc8bff0d5b8",
+    "semantic_hash": "29b66c1bfa2204907a044dc8bff0d5b8"
+  }
+}

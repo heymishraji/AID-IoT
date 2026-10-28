@@ -3,22 +3,22 @@
   "color": {
     "text": {
       "primary": {
-        "$value": "{color.night.800}"
+        "$value": "{color.night.900}"
       },
       "secondary": {
-        "$value": "{color.night.700}"
+        "$value": "{color.night.800}"
       },
       "muted": {
-        "$value": "{color.night.500}"
+        "$value": "{color.night.700}"
       },
       "inverse": {
-        "$value": "{color.night.50}"
+        "$value": "{color.night.0}"
       },
       "link": {
         "$value": "{color.night.900}"
       },
       "on-action": {
-        "$value": "{color.night.50}"
+        "$value": "{color.night.0}"
       }
     },
     "surface": {
@@ -49,7 +49,7 @@
         "$value": "{color.night.200}"
       },
       "strong": {
-        "$value": "{color.night.300}"
+        "$value": "{color.night.500}"
       }
     },
     "action": {
@@ -61,7 +61,7 @@
           "$value": "{color.night.800}"
         },
         "fg": {
-          "$value": "{color.night.50}"
+          "$value": "{color.night.0}"
         }
       },
       "secondary": {
@@ -80,10 +80,10 @@
       },
       "accent": {
         "bg": {
-          "$value": "{color.night.500}"
+          "$value": "{color.night.800}"
         },
         "fg": {
-          "$value": "{color.night.900}"
+          "$value": "{color.night.0}"
         }
       }
     },
