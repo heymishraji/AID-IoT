@@ -40,13 +40,13 @@ td.rej{color:var(--muted)}
 </style>
 <main>
   <header style="display:flex;flex-direction:column;gap:12px">
-    <span class="label">AID brand system · last decision 2026-10-28</span>
+    <span class="label">AID brand system · last decision 2026-10-29</span>
     <h1>Decision tracker</h1>
     <p class="muted">Every brand and design decision, with the reason and what was rejected, plus the decisions still open. Generated from <code>docs/DECISIONS.md</code>.</p>
     <div class="counts">
       <div class="count you"><span class="label">Waiting on you</span><b>5</b></div>
       <div class="count lead"><span class="label">Waiting on leadership</span><b>7</b></div>
-      <div class="count done"><span class="label">Decided</span><b>17</b></div>
+      <div class="count done"><span class="label">Decided</span><b>18</b></div>
     </div>
   </header>
 
@@ -173,6 +173,7 @@ td.rej{color:var(--muted)}
     <div class="tbl"><table>
       <thead><tr><th>Date</th><th>Decision</th><th>Why</th><th>Rejected</th></tr></thead>
       <tbody>
+        <tr><td class="date">2026-10-29</td><td>Repo is heymishraji/AID-IoT, split into self-contained packages (packages/brand-library first) and an internal workspace (docs, assets, scripts); a check fails if a package points outside its folder</td><td>the user wants each system shareable so another team's LLM can plug it in</td><td class="rej">keeping the library at the repo root rejected because future projects would tangle with it</td></tr>
         <tr><td class="date">2026-10-28</td><td>Contrast (WCAG AA) is part of npm run check; night palette brightened and light strong border darkened so all 180 pairs pass</td><td>real colours must be checked automatically</td><td class="rej">manual contrast review rejected</td></tr>
         <tr><td class="date">2026-10-28</td><td>Decision tracker page generated from DECISIONS.md (npm run decisions) and published as an artifact</td><td>the brand owner reads and decides from a page, while the Markdown stays the source</td><td class="rej">a hand-maintained HTML page rejected because it would drift</td></tr>
         <tr><td class="date">2026-10-28</td><td>graphify installed as a project skill with a committed knowledge graph (graphify-out/)</td><td>agents query the graph instead of re-reading large reports, cutting tokens</td><td class="rej">user-level-only install rejected because cloud sessions must work from a GitHub clone</td></tr>

@@ -1,30 +1,25 @@
-# AGENTS.md · AID brand + design-system library (v0.0.1, skeleton)
+# AGENTS.md · AID workspace
 
-Internal library for Inordinate Industrial Innovation Pvt Ltd and its separate brands, **AID IoT** and
-**AID Defence**, on one shared core. Status: SKELETON. Structure and pipeline are real; every visual value is a PLACEHOLDER.
+This repo holds self-contained **packages** plus the **workspace** that produced them. Pick the package your
+task is about and read its own `AGENTS.md`; it is written to work without anything else in this repo.
 
-## Read first
-1. `INDEX.md`: "need X → read Y". Use it instead of browsing.
-2. The brand you are working for: `brands/<id>/AGENTS.md`, then its `DESIGN.md` and `VOICE.md`.
-3. `docs/LIBRARY.md` before changing structure, tokens or the build.
+## Packages
+- `packages/brand-library/`: brand + design system (foundations, AID IoT, AID Defence, parent). Use it for any
+  on-brand output: websites, product UI, decks, datasheets, social, print.
 
-## Brands (ids)
-`aid-iot` · `aid-defence` · `inordinate` (legal documents only) · `_fixture-brand` (test only, never ship).
-Never mix brands in one output. Spell it "AID Defence". British English.
+## Workspace (internal, not shipped with packages)
+- `docs/CONTEXT.md` (current state) → `docs/NEXT.md` → last 10 entries of `docs/DECISIONS.md`.
+- `docs/PRODUCT-FACTS.md`: confirmed product names and what they are. Overrides the research.
+- `docs/research/`: large evidence reports; load only the one a task needs.
+- `docs/brand/`: discovery answers, parent-company rules, strategy contrast.
 
-## Hard rules
-- Tokens are the single source of truth (W3C DTCG 2025.10). Never write a hex/rgb value in a component,
-  template or example: use semantic CSS variables (`--aid-color-text-primary`, `--aid-type-body-size`).
-- Brands only define `palette.*` and `brand.*`. Core owns everything else.
-- Protected namespaces, never overridden by a brand: `status`, `focus`, `symbology`, `classification`.
-- Do not edit `dist/` or the generated YAML block at the top of any `DESIGN.md`: edit tokens, run `npm run build`.
-- Before handing work back: `npm run check` must pass.
+## Rules
+- Never let a package depend on a workspace file; inline the rule or cite it as "AID workspace".
+- New project = new folder under `packages/` or `apps/`, with its own `AGENTS.md`, `README.md`, `package.json`.
+- Never mix AID IoT and AID Defence in one output. Spell it "AID Defence". British English.
+- Before handing back library work: `npm run check` (runs the brand library's checks).
 
-## Commands
-- `npm run build`: tokens → `dist/<brand>/` (CSS, Tailwind v4, JSON, Figma variables) + DESIGN.md front matter.
-- `npm run export -- --brand <id> --out <dir>`: self-contained package of core + one brand.
-- `npm run check`: protected namespaces, no hard-coded values, fixture rebrand proof, export isolation.
-
-## Do not touch
-`docs/research/` (evidence), `docs/brand/` (owned by the brand owner's working sessions).
-Project working rules for this repo: `CLAUDE.md`.
+## Commands (from the repo root)
+- `npm run build` / `npm run check` / `npm run export -- --brand <id> --out <dir>`: brand library.
+- `npm run decisions`: regenerate `docs/decisions.html` from `docs/DECISIONS.md`.
+- `bash scripts/setup.sh`: first run on a new machine (graphify CLI + each package's dependencies).

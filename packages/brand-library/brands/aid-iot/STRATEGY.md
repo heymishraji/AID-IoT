@@ -1,10 +1,10 @@
 # AID IoT — brand strategy v0 (draft)
 
-_Status: draft v0, 2026-10-27. Written by the brand owner's team from `docs/brand/DISCOVERY.md`._
+_Status: draft v0, 2026-10-27. Written by the brand owner's team from the AID workspace (`docs/brand/DISCOVERY.md`)._
 _Leadership answers are pending. Every `[LEADERSHIP: …]` is a gap to fill, not a fact. Nothing here may be
 published until those gaps are closed._
 
-Inputs: `docs/brand/DISCOVERY.md` (primary), `docs/PRODUCT-FACTS.md`, `docs/research/01-brand-system-anatomy.md`
+Inputs (in the AID workspace repo, not shipped with this package): `docs/brand/DISCOVERY.md` (primary), `docs/PRODUCT-FACTS.md`, `docs/research/01-brand-system-anatomy.md`
 §1, §3.4, `docs/research/05-domain-and-landscape.md` §1, §4, §5. Voice detail: `VOICE.md` in this folder.
 
 ## 1. What AID IoT is (for this draft)
@@ -116,17 +116,18 @@ firmware, software and cloud [LEADERSHIP: and manufacturing], so customers work 
 from first conversation to daily operation. AID IoT starts every project by understanding the problem, then
 shapes the solution to fit. AID IoT is a brand of Inordinate Industrial Innovation Private Limited,
 [LEADERSHIP: location(s)]. [LEADERSHIP: one verified proof point.]"
-Parent mention rules: see `docs/brand/PARENT.md`.
+Parent mention rules: the parent appears only in the legal line (footer, contracts, privacy policy, tenders):
+"© [year] Inordinate Industrial Innovation Private Limited." It never markets, and no sibling brand is named.
 
 ## 11. What AID IoT never does
 - Claims a customer, number or certification that is not verified and cleared.
 - Leads with technology before the problem.
-- Mentions or links to the parent company's other brand (see `docs/brand/PARENT.md`).
+- Mentions or links to the parent company's other brand.
 - Uses category clichés: glowing meshes, holographic cities, navy-and-orange glow, stock "engineer with tablet".
 
 ## 12. Relationship to visuals (directional only)
 Warm, human, mechanism-explaining. Show the problem being solved and the system working, not abstract
-networks. Details in `docs/brand/STRATEGY-CONTRAST.md`; values come later in `DESIGN.md`.
+networks. Details in the AID workspace (`docs/brand/STRATEGY-CONTRAST.md`); values come later in `DESIGN.md`.
 
 ## 13. To refine after the benchmark (reports 07–10)
 - Which competitors already claim "end-to-end" or "one team"? If many, Option 2 cannot lead.

@@ -1,10 +1,10 @@
 # AID Defence — brand strategy v0 (draft)
 
-_Status: draft v0, 2026-10-27. Written by the brand owner's team from `docs/brand/DISCOVERY.md`._
+_Status: draft v0, 2026-10-27. Written by the brand owner's team from the AID workspace (`docs/brand/DISCOVERY.md`)._
 _Leadership answers are pending. Every `[LEADERSHIP: …]` is a gap, not a fact. Nothing here is cleared for
 publication. Defence content also needs the release checklist (research 01 §6.2) before it goes out._
 
-Inputs: `docs/brand/DISCOVERY.md` (primary), `docs/PRODUCT-FACTS.md`, research 01 §3.4 and §6, research 05
+Inputs (in the AID workspace repo, not shipped with this package): `docs/brand/DISCOVERY.md` (primary), `docs/PRODUCT-FACTS.md`, research 01 §3.4 and §6, research 05
 §1, §4, §5. Voice detail: `VOICE.md` in this folder.
 
 ## 1. What AID Defence is (for this draft)
@@ -142,7 +142,7 @@ Inordinate Industrial Innovation Private Limited, [LEADERSHIP: location]. Briefi
 - Glorifies force, violence or combat, in words or images.
 - Publishes performance, deployment, customer or unit detail outside its tier.
 - Claims anything without evidence it can show.
-- Mentions or links to the parent company's other brand, the store or education business (see `docs/brand/PARENT.md`).
+- Mentions or links to the parent company's other brand, the store or education business.
 - Uses defence clichés: camouflage, crosshairs, black-and-red threat looks, fake HUDs, tricolour wash (research 05 §5.3).
 
 ## 13. To refine after the benchmark (reports 07–10)

@@ -175,6 +175,22 @@ await test('fixture brand proves rebrand propagation', () => {
   return { problems, detail: `${changed} brand-dependent semantic tokens all change with the brand; no real-brand colour leaked` };
 });
 
+// Plug and play: the package must work when copied on its own, so nothing may depend on a file outside it.
+// Workspace files may be cited as provenance only when the text says they live in the AID workspace.
+const WORKSPACE_ONLY = /`(?:docs\/(?:brand|research)\/|docs\/(?:PRODUCT-FACTS|DECISIONS|CONTEXT|NEXT)\.md|CLAUDE\.md)/g;
+await test('self-contained: nothing points outside this package', () => {
+  const problems = [];
+  const files = listFiles(ROOT).filter((f) => !rel(f).startsWith('dist/') && /\.(md|html|css|mjs|js)$/.test(f));
+  for (const f of files) {
+    const text = fs.readFileSync(f, 'utf8');
+    for (const m of text.matchAll(/(?:\.\.\/)+[\w./-]+/g))
+      if (path.relative(ROOT, path.resolve(path.dirname(f), m[0])).startsWith('..')) problems.push(`${rel(f)}: ${m[0]} points outside the package`);
+    for (const m of text.matchAll(WORKSPACE_ONLY))
+      if (!/workspace/i.test(text.slice(Math.max(0, m.index - 240), m.index))) problems.push(`${rel(f)}: ${m[0]}… is a workspace file; inline the rule or say it lives in the AID workspace`);
+  }
+  return { problems, detail: `${files.length} files scanned` };
+});
+
 await test('export isolation + standalone build for each brand', async () => {
   if (!fs.existsSync(path.join(ROOT, 'scripts/export.mjs'))) return { skip: 'not the library root' };
   const { exportBrand } = await import('./export.mjs');

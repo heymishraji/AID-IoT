@@ -1,6 +1,6 @@
 # AID IoT — voice guide v0 (draft, agent-ready)
 
-_Status: draft v0, 2026-10-27. Based on the owner's description in `docs/brand/DISCOVERY.md` and
+_Status: draft v0, 2026-10-27. Based on the owner's description in the AID workspace (`docs/brand/DISCOVERY.md`) and
 `STRATEGY.md` in this folder. Vocabulary lists await leadership (Q22 "always/never words": later)._
 
 **For agents:** read this whole file before writing AID IoT copy. Never invent customers, numbers,

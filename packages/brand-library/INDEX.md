@@ -1,15 +1,13 @@
 # INDEX · need X → read Y
 
-Single entry point for people and agents. Paths are relative to the repo root. Status: skeleton, placeholder values.
+Single entry point for people and agents. Paths are relative to this package folder. Status: skeleton, placeholder values.
 
 ## Understand the library
 | Need | Read |
 |---|---|
 | What this library is and the rules | `AGENTS.md` |
 | How it is organised, how to add/export a brand, how a rebrand flows, releases | `docs/LIBRARY.md` |
-| Current project state and next steps | `docs/CONTEXT.md`, `docs/NEXT.md` |
-| Why a decision was made | `docs/DECISIONS.md` |
-| Product truth (names, what things are) | `docs/PRODUCT-FACTS.md` |
+| Project state, decisions, research, product facts | Not shipped here: the AID workspace repo (its root `AGENTS.md`) |
 
 ## Work on a brand
 | Need | Read |

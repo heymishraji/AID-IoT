@@ -1,6 +1,6 @@
 # Context — AID brand system + design system
 
-_Last rewritten: 2026-10-28 (graphify, decision tracker, contrast check)_
+_Last rewritten: 2026-10-29 (repo split into packages + workspace; pushed to GitHub)_
 
 ## State
 - Fresh start on 2026-10-27; the old website work is in git tag `archive/website-v3`.
@@ -23,14 +23,18 @@ _Last rewritten: 2026-10-28 (graphify, decision tracker, contrast check)_
 - `npm run check` now includes WCAG AA contrast for every brand × mode (180 pairs, all passing).
 
 ## Where things live
-- `AGENTS.md`, `INDEX.md`: agent routers. `docs/LIBRARY.md`: how the library works.
-- `core/`: shared tokens (DTCG 2025.10), modes (light/dark/night), density, protected namespaces, components.css.
-- `brands/<aid-iot|aid-defence|inordinate|_fixture-brand>/`: tokens, DESIGN.md (draft), VOICE.md,
-  STRATEGY.md (IoT/Defence), assets, templates, skills.
-- `docs/brand/`: DISCOVERY, PARENT (parent rules), STRATEGY-CONTRAST (side by side).
-- Commands (Node at ~/.nvm/versions/node/v24.20.0/bin): `npm run build`, `npm run export -- --brand <id> --out <dir>`,
-  `npm run check` (protected namespaces, no hard-coded values, fixture brand, export isolation).
-- Export isolation means no brand folder may name the other brand. Refer to "the parent company's other brand".
+- GitHub: https://github.com/heymishraji/AID-IoT (main + tag `archive/website-v3`). Push after every task.
+- Repo = **packages** (self-contained, shareable) + **workspace** (this `docs/`, `assets/`, `scripts/`).
+  Contract and sharing steps: `README.md`. Agent router: `AGENTS.md`.
+- `packages/brand-library/`: the brand + design system. Inside it: `AGENTS.md`, `INDEX.md`, `docs/LIBRARY.md`,
+  `core/` (shared foundations: DTCG tokens, modes, density, protected namespaces, components.css),
+  `brands/<aid-iot|aid-defence|inordinate|_fixture-brand>/` (tokens, DESIGN.md draft, VOICE.md, STRATEGY.md,
+  assets, templates, skills). It has its own package.json and node_modules.
+- `docs/brand/`: DISCOVERY, PARENT (parent rules), STRATEGY-CONTRAST. `docs/PRODUCT-FACTS.md`: product truth.
+- Commands from the root (Node at ~/.nvm/versions/node/v24.20.0/bin): `npm run build`, `npm run check`,
+  `npm run export -- --brand <id> --out <dir>`, `npm run decisions`.
+- Checks: protected namespaces, no hard-coded values, fixture rebrand proof, self-contained package (nothing
+  points outside it), export isolation (no brand folder names the other brand), WCAG AA contrast.
 
 ## Research (do not auto-load): docs/research/
 01 brand anatomy · 02 open-source DS · 03 tokens · 04 LLM library + skills · 05 domain · 06 collateral ·
@@ -47,5 +51,6 @@ are out of date): https://claude.ai/artifact/HG3jJSpQnwoMZ4YnwW4zUM
 - Naming risks: NAVIC (ISRO), Cortex (Arm), Lighthouse (Google, DGLL).
 
 ## Pending with the user
+- Split PRODUCT-FACTS per brand into each brand folder so an exported brand carries its own product truth.
 - Usage fix: approve settings change 1 (CLAUDE_CODE_SUBAGENT_MODEL=sonnet) and/or memory change 2.
 - Approve a SessionStart hook in .claude/settings.json that runs scripts/setup.sh (blocked by auto mode).

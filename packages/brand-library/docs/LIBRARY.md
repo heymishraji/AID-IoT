@@ -1,14 +1,14 @@
 # LIBRARY · how the AID brand + design-system library works
 
 Status: v0.0.1 skeleton (2026-10-27). Structure, schema and pipeline are real; every visual value is a
-labelled PLACEHOLDER. Evidence: `docs/research/03-token-architecture-multibrand.md` §3, §7, §8 and
+labelled PLACEHOLDER. Evidence (AID workspace repo): `docs/research/03-token-architecture-multibrand.md` §3, §7, §8 and
 `docs/research/04-llm-friendly-design-systems-and-skills.md` §1, §7.
 
 ## 1. Organisation
 One shared **core** (the engine) and separate **brands** (identities). Brands never see each other.
 
 ```
-AGENTS.md  INDEX.md  CHANGELOG.md  VERSION  package.json
+AGENTS.md  INDEX.md  CHANGELOG.md  VERSION  package.json  docs/LIBRARY.md (this file)
 core/
   tokens/primitives/   tier 1: neutrals, feedback hues, night ramp, space, radius, type scale, motion
   tokens/semantic/     tier 2: type roles, shape, layout (mode-independent)
@@ -56,7 +56,7 @@ Set the three attributes on the same element, usually `<html>`.
 2. Replace `tokens/palette.tokens.json` with the brand's ramps; map every role in `tokens/brand.tokens.json`.
 3. Write `DESIGN.md` prose, `VOICE.md`, `AGENTS.md` (≤ 40 lines), a skill in `skills/<new-id>-brand/`.
 4. `npm run build && npm run check`. The check lists any missing brand role or namespace breach.
-5. Add a row to `INDEX.md`, a CHANGELOG entry (MINOR), and a line to `docs/DECISIONS.md`.
+5. Add a row to `INDEX.md`, a CHANGELOG entry (MINOR), and a line in the AID workspace decision log (`docs/DECISIONS.md` there).
 
 ## 5. Export a brand (`npm run export -- --brand <id> --out <dir>`)
 Rebuilds, then copies `core/` (minus modules the brand does not use), `brands/<id>/`, `dist/<id>/`,

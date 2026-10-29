@@ -1,6 +1,6 @@
 # AID Defence — voice guide v0 (draft, agent-ready)
 
-_Status: draft v0, 2026-10-27. Based on the owner's description in `docs/brand/DISCOVERY.md` and
+_Status: draft v0, 2026-10-27. Based on the owner's description in the AID workspace (`docs/brand/DISCOVERY.md`) and
 `STRATEGY.md` in this folder. Vocabulary and terminology await leadership._
 
 **For agents:** read this whole file and the disclosure model (`STRATEGY.md` §8) before writing AID Defence

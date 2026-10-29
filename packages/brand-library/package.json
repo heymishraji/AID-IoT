@@ -1,0 +1,20 @@
+{
+  "name": "@aid/brand-library",
+  "version": "0.0.1",
+  "private": true,
+  "description": "AID brand + design-system library: shared core, separate brands (aid-iot, aid-defence, inordinate). Internal only.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "export": "node scripts/export.mjs",
+    "check": "node scripts/check.mjs",
+    "decisions": "node scripts/decisions-page.mjs"
+  },
+  "devDependencies": {
+    "style-dictionary": "^5.7.1"
+  }
+}

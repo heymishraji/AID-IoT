@@ -23,6 +23,13 @@ Do NOT load `docs/research/*` unless a task needs the evidence; they are large r
 - LLM-readable: every rule is written as text an agent can follow, with rationale and do/don't examples.
 - Keep the current logo (`assets/brand/aid-iot-mark.*`) until the team decides otherwise.
 
+## Repo layout: packages vs workspace
+- `packages/<name>/` (and later `apps/<name>/`): self-contained, shareable systems. Each has its own `AGENTS.md`,
+  `README.md`, `package.json`, `VERSION`, `CHANGELOG.md`, and never points at a file outside its folder
+  (the brand library's `npm run check` enforces it). Today: `packages/brand-library/`.
+- Root (`docs/`, `assets/`, `scripts/`, `graphify-out/`): the workspace. Research, decisions, state; never shipped.
+- New project = new folder that follows the same contract. Contract and sharing steps: `README.md`.
+
 ## Documentation discipline
 - End of every working session: rewrite `docs/CONTEXT.md`, rewrite `docs/NEXT.md`, and update
   `docs/DECISIONS.md` (open items under "Open"; decided items appended to "Log").

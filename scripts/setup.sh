@@ -10,6 +10,10 @@ if ! command -v graphify >/dev/null 2>&1; then
   uv tool install --quiet graphifyy
 fi
 
-# Token build dependencies.
-if command -v npm >/dev/null 2>&1 && [ ! -d node_modules ]; then npm install --silent; fi
+# Each package installs its own dependencies (packages are self-contained).
+if command -v npm >/dev/null 2>&1; then
+  for p in packages/*/ apps/*/; do
+    [ -f "$p/package.json" ] && [ ! -d "$p/node_modules" ] && npm install --silent --prefix "$p"
+  done
+fi
 exit 0

@@ -1,20 +1,12 @@
 {
-  "name": "@aid/brand-library",
-  "version": "0.0.1",
+  "name": "aid-workspace",
   "private": true,
-  "description": "AID brand + design-system library: shared core, separate brands (aid-iot, aid-defence, inordinate). Internal only.",
+  "description": "AID workspace: self-contained packages in packages/, research and decisions in docs/.",
   "type": "module",
-  "license": "UNLICENSED",
-  "engines": {
-    "node": ">=20"
-  },
   "scripts": {
-    "build": "node scripts/build.mjs",
-    "export": "node scripts/export.mjs",
-    "check": "node scripts/check.mjs",
+    "build": "npm --prefix packages/brand-library run build",
+    "check": "npm --prefix packages/brand-library run check",
+    "export": "npm --prefix packages/brand-library run export --",
     "decisions": "node scripts/decisions-page.mjs"
-  },
-  "devDependencies": {
-    "style-dictionary": "^5.7.1"
   }
 }
