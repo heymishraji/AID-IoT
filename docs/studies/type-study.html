@@ -2,332 +2,376 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Latin:wdth,wght@75..125,100..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Geologica:wght@100..900&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap">
+<!-- One stylesheet per family so a single failure cannot take the others down. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:ital,wdth,wght@0,50..125,100..900;1,50..125,100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wdth,wght@0,75..125,200..900;1,75..125,200..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0..1,0..1&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Latin:wdth,wght@75..125,100..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap">
 <style>
-/* Layout: a type proof sheet. The page chrome stays in the system face so only the candidate faces carry character.
-   One sticky switcher sets the face for every working specimen; the comparison strip always shows all four. */
+/* Layout: a type proof sheet. Page chrome stays in the system face so only the candidates carry character.
+   Guide first (how to judge), then the longlist board, then the pinned shortlist on real work, then the scorecard. */
 :root{
   --paper:#F2F3F0; --sheet:#FFFFFF; --ink:#15181B; --ink-2:#4E565E; --rule:#D7DBD5;
   --proof:#1D5C96; --proof-tint:#E1EBF5;           /* non-photo blue: the layout pencil of a type proof */
-  --ok:#1E7436; --warn:#8F4C00; --bad:#B42318;
+  --flag:#8F4C00; --flag-tint:#FBEBD6; --ok:#1E7436; --bad:#B42318;
   --night-bg:#120807; --night-panel:#1C0E0C; --night-ink:#FFB8AB; --night-dim:#E07A6C; --night-rule:#4A1E19;
   --chrome:system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
-  --f-geo:"Geologica",system-ui,sans-serif;
-  --f-atk:"Atkinson Hyperlegible Next",system-ui,sans-serif;
-  --f-anek:"Anek Latin",system-ui,sans-serif;
-  --f-plex:"IBM Plex Sans",system-ui,sans-serif;
-  --cand:var(--f-anek); --cand-wdth:100;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --paper:#101214; --sheet:#181B1E; --ink:#E7EAEC; --ink-2:#9DA6AE; --rule:#2C3237;
-  --proof:#8DB9E8; --proof-tint:#172738; --ok:#6CC686; --warn:#F2A54A; --bad:#F59A8E; color-scheme:dark}}
+  --proof:#8DB9E8; --proof-tint:#172738; --flag:#F2A54A; --flag-tint:#3A2A15; --ok:#6CC686; --bad:#F59A8E; color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#101214; --sheet:#181B1E; --ink:#E7EAEC; --ink-2:#9DA6AE; --rule:#2C3237;
-  --proof:#8DB9E8; --proof-tint:#172738; --ok:#6CC686; --warn:#F2A54A; --bad:#F59A8E; color-scheme:dark}
-:root[data-face="geo"]{--cand:var(--f-geo)} :root[data-face="atk"]{--cand:var(--f-atk)}
-:root[data-face="anek"]{--cand:var(--f-anek)} :root[data-face="plex"]{--cand:var(--f-plex)}
+  --proof:#8DB9E8; --proof-tint:#172738; --flag:#F2A54A; --flag-tint:#3A2A15; --ok:#6CC686; --bad:#F59A8E; color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font:15px/1.55 var(--chrome);
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
-main{max-width:1120px;margin:0 auto;padding-block:36px 96px;display:flex;flex-direction:column;gap:48px}
+main{max-width:1200px;margin:0 auto;padding-block:36px 96px;display:flex;flex-direction:column;gap:56px}
 h1{font-size:clamp(1.9rem,4.4vw,2.8rem);line-height:1.08;margin:0;letter-spacing:-.01em;text-wrap:balance}
-h2{font-size:1.3rem;line-height:1.25;margin:0;text-wrap:balance}
-p{margin:0;max-width:68ch}
+h2{font-size:1.4rem;line-height:1.25;margin:0;text-wrap:balance}
+h3{font-size:1.05rem;line-height:1.3;margin:0;text-wrap:balance}
+p{margin:0;max-width:70ch}
 .muted{color:var(--ink-2)}
 .label{font:500 .72rem/1.2 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2)}
-section{display:flex;flex-direction:column;gap:16px}
+section{display:flex;flex-direction:column;gap:18px}
 .head{display:flex;flex-direction:column;gap:6px}
-code{font:.85em var(--mono)}
+button{font:inherit;color:inherit}
+button:focus-visible,select:focus-visible{outline:3px solid var(--proof);outline-offset:2px}
 
-/* Switcher */
-.switch{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);padding-block:10px;
-  border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.switch .label{margin-right:4px}
-.switch button{font:600 .95rem/1 var(--chrome);color:var(--ink);background:var(--sheet);border:1px solid var(--rule);
-  border-radius:4px;min-height:44px;padding:0 14px;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
-.switch button kbd{font:500 .72rem var(--mono);color:var(--ink-2)}
-.switch button[aria-pressed="true"]{background:var(--proof);border-color:var(--proof);color:var(--sheet)}
-.switch button[aria-pressed="true"] kbd{color:inherit;opacity:.8}
-.switch button:focus-visible,input:focus-visible{outline:3px solid var(--proof);outline-offset:2px}
-.wdth{display:flex;align-items:center;gap:8px;margin-left:auto}
-.wdth[hidden]{display:none!important}
-.wdth input{width:140px;accent-color:var(--proof)}
-.wdth output{font:500 .8rem var(--mono);min-width:3ch;font-variant-numeric:tabular-nums}
+/* Guide */
+.criteria{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:12px}
+.crit{background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.crit .wt{font:600 .75rem var(--mono);color:var(--proof)}
+.crit dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;font-size:.9rem}
+.crit dt{color:var(--ink-2)} .crit dd{margin:0}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;border-top:2px solid var(--proof);padding-top:10px;display:flex;flex-direction:column;gap:4px}
+.steps li::before{content:"Step " counter(s);font:500 .72rem var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--proof)}
+.less{background:var(--sheet);border:1px dashed var(--rule);border-radius:4px;padding:14px 16px}
 
-/* Comparison strip: all four at once */
-.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
-.col{background:var(--sheet);padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
-.col.on{box-shadow:inset 0 3px 0 var(--proof)}
-.col .aa{font-size:3.4rem;line-height:1;font-weight:600}
-.col .line{font-size:1.35rem;line-height:1.2;font-weight:600;text-wrap:balance}
-.col .conf{font-size:1.6rem;line-height:1.2;letter-spacing:.02em}
-.col .digits{font-size:1rem;font-variant-numeric:tabular-nums}
-.col .tiny{font-size:12px;line-height:1.45}
-.col .weights{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:1rem}
+/* Board */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters button,.pin{min-height:44px;padding:0 14px;border:1px solid var(--rule);border-radius:4px;background:var(--sheet);cursor:pointer;font-weight:600;font-size:.9rem}
+.filters button[aria-pressed="true"]{background:var(--proof);border-color:var(--proof);color:var(--sheet)}
+.group{display:flex;flex-direction:column;gap:12px}
+.group > .gh{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px}
+.card{background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card.pinned{border-color:var(--proof);box-shadow:inset 0 3px 0 var(--proof)}
+.card .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.card .nm{font-weight:700;font-size:1rem;line-height:1.25}
+.card .by{font-size:.8rem;color:var(--ink-2)}
+.pin{flex:none;font-size:.82rem;padding:0 12px}
+.pin[aria-pressed="true"]{background:var(--proof);border-color:var(--proof);color:var(--sheet)}
+.sp{display:flex;flex-direction:column;gap:8px}
+.sp .hl{font-size:1.5rem;line-height:1.15;font-weight:650;letter-spacing:-.01em;text-wrap:balance}
+.sp .cf{font-size:1.45rem;line-height:1.2;letter-spacing:.02em}
+.sp .rows{display:grid;grid-template-columns:auto auto auto;justify-content:start;gap:2px 18px;font-size:.95rem;font-variant-numeric:tabular-nums}
+.sp .rows span:nth-child(3n+2),.sp .rows span:nth-child(3n){text-align:right}
+.sp .sm{font-size:12px;line-height:1.45}
+.why{font-size:.88rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.chip{font:500 .72rem/1 var(--mono);padding:5px 7px;border-radius:3px;background:var(--paper);color:var(--ink-2);border:1px solid var(--rule)}
+.chip.flag{background:var(--flag-tint);color:var(--flag);border-color:transparent;font-weight:700}
+.chip.good{color:var(--ok)}
+.card[hidden],.group[hidden]{display:none!important}
 
-/* Specimens (all in the selected face) */
-.spec{font-family:var(--cand);font-variation-settings:"wdth" var(--cand-wdth)}
-.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:16px}
-.card{background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
-.tag{align-self:flex-start;font:500 .7rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:3px;
-  color:var(--proof);background:var(--proof-tint)}
-.slide{aspect-ratio:16/9;max-width:100%;border:1px solid var(--rule);border-radius:4px;padding:clamp(16px,4%,36px);
-  display:flex;flex-direction:column;justify-content:flex-end;gap:10px;background:var(--sheet)}
-.slide .eyebrow{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
-.slide .t{font-size:clamp(1.6rem,4.2vw,2.7rem);line-height:1.05;font-weight:700;letter-spacing:-.015em;text-wrap:balance}
-.slide .s{font-size:clamp(.9rem,1.6vw,1.05rem);color:var(--ink-2);max-width:46ch}
-.tbl{overflow-x:auto}
-table{border-collapse:collapse;width:100%;font-size:.92rem}
-th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:baseline;white-space:nowrap}
-th{font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2)}
-td.n{text-align:right;font-variant-numeric:tabular-nums}
-.ds td:first-child{color:var(--ink-2);width:40%}
-.ds td{white-space:normal}
-.st{display:inline-flex;align-items:center;gap:6px;font-weight:500}
-.st::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
-.st.ok{color:var(--ok)} .st.warn{color:var(--warn)} .st.bad{color:var(--bad)}
-.st.warn::before{border-radius:1px} .st.bad::before{border-radius:0;transform:rotate(45deg)}
-.para{font-size:1.06rem;line-height:1.6;max-width:62ch}
-.para .lead{font-size:1.5rem;line-height:1.2;font-weight:600;margin-bottom:10px;display:block;text-wrap:balance}
-.legal{font-size:11px;line-height:1.5;color:var(--ink-2)}
-.legal + .legal{margin-top:4px}
-
-/* Lighthouse night console: same in both page themes, as it is a mode of its own */
-.night{background:var(--night-bg);color:var(--night-ink);border-radius:4px;overflow:hidden;border:1px solid var(--night-rule)}
-.night .banner{text-align:center;font-size:.72rem;font-weight:700;letter-spacing:.14em;padding:5px;background:var(--night-panel);
-  color:var(--night-dim);border-bottom:1px solid var(--night-rule)}
-.night .hd{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;padding:12px 16px;border-bottom:1px solid var(--night-rule)}
-.night .hd b{font-size:1.05rem}
-.night .hd span{color:var(--night-dim);font-size:.85rem;font-variant-numeric:tabular-nums}
-.night table{font-size:.95rem}
-.night th{color:var(--night-dim);border-color:var(--night-rule)}
-.night td{border-color:var(--night-rule)}
-.night .flag{font-weight:700}
+/* Compare */
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.cc{background:var(--sheet);padding:16px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.cc .nm{font:600 .78rem var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--proof)}
+.cc .t1{font-size:1.75rem;line-height:1.05;font-weight:700;letter-spacing:-.015em;text-wrap:balance}
+.cc .t2{font-size:1.25rem;line-height:1.15;font-weight:600;text-wrap:balance}
+.cc .eb{font-size:.72rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2)}
+.cc table{border-collapse:collapse;width:100%;font-size:.88rem}
+.cc th,.cc td{text-align:left;padding:5px 6px;border-bottom:1px solid var(--rule);white-space:nowrap}
+.cc th{font-size:.68rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2)}
+.cc td.n,.cc th.n{text-align:right;font-variant-numeric:tabular-nums}
+.cc .ds td:first-child{color:var(--ink-2)} .cc .ds td{white-space:normal}
+.cc .para{font-size:.98rem;line-height:1.55}
+.cc .legal{font-size:11px;line-height:1.5;color:var(--ink-2)}
+.tw{overflow-x:auto}
+.night{background:var(--night-bg);color:var(--night-ink);border-radius:3px;border:1px solid var(--night-rule);overflow:hidden}
+.night .bn{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-align:center;padding:4px;background:var(--night-panel);color:var(--night-dim)}
+.night th{color:var(--night-dim)} .night th,.night td{border-color:var(--night-rule)}
+.empty{background:var(--sheet);border:1px dashed var(--rule);border-radius:4px;padding:24px;color:var(--ink-2)}
 
 /* Scorecard */
-.score th,.score td{white-space:normal;vertical-align:top;min-width:150px}
-.score th:first-child,.score td:first-child{min-width:120px;color:var(--ink-2)}
-.score thead th{font:600 .95rem/1.25 var(--chrome);letter-spacing:0;text-transform:none;color:var(--ink)}
-.rec{border-left:3px solid var(--proof);padding:4px 0 4px 16px;display:flex;flex-direction:column;gap:8px}
-ol.how{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px;max-width:72ch}
-.say{font:600 .95rem var(--mono);background:var(--sheet);border:1px dashed var(--proof);border-radius:4px;padding:10px 14px;align-self:flex-start;user-select:all}
-@media (prefers-reduced-motion:no-preference){.spec{transition:font-variation-settings .15s}}
+.score{background:var(--sheet);border:1px solid var(--rule);border-radius:4px;overflow-x:auto}
+.score table{border-collapse:collapse;width:100%;font-size:.9rem}
+.score th,.score td{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:middle}
+.score thead th{font-weight:700}
+.score td.w{font:500 .8rem var(--mono);color:var(--ink-2);white-space:nowrap}
+.score select{min-height:40px;min-width:64px;border:1px solid var(--rule);border-radius:4px;background:var(--paper);color:var(--ink);padding:0 6px;font:inherit}
+.score tfoot td{font-weight:700;font-variant-numeric:tabular-nums;font-size:1.05rem}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.actions button{min-height:44px;padding:0 16px;border-radius:4px;border:1px solid var(--proof);background:var(--proof);color:var(--sheet);font-weight:600;cursor:pointer}
+#summary{font:.85rem/1.5 var(--mono);background:var(--sheet);border:1px dashed var(--proof);border-radius:4px;padding:10px 14px;white-space:pre-wrap;user-select:all;max-width:100%;overflow-x:auto;margin:0}
+
+.rec{border-left:3px solid var(--proof);padding:4px 0 4px 16px;display:flex;flex-direction:column;gap:10px}
+.rec ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;max-width:75ch}
 </style>
 
 <main>
   <header class="head" style="gap:12px">
-    <span class="label">AID brand system · type round 1 · 29 Oct 2026</span>
-    <h1>Pick one type family for both brands</h1>
-    <p class="muted">Four Google Fonts candidates on real AID work: an AID IoT slide, a fleet dashboard, a datasheet, an AID Defence briefing, the Lighthouse night console and legal small print. One family will carry AID IoT, AID Defence and the parent company; each brand gets its own character through weight, size and colour, not a different font.</p>
+    <span class="label">AID brand system · type round 2 · 29 Oct 2026</span>
+    <h1>Choosing AID's typeface</h1>
+    <p class="muted">You like Atkinson Hyperlegible Next. This round puts it beside 17 other Google Fonts from six different styles, explains what to judge beyond looks, and lets you pin a shortlist, see it on real AID work and score it. One family will carry AID IoT, AID Defence and the parent company for years, so it is worth the extra round.</p>
   </header>
 
-  <section aria-labelledby="cmp">
+  <section aria-labelledby="how">
     <div class="head">
-      <h2 id="cmp">All four side by side</h2>
-      <p class="muted">Same sizes, same text. Look at the second line: can you tell capital I, lower-case l and the digit 1 apart, and O from 0?</p>
+      <h2 id="how">How to judge a typeface, beyond how it looks</h2>
+      <p class="muted">Looks matter, but a brand font spends most of its life in tables, labels, datasheets and small print, not in headlines. These six questions, weighted for AID, decide whether it holds up there. Devanagari is left out on purpose: it will get its own font later. The weights feed the scorecard at the end.</p>
     </div>
-    <div class="compare">
-      <div class="col" data-col="anek" style="font-family:var(--f-anek)">
-        <span class="label">Anek Latin</span>
-        <div class="aa">Aa</div>
-        <div class="line">Understood first. Built to fit.</div>
-        <div class="conf">Il1| O0o rn m 5S 8B</div>
-        <div class="digits">0123456789 · ₹4,471.50 · −20 °C</div>
-        <div class="weights"><span style="font-weight:300">Light</span><span style="font-weight:400">Regular</span><span style="font-weight:600">Semi</span><span style="font-weight:800">Extra</span></div>
-        <div class="tiny">12px: Tracker MH12AB4471 last fix 14:32:08 IST, battery 11%, IIoT bridge ID 0l-I1O.</div>
-      </div>
-      <div class="col" data-col="atk" style="font-family:var(--f-atk)">
-        <span class="label">Atkinson Hyperlegible Next</span>
-        <div class="aa">Aa</div>
-        <div class="line">Understood first. Built to fit.</div>
-        <div class="conf">Il1| O0o rn m 5S 8B</div>
-        <div class="digits">0123456789 · ₹4,471.50 · −20 °C</div>
-        <div class="weights"><span style="font-weight:300">Light</span><span style="font-weight:400">Regular</span><span style="font-weight:600">Semi</span><span style="font-weight:800">Extra</span></div>
-        <div class="tiny">12px: Tracker MH12AB4471 last fix 14:32:08 IST, battery 11%, IIoT bridge ID 0l-I1O.</div>
-      </div>
-      <div class="col" data-col="geo" style="font-family:var(--f-geo)">
-        <span class="label">Geologica</span>
-        <div class="aa">Aa</div>
-        <div class="line">Understood first. Built to fit.</div>
-        <div class="conf">Il1| O0o rn m 5S 8B</div>
-        <div class="digits">0123456789 · ₹4,471.50 · −20 °C</div>
-        <div class="weights"><span style="font-weight:300">Light</span><span style="font-weight:400">Regular</span><span style="font-weight:600">Semi</span><span style="font-weight:800">Extra</span></div>
-        <div class="tiny">12px: Tracker MH12AB4471 last fix 14:32:08 IST, battery 11%, IIoT bridge ID 0l-I1O.</div>
-      </div>
-      <div class="col" data-col="plex" style="font-family:var(--f-plex)">
-        <span class="label">IBM Plex Sans (fallback)</span>
-        <div class="aa">Aa</div>
-        <div class="line">Understood first. Built to fit.</div>
-        <div class="conf">Il1| O0o rn m 5S 8B</div>
-        <div class="digits">0123456789 · ₹4,471.50 · −20 °C</div>
-        <div class="weights"><span style="font-weight:300">Light</span><span style="font-weight:400">Regular</span><span style="font-weight:600">Semi</span><span style="font-weight:700">Bold</span></div>
-        <div class="tiny">12px: Tracker MH12AB4471 last fix 14:32:08 IST, battery 11%, IIoT bridge ID 0l-I1O.</div>
-      </div>
+    <div class="criteria" id="criteria"></div>
+    <div class="less">
+      <h3 style="margin-bottom:6px">Matters less than it seems</h3>
+      <p class="muted">How the font looks in the logo (a wordmark is usually drawn or adjusted by hand, not typed). How pretty the specimen alphabet is in isolation. What is fashionable this year: the font has to outlast the trend.</p>
     </div>
-  </section>
-
-  <section aria-labelledby="work">
-    <div class="head">
-      <h2 id="work">On real work</h2>
-      <p class="muted">Switch the face here; every specimen below changes with it. Keys 1–4 also switch. Product figures are sample values for the type test, not product data.</p>
-    </div>
-    <div class="switch" role="group" aria-label="Typeface">
-      <span class="label">Face</span>
-      <button type="button" data-face="anek" aria-pressed="true">Anek Latin <kbd>1</kbd></button>
-      <button type="button" data-face="atk" aria-pressed="false">Atkinson Next <kbd>2</kbd></button>
-      <button type="button" data-face="geo" aria-pressed="false">Geologica <kbd>3</kbd></button>
-      <button type="button" data-face="plex" aria-pressed="false">IBM Plex Sans <kbd>4</kbd></button>
-      <label class="wdth" id="wdthCtl"><span class="label">Anek width</span>
-        <input id="wdth" type="range" min="75" max="125" step="5" value="100"><output id="wdthOut" for="wdth">100</output></label>
-    </div>
-
-    <div class="grid2 spec">
-      <div class="card">
-        <span class="tag">AID IoT · slide title</span>
-        <div class="slide">
-          <span class="eyebrow">AID IoT</span>
-          <div class="t">Understood first. Built to fit.</div>
-          <div class="s">We start with the problem on your floor, then build the hardware, firmware and software around it.</div>
-        </div>
-      </div>
-      <div class="card">
-        <span class="tag">AID Defence · briefing slide</span>
-        <div class="slide">
-          <span class="eyebrow">AID Defence · Lighthouse</span>
-          <div class="t">One picture of every vehicle, day and night.</div>
-          <div class="s">Convoy command software for the NAVIC convoy management system.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card spec">
-      <span class="tag">AID IoT · fleet dashboard row</span>
-      <div class="tbl"><table>
-        <thead><tr><th>Vehicle</th><th>Last fix (IST)</th><th class="n">Speed km/h</th><th class="n">Battery</th><th>Status</th></tr></thead>
-        <tbody>
-          <tr><td>MH 12 AB 4471</td><td class="n" style="text-align:left">14:32:08</td><td class="n">46</td><td class="n">82%</td><td><span class="st ok">Moving</span></td></tr>
-          <tr><td>MH 14 CK 0918</td><td class="n" style="text-align:left">14:31:55</td><td class="n">0</td><td class="n">64%</td><td><span class="st ok">Idle 12 min</span></td></tr>
-          <tr><td>KA 05 MN 7710</td><td class="n" style="text-align:left">14:29:40</td><td class="n">0</td><td class="n">11%</td><td><span class="st warn">Low battery</span></td></tr>
-          <tr><td>MH 12 QE 3306</td><td class="n" style="text-align:left">13:58:02</td><td class="n">–</td><td class="n">37%</td><td><span class="st bad">No fix for 34 min</span></td></tr>
-        </tbody>
-      </table></div>
-      <p class="muted" style="font-family:var(--chrome);font-size:.85rem">Check: do the speed and battery digits line up in their columns?</p>
-    </div>
-
-    <div class="grid2 spec">
-      <div class="card">
-        <span class="tag">AID IoT · datasheet table</span>
-        <div style="font-size:1.25rem;font-weight:700;line-height:1.2">GPS tracker · specifications</div>
-        <div class="tbl"><table class="ds"><tbody>
-          <tr><td>Positioning</td><td>GNSS, multi-constellation</td></tr>
-          <tr><td>Fix accuracy</td><td>2.5 m CEP, open sky</td></tr>
-          <tr><td>Reporting interval</td><td>10 s to 24 h, set over the air</td></tr>
-          <tr><td>Cellular</td><td>4G LTE Cat 1 with 2G fallback</td></tr>
-          <tr><td>Battery</td><td>5,000 mAh Li-ion · up to 30 days at one fix per hour</td></tr>
-          <tr><td>Operating temperature</td><td>−20 °C to +70 °C</td></tr>
-          <tr><td>Ingress protection</td><td>IP67</td></tr>
-          <tr><td>Size and weight</td><td>92 × 58 × 24 mm · 140 g</td></tr>
-        </tbody></table></div>
-      </div>
-      <div class="card">
-        <span class="tag">AID Defence · briefing paragraph</span>
-        <div class="para">
-          <span class="lead">Every vehicle on one screen, readable at night.</span>
-          Lighthouse is the command software for the NAVIC convoy management system. It shows a convoy commander where each vehicle is, how fast it is moving and whether it can still reach base. Positions come from NavIC-capable trackers; when cellular coverage drops, the SatCom unit carries the link. Deployment detail, ranges and unit numbers are shared only in a private briefing.
-        </div>
-      </div>
-    </div>
-
-    <div class="card spec">
-      <span class="tag">AID Defence · Lighthouse night console</span>
-      <div class="night">
-        <div class="banner">SAMPLE · NOT A REAL CLASSIFICATION MARKING</div>
-        <div class="hd"><b>Convoy C-17 · 4 vehicles</b><span>NavIC fix 3 s ago · 21:16:42 IST</span></div>
-        <div class="tbl"><table>
-          <thead><tr><th>Callsign</th><th>Position</th><th class="n">Speed km/h</th><th class="n">ETA</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td>VAJRA-1</td><td>18°31′04″N 73°51′22″E</td><td class="n">38</td><td class="n">21:40</td><td>On route</td></tr>
-            <tr><td>VAJRA-2</td><td>18°31′01″N 73°51′19″E</td><td class="n">36</td><td class="n">21:41</td><td>On route</td></tr>
-            <tr><td>VAJRA-3</td><td>18°30′47″N 73°51′02″E</td><td class="n">0</td><td class="n">–</td><td class="flag">▲ Halted 6 min</td></tr>
-            <tr><td>VAJRA-4</td><td>18°30′40″N 73°50′58″E</td><td class="n">35</td><td class="n">21:43</td><td>Link via SatCom</td></tr>
-          </tbody>
-        </table></div>
-      </div>
-      <p class="muted" style="font-family:var(--chrome);font-size:.85rem">Night mode keeps everything dim and red-shifted, so letter shapes do more of the work. Read the callsigns and coordinates at arm's length.</p>
-    </div>
-
-    <div class="card spec">
-      <span class="tag">Parent company · legal small print, 11px</span>
-      <p class="legal">© 2026 Inordinate Industrial Innovation Private Limited. Registered office: to be confirmed. CIN and GSTIN to be confirmed.</p>
-      <p class="legal">Specifications are subject to change without notice. All trademarks belong to their owners. Product images are illustrative.</p>
-    </div>
-  </section>
-
-  <section aria-labelledby="sc">
-    <div class="head">
-      <h2 id="sc">What each one brings</h2>
-      <p class="muted">Facts that matter beyond looks: a matching Devanagari design for later, a monospace partner for IDs and code, italics, and how often other brands already use it.</p>
-    </div>
-    <div class="card" style="padding:0">
-      <div class="tbl"><table class="score">
-        <thead><tr><th></th><th>Anek Latin</th><th>Atkinson Hyperlegible Next</th><th>Geologica</th><th>IBM Plex Sans</th></tr></thead>
-        <tbody>
-          <tr><td>Made by</td><td>Ek Type, Mumbai</td><td>Braille Institute, for low-vision readers</td><td>Independent foundry, variable family</td><td>IBM</td></tr>
-          <tr><td>Weights</td><td>100–800, plus a width axis (75–125) for dense tables</td><td>200–800, true italics</td><td>100–900, slant, plus "sharpness" and "cursive" axes</td><td>100–700, true italics</td></tr>
-          <tr><td>Devanagari (later)</td><td>Anek Devanagari, same design and foundry</td><td>None; pair with Noto Sans Devanagari</td><td>None; pair with Noto Sans Devanagari</td><td>IBM Plex Sans Devanagari, same design</td></tr>
-          <tr><td>Monospace partner</td><td>None; pick one separately</td><td>Atkinson Hyperlegible Mono</td><td>None; pick one separately</td><td>IBM Plex Mono</td></tr>
-          <tr><td>Italics</td><td>No</td><td>Yes</td><td>Slanted</td><td>Yes</td></tr>
-          <tr><td>Already common?</td><td>Rare in tech brands</td><td>Rare in brands, known in accessibility</td><td>Rare</td><td>Common: reads as IBM and developer tools</td></tr>
-          <tr><td>Strongest fit</td><td>Indian story, one design across scripts, compact widths for Lighthouse and datasheets</td><td>Field and night legibility, IDs and coordinates, accessibility as a brand value</td><td>Most personality in headlines for AID IoT</td><td>Safe fallback if nothing else holds up</td></tr>
-        </tbody>
-      </table></div>
-    </div>
-  </section>
-
-  <section aria-labelledby="dec">
-    <div class="head">
-      <h2 id="dec">Decide</h2>
-    </div>
-    <div class="rec">
-      <span class="label">Claude's recommendation</span>
-      <p><strong>Anek Latin</strong>, if it passes your eye test at 12px and in the night console. It is the only candidate that gives AID one matching design in Latin and Devanagari from an Indian foundry. Its width axis also lets Lighthouse tables and datasheets run compact without a second font.</p>
-      <p class="muted">If the small print or the callsigns feel harder to read than in Atkinson Hyperlegible Next, choose Atkinson instead: legibility in the field matters more than the Devanagari match, which can be solved with a paired face later.</p>
-    </div>
-    <ol class="how">
-      <li>Switch faces with keys 1–4 and read the dashboard, the night console and the small print in each.</li>
-      <li>Ignore Geologica's charm in the big headline if it slows you down in the tables: the system spends most of its life in tables.</li>
-      <li>Tell Claude your pick, for example:</li>
+    <h3>The process</h3>
+    <ol class="steps">
+      <li><strong>Longlist by job</strong><span class="muted">18 candidates across six styles, already checked for basics. This page.</span></li>
+      <li><strong>Shortlist 3–4 by eye</strong><span class="muted">Pin them below and read them on real AID work, especially tables and small print.</span></li>
+      <li><strong>Test in real life</strong><span class="muted">A datasheet in Google Slides, a screen in Figma, a print at 100%, the night console on a tablet in a dark room. Show the CEO one page per font, names hidden.</span></li>
+      <li><strong>Score, decide, live with it</strong><span class="muted">Fill the scorecard, pick, then use it for a week of real work before it is locked into the library.</span></li>
     </ol>
-    <div class="say">Type: Anek Latin</div>
-    <p class="muted">After you choose, Claude sets the family once in the brand library's core tokens, rebuilds every brand, re-runs the checks, and moves on to the logo routes, which are set in this face.</p>
+  </section>
+
+  <section aria-labelledby="long">
+    <div class="head">
+      <h2 id="long">The longlist: 18 families, six styles</h2>
+      <p class="muted">Every card shows the same text. Pin the ones you want to compare. Orange chips are problems the checks found in the font files, not opinions: a font that cannot line up digits will misalign every dashboard column.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter the longlist">
+      <span class="label">Show</span>
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="pinned" aria-pressed="false">Pinned</button>
+      <button type="button" data-filter="width" aria-pressed="false">Narrow widths</button>
+      <button type="button" data-filter="mono" aria-pressed="false">Mono partner</button>
+      <button type="button" data-filter="clean" aria-pressed="false">No flags</button>
+    </div>
+    <div id="board" style="display:flex;flex-direction:column;gap:28px"></div>
+  </section>
+
+  <section aria-labelledby="cmpH">
+    <div class="head">
+      <h2 id="cmpH">Your shortlist on real AID work</h2>
+      <p class="muted">The pinned fonts (up to four) side by side: an AID IoT slide, an AID Defence title, a fleet dashboard, a datasheet, a briefing paragraph, the Lighthouse night console and legal small print. Figures are sample values for the type test, not product data.</p>
+    </div>
+    <div id="compare"></div>
+  </section>
+
+  <section aria-labelledby="scH">
+    <div class="head">
+      <h2 id="scH">Score your shortlist</h2>
+      <p class="muted">Give each pinned font 1 (poor) to 5 (excellent) per question. The total is out of 100, weighted as above. Your scores stay in this browser; copy the summary and send it to Claude to record the decision.</p>
+    </div>
+    <div id="score"></div>
+    <div class="actions"><button type="button" id="copy">Copy summary</button><span id="copied" class="muted" role="status"></span></div>
+    <pre id="summary"></pre>
+  </section>
+
+  <section aria-labelledby="recH">
+    <div class="head"><h2 id="recH">Claude's read</h2></div>
+    <div class="rec">
+      <p><strong>Your instinct holds up.</strong> Atkinson Hyperlegible Next was built so that easily confused letters look different, and the file checks confirm it has what AID needs every day: weights from 200 to 800, true italics, tabular figures, the rupee sign, and its own monospace partner for device IDs and coordinates. Few families have all of these.</p>
+      <p><strong>Its one real gap:</strong> no narrow width for dense tables, so Lighthouse and datasheet tables have to use size and weight instead. Devanagari is not needed now and can get its own font later. Its distinctive letter shapes give it character; check that headlines feel confident enough for AID IoT and calm enough for AID Defence.</p>
+      <p>Strongest challengers, each better at one thing:</p>
+      <ul>
+        <li><strong>Fira Sans</strong>: the closest all-rounder. Built for small screens, condensed families for tables, Fira Code and Fira Mono, italics. Widely used in tech since 2014, so less distinctive.</li>
+        <li><strong>Archivo</strong>: one industrial family from tight datasheet tables (width 62) to wide headlines (125). Less warmth in running text.</li>
+        <li><strong>Source Sans 3</strong>: the calmest humanist workhorse, digits aligned by default, Source Code Pro as its mono. Quiet to the point of anonymous.</li>
+      </ul>
+      <p class="muted">Flagged by the checks: Lexend and Inclusive Sans cannot align digits in columns; Barlow and Instrument Sans have no rupee sign. They stay on the board so you can see the trade-off, but they would need workarounds.</p>
+    </div>
+    <p class="muted">Next, after you choose: Claude sets the family once in the brand library's core tokens, rebuilds every brand and re-runs the checks, then starts the logo routes in that face.</p>
   </section>
 </main>
 
 <script>
 (() => {
-  const root = document.documentElement;
-  const buttons = [...document.querySelectorAll('.switch button')];
-  const ctl = document.getElementById('wdthCtl'), range = document.getElementById('wdth'), out = document.getElementById('wdthOut');
-  const set = (face) => {
-    root.dataset.face = face;
-    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.face === face)));
-    document.querySelectorAll('.col').forEach((c) => c.classList.toggle('on', c.dataset.col === face));
-    ctl.hidden = face !== 'anek';
-    root.style.setProperty('--cand-wdth', face === 'anek' ? range.value : 100);
-    try { localStorage.setItem('aid-type-face', face); } catch {}
-  };
-  buttons.forEach((b) => b.addEventListener('click', () => set(b.dataset.face)));
-  range.addEventListener('input', () => { out.value = range.value; root.style.setProperty('--cand-wdth', range.value); });
-  document.addEventListener('keydown', (e) => {
-    if (e.target.closest('input') || e.metaKey || e.ctrlKey || e.altKey) return;
-    const face = { 1: 'anek', 2: 'atk', 3: 'geo', 4: 'plex' }[e.key];
-    if (face) set(face);
+  const CRITERIA = [
+    { id:'read', w:25, t:'Readable at the worst moment', why:'Lighthouse at night, glare on a rugged tablet, a cheap Android phone, a datasheet printed at 8 pt.', look:'Different shapes for I l 1 and O 0; open c e a s; a generous x-height; even spacing.', test:'12 px line, night console, small print below.' },
+    { id:'nums', w:20, t:'Numbers and data', why:'Half of AID\'s content is figures: speeds, battery, IDs, coordinates, prices in ₹.', look:'Tabular figures so columns line up; clear 1/7, 3/8, 6/9; ₹, °C, ×, primes for coordinates.', test:'Dashboard and console tables. The checks flag fonts that cannot align digits or lack ₹.' },
+    { id:'range', w:15, t:'Range inside one family', why:'One family must cover everything. A missing style turns into a second font later.', look:'Weights 300–700 at least, true italics, narrow widths for tables, optical sizes if possible.', test:'The chips on each card.' },
+    { id:'voice', w:15, t:'Carries both brands', why:'AID IoT is warm and human; AID Defence is disciplined and discreet. Same font, different settings.', look:'A personality that is clear but not loud, so weight, case and spacing can push it either way.', test:'Read the two slide titles in each font.' },
+    { id:'own', w:15, t:'Not someone else\'s', why:'A font that reads as another company or as the default everyone uses weakens recognition.', look:'Avoid company fonts (IBM Plex, Mona Sans for GitHub, Red Hat) and defaults (Inter, Roboto, Poppins, Montserrat).', test:'Ask: where have I seen this before?' },
+    { id:'tools', w:10, t:'Works where the team works', why:'Figma, Google Slides, Canva, websites built by Claude and Codex, and Lighthouse installs with no internet.', look:'Open licence (all 18 use the SIL Open Font License: free for commercial use and self-hosting). Listed in Slides and Canva.', test:'Open Google Slides and Canva and search for it: newer fonts can be missing.' },
+  ];
+  const D = 'Pair needed';
+  const F = [
+    { id:'atk', g:'read', name:'Atkinson Hyperlegible Next', ff:'"Atkinson Hyperlegible Next"', by:'Braille Institute', why:'Every easily confused letter is drawn to look different. Made for low-vision readers.', w:'200–800', wd:'', it:true, tab:true, rupee:true, deva:D, mono:'Atkinson Hyperlegible Mono' },
+    { id:'lexend', g:'read', name:'Lexend', ff:'"Lexend"', by:'Bonnie Shaver-Troup, Thomas Jockin', why:'Spacing drawn from reading-proficiency research. Wider sibling families (Lexend Deca, Exa…).', w:'100–900', wd:'Wider families', it:false, tab:false, rupee:true, deva:D, mono:'' },
+    { id:'incl', g:'read', name:'Inclusive Sans', ff:'"Inclusive Sans"', by:'Olivia King', why:'Designed for accessibility, with friendly, open shapes.', w:'300–700', wd:'', it:true, tab:false, rupee:true, deva:D, mono:'' },
+    { id:'fira', g:'read', name:'Fira Sans', ff:'"Fira Sans"', by:'Mozilla · Carrois, Erik Spiekermann', why:'Drawn for small phone screens. Condensed and Extra Condensed families.', w:'100–900', wd:'Condensed families', it:true, tab:true, rupee:true, deva:D, mono:'Fira Code, Fira Mono' },
+    { id:'barlow', g:'ind', name:'Barlow', ff:'"Barlow"', by:'Jeremy Tribby', why:'Rounded, low-contrast; inspired by California highway signs and public infrastructure.', w:'100–900', wd:'Semi Condensed, Condensed families', it:true, tab:true, rupee:false, deva:D, mono:'' },
+    { id:'archivo', g:'ind', name:'Archivo', ff:'"Archivo"', by:'Omnibus-Type', why:'Grotesque built for print and screen performance. One width axis from tight tables to wide headlines.', w:'100–900', wd:'Width 62–125', it:true, tab:true, rupee:true, deva:D, mono:'' },
+    { id:'saira', g:'ind', name:'Saira', ff:'"Saira"', by:'Omnibus-Type', why:'Squarer, technical forms with a very wide width range. Strongest machine feel here.', w:'100–900', wd:'Width 50–125', it:true, tab:true, rupee:true, deva:D, mono:'' },
+    { id:'public', g:'neu', name:'Public Sans', ff:'"Public Sans"', by:'US Web Design System', why:'Neutral, sturdy government workhorse derived from Libre Franklin.', w:'100–900', wd:'', it:true, tab:true, rupee:true, deva:D, mono:'' },
+    { id:'source', g:'neu', name:'Source Sans 3', ff:'"Source Sans 3"', by:'Adobe · Paul D. Hunt', why:'Calm humanist for long reading and UI. Digits aligned by default.', w:'200–900', wd:'', it:true, tab:true, rupee:true, deva:D, mono:'Source Code Pro' },
+    { id:'instr', g:'neu', name:'Instrument Sans', ff:'"Instrument Sans"', by:'Instrument', why:'Crisp, contemporary grotesque with a narrow width option.', w:'400–700', wd:'Width 75–100', it:true, tab:true, rupee:false, deva:D, mono:'' },
+    { id:'mona', g:'neu', name:'Mona Sans', ff:'"Mona Sans"', by:'GitHub · Degarism', why:'Very versatile widths and weights. Reads as GitHub to developers.', w:'200–900', wd:'Width 75–125', it:true, tab:true, rupee:true, deva:D, mono:'Monaspace (self-hosted)' },
+    { id:'geo', g:'char', name:'Geologica', ff:'"Geologica"', by:'Round 1 candidate', why:'Geometric with extra sharpness, cursive and slant axes. Most personality in headlines.', w:'100–900', wd:'', it:false, tab:true, rupee:true, deva:D, mono:'' },
+    { id:'brico', g:'char', name:'Bricolage Grotesque', ff:'"Bricolage Grotesque"', by:'Mathieu Triay', why:'Quirky ink traps at display sizes, calmer at text sizes thanks to optical sizing.', w:'200–800', wd:'Width 75–100, optical size', it:false, tab:true, rupee:true, deva:D, mono:'' },
+    { id:'rec', g:'char', name:'Recursive', ff:'"Recursive"', by:'Arrow Type · Stephen Nixon', why:'One family that slides from sans to monospace and from strict to casual.', w:'300–1000', wd:'', it:false, tab:true, rupee:true, deva:D, mono:'Built in (mono axis)' },
+    { id:'anek', g:'ind2', name:'Anek Latin', ff:'"Anek Latin"', by:'Ek Type, Mumbai', why:'Indian foundry; one design across Latin, Devanagari and other Indian scripts, with a width axis.', w:'100–800', wd:'Width 75–125', it:false, tab:true, rupee:true, deva:'Anek Devanagari', mono:'' },
+    { id:'mukta', g:'ind2', name:'Mukta', ff:'"Mukta"', by:'Ek Type, Mumbai', why:'Latin and Devanagari in the same family from the start. Soft, open shapes.', w:'200–800', wd:'', it:false, tab:true, rupee:true, deva:'Same family', mono:'' },
+    { id:'noto', g:'ind2', name:'Noto Sans', ff:'"Noto Sans"', by:'Google', why:'Covers every Indian script and over 1,000 languages with one design. Very neutral.', w:'100–900', wd:'Width 62–100', it:true, tab:true, rupee:true, deva:'Noto Sans Devanagari', mono:'Noto Sans Mono' },
+    { id:'plex', g:'bench', name:'IBM Plex Sans', ff:'"IBM Plex Sans"', by:'IBM · Mike Abbink, Bold Monday', why:'Round 1 fallback. Excellent system, but it reads as IBM.', w:'100–700', wd:'', it:true, tab:true, rupee:true, deva:'IBM Plex Sans Devanagari', mono:'IBM Plex Mono' },
+  ];
+  const GROUPS = [
+    ['read','Built to be read','Drawn from legibility research: letters made hard to confuse.'],
+    ['ind','Industrial and instrument','Roots in road signs, gauges and engineering. Narrow widths for dense data.'],
+    ['neu','Neutral workhorses','Quiet families that step back and let the content lead.'],
+    ['char','Character','More personality in headlines; check they stay calm in tables.'],
+    ['ind2','Made for India','Designed alongside Indian scripts. Devanagari is not needed now, so judge them on Latin alone.'],
+    ['bench','Benchmark','Kept from round 1 to compare against.'],
+  ];
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' })[c]);
+  const store = { get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
+                  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+  let pinned = store.get('aid-type-pins', ['atk','fira','archivo','source']);
+  let scores = store.get('aid-type-scores', {});
+  let filter = 'all';
+  const font = (f) => `font-family:${f.ff},system-ui,sans-serif`;
+  const flags = (f) => [!f.tab && 'Digits cannot align', !f.rupee && 'No ₹ sign'].filter(Boolean);
+
+  document.getElementById('criteria').innerHTML = CRITERIA.map((c) => `
+    <div class="crit"><span class="wt">Weight ${c.w}</span><h3>${esc(c.t)}</h3>
+      <dl><dt>Why</dt><dd>${esc(c.why)}</dd><dt>Look for</dt><dd>${esc(c.look)}</dd><dt>Test</dt><dd>${esc(c.test)}</dd></dl></div>`).join('');
+
+  const card = (f) => `
+    <article class="card" data-id="${f.id}">
+      <div class="top"><div><div class="nm">${esc(f.name)}</div><div class="by">${esc(f.by)}</div></div>
+        <button type="button" class="pin" data-pin="${f.id}" aria-pressed="false" aria-label="Pin ${esc(f.name)}">Pin</button></div>
+      <div class="sp" style='${font(f)}'>
+        <div class="hl">Understood first. Built to fit.</div>
+        <div class="cf">Il1| O0o rn m 5S 8B ₹</div>
+        <div class="rows"><span>MH 12 AB 4471</span><span>46 km/h</span><span>82%</span><span>KA 05 MN 7710</span><span>0 km/h</span><span>11%</span><span>MH 14 CK 0918</span><span>108 km/h</span><span>100%</span></div>
+        <div class="sm">12 px · Convoy C-17, VAJRA-3 halted 6 min at 18°30′47″N 73°51′02″E. Battery 11%, ETA 21:43 IST.</div>
+      </div>
+      <p class="why muted">${esc(f.why)}</p>
+      <div class="chips">
+        ${flags(f).map((x) => `<span class="chip flag">${x}</span>`).join('')}
+        <span class="chip">Weights ${f.w}</span>
+        ${f.wd ? `<span class="chip">${esc(f.wd)}</span>` : ''}
+        <span class="chip">${f.it ? 'Italics' : 'No italics'}</span>
+        ${f.mono ? `<span class="chip good">Mono: ${esc(f.mono)}</span>` : ''}
+      </div>
+    </article>`;
+  document.getElementById('board').innerHTML = GROUPS.map(([g, t, d]) => `
+    <div class="group" data-group="${g}"><div class="gh"><h3>${t}</h3><span class="muted" style="font-size:.9rem">${d}</span></div>
+      <div class="cards">${F.filter((f) => f.g === g).map(card).join('')}</div></div>`).join('');
+
+  const matches = (f) => ({ all: true, pinned: pinned.includes(f.id), deva: f.deva !== D, width: !!f.wd && f.id !== 'lexend', mono: !!f.mono, clean: !flags(f).length })[filter];
+
+  function compare() {
+    const list = pinned.map((id) => F.find((f) => f.id === id)).filter(Boolean).slice(0, 4);
+    const el = document.getElementById('compare');
+    if (!list.length) { el.innerHTML = '<div class="empty">Nothing pinned yet. Pin up to four fonts in the longlist to see them here.</div>'; return; }
+    el.innerHTML = `${pinned.length > 4 ? '<p class="muted" style="margin-bottom:8px">Showing the first four pinned fonts.</p>' : ''}<div class="cmp">${list.map((f) => `
+      <div class="cc"><span class="nm">${esc(f.name)}</span>
+        <div style='${font(f)};display:flex;flex-direction:column;gap:16px'>
+          <div><div class="eb">AID IoT</div><div class="t1">Understood first. Built to fit.</div></div>
+          <div><div class="eb">AID Defence · Lighthouse</div><div class="t2">One picture of every vehicle, day and night.</div></div>
+          <div class="tw"><table><thead><tr><th>Vehicle</th><th class="n">km/h</th><th class="n">Batt.</th></tr></thead><tbody>
+            <tr><td>MH 12 AB 4471</td><td class="n">46</td><td class="n">82%</td></tr>
+            <tr><td>MH 14 CK 0918</td><td class="n">0</td><td class="n">64%</td></tr>
+            <tr><td>KA 05 MN 7710</td><td class="n">108</td><td class="n">11%</td></tr>
+            <tr><td>MH 12 QE 3306</td><td class="n">71</td><td class="n">100%</td></tr></tbody></table></div>
+          <div class="tw"><table class="ds"><tbody>
+            <tr><td>Fix accuracy</td><td>2.5 m CEP, open sky</td></tr>
+            <tr><td>Battery</td><td>5,000 mAh · up to 30 days</td></tr>
+            <tr><td>Temperature</td><td>−20 °C to +70 °C</td></tr>
+            <tr><td>Size</td><td>92 × 58 × 24 mm · 140 g</td></tr>
+            <tr><td>Price</td><td>₹4,471.50 + GST</td></tr></tbody></table></div>
+          <p class="para">Lighthouse shows a convoy commander where each vehicle is and whether it can still reach base, on one screen that stays readable at night. Deployment detail is shared <em>only in a private briefing</em>.</p>
+          <div class="night"><div class="bn">SAMPLE · NOT A REAL MARKING</div><div class="tw"><table><thead><tr><th>Callsign</th><th class="n">km/h</th><th class="n">ETA</th></tr></thead><tbody>
+            <tr><td>VAJRA-1</td><td class="n">38</td><td class="n">21:40</td></tr>
+            <tr><td>VAJRA-3</td><td class="n">0</td><td class="n">▲ halt</td></tr>
+            <tr><td>VAJRA-4</td><td class="n">35</td><td class="n">21:43</td></tr></tbody></table></div></div>
+          <p class="legal">© 2026 Inordinate Industrial Innovation Private Limited. Specifications are subject to change without notice.</p>
+        </div></div>`).join('')}</div>`;
+  }
+
+  const total = (id) => Math.round(CRITERIA.reduce((s, c) => s + (scores[id]?.[c.id] ?? 0) * c.w / 5, 0));
+  const rated = (id) => CRITERIA.every((c) => scores[id]?.[c.id]);
+  const inc = (id) => rated(id) ? '' : ' <span class="muted" style="font-weight:400;font-size:.8rem">(incomplete)</span>';
+  function scorecard() {
+    const list = pinned.map((id) => F.find((f) => f.id === id)).filter(Boolean);
+    const el = document.getElementById('score');
+    if (!list.length) { el.innerHTML = '<div class="empty">Pin fonts in the longlist to score them.</div>'; summary(); return; }
+    const opt = (f, c) => `<select id="s-${f.id}-${c.id}" data-f="${f.id}" data-c="${c.id}" aria-label="${esc(c.t)}: score for ${esc(f.name)}"><option value="">–</option>${[1,2,3,4,5].map((n) => `<option${scores[f.id]?.[c.id] === n ? ' selected' : ''}>${n}</option>`).join('')}</select>`;
+    el.innerHTML = `<div class="score"><table><thead><tr><th>Question</th><th>Weight</th>${list.map((f) => `<th>${esc(f.name)}</th>`).join('')}</tr></thead>
+      <tbody>${CRITERIA.map((c) => `<tr><td>${esc(c.t)}</td><td class="w">${c.w}</td>${list.map((f) => `<td>${opt(f, c)}</td>`).join('')}</tr>`).join('')}</tbody>
+      <tfoot><tr><td>Total out of 100</td><td></td>${list.map((f) => `<td data-total="${f.id}">${total(f.id)}${inc(f.id)}</td>`).join('')}</tr></tfoot></table></div>`;
+    summary();
+  }
+  function summary() {
+    const list = pinned.map((id) => F.find((f) => f.id === id)).filter(Boolean).sort((a, b) => total(b.id) - total(a.id));
+    document.getElementById('summary').textContent = list.length
+      ? `Type round 2 shortlist:\n${list.map((f) => `- ${f.name}: ${total(f.id)}/100${rated(f.id) ? '' : ' (not fully scored)'}`).join('\n')}`
+      : 'Type round 2: nothing pinned yet.';
+  }
+
+  function render() {
+    document.querySelectorAll('.card').forEach((c) => {
+      const f = F.find((x) => x.id === c.dataset.id);
+      const on = pinned.includes(f.id);
+      c.classList.toggle('pinned', on);
+      const b = c.querySelector('.pin'); b.setAttribute('aria-pressed', String(on)); b.textContent = on ? 'Pinned' : 'Pin';
+      c.hidden = !matches(f);
+    });
+    document.querySelectorAll('.group').forEach((g) => { g.hidden = ![...g.querySelectorAll('.card')].some((c) => !c.hidden); });
+    compare(); scorecard();
+  }
+
+  document.getElementById('board').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-pin]'); if (!b) return;
+    const id = b.dataset.pin;
+    pinned = pinned.includes(id) ? pinned.filter((x) => x !== id) : [...pinned, id];
+    store.set('aid-type-pins', pinned); render();
   });
-  let saved = 'anek';
-  try { saved = localStorage.getItem('aid-type-face') || 'anek'; } catch {}
-  set(buttons.some((b) => b.dataset.face === saved) ? saved : 'anek');
+  document.querySelector('.filters').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-filter]'); if (!b) return;
+    filter = b.dataset.filter;
+    document.querySelectorAll('[data-filter]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    render();
+  });
+  document.getElementById('score').addEventListener('change', (e) => {
+    const s = e.target.closest('select'); if (!s) return;
+    const row = (scores[s.dataset.f] ??= {});
+    if (s.value) row[s.dataset.c] = Number(s.value); else delete row[s.dataset.c];
+    store.set('aid-type-scores', scores);
+    const td = document.querySelector(`[data-total="${s.dataset.f}"]`);
+    if (td) td.innerHTML = `${total(s.dataset.f)}${inc(s.dataset.f)}`;
+    summary();
+  });
+  document.getElementById('copy').addEventListener('click', () => {
+    const text = document.getElementById('summary').textContent, msg = document.getElementById('copied');
+    const fallback = () => {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById('summary'));
+      const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); msg.textContent = 'Selected. Press Ctrl or Cmd + C to copy.';
+    };
+    try { navigator.clipboard.writeText(text).then(() => { msg.textContent = 'Copied. Paste it to Claude.'; }, fallback); } catch { fallback(); }
+  });
+  render();
 })();
 </script>

@@ -46,7 +46,7 @@ td.rej{color:var(--muted)}
     <div class="counts">
       <div class="count you"><span class="label">Waiting on you</span><b>5</b></div>
       <div class="count lead"><span class="label">Waiting on leadership</span><b>7</b></div>
-      <div class="count done"><span class="label">Decided</span><b>18</b></div>
+      <div class="count done"><span class="label">Decided</span><b>22</b></div>
     </div>
   </header>
 
@@ -76,7 +76,7 @@ td.rej{color:var(--muted)}
         <h3>Which Google Fonts family for all brands?</h3>
         <dl>
           <dt>Recommendation</dt><dd>Test Geologica, Atkinson Hyperlegible Next and Anek; IBM Plex as fallback; avoid Inter, Geist, Space Grotesk, Manrope</dd>
-          <dt>Decides</dt><dd>Brand owner, using the type study page (leaning Anek Latin; Atkinson Hyperlegible Next if it reads better)</dd>
+          <dt>Decides</dt><dd>Brand owner, using the type study round 2 (owner likes Atkinson Hyperlegible Next; challengers Fira Sans, Archivo, Source Sans 3)</dd>
           <dt>Evidence</dt><dd><code>docs/studies/type-study.html, research/10, research/03 §6</code></dd>
         </dl>
       </article>
@@ -173,6 +173,10 @@ td.rej{color:var(--muted)}
     <div class="tbl"><table>
       <thead><tr><th>Date</th><th>Decision</th><th>Why</th><th>Rejected</th></tr></thead>
       <tbody>
+        <tr><td class="date">2026-10-29</td><td>Type round 2: 18 Google Fonts in six styles, checked from the font files (tabular digits, ₹, italics, widths), with a weighted scorecard</td><td>the owner wanted more variety and a way to judge beyond looks</td><td class="rej">deciding from round 1's four candidates rejected</td></tr>
+        <tr><td class="date">2026-10-29</td><td>scripts/setup.sh runs automatically at session start (SessionStart hook), locally and in cloud sessions</td><td>a cloud session must work from a GitHub clone with no manual step</td><td class="rej">manual setup only rejected</td></tr>
+        <tr><td class="date">2026-10-29</td><td>Helper agents default to Sonnet; Opus is passed explicitly when an agent's output decides or changes the result</td><td>research and analysis are cheap to run on Sonnet, crucial reasoning needs the stronger model</td><td class="rej">Opus for every agent rejected (18% of usage)</td></tr>
+        <tr><td class="date">2026-10-29</td><td>Devanagari support is not a criterion for the brand font; Devanagari gets its own font later</td><td>the owner said Hindi is not needed now</td><td class="rej">weighting the choice toward Anek, Mukta or Noto for script coverage rejected</td></tr>
         <tr><td class="date">2026-10-29</td><td>Repo is heymishraji/AID-IoT, split into self-contained packages (packages/brand-library first) and an internal workspace (docs, assets, scripts); a check fails if a package points outside its folder</td><td>the user wants each system shareable so another team's LLM can plug it in</td><td class="rej">keeping the library at the repo root rejected because future projects would tangle with it</td></tr>
         <tr><td class="date">2026-10-28</td><td>Contrast (WCAG AA) is part of npm run check; night palette brightened and light strong border darkened so all 180 pairs pass</td><td>real colours must be checked automatically</td><td class="rej">manual contrast review rejected</td></tr>
         <tr><td class="date">2026-10-28</td><td>Decision tracker page generated from DECISIONS.md (npm run decisions) and published as an artifact</td><td>the brand owner reads and decides from a page, while the Markdown stays the source</td><td class="rej">a hand-maintained HTML page rejected because it would drift</td></tr>

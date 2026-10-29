@@ -1,6 +1,6 @@
 # Context — AID brand system + design system
 
-_Last rewritten: 2026-10-29 (repo split into packages + workspace; pushed to GitHub)_
+_Last rewritten: 2026-10-29 (packages + workspace, GitHub, setup hook, Sonnet helpers, type round 2)_
 
 ## State
 - Fresh start on 2026-10-27; the old website work is in git tag `archive/website-v3`.
@@ -48,10 +48,13 @@ are out of date): https://claude.ai/artifact/HG3jJSpQnwoMZ4YnwW4zUM
   challenger", three-tier disclosure (public / on request / briefing only); CTA "Request a private briefing".
 - AID IoT portfolio as one platform + five families; AID Defence as two missions commanded through Lighthouse.
 - Logo: evolve the mark (one line, three nodes, triangulation story), test against a new wordmark.
-- Fonts to test: Geologica, Atkinson Hyperlegible Next, Anek; fallback IBM Plex. Avoid Inter, Geist, Space Grotesk, Manrope.
+- Fonts: round 2 longlist of 18 (owner likes Atkinson Hyperlegible Next). Avoid Inter, Geist, Space Grotesk, Manrope, Poppins, Roboto.
 - Naming risks: NAVIC (ISRO), Cortex (Arm), Lighthouse (Google, DGLL).
 
 ## Pending with the user
-- Type choice on the type study page: https://claude.ai/artifact/3MBCvgv2VPYcQ5LaVxHWy1
-- Usage fix: approve settings change 1 (CLAUDE_CODE_SUBAGENT_MODEL=sonnet) and/or memory change 2.
-- Approve a SessionStart hook in .claude/settings.json that runs scripts/setup.sh (blocked by auto mode).
+- Type choice on the type study (round 2): https://claude.ai/artifact/3MBCvgv2VPYcQ5LaVxHWy1. Devanagari is not a
+  criterion; it gets its own font later.
+
+## Agents and setup (since 2026-10-29)
+- Helper agents default to Sonnet (env in `.claude/settings.json` and the user's settings); pass Opus for crucial work.
+- SessionStart hook runs `scripts/setup.sh`; graphify hooks no-op if the CLI is missing.
