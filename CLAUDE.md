@@ -39,8 +39,16 @@ Do NOT load `docs/research/*` unless a task needs the evidence; they are large r
 - Every deliverable ends with "Next steps" and the reason each step is next.
 
 ## New machine or cloud session
-- Run `bash scripts/setup.sh` once (installs the graphify CLI and npm dependencies).
+- `scripts/setup.sh` runs automatically at session start (SessionStart hook): graphify CLI + each package's npm
+  dependencies. Run it by hand only if the hook is off.
 - After changing docs or code, run `graphify update .` and commit `graphify-out/`.
+
+## Agents and models
+- Helper agents default to Sonnet (`CLAUDE_CODE_SUBAGENT_MODEL` in `.claude/settings.json`): research, crawling,
+  summarising, extraction, comparison tables, first drafts.
+- Pass `model: "opus"` when the agent's output decides or changes the result: brand rules, token/structure
+  changes, final copy, design direction, recommendations the owner will act on, anything hard to undo.
+- Haiku only for mechanical lookups. The main session reviews every agent result before it is used.
 
 ## Conventions
 - British English. Plain language first, engineering detail one level down.
