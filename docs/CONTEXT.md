@@ -19,6 +19,7 @@ _Last rewritten: 2026-10-29 (repo split into packages + workspace; pushed to Git
 ## Tooling
 - graphify knowledge graph in `graphify-out/` (507 nodes, 23 groups). Query it before reading research:
   `graphify query "<question>"`. Setup on a new machine: `bash scripts/setup.sh`.
+- Studies (pages the owner decides from): `docs/studies/`. Type study → artifact above.
 - Decision tracker: `npm run decisions` → docs/decisions.html → https://claude.ai/artifact/XJfR1n8t9czc79kuS1ARhA
 - `npm run check` now includes WCAG AA contrast for every brand × mode (180 pairs, all passing).
 
@@ -51,6 +52,6 @@ are out of date): https://claude.ai/artifact/HG3jJSpQnwoMZ4YnwW4zUM
 - Naming risks: NAVIC (ISRO), Cortex (Arm), Lighthouse (Google, DGLL).
 
 ## Pending with the user
-- Split PRODUCT-FACTS per brand into each brand folder so an exported brand carries its own product truth.
+- Type choice on the type study page: https://claude.ai/artifact/3MBCvgv2VPYcQ5LaVxHWy1
 - Usage fix: approve settings change 1 (CLAUDE_CODE_SUBAGENT_MODEL=sonnet) and/or memory change 2.
 - Approve a SessionStart hook in .claude/settings.json that runs scripts/setup.sh (blocked by auto mode).
