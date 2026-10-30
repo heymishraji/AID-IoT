@@ -1,0 +1,151 @@
+{
+  "routes": {
+    "iot": [
+      { "id": "copper", "name": "Copper", "ground": "#FDF9F4", "ink": "#181612", "accent": "#B1582B", "mono": "#8D3700" },
+      { "id": "indigo", "name": "Indigo", "ground": "#FDF9F4", "ink": "#181612", "accent": "#525DBD", "mono": "#343996" },
+      { "id": "jamun", "name": "Jamun", "ground": "#FDF9F4", "ink": "#181612", "accent": "#954A7E", "mono": "#6F285C" }
+    ],
+    "defence": [
+      { "id": "brass", "name": "Slate & Brass", "ground": "#071117", "ink": "#D9E7F1", "accent": "#E9C67D", "mono": "#E9C67D" },
+      { "id": "glacier", "name": "Graphite & Glacier", "ground": "#0C0D10", "ink": "#E2E5E9", "accent": "#9BDDEE", "mono": "#9BDDEE" },
+      { "id": "bone", "name": "Basalt & Bone", "ground": "#041010", "ink": "#A3B3B3", "accent": "#FAF1DF", "mono": "#ECE4D2" }
+    ]
+  },
+  "variants": {
+    "refined": {
+      "score": "25/28",
+      "rationale": [
+        ["What changed", "Links are lighter (10 units on the 120 grid, was 14.4) and exactly even; nodes are larger (18 vs 17) so they read as things, not as line ends; one constant gap of 6 everywhere; the base link is drawn 6% thinner because horizontal strokes look heavier than diagonals; the whole mark is nudged up 1 unit because a triangle's mass sits low."],
+        ["Why it is more modern", "More air in the counter and a clear contrast between node and link: the precision of current instrument and interface marks, without any effect."],
+        ["What it keeps", "Everything structural: equilateral skeleton, three separate links, three separate nodes, round caps, the crossbar-less A."],
+        ["At 16 px", "Switches to the small master: side 12 on the 16 px grid, base link pixel-aligned at 2 px, gaps of about 1 px. Three nodes and the triangle still read."],
+        ["Motion", "Nodes light and links draw in travel order; this is the geometry the loader uses."],
+        ["Not a generic triangle", "The triangle is never drawn: it is implied by six separated parts. Delta and Adidas are solid; Google Drive is three overlapping bands; this is nodes and gaps."]
+      ]
+    },
+    "beacon": {
+      "score": "27/28",
+      "rationale": [
+        ["What changed", "Refined geometry in one colour, plus a single accent on the apex node. Three competing colours become one ink and one signal."],
+        ["Why it is more modern", "'Monochrome base plus one owned hue' is how the strongest recent systems work (research 10, rule 11). It meets the owner's 'too many colours' concern and leaves green and red free for status."],
+        ["What it keeps", "The full drawing of the current mark, and its orange apex dot — now the one coloured node, in each brand's own hue."],
+        ["At 16 px", "Small master; the lit apex stays visible as a coloured dot even when the links blur, which makes it a strong favicon and avatar."],
+        ["Motion", "The accent can travel: a lit node moves sense → connect → decide, then comes to rest on the apex. Same drawing, many states."],
+        ["Not a generic triangle", "The lit node is a specific, ownable signature: one dot of colour on a one-colour structure of separated parts."]
+      ]
+    },
+    "relay": {
+      "score": "23/28",
+      "rationale": [
+        ["What changed", "Each link starts close to one node (gap 3.5) and stops well short of the next (gap 14), in travel order. The mark gains a direction of turn."],
+        ["Why it is more modern", "It describes a behaviour (signal passing node to node) rather than a static shape, like current agent and assistant marks."],
+        ["What it keeps", "Nodes, links, skeleton, round caps."],
+        ["At 16 px", "Weak: the small gap closes and the asymmetry is lost; it falls back to a near-Refined small master."],
+        ["Motion", "The most natural to animate; it is the motion idea for the loader rather than a static master."],
+        ["Not a generic triangle", "Distinct, but the rotation risks reading as the recycling sign or a 'refresh' icon at small size."]
+      ]
+    },
+    "network": {
+      "score": "19/28",
+      "rationale": [
+        ["What changed", "Nodes become rings and links become monoline; the mark becomes a diagram."],
+        ["Why it is more modern", "Light and technical; at home in product UI and maps."],
+        ["What it keeps", "The skeleton and the separation of parts."],
+        ["At 16 px", "Fails at the master: rings fill in below 40 px and it must swap to filled nodes, which changes the idea."],
+        ["Motion", "Rings can fill to show state; good as a UI state system, not as a logo."],
+        ["Not a generic triangle", "It reads as a generic network or graph icon — the category cliché the strategy warns against. Keep the idea for state glyphs, not the mark."]
+      ]
+    },
+    "socket": {
+      "score": "22/28",
+      "rationale": [
+        ["What changed", "Links thicken into a heavy frame and each link end is cut as an arc concentric with its node, so each node sits in a round socket of constant gap."],
+        ["Why it is more modern", "Confident, solid and very robust: the negative space (the sockets and the counter) does the work."],
+        ["What it keeps", "Three nodes at the corners and the gap rule."],
+        ["At 16 px", "The strongest small-size performer of the set; reads even at 12 px."],
+        ["Motion", "Links are filled shapes, so they cannot draw on as lines; they can only fade or wipe."],
+        ["Not a generic triangle", "From a distance the heavy frame reads as a solid triangle (Delta-like); the sockets save it only up close. Departs most from the current mark's lightness."]
+      ]
+    },
+    "fix": {
+      "score": "23/28",
+      "rationale": [
+        ["What changed", "Refined plus a fourth, accented dot at the centroid: the position fix produced by three references."],
+        ["Why it is more modern", "Gives the mark a literal, checkable meaning for NAVIC and Lighthouse."],
+        ["What it keeps", "The whole Refined drawing."],
+        ["At 16 px", "The centre dot must be dropped below 32 px, so the small master loses the idea."],
+        ["Motion", "Excellent as an end state: the fix lands after the links close. Used as the 'fix acquired' animation."],
+        ["Not a generic triangle", "A triangle with a centre dot echoes the survey trig-point symbol and, less helpfully, the 'eye in a triangle'. Too literal for a master (Rand: a logo identifies, it does not explain); keep it as a state."]
+      ]
+    },
+    "facet": {
+      "score": "27/28",
+      "rationale": [
+        ["What changed", "Same skeleton and nodes; links become straight-cut bars whose ends are square to each corner's bisector, so every corner is a clean chamfer with the node sitting in it. Firmer links (11), tighter gaps, smaller nodes (17)."],
+        ["Why it is more modern", "Engineered, exact and quiet: the closed, sharper treatment the Defence strategy asks for, without any military cliché."],
+        ["What it keeps", "Three separate round nodes at the same positions, three separate links, the gap rule."],
+        ["At 16 px", "Small master on the same 16 px skeleton; the chamfers soften into short gaps but the structure holds."],
+        ["Motion", "Step-wise: parts switch on whole, in sequence, then the fix — 'reveals in sequence, like a briefing'."],
+        ["Not a generic triangle", "Round nodes against straight cuts is an unusual, ownable contrast; no solid triangle and no arrowhead."]
+      ]
+    },
+    "tile": {
+      "score": "App",
+      "rationale": [
+        ["What it is", "An application of Beacon, not a new mark: the symbol knocked out of a soft square (radius 22%), accent node in the brand hue."],
+        ["Why", "App stores, browser tabs and social avatars crop and mask. A tile with a 17% safe margin survives circular crops and busy feeds."],
+        ["At 16 px", "Uses the small master at 80% scale; tested on light and dark tabs."],
+        ["Defence", "AID Defence does not need a coloured app tile in public; where one is required, use Facet on Slate 900 with the brass node."]
+      ]
+    }
+  },
+  "scorecard": {
+    "head": ["Criterion (RESEARCH.md §2)", "Current", "Refined", "Beacon", "Relay", "Network", "Socket", "Fix", "Facet"],
+    "rows": [
+      ["C1 Simple", "2", "2", "2", "2", "2", "2", "2", "2"],
+      ["C2 Memorable (doodle test, predicted)", "1", "2", "2", "1", "2", "2", "2", "2"],
+      ["C3 Distinctive, not a generic triangle", "1", "1", "2", "1", "1", "1", "1", "2"],
+      ["C4 Appropriate (story, both stances)", "1", "2", "2", "2", "1", "2", "1", "2"],
+      ["C5 Scales to 16 px", "1", "2", "2", "1", "1", "2", "1", "2"],
+      ["C6 One colour and reversed", "1", "2", "2", "2", "2", "2", "2", "2"],
+      ["C7 Production-safe", "1", "2", "2", "1", "1", "1", "2", "2"],
+      ["C8 Timeless", "1", "2", "2", "2", "1", "2", "2", "2"],
+      ["C9 Construction and balance", "1", "2", "2", "2", "2", "2", "2", "2"],
+      ["C10 System potential", "1", "2", "2", "2", "2", "1", "2", "2"],
+      ["C11 Motion and behaviour", "1", "2", "2", "2", "2", "1", "2", "2"],
+      ["C12 Ownable", "1", "1", "1", "2", "0", "2", "1", "2"],
+      ["C13 Continuity with current mark", "2", "2", "2", "2", "1", "1", "2", "1"],
+      ["C14 Two-brand fit", "0", "1", "2", "1", "1", "1", "1", "2"],
+      ["Total (of 28)", "15", "25", "27", "23", "19", "22", "23", "27"]
+    ]
+  },
+  "recommendation": "Beacon and Facet are one system: the same skeleton, the same three nodes and the same gap rule, with two treatments. Beacon (27/28) keeps the current mark almost exactly, removes the three-colour problem and gives AID IoT one warm signal on its apex. Facet (27/28) is the closed, sharper sibling for AID Defence; its only partial score is continuity, which is right for a brand that must look different. Runner-up: Refined (25/28), if the owner wants no accent colour at all. Relay and Fix are kept as behaviours (loader and 'fix acquired'), not as masters.",
+  "minSizes": [
+    ["Screen", "Master symbol from 25 px; the small master (16 px grid) from 16 to 24 px; never below 16 px. Horizontal lockup at least 24 px tall; stacked at least 56 px."],
+    ["Print", "Symbol at least 6 mm tall; horizontal lockup at least 6 mm tall; stacked at least 14 mm. Below 8 mm use the small master."],
+    ["Product marking", "Beacon: PCB silkscreen 4 mm, laser etch 5 mm, moulded emboss 12 mm. Facet (tighter gaps): 4, 6 and 14 mm. Always the small-master geometry, one colour."],
+    ["Embroidery and vinyl", "Embroidery: symbol 16 mm (Facet 20 mm), small-master geometry, gaps at least 1 mm. Cut vinyl: symbol at least 25 mm so each node and link weeds as its own piece."],
+    ["Signage and billboards", "Symbol height at least 25 mm for every 3 m of viewing distance (250 mm at 30 m). Use the master, never a hairline variant."],
+    ["Clear space", "2N on every side (N = node diameter, about 19% of the symbol height). For the app tile, the symbol keeps a 17% margin inside the tile."]
+  ],
+  "dos": [
+    ["Do use one colour first", "Ink for the structure; the accent only on the apex node, and only one accent hue per brand."],
+    ["Do use the small master", "At 24 px and below, and on any physical mark under 8 mm. The kit switches automatically."],
+    ["Do let parts recur", "Nodes as bullets, the base link as a divider, the lattice as pattern — always the real proportions, from the kit."]
+  ],
+  "donts": [
+    { "kind": "colours", "text": "Bring back three colours, or colour links and nodes differently." },
+    { "kind": "joined", "text": "Join links to nodes or draw the triangle as an outline." },
+    { "kind": "rotate", "text": "Rotate or flip. The apex always points up." },
+    { "kind": "effects", "text": "Add gradients, glow, glass or shadows." },
+    { "kind": "stretch", "text": "Stretch, or change the gap or proportions." },
+    { "kind": "status", "text": "Use status green, amber or red as the accent." }
+  ],
+  "next": [
+    ["Owner picks the direction: Beacon + Facet, or the runner-up", "Everything downstream (DESIGN.md tokens, UI previews, Figma mockups) needs one skeleton fixed first."],
+    ["Run the doodle test with five people, and the covered-logo test", "C2 is predicted, not measured; it is the only criterion rendering cannot check."],
+    ["Choose one colour route per brand", "The accent node needs a final hue; the mark is already built to take any of the six."],
+    ["Make the touchpoint mockups in Figma from applications.md", "Seeing the mark on a device, a van and a slide is how the CEO will judge it."],
+    ["Order supplier test panels and start trademark clearance (Classes 9, 38, 42, 13)", "Production minimums are vendor guidance until tested on AID's own materials; simple geometric marks need early clearance."]
+  ]
+}

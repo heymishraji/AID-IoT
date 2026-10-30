@@ -68,6 +68,8 @@ table.rt{border-collapse:collapse;width:100%;font-size:.88rem}
 /* ==== Inside the previews: brand-library tokens only ==== */
 .screen{width:1280px;background:var(--aid-color-surface-canvas);color:var(--aid-color-text-primary);font-family:var(--aid-type-body-family);font-size:var(--aid-type-body-size);line-height:var(--aid-type-body-line-height);overflow:hidden}
 .screen img{display:block;width:100%;height:100%;object-fit:cover}
+.screen{--aid-mark-accent:var(--aid-color-action-primary-bg)}
+.screen table{color:inherit;font:inherit}
 .screen h1,.screen h2,.screen h3,.screen p{margin:0}
 .d{font-family:var(--aid-type-display-family);font-size:var(--aid-type-display-size);line-height:var(--aid-type-display-line-height);font-weight:var(--aid-type-display-weight);letter-spacing:-.015em;text-wrap:balance}
 .h1{font-family:var(--aid-type-heading-1-family);font-size:var(--aid-type-heading-1-size);line-height:var(--aid-type-heading-1-line-height);font-weight:var(--aid-type-heading-1-weight);letter-spacing:-.01em;text-wrap:balance}
@@ -299,7 +301,17 @@ table.rt{border-collapse:collapse;width:100%;font-size:.88rem}
     if (kit()?.lockup) return `<span class="logo">${kit().lockup(brand, kit().recommended?.[brand === 'aid-iot' ? 'iot' : 'defence'], { height: 32 })}</span>`;
     return `<span class="logo">${currentMark(32)}<span class="wm${brand === 'aid-defence' ? ' def' : ''}">AID<span>${brand === 'aid-iot' ? ' IoT' : 'DEFENCE'}</span></span></span>`;
   };
-  const loader = (label) => kit()?.loader ? `<span class="loader-host">${kit().loader({ size: 20 })}${label}</span>` : `<span class="loader-host">${currentMark(18)}${label}</span>`;
+  const loader = (label) => kit()?.loader ? `<span class="loader-host">${kit().loader({ size: 22, brand: S.brand, label })}</span>` : `<span class="loader-host">${currentMark(18)}${label}</span>`;
+  // Brand pattern from the mark (lattice), tinted with the route's link colour of each screen.
+  const toHex = (rgb) => '#' + (rgb.match(/\d+/g) || [0, 0, 0]).slice(0, 3).map((n) => (+n).toString(16).padStart(2, '0')).join('');
+  const paintPatterns = () => {
+    if (!kit()?.pattern) return;
+    for (const sc of document.querySelectorAll('.screen')) {
+      const probe = document.createElement('span'); probe.style.color = 'var(--aid-color-text-link)'; sc.appendChild(probe);
+      const col = toHex(getComputedStyle(probe).color); probe.remove();
+      sc.querySelectorAll('[data-pattern]').forEach((el) => { el.style.backgroundImage = kit().pattern('lattice', { color: col, opacity: +el.dataset.pattern }); el.style.backgroundSize = '120px auto'; });
+    }
+  };
   const glyph = (state) => kit()?.stateGlyph ? kit().stateGlyph(state) : currentMark(18);
 
   /* ---------- Shared bits (tokens only) ---------- */
@@ -357,7 +369,7 @@ table.rt{border-collapse:collapse;width:100%;font-size:.88rem}
       <div class="grid3">${[['iot-1', 'Cold storage', 'Pune'], ['iot-2', 'Logistics depots', 'Nashik'], ['iot-3', 'Machining', 'Rajkot']].map(([i, t, p]) => `
         <div class="stack"><div class="ph" style="height:220px">${img(i, t)}</div><div class="row" style="justify-content:space-between"><h3 class="h3" style="font-size:20px">${t}</h3><span class="cap2">${p}</span></div></div>`).join('')}</div>
     </div>
-    <div class="sec"><div class="band grid2" style="grid-template-columns:1.4fr 1fr" data-l="4"><div class="stack"><h2 class="h1">Tell us the problem.</h2><p class="lead">We come back with how we would solve it, in plain language, before we talk about products.</p></div><div class="row" style="justify-content:flex-end">${btn('Tell us the problem')}</div></div></div>
+    <div class="sec"><div class="band grid2" style="grid-template-columns:1.4fr 1fr" data-l="8" data-pattern="0.22"><div class="stack"><h2 class="h1">Tell us the problem.</h2><p class="lead">We come back with how we would solve it, in plain language, before we talk about products.</p></div><div class="row" style="justify-content:flex-end">${btn('Tell us the problem')}</div></div></div>
     ${foot()}`;
 
   const iotProduct = (b) => `${iotNav(b)}
@@ -433,7 +445,7 @@ table.rt{border-collapse:collapse;width:100%;font-size:.88rem}
     <div class="sec stack-lg" data-l="6"><div class="stack"><span class="eb">Disclosure</span><h2 class="h1">What we share, and where</h2><p class="lead" style="max-width:64ch">Some detail is public, some is on request, and some only in a private briefing. We say which is which.</p></div>
       <div class="grid3">${[['Public', ['What Lighthouse does', 'Supported hardware families', 'Deployment models']], ['On request', ['Technical brochure', 'Integration guide', 'Certifications']], ['Briefing only', ['Performance and ranges', 'Deployments and users', 'Roadmap']]].map(([t, items], k) => `
         <div class="aid-card stack"><div class="row" style="justify-content:space-between"><h3 class="h3" style="font-size:20px">${t}</h3>${st(['normal', 'standby', 'caution'][k], ['Open', 'Ask', 'Brief'][k])}</div><ul class="sm mut" style="margin:0;padding-left:18px;display:grid;gap:4px">${items.map((x) => `<li>${x}</li>`).join('')}</ul></div>`).join('')}</div></div>
-    <div class="sec grid2" data-l="5"><div class="stack"><span class="eb">Trust</span><h2 class="h1">Sovereign by design</h2><p class="lead">Runs on your servers or fully air-gapped. Engineered, built and supported in India. No data leaves your network.</p></div>
+    <div class="sec grid2" data-l="5" data-pattern="0.14"><div class="stack"><span class="eb">Trust</span><h2 class="h1">Sovereign by design</h2><p class="lead">Runs on your servers or fully air-gapped. Engineered, built and supported in India. No data leaves your network.</p></div>
       <div class="grid2" style="gap:16px">${[['Self-hosted', 'On-premises or air-gapped'], ['Indian-engineered', 'Hardware and software in-house'], ['Night-ready', 'Red-shifted night mode'], ['Supported', 'Field support in India']].map(([t, s]) => `<div class="panel stack" style="gap:4px"><strong>${t}</strong><span class="cap2">${s}</span></div>`).join('')}</div></div>
     ${foot()}`;
 
@@ -463,7 +475,7 @@ table.rt{border-collapse:collapse;width:100%;font-size:.88rem}
       <div class="main"><div class="map" style="flex:1">${terrain()}</div>
         <div class="row cap2" style="gap:18px"><span><span class="dot" style="background:var(--aid-symbology-affiliation-friend-fill)"></span> Own vehicles</span><span><span class="dot" style="background:var(--aid-status-caution-fill)"></span> Halt</span><span>Route ··· planned</span></div></div>
       <aside class="side" style="border-left:1px solid var(--aid-color-border-subtle);border-right:0">
-        <div class="panel stack" style="gap:8px" data-l="8"><span class="eb">Fix quality</span><div class="row">${glyph('connected')}<strong>Fix acquired</strong></div><span class="cap2">${D('3')} references · HDOP ${D('0.9')}</span></div>
+        <div class="panel stack" style="gap:8px" data-l="8"><span class="eb">Fix quality</span><div class="row">${kit()?.success ? kit().success({ brand: 'aid-defence', size: 30 }) : glyph('fix')}<strong>Fix acquired</strong></div><span class="cap2">${D('3')} references · HDOP ${D('0.9')}</span></div>
         <span class="eb" style="margin-top:14px">Events</span>
         ${[['21:16:40', 'VAJRA-3 halted at waypoint 7'], ['21:12:05', 'VAJRA-4 switched to SatCom'], ['21:04:31', 'Convoy passed checkpoint B'], ['20:58:10', 'Night mode suggested at dusk']].map(([t, m]) => `<div class="stack" style="gap:2px;padding:8px 0;border-bottom:1px solid var(--aid-color-border-subtle)">${D(t)}<span class="sm">${m}</span></div>`).join('')}
       </aside>
@@ -512,11 +524,13 @@ table.rt{border-collapse:collapse;width:100%;font-size:.88rem}
     stagesEl.innerHTML = list.map(([r, label]) => `<div class="stage"><div class="cap">${swatch(brand, r)}${label} · ${S.mode[brand]}</div>
       <div class="viewport"><div class="scaler"><div class="screen" data-brand="${brand}" data-route="${r}" data-mode="${S.mode[brand]}" data-density="comfortable">${tpl(brand)}</div></div></div></div>`).join('');
     document.getElementById('pv-note').textContent = `${brand === 'aid-iot' ? 'AID IoT' : 'AID Defence'} · ${screens.find(([k]) => k === S.screen)[1]}. Built from the brand library tokens and components; only the brand palette and neutrals change between routes. Figures are sample values. ${kit() ? 'Logo: modernised current mark.' : 'Logo: current mark in one colour (modernised versions are in progress).'}`;
+    paintPatterns();
     fit();
     stagesEl.querySelectorAll('img').forEach((i) => i.addEventListener('load', fit, { once: true }));
   }
   new ResizeObserver(fit).observe(stagesEl);
   const start = location.hash === '#previews' ? 'previews' : 'learned';
+  kit()?.injectCss?.();
   showTab(start);
 })();
 </script>

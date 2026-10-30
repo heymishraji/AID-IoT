@@ -1,6 +1,6 @@
 # Context — AID brand system + design system
 
-_Last rewritten: 2026-10-30 (type decided and built in; identity round 1 in Figma)_
+_Last rewritten: 2026-10-30 (identity round 1 complete: mark modernised, UI previews, logo in use; awaiting owner picks)_
 
 ## State
 - Fresh start on 2026-10-27; the old website work is in git tag `archive/website-v3`.
@@ -59,7 +59,7 @@ are out of date): https://claude.ai/artifact/HG3jJSpQnwoMZ4YnwW4zUM
 - Naming risks: NAVIC (ISRO), Cortex (Arm), Lighthouse (Google, DGLL).
 
 ## Pending with the user
-- Identity round 1 picks: logo route, colour route per brand, imagery (see NEXT).
+- Identity round 1 picks: modernised mark (Beacon + Facet), colour route per brand, imagery (see NEXT).
 
 ## Agents and setup (since 2026-10-29)
 - Helper agents default to Sonnet (env in `.claude/settings.json` and the user's settings); pass Opus for crucial work.

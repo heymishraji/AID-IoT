@@ -3,6 +3,7 @@
   "6": "IoT vs Defence side-by-side dimensions table",
   "7": "Lighthouse (software side of NAVIC CMS)",
   "9": "docs/CONTEXT.md",
+  "10": "logo/logo-kit.js",
   "11": "Next: visual direction round in Figma (type, logo, colour, mood boards)",
   "13": "AID Defence — brand strategy v0 (draft)",
   "14": "AID IoT — brand strategy v0 (draft)",
@@ -61,5 +62,9 @@
   "69": "iot-5 · Field, the system working outdoors",
   "70": "iot-6 · How it connects, one picture",
   "71": "generated/README.md",
-  "72": "ui-previews/README.md"
+  "72": "ui-previews/README.md",
+  "73": "logo-modernisation/logo-kit.js",
+  "74": "logo-modernisation/build.mjs",
+  "75": "AID mark — logo modernisation study, round 1",
+  "76": "Touchpoint mockups to make in Figma (logo modernisation, round 1)"
 }

@@ -30,21 +30,21 @@
     "semantic_hash": ""
   },
   "docs/CONTEXT.md": {
-    "mtime": 1793351669.6775553,
-    "seen": 1793351691.162087,
-    "ast_hash": "090355257b1622d5ad96d65c20cf19ac",
+    "mtime": 1793355237.3682687,
+    "seen": 1793355250.086072,
+    "ast_hash": "629fcee3364e678af761676b23c1f87c",
     "semantic_hash": ""
   },
   "docs/DECISIONS.md": {
-    "mtime": 1793351651.9576647,
-    "seen": 1793351691.162088,
-    "ast_hash": "9a48ed781fbf2690bc80fb6200112390",
+    "mtime": 1793355237.3603895,
+    "seen": 1793355250.0860732,
+    "ast_hash": "bf81dba2a026874060090e14cd00c3f1",
     "semantic_hash": ""
   },
   "docs/NEXT.md": {
-    "mtime": 1793351669.676597,
-    "seen": 1793351691.1620889,
-    "ast_hash": "2880afd36030dfac9ee69b317d6a772b",
+    "mtime": 1793355237.367248,
+    "seen": 1793355250.086074,
+    "ast_hash": "baf1bd0b9b2f0a96ba91c7c029e4ebee",
     "semantic_hash": ""
   },
   "docs/PRODUCT-FACTS.md": {
@@ -198,9 +198,9 @@
     "semantic_hash": ""
   },
   "docs/decisions.html": {
-    "mtime": 1793351682.063401,
-    "seen": 1793351691.162094,
-    "ast_hash": "224749e8a66566a3c4e4a3053763f869",
+    "mtime": 1793355240.7809753,
+    "seen": 1793355250.08608,
+    "ast_hash": "ac55c9b8d51451d248003c92e0c50577",
     "semantic_hash": ""
   },
   "packages/brand-library/AGENTS.md": {
@@ -234,8 +234,8 @@
     "semantic_hash": ""
   },
   "packages/brand-library/brands/_fixture-brand/DESIGN.md": {
-    "mtime": 1793351684.4827623,
-    "seen": 1793351691.162112,
+    "mtime": 1793355243.5720952,
+    "seen": 1793355250.086103,
     "ast_hash": "d80301cb9cc7b7e5572b6cf0fd0ccbc0",
     "semantic_hash": ""
   },
@@ -258,8 +258,8 @@
     "semantic_hash": ""
   },
   "packages/brand-library/brands/aid-defence/DESIGN.md": {
-    "mtime": 1793351684.5870614,
-    "seen": 1793351691.162116,
+    "mtime": 1793355243.6906736,
+    "seen": 1793355250.0861068,
     "ast_hash": "7322b3e29bbc05e3ffc9ddc831802c6d",
     "semantic_hash": ""
   },
@@ -300,8 +300,8 @@
     "semantic_hash": ""
   },
   "packages/brand-library/brands/aid-iot/DESIGN.md": {
-    "mtime": 1793351684.6936135,
-    "seen": 1793351691.162122,
+    "mtime": 1793355243.7919707,
+    "seen": 1793355250.086113,
     "ast_hash": "8b39e527d1218824b6a0df1bb86147dc",
     "semantic_hash": ""
   },
@@ -342,8 +342,8 @@
     "semantic_hash": ""
   },
   "packages/brand-library/brands/inordinate/DESIGN.md": {
-    "mtime": 1793351684.7872136,
-    "seen": 1793351691.162128,
+    "mtime": 1793355243.8857148,
+    "seen": 1793355250.08612,
     "ast_hash": "777de709ffd7ebe0e42851deac4ef2d1",
     "semantic_hash": ""
   },
@@ -708,9 +708,9 @@
     "semantic_hash": ""
   },
   "docs/studies/identity-round-1/ui-previews/index.html": {
-    "mtime": 1793353034.0785682,
-    "seen": 1793353230.2910678,
-    "ast_hash": "7e99fd365fe7d068ec263a07c81e55b0",
+    "mtime": 1793355124.9087498,
+    "seen": 1793355250.086092,
+    "ast_hash": "9553842c708a0654f441cbc9f438f373",
     "semantic_hash": ""
   },
   "docs/studies/logo-modernisation/RESEARCH.md": {
@@ -789,6 +789,384 @@
     "mtime": 1793350119.260613,
     "seen": 1793353230.2911308,
     "ast_hash": "371e493e3362d5dfcc2bd0851c23d046",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/logo/logo-kit.js": {
+    "mtime": 1793354529.244734,
+    "seen": 1793355250.08603,
+    "ast_hash": "f1ef8ccf6b959a0dc9abc6eefeee613b",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/build.mjs": {
+    "mtime": 1793354529.2459276,
+    "seen": 1793355250.0860329,
+    "ast_hash": "73ad336206b953c2811e00ccf185f38f",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/logo-kit.js": {
+    "mtime": 1793354529.244734,
+    "seen": 1793355250.086035,
+    "ast_hash": "f1ef8ccf6b959a0dc9abc6eefeee613b",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/showcase-data.json": {
+    "mtime": 1793354160.9906514,
+    "seen": 1793355250.086036,
+    "ast_hash": "cc51598892d4861e6fe38e2e427f40fe",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/README.md": {
+    "mtime": 1793354622.640823,
+    "seen": 1793355250.086093,
+    "ast_hash": "0e556e21db8730c204c108e7301508ba",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/applications.md": {
+    "mtime": 1793354623.4135118,
+    "seen": 1793355250.086095,
+    "ast_hash": "deee8ecae504d1ae1cc60999fde5f157",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/showcase.html": {
+    "mtime": 1793354529.8673906,
+    "seen": 1793355250.086095,
+    "ast_hash": "b44a6d25dbb9f6e4e43d5bcaffe1a1db",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/current-mark.svg": {
+    "mtime": 1793354529.8292568,
+    "seen": 1793355250.0861561,
+    "ast_hash": "11f7e29d29c449d2d7599834ada7a50a",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/elements/network.svg": {
+    "mtime": 1793354529.854516,
+    "seen": 1793355250.086157,
+    "ast_hash": "54a082df234c70e61d01e0bfe7d2c62d",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/elements/pattern-lattice.svg": {
+    "mtime": 1793354529.851467,
+    "seen": 1793355250.086158,
+    "ast_hash": "eeb5a3da4f19a3ed36447a8c2c58c94e",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/elements/pattern-marks.svg": {
+    "mtime": 1793354529.8518944,
+    "seen": 1793355250.086158,
+    "ast_hash": "7ea3556f303f7d8d3d166ce762c51e23",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/elements/pattern-nodes.svg": {
+    "mtime": 1793354529.8524337,
+    "seen": 1793355250.086159,
+    "ast_hash": "e808f2d723bf8f9b8b850d6050655230",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/elements/state-alert.svg": {
+    "mtime": 1793354529.8558407,
+    "seen": 1793355250.08616,
+    "ast_hash": "119c57702b0582da23b830af4243591a",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/elements/state-connected.svg": {
+    "mtime": 1793354529.8555408,
+    "seen": 1793355250.08616,
+    "ast_hash": "3df337de9403099d0d49aad546169677",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/elements/state-fix.svg": {
+    "mtime": 1793354529.8564894,
+    "seen": 1793355250.086161,
+    "ast_hash": "f3594f4e425be44a4a35567435a02c45",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/elements/state-idle.svg": {
+    "mtime": 1793354529.8549633,
+    "seen": 1793355250.0861619,
+    "ast_hash": "caef318b84dd5cfae77cc0f23e817321",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/elements/state-sensing.svg": {
+    "mtime": 1793354529.855249,
+    "seen": 1793355250.086163,
+    "ast_hash": "80927b893b4400b3ec2a32b44bbda567",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/elements/supergraphic-aid-defence.svg": {
+    "mtime": 1793354529.8533611,
+    "seen": 1793355250.086163,
+    "ast_hash": "460210b610f0a369ed5c9de59176dffc",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/elements/supergraphic-aid-iot.svg": {
+    "mtime": 1793354529.8528914,
+    "seen": 1793355250.086164,
+    "ast_hash": "99c4fc31a527ff26f8fa3d742adc0214",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/lockups/aid-defence-horizontal-colour.svg": {
+    "mtime": 1793354529.8493824,
+    "seen": 1793355250.086165,
+    "ast_hash": "cb78cb2935791e8e0a386093a9364f3e",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/lockups/aid-defence-horizontal.svg": {
+    "mtime": 1793354529.8480678,
+    "seen": 1793355250.086165,
+    "ast_hash": "0c11c1f1c61e0929d78ac5430600ad88",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/lockups/aid-defence-stacked-colour.svg": {
+    "mtime": 1793354529.8509037,
+    "seen": 1793355250.086166,
+    "ast_hash": "0b6ca6fa324916fff61779d3459348b9",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/lockups/aid-defence-stacked.svg": {
+    "mtime": 1793354529.8501186,
+    "seen": 1793355250.086167,
+    "ast_hash": "950909fa47d522ab96dafceadd374d71",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/lockups/aid-iot-horizontal-colour.svg": {
+    "mtime": 1793354529.846064,
+    "seen": 1793355250.086168,
+    "ast_hash": "9fb53110bd881a79fc290f0828cbc90b",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/lockups/aid-iot-horizontal.svg": {
+    "mtime": 1793354529.8455234,
+    "seen": 1793355250.086168,
+    "ast_hash": "3dcbb4d283c48873794834648e5379e5",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/lockups/aid-iot-stacked-colour.svg": {
+    "mtime": 1793354529.8475575,
+    "seen": 1793355250.086169,
+    "ast_hash": "6792c36f07960ebd21d721e0b2b543c1",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/lockups/aid-iot-stacked.svg": {
+    "mtime": 1793354529.8468435,
+    "seen": 1793355250.0861702,
+    "ast_hash": "3eff2fd8e8010b0b331c4b06b274883f",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/recommended/aid-defence-symbol-16.svg": {
+    "mtime": 1793354529.842597,
+    "seen": 1793355250.086171,
+    "ast_hash": "24c187e63f6aa9e650f0fce952842928",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/recommended/aid-defence-symbol-brass-16.svg": {
+    "mtime": 1793354529.8431304,
+    "seen": 1793355250.086171,
+    "ast_hash": "a47bebc42ce25413561d8c6636bacaa4",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/recommended/aid-defence-symbol-brass.svg": {
+    "mtime": 1793354529.842869,
+    "seen": 1793355250.0861719,
+    "ast_hash": "5f7aba1e704aa71629fe8c263d4339dd",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/recommended/aid-defence-symbol-tone-on-tone-16.svg": {
+    "mtime": 1793354529.8436153,
+    "seen": 1793355250.0861728,
+    "ast_hash": "760bb94096fd460aade2787442d3d697",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/recommended/aid-defence-symbol-tone-on-tone.svg": {
+    "mtime": 1793354529.8433728,
+    "seen": 1793355250.0861728,
+    "ast_hash": "ce532b7c9deab7109e60b1880152fe09",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/recommended/aid-defence-symbol.svg": {
+    "mtime": 1793354529.8423371,
+    "seen": 1793355250.086174,
+    "ast_hash": "1f36a90103eab572bb507a21b0a2def6",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/recommended/aid-iot-app-icon.svg": {
+    "mtime": 1793354529.8438988,
+    "seen": 1793355250.086175,
+    "ast_hash": "f6492822beb968582f0a20bea906d7aa",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/recommended/aid-iot-favicon.svg": {
+    "mtime": 1793354529.8441534,
+    "seen": 1793355250.086176,
+    "ast_hash": "65e8523f2500b5cf214e6d06a882717d",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/recommended/aid-iot-symbol-16.svg": {
+    "mtime": 1793354529.8405113,
+    "seen": 1793355250.086177,
+    "ast_hash": "68f7bc00f8503bef42197c6d94ef44dd",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/recommended/aid-iot-symbol-copper-16.svg": {
+    "mtime": 1793354529.8413587,
+    "seen": 1793355250.086177,
+    "ast_hash": "5f94161563c86dc755ea49bfbea44e64",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/recommended/aid-iot-symbol-copper.svg": {
+    "mtime": 1793354529.840805,
+    "seen": 1793355250.086178,
+    "ast_hash": "3d110fcd1113bc31f8d3224f7b0287d4",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/recommended/aid-iot-symbol-reversed-16.svg": {
+    "mtime": 1793354529.8420625,
+    "seen": 1793355250.086179,
+    "ast_hash": "36c4e2bf6c22253f348c01357fc7b1a4",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/recommended/aid-iot-symbol-reversed.svg": {
+    "mtime": 1793354529.8417997,
+    "seen": 1793355250.0861812,
+    "ast_hash": "5c956d450f5a6d488590bdef7dfe3408",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/recommended/aid-iot-symbol.svg": {
+    "mtime": 1793354529.8403015,
+    "seen": 1793355250.0861819,
+    "ast_hash": "0c09bd3097ce519d3e775ef883cc0342",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/beacon-16.svg": {
+    "mtime": 1793354529.8319046,
+    "seen": 1793355250.0861819,
+    "ast_hash": "68f7bc00f8503bef42197c6d94ef44dd",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/beacon-colour.svg": {
+    "mtime": 1793354529.8328753,
+    "seen": 1793355250.0861828,
+    "ast_hash": "3d110fcd1113bc31f8d3224f7b0287d4",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/beacon.svg": {
+    "mtime": 1793354529.8313935,
+    "seen": 1793355250.086184,
+    "ast_hash": "0c09bd3097ce519d3e775ef883cc0342",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/current-mono.svg": {
+    "mtime": 1793354529.830005,
+    "seen": 1793355250.086184,
+    "ast_hash": "6d3a5927671f876cedff99801cbc31d3",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/facet-16.svg": {
+    "mtime": 1793354529.8380468,
+    "seen": 1793355250.086185,
+    "ast_hash": "24c187e63f6aa9e650f0fce952842928",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/facet-colour.svg": {
+    "mtime": 1793354529.838873,
+    "seen": 1793355250.086186,
+    "ast_hash": "5f7aba1e704aa71629fe8c263d4339dd",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/facet.svg": {
+    "mtime": 1793354529.8377023,
+    "seen": 1793355250.0861871,
+    "ast_hash": "1f36a90103eab572bb507a21b0a2def6",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/fix-16.svg": {
+    "mtime": 1793354529.8363373,
+    "seen": 1793355250.0861871,
+    "ast_hash": "cb2030c3398d5a03ffd0f418fecb35f1",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/fix-colour.svg": {
+    "mtime": 1793354529.837223,
+    "seen": 1793355250.086188,
+    "ast_hash": "c611da3fa4fb3a3186d8d8707ec24049",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/fix.svg": {
+    "mtime": 1793354529.8359177,
+    "seen": 1793355250.086189,
+    "ast_hash": "d1e44c63f63256005434a50bd6f3a0ce",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/network-16.svg": {
+    "mtime": 1793354529.8348374,
+    "seen": 1793355250.086189,
+    "ast_hash": "5f81523bb0ae425c5bae98a8938469d4",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/network.svg": {
+    "mtime": 1793354529.8345273,
+    "seen": 1793355250.08619,
+    "ast_hash": "712dad3d6d95fc2b959b5f61762182de",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/refined-16.svg": {
+    "mtime": 1793354529.8308237,
+    "seen": 1793355250.0861912,
+    "ast_hash": "cb2030c3398d5a03ffd0f418fecb35f1",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/refined.svg": {
+    "mtime": 1793354529.8304574,
+    "seen": 1793355250.0861921,
+    "ast_hash": "e4615cdf3af489f39417fbd116f5fb32",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/relay-16.svg": {
+    "mtime": 1793354529.8338425,
+    "seen": 1793355250.0861921,
+    "ast_hash": "ea15f90f02490cc7b4ce7b177b78a3a6",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/relay-colour.svg": {
+    "mtime": 1793354529.8341405,
+    "seen": 1793355250.0861928,
+    "ast_hash": "51944efd348c819b84a6dee9c18ad016",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/relay.svg": {
+    "mtime": 1793354529.8335297,
+    "seen": 1793355250.086194,
+    "ast_hash": "f55af806971b3e48c8343fbdb5d1d048",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/socket-16.svg": {
+    "mtime": 1793354529.8354905,
+    "seen": 1793355250.086195,
+    "ast_hash": "5833d56182ae202c4b4e474695895827",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/socket.svg": {
+    "mtime": 1793354529.8351982,
+    "seen": 1793355250.086195,
+    "ast_hash": "06c266f35d1886e60d2d6d29a2498cb7",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/tile-16.svg": {
+    "mtime": 1793354529.839745,
+    "seen": 1793355250.086196,
+    "ast_hash": "3212c95fc898defce700fb27dae05bb5",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/tile-colour.svg": {
+    "mtime": 1793354529.8400397,
+    "seen": 1793355250.086197,
+    "ast_hash": "217fbc8ce3225e8786119d838e77ef6f",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/svg/variants/tile.svg": {
+    "mtime": 1793354529.839418,
+    "seen": 1793355250.086197,
+    "ast_hash": "e409695faa6ddebe159b0ed870d5c20a",
     "semantic_hash": ""
   },
   "packages/brand-library/package-lock.json": {

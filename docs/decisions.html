@@ -44,9 +44,9 @@ td.rej{color:var(--muted)}
     <h1>Decision tracker</h1>
     <p class="muted">Every brand and design decision, with the reason and what was rejected, plus the decisions still open. Generated from <code>docs/DECISIONS.md</code>.</p>
     <div class="counts">
-      <div class="count you"><span class="label">Waiting on you</span><b>7</b></div>
+      <div class="count you"><span class="label">Waiting on you</span><b>10</b></div>
       <div class="count lead"><span class="label">Waiting on leadership</span><b>7</b></div>
-      <div class="count done"><span class="label">Decided</span><b>26</b></div>
+      <div class="count done"><span class="label">Decided</span><b>30</b></div>
     </div>
   </header>
 
@@ -64,11 +64,11 @@ td.rej{color:var(--muted)}
       </article>
       <article class="card">
         <span class="area">Identity</span>
-        <h3>Logo route: A keep, B evolve into one line through three nodes, or C wordmark-led A?</h3>
+        <h3>Modernised mark: Beacon (AID IoT) + Facet (AID Defence), or the runner-up Refined?</h3>
         <dl>
-          <dt>Recommendation</dt><dd>B, with C as the comparison</dd>
+          <dt>Recommendation</dt><dd>Beacon + Facet (27/28 each on the research checklist)</dd>
           <dt>Decides</dt><dd>Brand owner</dd>
-          <dt>Evidence</dt><dd><code>Figma identity round 1 page 02, docs/studies/identity-round-1/, research/10</code></dd>
+          <dt>Evidence</dt><dd><code>Figma page 02 and 05, docs/studies/logo-modernisation/ (RESEARCH.md, README.md)</code></dd>
         </dl>
       </article>
       <article class="card">
@@ -96,6 +96,33 @@ td.rej{color:var(--muted)}
           <dt>Recommendation</dt><dd>Keep all but regenerate iot-3 with the sensor in front</dd>
           <dt>Decides</dt><dd>Brand owner</dd>
           <dt>Evidence</dt><dd><code>Figma identity round 1 page 04, assets/imagery/generated/</code></dd>
+        </dl>
+      </article>
+      <article class="card">
+        <span class="area">Library</span>
+        <h3>Night versions of the protected status, symbology and classification colours (they stay at daytime brightness in night mode)</h3>
+        <dl>
+          <dt>Recommendation</dt><dd>Add night values in core/tokens/protected</dd>
+          <dt>Decides</dt><dd>Brand owner</dd>
+          <dt>Evidence</dt><dd><code>UI previews, Lighthouse console in night mode</code></dd>
+        </dl>
+      </article>
+      <article class="card">
+        <span class="area">Library</span>
+        <h3>Brand-tinted neutrals: colour routes tint the neutral scale per brand, but neutrals are core-owned today</h3>
+        <dl>
+          <dt>Recommendation</dt><dd>Add a brand neutral role if a tinted route wins</dd>
+          <dt>Decides</dt><dd>Brand owner</dd>
+          <dt>Evidence</dt><dd><code>docs/studies/identity-round-1/ui-previews/README.md</code></dd>
+        </dl>
+      </article>
+      <article class="card">
+        <span class="area">Library</span>
+        <h3>Status colours are bright placeholders (Astro defaults) that clash with the calm brand look</h3>
+        <dl>
+          <dt>Recommendation</dt><dd>Tune them in their own pass, keeping meaning and contrast</dd>
+          <dt>Decides</dt><dd>Brand owner</dd>
+          <dt>Evidence</dt><dd><code>UI previews</code></dd>
         </dl>
       </article>
       <article class="card">
@@ -191,6 +218,10 @@ td.rej{color:var(--muted)}
     <div class="tbl"><table>
       <thead><tr><th>Date</th><th>Decision</th><th>Why</th><th>Rejected</th></tr></thead>
       <tbody>
+        <tr><td class="date">2026-10-30</td><td>Figma file has a cover page (mark lattice pattern, title, one-line goal, status); set as thumbnail by being the first frame of the first page</td><td>the owner wanted the file's purpose and progress visible at a glance</td><td class="rej">API thumbnail setting unavailable</td></tr>
+        <tr><td class="date">2026-10-30</td><td>Colour routes are judged on UI previews built with the brand library (each route = brand-role and neutral overrides), in light, dark and night, with lessons from the 51 references shown on the screens</td><td>swatches alone could not show long-term fit</td><td class="rej">static colour boards alone rejected</td></tr>
+        <tr><td class="date">2026-10-30</td><td>Logo work starts from research: RESEARCH.md checklist (14 criteria) and production limits for 16 touchpoints; eight variations scored; real vector mark placed on ten touchpoint mockups in Figma</td><td>the owner asked for research first and for scalability to be shown in real use</td><td class="rej">designing variations by taste alone rejected</td></tr>
+        <tr><td class="date">2026-10-30</td><td>Keep the current AID mark and modernise it; routes B (one continuous line) and C (wordmark-led A) dropped</td><td>the owner judged B and C &quot;not at all good&quot; and wants continuity with brand recall</td><td class="rej">replacing the mark rejected</td></tr>
         <tr><td class="date">2026-10-30</td><td>Identity round 1 built in Figma (reference boards from 45 live captures, three logo routes per brand, three colour routes per brand with AA contrast, 12 AI mood images with prompts)</td><td>the type is decided, so the identity needs evidence and options to choose from</td><td class="rej">deciding logo, colour and imagery from prose alone rejected</td></tr>
         <tr><td class="date">2026-10-30</td><td>Data face is matched to the text face by measurement: font-size-adjust cap-height 0.698 (×1.045 in tools), weights 310/380/460/560/680 for 300–700; verified in Chrome (equal digit height and stroke, unchanged line height)</td><td>the owner required the two to look consistent on one line</td><td class="rej">matching by eye rejected</td></tr>
         <tr><td class="date">2026-10-30</td><td>Supersedes 2026-10-27 &quot;one font family&quot;: two shared faces, still identical for every brand</td><td>data needs its own face</td><td class="rej">per-brand faces still rejected</td></tr>
