@@ -43,5 +43,7 @@
   "51": "AID IoT personality: a solver, empathetic, agile",
   "52": "Naming risks: NAVIC (ISRO), Cortex (Arm), Lighthouse (Google)",
   "53": "Decision: AI imagery default; mood boards in Figma",
-  "54": "Decision: VOICE.md and STRATEGY.md live in brands/<brand>/"
+  "54": "Decision: VOICE.md and STRATEGY.md live in brands/<brand>/",
+  "55": "render.py",
+  "56": "type-evidence/README.md"
 }

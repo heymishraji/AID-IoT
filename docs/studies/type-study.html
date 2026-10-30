@@ -21,6 +21,16 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100..900;1,100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap">
+<style>
+/* Route 2: one family name, Archivo for everything except digits, which come from Atkinson Hyperlegible Next.
+   The later rule wins where ranges overlap. size-adjust 104.5% matches Atkinson's figure height (0.668 em) to Archivo's (0.698 em). */
+@font-face{font-family:"AID Splice";font-weight:100 900;font-display:swap;
+  src:url(https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdnoLmvDIaI.woff2) format("woff2")}
+@font-face{font-family:"AID Splice";font-weight:200 800;font-display:swap;size-adjust:104.5%;unicode-range:U+0030-0039;
+  src:url(https://fonts.gstatic.com/s/atkinsonhyperlegiblenext/v7/NaPNcYPdHfdVxJw0IfIP0lvYFqijb-UxCtm5_wdGseiJn3q0pkZ_.woff2) format("woff2")}
+</style>
 <style>
 /* Layout: a type proof sheet. Page chrome stays in the system face so only the candidates carry character.
    Guide first (how to judge), then the longlist board, then the pinned shortlist on real work, then the scorecard. */
@@ -126,14 +136,149 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--proof);outline
 
 .rec{border-left:3px solid var(--proof);padding:4px 0 4px 16px;display:flex;flex-direction:column;gap:10px}
 .rec ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;max-width:75ch}
+
+/* Round 3: same panel per route. --t = text face, --d = data face. */
+.routes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:12px}
+.rt{background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:14px;min-width:0;font-family:var(--t)}
+.rt.mine{border-color:var(--proof);box-shadow:inset 0 3px 0 var(--proof)}
+.rt .rh{font-family:var(--chrome);display:flex;flex-direction:column;gap:2px}
+.rt .rh b{font-size:.98rem}
+.rt .rh span{font-size:.82rem;color:var(--ink-2)}
+.rt .eb{font-size:.7rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2)}
+.rt .t1{font-size:1.65rem;line-height:1.05;font-weight:700;letter-spacing:-.015em;text-wrap:balance}
+.rt .t2{font-size:1.2rem;line-height:1.15;font-weight:600;text-wrap:balance}
+.rt .body{font-size:.97rem;line-height:1.55}
+.rt table{border-collapse:collapse;width:100%;font-size:.86rem}
+.rt th,.rt td{text-align:left;padding:5px 6px;border-bottom:1px solid var(--rule);white-space:nowrap}
+.rt th{font-size:.66rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2)}
+.rt td{font-family:var(--d);font-variant-numeric:tabular-nums}
+.rt td.n,.rt th.n{text-align:right}
+.rt .coord{font-family:var(--d);font-size:.9rem;font-variant-numeric:tabular-nums;background:var(--night-bg);color:var(--night-ink);padding:8px 10px;border-radius:3px}
+.rt .spec{display:grid;grid-template-columns:auto minmax(0,1fr);gap:3px 12px;font-size:.88rem;margin:0}
+.rt .spec dt{color:var(--ink-2)} .rt .spec dd{margin:0;font-family:var(--d);font-variant-numeric:tabular-nums}
+.rt .legal{font-size:11px;line-height:1.5;color:var(--ink-2)}
+.works{background:var(--sheet);border:1px solid var(--rule);border-radius:4px;overflow-x:auto}
+.works table{border-collapse:collapse;width:100%;font-size:.9rem}
+.works th,.works td{padding:8px 10px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top;min-width:140px}
+.works th:first-child,.works td:first-child{min-width:110px;color:var(--ink-2)}
+.works thead th{font-weight:700}
+.y{color:var(--ok);font-weight:600} .p{color:var(--flag);font-weight:600}
+.r4 hr{border:0;border-top:1px solid var(--rule);margin:8px 0 0}
 </style>
 
 <main>
   <header class="head" style="gap:12px">
-    <span class="label">AID brand system · type round 2 · 29 Oct 2026</span>
+    <span class="label">AID brand system · type round 3 · 30 Oct 2026</span>
     <h1>Choosing AID's typeface</h1>
-    <p class="muted">You like Atkinson Hyperlegible Next. This round puts it beside 17 other Google Fonts from six different styles, explains what to judge beyond looks, and lets you pin a shortlist, see it on real AID work and score it. One family will carry AID IoT, AID Defence and the parent company for years, so it is worth the extra round.</p>
+    <p class="muted">Round 3 answers your round 2 notes. You like Archivo for headlines, body text and small print, but its numbers, especially the 4, feel unclear in data. Atkinson Hyperlegible Next has the clearest numbers. Below, the same panel is set six ways so you can see which route fixes the numbers without losing Archivo. Round 2 is further down for reference.</p>
   </header>
+
+  <section aria-labelledby="r3" class="r4">
+    <div class="head">
+      <h2 id="r3">Archivo's numbers: three ways to fix them</h2>
+      <p class="muted">Your reading is right. Archivo's 4 is tall and steep, with a thin sliver of a counter that closes up at dashboard sizes; Atkinson's 4 has a wide, open counter and a crossbar that reaches past the stem. Archivo has no alternative 4 built in (checked in the font file), so the fix has to come from outside it. Every panel shows the same sample figures, packed with 4s, 1s and 0s.</p>
+    </div>
+    <div class="routes">
+      <div class="rt" style="--t:'Archivo',system-ui,sans-serif;--d:'Archivo',system-ui,sans-serif">
+        <div class="rh"><b>Today · Archivo only</b><span>The starting point. Look at the 4s in the table and the coordinates.</span></div>
+        <div><div class="eb">AID IoT</div><div class="t1">Understood first. Built to fit.</div></div>
+        <div><div class="eb">AID Defence · Lighthouse</div><div class="t2">Every vehicle on one screen, readable at night.</div></div>
+        <p class="body">In a sample convoy of 14 vehicles, positions refresh every 4 seconds and the commander sees at a glance which vehicle has stopped and why.</p>
+        <table><thead><tr><th>Vehicle</th><th class="n">km/h</th><th class="n">Batt.</th><th class="n">Last fix</th></tr></thead><tbody>
+          <tr><td>MH 12 AB 4471</td><td class="n">44</td><td class="n">41%</td><td class="n">14:41:04</td></tr>
+          <tr><td>KA 04 MN 1474</td><td class="n">0</td><td class="n">14%</td><td class="n">14:40:44</td></tr>
+          <tr><td>MH 14 CK 0948</td><td class="n">104</td><td class="n">94%</td><td class="n">14:39:14</td></tr></tbody></table>
+        <div class="coord">VAJRA-4 · 18°34′14″N 73°44′41″E · ETA 21:44</div>
+        <dl class="spec"><dt>Battery</dt><dd>4,400 mAh · up to 14 days</dd><dt>Price</dt><dd>₹14,440 + GST</dd></dl>
+        <p class="legal">© 2026 Inordinate Industrial Innovation Private Limited.</p>
+      </div>
+      <div class="rt mine" style="--t:'Archivo',system-ui,sans-serif;--d:'Atkinson Hyperlegible Next',system-ui,sans-serif">
+        <div class="rh"><b>Route 1 · Archivo + Atkinson for data</b><span>Archivo for headlines, text and labels. Atkinson for every data value: tables, IDs, coordinates, specs, prices.</span></div>
+        <div><div class="eb">AID IoT</div><div class="t1">Understood first. Built to fit.</div></div>
+        <div><div class="eb">AID Defence · Lighthouse</div><div class="t2">Every vehicle on one screen, readable at night.</div></div>
+        <p class="body">In a sample convoy of 14 vehicles, positions refresh every 4 seconds and the commander sees at a glance which vehicle has stopped and why.</p>
+        <table><thead><tr><th>Vehicle</th><th class="n">km/h</th><th class="n">Batt.</th><th class="n">Last fix</th></tr></thead><tbody>
+          <tr><td>MH 12 AB 4471</td><td class="n">44</td><td class="n">41%</td><td class="n">14:41:04</td></tr>
+          <tr><td>KA 04 MN 1474</td><td class="n">0</td><td class="n">14%</td><td class="n">14:40:44</td></tr>
+          <tr><td>MH 14 CK 0948</td><td class="n">104</td><td class="n">94%</td><td class="n">14:39:14</td></tr></tbody></table>
+        <div class="coord">VAJRA-4 · 18°34′14″N 73°44′41″E · ETA 21:44</div>
+        <dl class="spec"><dt>Battery</dt><dd>4,400 mAh · up to 14 days</dd><dt>Price</dt><dd>₹14,440 + GST</dd></dl>
+        <p class="legal">© 2026 Inordinate Industrial Innovation Private Limited.</p>
+      </div>
+      <div class="rt" style="--t:'AID Splice',system-ui,sans-serif;--d:'AID Splice',system-ui,sans-serif">
+        <div class="rh"><b>Route 2 · Archivo with Atkinson digits</b><span>Archivo everywhere, but every digit 0–9 is swapped for Atkinson's, even in headlines and body text.</span></div>
+        <div><div class="eb">AID IoT</div><div class="t1">Understood first. Built to fit.</div></div>
+        <div><div class="eb">AID Defence · Lighthouse</div><div class="t2">Every vehicle on one screen, readable at night.</div></div>
+        <p class="body">In a sample convoy of 14 vehicles, positions refresh every 4 seconds and the commander sees at a glance which vehicle has stopped and why.</p>
+        <table><thead><tr><th>Vehicle</th><th class="n">km/h</th><th class="n">Batt.</th><th class="n">Last fix</th></tr></thead><tbody>
+          <tr><td>MH 12 AB 4471</td><td class="n">44</td><td class="n">41%</td><td class="n">14:41:04</td></tr>
+          <tr><td>KA 04 MN 1474</td><td class="n">0</td><td class="n">14%</td><td class="n">14:40:44</td></tr>
+          <tr><td>MH 14 CK 0948</td><td class="n">104</td><td class="n">94%</td><td class="n">14:39:14</td></tr></tbody></table>
+        <div class="coord">VAJRA-4 · 18°34′14″N 73°44′41″E · ETA 21:44</div>
+        <dl class="spec"><dt>Battery</dt><dd>4,400 mAh · up to 14 days</dd><dt>Price</dt><dd>₹14,440 + GST</dd></dl>
+        <p class="legal">© 2026 Inordinate Industrial Innovation Private Limited.</p>
+      </div>
+      <div class="rt" style="--t:'Chivo',system-ui,sans-serif;--d:'Chivo',system-ui,sans-serif">
+        <div class="rh"><b>Route 3 · Chivo alone</b><span>Archivo's sister family from the same foundry. Heavier grotesque, wide clear 4, digits aligned by default.</span></div>
+        <div><div class="eb">AID IoT</div><div class="t1">Understood first. Built to fit.</div></div>
+        <div><div class="eb">AID Defence · Lighthouse</div><div class="t2">Every vehicle on one screen, readable at night.</div></div>
+        <p class="body">In a sample convoy of 14 vehicles, positions refresh every 4 seconds and the commander sees at a glance which vehicle has stopped and why.</p>
+        <table><thead><tr><th>Vehicle</th><th class="n">km/h</th><th class="n">Batt.</th><th class="n">Last fix</th></tr></thead><tbody>
+          <tr><td>MH 12 AB 4471</td><td class="n">44</td><td class="n">41%</td><td class="n">14:41:04</td></tr>
+          <tr><td>KA 04 MN 1474</td><td class="n">0</td><td class="n">14%</td><td class="n">14:40:44</td></tr>
+          <tr><td>MH 14 CK 0948</td><td class="n">104</td><td class="n">94%</td><td class="n">14:39:14</td></tr></tbody></table>
+        <div class="coord">VAJRA-4 · 18°34′14″N 73°44′41″E · ETA 21:44</div>
+        <dl class="spec"><dt>Battery</dt><dd>4,400 mAh · up to 14 days</dd><dt>Price</dt><dd>₹14,440 + GST</dd></dl>
+        <p class="legal">© 2026 Inordinate Industrial Innovation Private Limited.</p>
+      </div>
+      <div class="rt" style="--t:'Public Sans',system-ui,sans-serif;--d:'Public Sans',system-ui,sans-serif">
+        <div class="rh"><b>Route 3 · Public Sans alone</b><span>Same American-grotesque roots as Archivo, calmer. Wide, plain 4.</span></div>
+        <div><div class="eb">AID IoT</div><div class="t1">Understood first. Built to fit.</div></div>
+        <div><div class="eb">AID Defence · Lighthouse</div><div class="t2">Every vehicle on one screen, readable at night.</div></div>
+        <p class="body">In a sample convoy of 14 vehicles, positions refresh every 4 seconds and the commander sees at a glance which vehicle has stopped and why.</p>
+        <table><thead><tr><th>Vehicle</th><th class="n">km/h</th><th class="n">Batt.</th><th class="n">Last fix</th></tr></thead><tbody>
+          <tr><td>MH 12 AB 4471</td><td class="n">44</td><td class="n">41%</td><td class="n">14:41:04</td></tr>
+          <tr><td>KA 04 MN 1474</td><td class="n">0</td><td class="n">14%</td><td class="n">14:40:44</td></tr>
+          <tr><td>MH 14 CK 0948</td><td class="n">104</td><td class="n">94%</td><td class="n">14:39:14</td></tr></tbody></table>
+        <div class="coord">VAJRA-4 · 18°34′14″N 73°44′41″E · ETA 21:44</div>
+        <dl class="spec"><dt>Battery</dt><dd>4,400 mAh · up to 14 days</dd><dt>Price</dt><dd>₹14,440 + GST</dd></dl>
+        <p class="legal">© 2026 Inordinate Industrial Innovation Private Limited.</p>
+      </div>
+      <div class="rt" style="--t:'Schibsted Grotesk',system-ui,sans-serif;--d:'Schibsted Grotesk',system-ui,sans-serif">
+        <div class="rh"><b>Route 3 · Schibsted Grotesk alone</b><span>Newspaper grotesque with a confident headline voice and a broad, open-counter 4.</span></div>
+        <div><div class="eb">AID IoT</div><div class="t1">Understood first. Built to fit.</div></div>
+        <div><div class="eb">AID Defence · Lighthouse</div><div class="t2">Every vehicle on one screen, readable at night.</div></div>
+        <p class="body">In a sample convoy of 14 vehicles, positions refresh every 4 seconds and the commander sees at a glance which vehicle has stopped and why.</p>
+        <table><thead><tr><th>Vehicle</th><th class="n">km/h</th><th class="n">Batt.</th><th class="n">Last fix</th></tr></thead><tbody>
+          <tr><td>MH 12 AB 4471</td><td class="n">44</td><td class="n">41%</td><td class="n">14:41:04</td></tr>
+          <tr><td>KA 04 MN 1474</td><td class="n">0</td><td class="n">14%</td><td class="n">14:40:44</td></tr>
+          <tr><td>MH 14 CK 0948</td><td class="n">104</td><td class="n">94%</td><td class="n">14:39:14</td></tr></tbody></table>
+        <div class="coord">VAJRA-4 · 18°34′14″N 73°44′41″E · ETA 21:44</div>
+        <dl class="spec"><dt>Battery</dt><dd>4,400 mAh · up to 14 days</dd><dt>Price</dt><dd>₹14,440 + GST</dd></dl>
+        <p class="legal">© 2026 Inordinate Industrial Innovation Private Limited.</p>
+      </div>
+    </div>
+
+    <h3>Where each route works</h3>
+    <div class="works"><table>
+      <thead><tr><th></th><th>Route 1 · Archivo + Atkinson for data</th><th>Route 2 · Atkinson digits inside Archivo</th><th>Route 3 · one font</th></tr></thead>
+      <tbody>
+        <tr><td>Websites and product UI</td><td><span class="y">Yes.</span> Two Google Fonts, one setting per role.</td><td><span class="y">Yes.</span> Done in CSS, as on this page; no font file to edit.</td><td><span class="y">Yes.</span></td></tr>
+        <tr><td>Figma</td><td><span class="y">Yes.</span> Both are built in.</td><td><span class="p">Needs a custom merged font</span> installed on every designer's machine, or uploaded as a team font (Figma Organization or Enterprise plan).</td><td><span class="y">Yes.</span></td></tr>
+        <tr><td>Google Slides</td><td><span class="y">Yes.</span> Both are in the font menu.</td><td><span class="p">No.</span> Slides cannot use custom fonts, so decks fall back to Archivo's own 4.</td><td><span class="y">Yes.</span></td></tr>
+        <tr><td>Canva</td><td><span class="y">Yes</span> (check both are listed).</td><td><span class="p">Upload needed</span> (Canva Pro or Teams brand kit).</td><td><span class="y">Yes</span> (check it is listed).</td></tr>
+        <tr><td>What we maintain</td><td>A rule for which text counts as data. One token per role, so it changes in one place.</td><td>Our own font file, renamed (the open licence requires a new name for a modified font), rebuilt whenever either source updates.</td><td>Nothing extra.</td></tr>
+        <tr><td>Visual risk</td><td>Two faces side by side; they must feel related (both are plain sans, so they sit well).</td><td>Atkinson digits are about 15% wider and rounder than Archivo's letters, so "MH 12 AB 4471" can look stitched together.</td><td>You may lose some of what you like about Archivo's headlines.</td></tr>
+      </tbody></table></div>
+
+    <div class="rec">
+      <span class="label">Claude's recommendation</span>
+      <p><strong>Route 1: Archivo as the brand face, Atkinson Hyperlegible Next as the data face.</strong> It keeps everything you liked about Archivo (headlines, body text, the small print), puts Atkinson's clear numbers exactly where you worried about the 4, and works in every tool you use without a custom font file. A brand face paired with a data face is a common pattern in serious systems, and in the library it is just two type tokens, so either can be swapped later in one place.</p>
+      <p>The rule would be simple: <strong>if a reader compares, checks or copies it, it is data</strong> and is set in Atkinson: table values, device IDs, registration numbers, coordinates, times, specifications, prices. Numbers inside sentences and headlines stay in Archivo, where the 4 reads fine at larger sizes.</p>
+      <p class="muted">Pick Route 3 instead if one of the single fonts gives you Archivo's headline feeling; one face is always simpler. Route 2 looks seamless on the web but breaks in Google Slides and needs a custom font file, so it works against "change it in one place".</p>
+    </div>
+    <hr>
+  </section>
 
   <section aria-labelledby="how">
     <div class="head">

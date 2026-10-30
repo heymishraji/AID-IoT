@@ -1,6 +1,6 @@
 # Context — AID brand system + design system
 
-_Last rewritten: 2026-10-29 (packages + workspace, GitHub, setup hook, Sonnet helpers, type round 2)_
+_Last rewritten: 2026-10-29 (packages + workspace, GitHub, setup hook, Sonnet helpers, type rounds 2–3)_
 
 ## State
 - Fresh start on 2026-10-27; the old website work is in git tag `archive/website-v3`.
@@ -48,12 +48,12 @@ are out of date): https://claude.ai/artifact/HG3jJSpQnwoMZ4YnwW4zUM
   challenger", three-tier disclosure (public / on request / briefing only); CTA "Request a private briefing".
 - AID IoT portfolio as one platform + five families; AID Defence as two missions commanded through Lighthouse.
 - Logo: evolve the mark (one line, three nodes, triangulation story), test against a new wordmark.
-- Fonts: round 2 longlist of 18 (owner likes Atkinson Hyperlegible Next). Avoid Inter, Geist, Space Grotesk, Manrope, Poppins, Roboto.
+- Fonts: Archivo (brand face) + Atkinson Hyperlegible Next (data face) recommended; evidence in docs/studies/type-evidence/. Avoid Inter, Geist, Space Grotesk, Manrope, Poppins, Roboto.
 - Naming risks: NAVIC (ISRO), Cortex (Arm), Lighthouse (Google, DGLL).
 
 ## Pending with the user
-- Type choice on the type study (round 2): https://claude.ai/artifact/3MBCvgv2VPYcQ5LaVxHWy1. Devanagari is not a
-  criterion; it gets its own font later.
+- Type route on the type study (round 3): https://claude.ai/artifact/3MBCvgv2VPYcQ5LaVxHWy1. Owner prefers Archivo
+  except its 4; recommended Archivo + Atkinson Hyperlegible Next for data. Devanagari: own font later.
 
 ## Agents and setup (since 2026-10-29)
 - Helper agents default to Sonnet (env in `.claude/settings.json` and the user's settings); pass Opus for crucial work.
