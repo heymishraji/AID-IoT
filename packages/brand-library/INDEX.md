@@ -32,6 +32,7 @@ Single entry point for people and agents. Paths are relative to this package fol
 | Token sources: one brand | `brands/<id>/tokens/` (palette + brand roles) |
 | Which token to use for what | `$description` fields in the token JSON; `docs/LIBRARY.md` § Tokens |
 | Reference component CSS | `core/components/components.css` |
+| Fonts: which face for what, loading, matching sizes in Figma/Slides/Canva | `core/fonts/README.md` |
 | See every token rendered, switch brand/mode/density | `examples/token-preview.html` |
 
 ## Change things

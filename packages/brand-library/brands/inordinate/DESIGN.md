@@ -17,42 +17,42 @@ colors:
   danger: "#a8261b"
 typography:
   display:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 48px
     fontWeight: 600
     lineHeight: 1.15
   heading-1:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 38px
     fontWeight: 600
     lineHeight: 1.15
   heading-2:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 30px
     fontWeight: 600
     lineHeight: 1.3
   heading-3:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 24px
     fontWeight: 600
     lineHeight: 1.3
   body:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.5
   body-small:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.5
   label:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 14px
     fontWeight: 500
     lineHeight: 1.3
   caption:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 12px
     fontWeight: 400
     lineHeight: 1.3
@@ -95,7 +95,8 @@ product UI or social. Product brands carry the legal name only in footers and le
 One placeholder ink ramp. Documents are near-monochrome: text, rules and the legal mark.
 
 ## Typography
-The shared family (not chosen yet). Body and caption roles cover almost every legal document.
+Archivo, the shared text face. Body and caption roles cover almost every legal document. Registration numbers
+(CIN, GSTIN), invoice amounts and dates in tables use the data face via `.aid-data` (see `core/fonts/README.md`).
 
 ## Layout
 A4 portrait first. Margins, letterhead block and footer legal line: open.

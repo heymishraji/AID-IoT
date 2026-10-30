@@ -163,15 +163,52 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--proof);outline
 .works th:first-child,.works td:first-child{min-width:110px;color:var(--ink-2)}
 .works thead th{font-weight:700}
 .y{color:var(--ok);font-weight:600} .p{color:var(--flag);font-weight:600}
-.r4 hr{border:0;border-top:1px solid var(--rule);margin:8px 0 0}
+.r4 hr,section hr{border:0;border-top:1px solid var(--rule);margin:8px 0 0}
+.mline{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:12px}
+.mline > div{background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0;overflow-x:auto;font-family:"Archivo",system-ui,sans-serif}
+.mline p{margin:0;max-width:none;white-space:nowrap;line-height:1.3}
+.draw,.dm{font-family:"Atkinson Hyperlegible Next",system-ui,sans-serif;font-variant-numeric:tabular-nums}
+.dm{font-size-adjust:cap-height 0.698;font-weight:380} .dm.dms{font-weight:560}
 </style>
 
 <main>
   <header class="head" style="gap:12px">
-    <span class="label">AID brand system · type round 3 · 30 Oct 2026</span>
+    <span class="label">AID brand system · type decided · 30 Oct 2026</span>
     <h1>Choosing AID's typeface</h1>
     <p class="muted">Round 3 answers your round 2 notes. You like Archivo for headlines, body text and small print, but its numbers, especially the 4, feel unclear in data. Atkinson Hyperlegible Next has the clearest numbers. Below, the same panel is set six ways so you can see which route fixes the numbers without losing Archivo. Round 2 is further down for reference.</p>
   </header>
+
+  <section aria-labelledby="dcd">
+    <div class="head">
+      <span class="label">Decided · 30 Oct 2026</span>
+      <h2 id="dcd">Archivo for text, Atkinson Hyperlegible Next for data, matched to sit on one line</h2>
+      <p class="muted">Two different families only work together if, on the same line, they read as one voice. The data face is therefore matched to Archivo by measurement, not by eye: its digits are scaled to Archivo's figure height and each weight is paired by stroke thickness. Both were then checked in Chrome. The same matching would apply if you ever swapped all digits instead (route 2).</p>
+    </div>
+    <div class="mline">
+      <div><span class="label">Unmatched</span>
+        <p style="font-size:14px">Battery <span class="draw">41%</span> · Last fix <span class="draw">14:41:04</span> · Vehicle <span class="draw">MH 12 AB 4471</span></p>
+        <p style="font-size:20px">Battery <span class="draw">41%</span> · Last fix <span class="draw">14:41:04</span> · Vehicle <span class="draw">MH 12 AB 4471</span></p>
+        <p style="font-size:32px;font-weight:600">Battery <span class="draw" style="font-weight:600">41%</span> · ETA <span class="draw" style="font-weight:600">21:44</span></p>
+      </div>
+      <div><span class="label">Matched (what the library now does)</span>
+        <p style="font-size:14px">Battery <span class="dm">41%</span> · Last fix <span class="dm">14:41:04</span> · Vehicle <span class="dm">MH 12 AB 4471</span></p>
+        <p style="font-size:20px">Battery <span class="dm">41%</span> · Last fix <span class="dm">14:41:04</span> · Vehicle <span class="dm">MH 12 AB 4471</span></p>
+        <p style="font-size:32px;font-weight:600">Battery <span class="dm dms">41%</span> · ETA <span class="dm dms">21:44</span></p>
+      </div>
+    </div>
+    <div class="works"><table>
+      <thead><tr><th>Measured in Chrome at 200 px</th><th>Archivo</th><th>Atkinson, matched</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>Digit height</td><td>140 px</td><td>140 px</td><td><span class="y">Identical</span></td></tr>
+        <tr><td>Capital height</td><td>138 px</td><td>140 px</td><td><span class="y">1.4% taller, not visible in text</span></td></tr>
+        <tr><td>Lower-case height</td><td>106 px</td><td>104 px</td><td><span class="y">2% shorter, not visible in text</span></td></tr>
+        <tr><td>Stroke thickness (regular)</td><td>19 px</td><td>19 px</td><td><span class="y">Identical</span> (Atkinson set at 380 against Archivo 400)</td></tr>
+        <tr><td>Paragraph height, 3 lines at 16 px</td><td>72 px</td><td>72 px with data mixed in</td><td><span class="y">Line spacing never moves</span></td></tr>
+        <tr><td>Width of the 4</td><td>100 px</td><td>112 px</td><td><span class="p">12% wider by design</span>: the extra room is what makes it clear</td></tr>
+      </tbody></table></div>
+    <p class="muted">Weight pairs: Archivo 300 / 400 / 500 / 600 / 700 with Atkinson 310 / 380 / 460 / 560 / 680. In Figma, Google Slides and Canva, set data text at 1.045 × the size beside it (14 → 14.6, 16 → 16.7, 20 → 20.9). The rule for what counts as data: <strong>if a reader compares, checks or copies it</strong>.</p>
+    <hr>
+  </section>
 
   <section aria-labelledby="r3" class="r4">
     <div class="head">

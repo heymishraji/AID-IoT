@@ -1,22 +1,27 @@
 {
-  "$description": "Tier 1 · core primitives · ONE family across every brand (decided 2026-10-27). The family itself is not chosen yet: system stack is a PLACEHOLDER until the type study picks a Google Fonts sans.",
+  "$description": "Tier 1 · core primitives · two faces shared by every brand (decided 2026-10-30): Archivo is the text face (headlines, body, labels, small print); Atkinson Hyperlegible Next is the data face (values a reader compares, checks or copies). The font.match values make the data face sit with the text face on one line; they were measured from the two font files and must be re-measured if either face changes.",
   "font": {
     "family": {
       "$type": "fontFamily",
       "sans": {
         "$value": [
+          "Archivo",
           "system-ui",
           "-apple-system",
           "Segoe UI",
-          "Roboto",
           "sans-serif"
         ],
-        "$description": "PLACEHOLDER. Replace with the chosen Google Fonts sans (one family, all brands).",
-        "$extensions": {
-          "org.aid.library": {
-            "placeholder": true
-          }
-        }
+        "$description": "Text face: headlines, body, labels, captions, legal small print. Google Fonts, SIL Open Font License; variable weight 100–900 and width 62–125."
+      },
+      "data": {
+        "$value": [
+          "Atkinson Hyperlegible Next",
+          "system-ui",
+          "-apple-system",
+          "Segoe UI",
+          "sans-serif"
+        ],
+        "$description": "Data face: table values, device IDs, registration numbers, coordinates, times, specifications, prices. Chosen for unambiguous digits (open 4, slashed 0). Google Fonts, SIL Open Font License; weight 200–800 with italics. Always use with the font.match values."
       },
       "mono": {
         "$value": [
@@ -136,6 +141,35 @@
       },
       "normal": {
         "$value": 1.5
+      }
+    },
+    "match": {
+      "$description": "How the data face is matched to the text face. Measured 2026-10-30 from the Google Fonts files and verified in Chrome (AID workspace: docs/studies/type-evidence/). Re-measure if either face changes.",
+      "cap-height": {
+        "$type": "number",
+        "$value": 0.698,
+        "$description": "Use as font-size-adjust: cap-height <value> on data text. The data face's figures are as tall as its capitals, so this renders its digits at the text face's figure height (0.698 em) without changing font-size or line height."
+      },
+      "design-scale": {
+        "$type": "number",
+        "$value": 1.045,
+        "$description": "For tools without font-size-adjust (Figma, Google Slides, Canva): set data text at this multiple of the text size beside it, e.g. 14 → 14.6, 16 → 16.7."
+      },
+      "weight": {
+        "$type": "fontWeight",
+        "$description": "Data-face weight with the same stroke thickness as the text-face weight of the same name, after matching size.",
+        "regular": {
+          "$value": 380
+        },
+        "medium": {
+          "$value": 460
+        },
+        "semibold": {
+          "$value": 560
+        },
+        "bold": {
+          "$value": 680
+        }
       }
     }
   }

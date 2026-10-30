@@ -1,5 +1,5 @@
 {
-  "$description": "Tier 2 · semantic · type roles. Components and templates use these, never font.size.* directly. display uses the brand accent face (defaults to the shared family).",
+  "$description": "Tier 2 · semantic · type roles. Components and templates use these, never font.size.* directly. display uses the brand accent face (defaults to the shared family). data and data-strong set values a reader compares, checks or copies in the data face; they take their size from the text around them and match it with size-adjust.",
   "type": {
     "display": {
       "family": {
@@ -139,6 +139,31 @@
       },
       "weight": {
         "$value": "{font.weight.regular}"
+      }
+    },
+    "data": {
+      "family": {
+        "$value": "{font.family.data}"
+      },
+      "weight": {
+        "$value": "{font.match.weight.regular}"
+      },
+      "size-adjust": {
+        "$value": "{font.match.cap-height}"
+      },
+      "design-scale": {
+        "$value": "{font.match.design-scale}"
+      }
+    },
+    "data-strong": {
+      "family": {
+        "$value": "{font.family.data}"
+      },
+      "weight": {
+        "$value": "{font.match.weight.semibold}"
+      },
+      "size-adjust": {
+        "$value": "{font.match.cap-height}"
       }
     }
   }

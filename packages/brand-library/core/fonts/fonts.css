@@ -1,0 +1,6 @@
+/*
+ * Loads the two shared faces from Google Fonts. Link this before dist/<brand>/css/tokens.css.
+ * Text face: Archivo (weight 100–900, width 62–125). Data face: Atkinson Hyperlegible Next (weight 200–800, italics).
+ * Offline or air-gapped installs (for example Lighthouse) self-host instead: see README.md in this folder.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap");

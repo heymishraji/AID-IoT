@@ -1,0 +1,51 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Archivo + Atkinson consistency test</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=block">
+<style>
+/* Test harness for the text-face + data-face pairing. Values under test (from the font files):
+   - size: font-size-adjust: cap-height 0.698 → Atkinson's figures (= its cap height, 0.668 em) render at Archivo's figure height (0.698 em), ×1.045
+   - weight: Archivo 300/400/500/600/700 ↔ Atkinson 310/380/460/560/680 (equal stem width after scaling)
+   - line: .d spans must not change line height. */
+body{margin:24px;font-family:Archivo,sans-serif;color:#111;background:#fff}
+.d,.raw{font-family:"Atkinson Hyperlegible Next",sans-serif}
+.d{font-size-adjust:cap-height 0.698}
+.w4 {font-weight:400} .w4 .d{font-weight:380}
+.w6 {font-weight:600} .w6 .d{font-weight:560}
+.w7 {font-weight:700} .w7 .d{font-weight:680}
+.big{font-size:200px;line-height:1.2;white-space:nowrap}
+.row{display:flex;gap:40px;align-items:baseline}
+h2{font:600 14px Archivo;margin:28px 0 8px;color:#555}
+.line{margin:6px 0;white-space:nowrap}
+.para{width:560px;font-size:16px;line-height:1.5}
+</style>
+<h2>A · ink test, 200 px (measured from the screenshot)</h2>
+<div class="big w4 row"><span id="ink-arch">H4471x</span><span class="d" id="ink-match">H4471x</span><span class="raw" id="ink-raw" style="font-weight:400">H4471x</span></div>
+<h2>B · same line, regular · left: Archivo only · middle: + Atkinson raw · right: + Atkinson matched</h2>
+<div id="lines"></div>
+<h2>C · paragraph line height (must be equal)</h2>
+<div class="row" style="align-items:flex-start">
+  <p class="para w4" id="p-plain">In a sample convoy of 14 vehicles, positions refresh every 4 seconds. Vehicle MH 12 AB 4471 stopped at 14:41:04 with battery at 41%, and the commander sees it at once on the night console, with the halt reason beside it.</p>
+  <p class="para w4" id="p-mixed">In a sample convoy of <span class="d">14</span> vehicles, positions refresh every <span class="d">4</span> seconds. Vehicle <span class="d">MH 12 AB 4471</span> stopped at <span class="d">14:41:04</span> with battery at <span class="d">41%</span>, and the commander sees it at once on the night console, with the halt reason beside it.</p>
+</div>
+<pre id="results"></pre>
+<script>
+const sizes=[12,14,16,20,32,48];
+document.getElementById('lines').innerHTML = sizes.map((s)=>['w4','w6','w7'].map((w)=>`
+  <div class="line ${w}" style="font-size:${s}px">
+    <span>${s}px ${w} · Battery 41% · Last fix 14:41:04 · MH 12 AB 4471</span> &nbsp;|&nbsp;
+    <span>Battery <span class="raw" style="font-weight:inherit">41%</span> · Last fix <span class="raw">14:41:04</span> · <span class="raw">MH 12 AB 4471</span></span> &nbsp;|&nbsp;
+    <span>Battery <span class="d">41%</span> · Last fix <span class="d">14:41:04</span> · <span class="d">MH 12 AB 4471</span></span>
+  </div>`).join('')).join('');
+document.fonts.ready.then(()=>{
+  const r=(id)=>{const b=document.getElementById(id).getBoundingClientRect();return [Math.round(b.x),Math.round(b.y),Math.round(b.width),Math.round(b.height)];};
+  const lines=(id)=>{const p=document.getElementById(id);return Math.round(p.getBoundingClientRect().height*100)/100;};
+  document.getElementById('results').textContent=JSON.stringify({
+    fsaSupported: CSS.supports('font-size-adjust','cap-height 0.698'),
+    fontsLoaded: [...document.fonts].filter(f=>f.status==='loaded').map(f=>f.family+' '+f.weight).slice(0,6),
+    ink:{arch:r('ink-arch'),match:r('ink-match'),raw:r('ink-raw')},
+    paragraph:{plain:lines('p-plain'),mixed:lines('p-mixed')},
+    lineBoxes: [...document.querySelectorAll('.line')].map(l=>Math.round(l.getBoundingClientRect().height*100)/100).join(',')
+  });
+});
+</script>

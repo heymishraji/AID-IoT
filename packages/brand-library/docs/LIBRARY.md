@@ -16,6 +16,7 @@ core/
   tokens/density/      comfortable | compact
   tokens/protected/    status, focus (always) · symbology, classification (opt-in modules)
   components/          reference CSS, semantic tokens only
+  fonts/               fonts.css (Google Fonts) + README (roles, matching, self-hosting)
 brands/<id>/
   brand.json           id, display name, role (brand | legal-parent | fixture), modules
   tokens/              palette.tokens.json (brand-private primitives) + brand.tokens.json (brand roles)
@@ -36,6 +37,9 @@ Brands: `aid-iot`, `aid-defence`, `inordinate` (legal parent, legal documents on
 - Protected namespaces, owned by core: `status` (Astro six levels: off, standby, normal, caution, serious,
   critical), `focus`, `symbology`, `classification`. The last two are opt-in via `brand.json` `modules`.
   They load last in the build, and `npm run check` fails if any brand file defines them.
+- Type: two shared faces, Archivo (text) and Atkinson Hyperlegible Next (data), in `font.family.sans` and
+  `font.family.data`. `font.match.*` holds the measured size and weight match between them; semantic roles
+  `type.data` and `type.data-strong` use it and `.aid-data` applies it. Re-measure `font.match.*` if a face changes.
 - Night mode is brand-immune: low-luminance red-shifted values for Lighthouse and low-light use.
 - Every token can carry a `$description`; it is the cheapest place to tell an agent when to use it.
 

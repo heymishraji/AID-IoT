@@ -18,6 +18,8 @@ Never mix brands in one output. Spell it "AID Defence". British English.
 - Brands only define `palette.*` and `brand.*`. Core owns everything else.
 - Protected namespaces, never overridden by a brand: `status`, `focus`, `symbology`, `classification`.
 - Do not edit `dist/` or the generated YAML block at the top of any `DESIGN.md`: edit tokens, run `npm run build`.
+- Type: Archivo for text; Atkinson Hyperlegible Next for data a reader compares, checks or copies, always
+  via `.aid-data` (matched size and weight). Details: `core/fonts/README.md`.
 - Before handing work back: `npm run check` must pass.
 
 ## Commands

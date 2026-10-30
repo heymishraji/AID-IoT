@@ -17,42 +17,42 @@ colors:
   danger: "#a8261b"
 typography:
   display:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 48px
     fontWeight: 600
     lineHeight: 1.15
   heading-1:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 38px
     fontWeight: 600
     lineHeight: 1.15
   heading-2:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 30px
     fontWeight: 600
     lineHeight: 1.3
   heading-3:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 24px
     fontWeight: 600
     lineHeight: 1.3
   body:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.5
   body-small:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.5
   label:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 14px
     fontWeight: 500
     lineHeight: 1.3
   caption:
-    fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    fontFamily: "Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: 12px
     fontWeight: 400
     lineHeight: 1.3
@@ -101,8 +101,16 @@ Placeholder only: a deepened blue and a sand accent, labelled `placeholder-*` in
 - Classification banner colours and levels are placeholders: the customer-mandated scheme must replace them.
 
 ## Typography
-One Google Fonts sans family shared across the group (decided); family not chosen yet. Operator UI uses the
-`code` role (mono) for coordinates, timestamps and telemetry.
+Two faces shared by every brand (decided 2026-10-30; details and loading in `core/fonts/README.md`):
+- **Archivo** (text face): headlines, body, labels, captions, legal small print, and numbers inside sentences
+  and headlines.
+- **Atkinson Hyperlegible Next** (data face): anything a reader compares, checks or copies: table values,
+  device IDs, registration numbers, coordinates, times, specifications, prices. Use `.aid-data` (or
+  `.aid-data--strong` inside bold text); it matches height and weight to Archivo on the same line.
+- Do: "Battery <span class=\"aid-data\">41%</span>" in a status line. Don't: set a whole sentence or a
+  headline in the data face, or use the data face without `.aid-data` (it will sit too small and too heavy).
+- Lighthouse operator UI: callsigns, coordinates, timestamps and telemetry are data; `code` (mono) is
+  for code and raw logs only.
 
 ## Layout
 12-column grid, 4px base. Operator consoles (Lighthouse) use `data-density="compact"`; marketing and

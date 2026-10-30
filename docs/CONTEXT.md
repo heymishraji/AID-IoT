@@ -1,6 +1,6 @@
 # Context — AID brand system + design system
 
-_Last rewritten: 2026-10-29 (packages + workspace, GitHub, setup hook, Sonnet helpers, type rounds 2–3)_
+_Last rewritten: 2026-10-30 (type decided: Archivo + Atkinson Hyperlegible Next for data, built into the library)_
 
 ## State
 - Fresh start on 2026-10-27; the old website work is in git tag `archive/website-v3`.
@@ -43,17 +43,20 @@ _Last rewritten: 2026-10-29 (packages + workspace, GitHub, setup hook, Sonnet he
 Synthesis page (reports 01–06 only; written before the house-of-brands decision, so sections 02 and 11
 are out of date): https://claude.ai/artifact/HG3jJSpQnwoMZ4YnwW4zUM
 
+## Type (decided 2026-10-30)
+- Archivo = text face; Atkinson Hyperlegible Next = data face ("if a reader compares, checks or copies it").
+  Matched by tokens `font.match.*`, applied by `.aid-data`; rules in `packages/brand-library/core/fonts/README.md`.
+  Study + evidence: https://claude.ai/artifact/3MBCvgv2VPYcQ5LaVxHWy1, `docs/studies/type-evidence/`. Devanagari: own font later.
+
 ## Working recommendations (not yet approved)
 - Strategy v0: AID IoT "Understood first. Built to fit."; CTA "Tell us the problem". AID Defence "established
   challenger", three-tier disclosure (public / on request / briefing only); CTA "Request a private briefing".
 - AID IoT portfolio as one platform + five families; AID Defence as two missions commanded through Lighthouse.
 - Logo: evolve the mark (one line, three nodes, triangulation story), test against a new wordmark.
-- Fonts: Archivo (brand face) + Atkinson Hyperlegible Next (data face) recommended; evidence in docs/studies/type-evidence/. Avoid Inter, Geist, Space Grotesk, Manrope, Poppins, Roboto.
+- Logo and colour rounds next (see NEXT). Avoid Inter, Geist, Space Grotesk, Manrope, Poppins, Roboto.
 - Naming risks: NAVIC (ISRO), Cortex (Arm), Lighthouse (Google, DGLL).
 
 ## Pending with the user
-- Type route on the type study (round 3): https://claude.ai/artifact/3MBCvgv2VPYcQ5LaVxHWy1. Owner prefers Archivo
-  except its 4; recommended Archivo + Atkinson Hyperlegible Next for data. Devanagari: own font later.
 
 ## Agents and setup (since 2026-10-29)
 - Helper agents default to Sonnet (env in `.claude/settings.json` and the user's settings); pass Opus for crucial work.

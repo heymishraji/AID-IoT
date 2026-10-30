@@ -98,3 +98,19 @@
 @media (prefers-reduced-motion: reduce) {
   .aid-button { transition: none; }
 }
+
+/*
+ * Data text: values a reader compares, checks or copies (table values, device IDs, registration numbers,
+ * coordinates, times, specifications, prices). Works inline in a sentence or on a whole cell.
+ * size-adjust renders the data face at the text face's figure height without changing font-size,
+ * so line height never moves. Use .aid-data--strong inside headings, labels and other bold text.
+ */
+.aid-data {
+  font-family: var(--aid-type-data-family);
+  font-weight: var(--aid-type-data-weight);
+  font-size-adjust: cap-height var(--aid-type-data-size-adjust);
+  font-variant-numeric: tabular-nums;
+}
+.aid-data--strong {
+  font-weight: var(--aid-type-data-strong-weight);
+}

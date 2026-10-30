@@ -30,21 +30,21 @@
     "semantic_hash": ""
   },
   "docs/CONTEXT.md": {
-    "mtime": 1793277781.9203289,
-    "seen": 1793277784.3822641,
-    "ast_hash": "768a76b1bf86599f400db6ce76716079",
+    "mtime": 1793346162.172219,
+    "seen": 1793346168.055968,
+    "ast_hash": "be3381057b968372f72d517da046d875",
     "semantic_hash": ""
   },
   "docs/DECISIONS.md": {
-    "mtime": 1793277781.887269,
-    "seen": 1793277784.3822641,
-    "ast_hash": "e8fa7a8f78ccee8784257f3e0b414d99",
+    "mtime": 1793346162.1706302,
+    "seen": 1793346168.055969,
+    "ast_hash": "c5dfd656f49b4584350bd82e08277128",
     "semantic_hash": ""
   },
   "docs/NEXT.md": {
-    "mtime": 1793277781.8896031,
-    "seen": 1793277784.382265,
-    "ast_hash": "b5bf06977a8a804f44d32d428e9336bf",
+    "mtime": 1793346162.1712613,
+    "seen": 1793346168.05597,
+    "ast_hash": "cb1d03582986de08ffbedbb3ffec3a98",
     "semantic_hash": ""
   },
   "docs/PRODUCT-FACTS.md": {
@@ -198,9 +198,9 @@
     "semantic_hash": ""
   },
   "docs/decisions.html": {
-    "mtime": 1793277782.9631767,
-    "seen": 1793277784.382271,
-    "ast_hash": "f44f6337929fb47a1b831aad424c2489",
+    "mtime": 1793346164.4072723,
+    "seen": 1793346168.055976,
+    "ast_hash": "a6888e2ad3338a4989597db828571755",
     "semantic_hash": ""
   },
   "packages/brand-library/AGENTS.md": {
@@ -408,9 +408,51 @@
     "semantic_hash": ""
   },
   "docs/studies/type-study.html": {
-    "mtime": 1793277757.2228706,
-    "seen": 1793277784.382282,
-    "ast_hash": "1171d2457b7c9163d33855787e279b13",
+    "mtime": 1793346132.130712,
+    "seen": 1793346168.055988,
+    "ast_hash": "dc8c2500d1249e5c5d3fa46856401919",
+    "semantic_hash": ""
+  },
+  "docs/studies/type-evidence/fours.py": {
+    "mtime": 1793346158.5489705,
+    "seen": 1793346168.055941,
+    "ast_hash": "04568a160868d4a9e54bfa4e156313a8",
+    "semantic_hash": ""
+  },
+  "docs/studies/type-evidence/probe2.py": {
+    "mtime": 1793346158.5499299,
+    "seen": 1793346168.055945,
+    "ast_hash": "8b83d59890f961554e57db87c599b11c",
+    "semantic_hash": ""
+  },
+  "docs/studies/type-evidence/render.py": {
+    "mtime": 1793346158.547824,
+    "seen": 1793346168.055947,
+    "ast_hash": "45a049f8a569a4cebdeeee5d418cb934",
+    "semantic_hash": ""
+  },
+  "docs/studies/type-evidence/README.md": {
+    "mtime": 1793346158.5661242,
+    "seen": 1793346168.055987,
+    "ast_hash": "9c4d655c939801e2dc94d5def57f65be",
+    "semantic_hash": ""
+  },
+  "docs/studies/type-evidence/digit-strips-a.png": {
+    "mtime": 1793346158.5208914,
+    "seen": 1793346168.056022,
+    "ast_hash": "a739e5f5754b7fa9a3f9d43bccc75771",
+    "semantic_hash": ""
+  },
+  "docs/studies/type-evidence/digit-strips-b.png": {
+    "mtime": 1793346158.5332248,
+    "seen": 1793346168.0560231,
+    "ast_hash": "84b5cb5b2c80b1fef80a2e4378c37906",
+    "semantic_hash": ""
+  },
+  "docs/studies/type-evidence/fours-and-zeros-36-fonts.png": {
+    "mtime": 1793346158.5136487,
+    "seen": 1793346168.0560231,
+    "ast_hash": "bae92ee0da70d3ef5dc51cbf5ca66cb9",
     "semantic_hash": ""
   },
   "packages/brand-library/package-lock.json": {

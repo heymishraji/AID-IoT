@@ -4,6 +4,10 @@ All notable changes to the AID brand + design-system library. Format: [Keep a Ch
 versions follow [SemVer](https://semver.org/) as defined in `docs/LIBRARY.md` § Releases. The brand owner cuts every release.
 
 ## [Unreleased]
+### Added
+- Type: Archivo as the shared text face, Atkinson Hyperlegible Next as the shared data face (replaces the
+  system-stack placeholder). `font.family.data`, `font.match.*` (measured size and weight match), semantic
+  `type.data` and `type.data-strong`, `.aid-data` component class, `core/fonts/` (loading + README).
 
 ## [0.0.1] - 2026-10-27
 ### Added

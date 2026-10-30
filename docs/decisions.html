@@ -40,13 +40,13 @@ td.rej{color:var(--muted)}
 </style>
 <main>
   <header style="display:flex;flex-direction:column;gap:12px">
-    <span class="label">AID brand system · last decision 2026-10-29</span>
+    <span class="label">AID brand system · last decision 2026-10-30</span>
     <h1>Decision tracker</h1>
     <p class="muted">Every brand and design decision, with the reason and what was rejected, plus the decisions still open. Generated from <code>docs/DECISIONS.md</code>.</p>
     <div class="counts">
-      <div class="count you"><span class="label">Waiting on you</span><b>5</b></div>
+      <div class="count you"><span class="label">Waiting on you</span><b>4</b></div>
       <div class="count lead"><span class="label">Waiting on leadership</span><b>7</b></div>
-      <div class="count done"><span class="label">Decided</span><b>22</b></div>
+      <div class="count done"><span class="label">Decided</span><b>25</b></div>
     </div>
   </header>
 
@@ -69,15 +69,6 @@ td.rej{color:var(--muted)}
           <dt>Recommendation</dt><dd>Evolve: one line, three nodes, triangulation story; test against a new wordmark</dd>
           <dt>Decides</dt><dd>Brand owner, after the visual round</dd>
           <dt>Evidence</dt><dd><code>research/10</code></dd>
-        </dl>
-      </article>
-      <article class="card">
-        <span class="area">Type</span>
-        <h3>Which Google Fonts family for all brands?</h3>
-        <dl>
-          <dt>Recommendation</dt><dd>Test Geologica, Atkinson Hyperlegible Next and Anek; IBM Plex as fallback; avoid Inter, Geist, Space Grotesk, Manrope</dd>
-          <dt>Decides</dt><dd>Brand owner, round 3: owner prefers Archivo but not its numbers; recommendation Archivo as brand face + Atkinson Hyperlegible Next as data face; alternatives a digit swap or one font (Chivo, Public Sans, Schibsted Grotesk)</dd>
-          <dt>Evidence</dt><dd><code>docs/studies/type-study.html, docs/studies/type-evidence/, research/10, research/03 §6</code></dd>
         </dl>
       </article>
       <article class="card">
@@ -173,6 +164,9 @@ td.rej{color:var(--muted)}
     <div class="tbl"><table>
       <thead><tr><th>Date</th><th>Decision</th><th>Why</th><th>Rejected</th></tr></thead>
       <tbody>
+        <tr><td class="date">2026-10-30</td><td>Data face is matched to the text face by measurement: font-size-adjust cap-height 0.698 (×1.045 in tools), weights 310/380/460/560/680 for 300–700; verified in Chrome (equal digit height and stroke, unchanged line height)</td><td>the owner required the two to look consistent on one line</td><td class="rej">matching by eye rejected</td></tr>
+        <tr><td class="date">2026-10-30</td><td>Supersedes 2026-10-27 &quot;one font family&quot;: two shared faces, still identical for every brand</td><td>data needs its own face</td><td class="rej">per-brand faces still rejected</td></tr>
+        <tr><td class="date">2026-10-30</td><td>Type: Archivo is the shared text face; Atkinson Hyperlegible Next is the shared data face for values a reader compares, checks or copies</td><td>the owner likes Archivo's headlines, body and small print but its 4 is unclear in data; Atkinson has the clearest digits; both are Google Fonts so every tool works</td><td class="rej">Archivo alone, Atkinson digits spliced into Archivo (breaks Google Slides, needs a custom font file) and single fonts (Chivo, Public Sans, Schibsted Grotesk) rejected</td></tr>
         <tr><td class="date">2026-10-29</td><td>Type round 2: 18 Google Fonts in six styles, checked from the font files (tabular digits, ₹, italics, widths), with a weighted scorecard</td><td>the owner wanted more variety and a way to judge beyond looks</td><td class="rej">deciding from round 1's four candidates rejected</td></tr>
         <tr><td class="date">2026-10-29</td><td>scripts/setup.sh runs automatically at session start (SessionStart hook), locally and in cloud sessions</td><td>a cloud session must work from a GitHub clone with no manual step</td><td class="rej">manual setup only rejected</td></tr>
         <tr><td class="date">2026-10-29</td><td>Helper agents default to Sonnet; Opus is passed explicitly when an agent's output decides or changes the result</td><td>research and analysis are cheap to run on Sonnet, crucial reasoning needs the stronger model</td><td class="rej">Opus for every agent rejected (18% of usage)</td></tr>
