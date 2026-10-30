@@ -13,7 +13,7 @@
   "20": "AID IoT · DESIGN (DRAFT)",
   "22": "AID IoT — voice guide v0 (draft, agent-ready)",
   "23": "LIBRARY · how the AID brand + design-system library works",
-  "24": "decisions-page.mjs",
+  "24": "1. What the experts agree on",
   "25": "AGENTS.md · AID brand + design-system library (v0.0.1, skeleton)",
   "26": "Inordinate Industrial Innovation Pvt Ltd · DESIGN (DRAFT)",
   "27": "[0.0.1] - 2026-10-27",
@@ -60,5 +60,6 @@
   "68": "iot-4 · Made in-house, hardware honesty",
   "69": "iot-5 · Field, the system working outdoors",
   "70": "iot-6 · How it connects, one picture",
-  "71": "generated/README.md"
+  "71": "generated/README.md",
+  "72": "ui-previews/README.md"
 }

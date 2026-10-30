@@ -1,0 +1,522 @@
+<title>AID UI Previews</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&display=swap">
+<!-- The AID brand library, used as-is: built tokens (all brands, all modes), reference components, then the round-1 colour routes as brand overrides. -->
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/routes.css">
+<script src="logo/logo-kit.js"></script>
+<style>
+/* Review room: a quiet frame around the previews. The chrome uses the system face and its own tokens;
+   everything inside .screen comes from the brand library's semantic tokens only. */
+:root{
+  --rv-bg:#F3F3F1; --rv-panel:#FFFFFF; --rv-ink:#16181B; --rv-muted:#5B6168; --rv-line:#DCDDD8; --rv-accent:#1D5C96; --rv-accent-ink:#FFFFFF; --rv-tint:#E3ECF5;
+  --rv-font:system-ui,-apple-system,"Segoe UI",sans-serif; --rv-mono:ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--rv-bg:#0F1113;--rv-panel:#181B1F;--rv-ink:#E8EAEC;--rv-muted:#9AA2AA;--rv-line:#2B3036;--rv-accent:#8DB9E8;--rv-accent-ink:#0F1113;--rv-tint:#17283A;color-scheme:dark}}
+:root[data-theme="dark"]{--rv-bg:#0F1113;--rv-panel:#181B1F;--rv-ink:#E8EAEC;--rv-muted:#9AA2AA;--rv-line:#2B3036;--rv-accent:#8DB9E8;--rv-accent-ink:#0F1113;--rv-tint:#17283A;color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+.panelcol{display:flex;flex-direction:column;gap:18px}
+body{background:var(--rv-bg);color:var(--rv-ink);font:15px/1.55 var(--rv-font);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--rv-bg)}
+.wrap{max-width:1360px;margin:0 auto;padding-block:28px 80px;display:flex;flex-direction:column;gap:24px}
+h1.rv{font:700 clamp(1.7rem,3.6vw,2.4rem)/1.1 var(--rv-font);margin:0;letter-spacing:-.01em}
+.rv-label{font:600 .72rem/1.2 var(--rv-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--rv-muted)}
+.rv-p{margin:0;max-width:74ch;color:var(--rv-muted)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button,.seg button{font:600 .9rem var(--rv-font);color:var(--rv-ink);background:var(--rv-panel);border:1px solid var(--rv-line);border-radius:6px;min-height:44px;padding:0 14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.tabs button[aria-selected="true"],.seg button[aria-pressed="true"]{background:var(--rv-accent);border-color:var(--rv-accent);color:var(--rv-accent-ink)}
+button:focus-visible{outline:3px solid var(--rv-accent);outline-offset:2px}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block;border:1px solid rgba(127,127,127,.35)}
+
+/* What we learned */
+.lessons{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:12px}
+.lesson{background:var(--rv-panel);border:1px solid var(--rv-line);border-radius:8px;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.lesson .n{font:700 .78rem var(--rv-mono);color:var(--rv-accent)}
+.lesson h3{margin:0;font:700 1.12rem/1.3 var(--rv-font);text-wrap:balance}
+.lesson dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;font-size:.92rem}
+.lesson dt{color:var(--rv-muted);font-weight:600}
+.lesson dd{margin:0}
+.who{font-size:.85rem;color:var(--rv-muted)}
+.avoid{background:var(--rv-panel);border:1px dashed var(--rv-line);border-radius:8px;padding:16px 18px}
+.avoid ul{margin:6px 0 0;padding-left:1.2em;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:4px 24px}
+details.refs{background:var(--rv-panel);border:1px solid var(--rv-line);border-radius:8px}
+details.refs summary{cursor:pointer;padding:14px 18px;font-weight:700;min-height:44px}
+.tw{overflow-x:auto}
+table.rt{border-collapse:collapse;width:100%;font-size:.88rem}
+.rt th,.rt td{text-align:left;vertical-align:top;padding:8px 12px;border-top:1px solid var(--rv-line)}
+.rt th{font:600 .7rem var(--rv-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--rv-muted)}
+.rt td:first-child{font-weight:600;white-space:nowrap}
+.rt td.l{font-family:var(--rv-mono);color:var(--rv-accent);white-space:nowrap}
+
+/* Previews toolbar and stage */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--rv-bg);padding-block:10px;border-bottom:1px solid var(--rv-line);display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.grp{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.seg{display:flex;gap:4px;flex-wrap:wrap}
+.stages{display:grid;gap:16px}
+.stages.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.stages.three{grid-template-columns:1fr}}
+.stage{min-width:0;display:flex;flex-direction:column;gap:6px}
+.stage .cap{font:600 .8rem var(--rv-font);color:var(--rv-muted);display:flex;align-items:center;gap:8px}
+.viewport{position:relative;overflow:hidden;border:1px solid var(--rv-line);border-radius:8px;background:var(--rv-panel)}
+.scaler{transform-origin:0 0;width:1280px}
+.note{font-size:.88rem;color:var(--rv-muted)}
+
+/* ==== Inside the previews: brand-library tokens only ==== */
+.screen{width:1280px;background:var(--aid-color-surface-canvas);color:var(--aid-color-text-primary);font-family:var(--aid-type-body-family);font-size:var(--aid-type-body-size);line-height:var(--aid-type-body-line-height);overflow:hidden}
+.screen img{display:block;width:100%;height:100%;object-fit:cover}
+.screen h1,.screen h2,.screen h3,.screen p{margin:0}
+.d{font-family:var(--aid-type-display-family);font-size:var(--aid-type-display-size);line-height:var(--aid-type-display-line-height);font-weight:var(--aid-type-display-weight);letter-spacing:-.015em;text-wrap:balance}
+.h1{font-family:var(--aid-type-heading-1-family);font-size:var(--aid-type-heading-1-size);line-height:var(--aid-type-heading-1-line-height);font-weight:var(--aid-type-heading-1-weight);letter-spacing:-.01em;text-wrap:balance}
+.h2{font-family:var(--aid-type-heading-2-family);font-size:var(--aid-type-heading-2-size);line-height:var(--aid-type-heading-2-line-height);font-weight:var(--aid-type-heading-2-weight);text-wrap:balance}
+.h3{font-family:var(--aid-type-heading-3-family);font-size:var(--aid-type-heading-3-size);line-height:var(--aid-type-heading-3-line-height);font-weight:var(--aid-type-heading-3-weight)}
+.lead{font-size:var(--aid-type-body-large-size);line-height:var(--aid-type-body-large-line-height);color:var(--aid-color-text-secondary)}
+.sm{font-size:var(--aid-type-body-small-size);line-height:var(--aid-type-body-small-line-height)}
+.cap2{font-size:var(--aid-type-caption-size);line-height:var(--aid-type-caption-line-height);color:var(--aid-color-text-muted)}
+.eb{font-size:var(--aid-type-caption-size);font-weight:var(--aid-type-label-weight);letter-spacing:.08em;text-transform:uppercase;color:var(--aid-color-text-secondary)}
+.mut{color:var(--aid-color-text-secondary)}
+.lnk{color:var(--aid-color-text-link);font-weight:var(--aid-type-label-weight);text-decoration:none}
+.row{display:flex;gap:var(--aid-space-4);align-items:center}
+.sec{padding:var(--aid-space-16) var(--aid-space-16)}
+.sec + .sec{border-top:var(--aid-border-width-default) solid var(--aid-color-border-subtle)}
+.nav{display:flex;align-items:center;gap:var(--aid-space-8);padding:var(--aid-space-5) var(--aid-space-16);border-bottom:var(--aid-border-width-default) solid var(--aid-color-border-subtle);background:var(--aid-color-surface-default)}
+.nav .links{display:flex;gap:var(--aid-space-6);margin-left:auto;font-size:var(--aid-type-label-size);font-weight:var(--aid-type-label-weight);color:var(--aid-color-text-secondary)}
+.logo{display:inline-flex;align-items:center;gap:10px;color:var(--aid-color-text-primary)}
+.logo .wm{font-family:var(--aid-type-heading-1-family);font-weight:700;font-size:22px;letter-spacing:-.01em;line-height:1}
+.logo .wm span{font-weight:400}
+.logo .wm.def span{font-weight:600;font-size:15px;letter-spacing:.1em;margin-left:4px}
+.mark-node{fill:var(--aid-color-action-primary-bg)}
+.grid2{display:grid;grid-template-columns:1.05fr 1fr;gap:var(--aid-space-12);align-items:center}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--aid-space-6)}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--aid-space-4)}
+.ph{border-radius:var(--aid-radius-container);overflow:hidden;background:var(--aid-color-surface-sunken)}
+.stack{display:flex;flex-direction:column;gap:var(--aid-space-4)}
+.stack-lg{display:flex;flex-direction:column;gap:var(--aid-space-6)}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:var(--aid-space-1) var(--aid-space-3);border:var(--aid-border-width-default) solid var(--aid-color-border-default);border-radius:var(--aid-radius-pill);font-size:var(--aid-type-caption-size);color:var(--aid-color-text-secondary)}
+.band{background:var(--aid-color-surface-brand);border-radius:var(--aid-radius-container);padding:var(--aid-space-12)}
+.foot{padding:var(--aid-space-8) var(--aid-space-16);border-top:var(--aid-border-width-default) solid var(--aid-color-border-subtle);display:flex;justify-content:space-between;font-size:var(--aid-type-caption-size);color:var(--aid-color-text-muted);background:var(--aid-color-surface-default)}
+.tbl{width:100%;border-collapse:collapse;font-size:var(--aid-type-body-small-size)}
+.tbl th,.tbl td{text-align:left;padding:var(--aid-space-2) var(--aid-space-3);border-bottom:var(--aid-border-width-default) solid var(--aid-color-border-subtle);vertical-align:middle}
+.tbl th{font-size:var(--aid-type-caption-size);font-weight:var(--aid-type-label-weight);letter-spacing:.06em;text-transform:uppercase;color:var(--aid-color-text-muted)}
+.tbl td.n,.tbl th.n{text-align:right}
+.kpi{display:flex;flex-direction:column;gap:var(--aid-space-1)}
+.kpi b{font-family:var(--aid-type-data-family);font-weight:var(--aid-type-data-strong-weight);font-size-adjust:cap-height var(--aid-type-data-size-adjust);font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums}
+.fig{display:flex;flex-direction:column;gap:var(--aid-space-3)}
+.fig .fn{font-family:var(--aid-type-data-family);font-size-adjust:cap-height var(--aid-type-data-size-adjust);font-size:var(--aid-type-caption-size);color:var(--aid-color-text-link)}
+.shell{display:grid;grid-template-columns:220px 1fr;min-height:880px}
+.side{background:var(--aid-color-surface-default);border-right:var(--aid-border-width-default) solid var(--aid-color-border-subtle);padding:var(--aid-space-5);display:flex;flex-direction:column;gap:var(--aid-space-1)}
+.side a{display:flex;align-items:center;gap:10px;padding:var(--aid-space-2) var(--aid-space-3);border-radius:var(--aid-radius-control);color:var(--aid-color-text-secondary);text-decoration:none;font-size:var(--aid-type-label-size);font-weight:var(--aid-type-label-weight)}
+.side a.on{background:var(--aid-color-surface-brand);color:var(--aid-color-text-primary)}
+.main{padding:var(--aid-space-6);display:flex;flex-direction:column;gap:var(--aid-space-5);min-width:0}
+.topbar{display:flex;align-items:center;gap:var(--aid-space-4)}
+.panel{background:var(--aid-color-surface-raised);border:var(--aid-border-width-default) solid var(--aid-color-border-default);border-radius:var(--aid-radius-container);padding:var(--aid-space-5);min-width:0}
+.map{background:var(--aid-color-surface-sunken);border-radius:var(--aid-radius-control);overflow:hidden}
+.map svg{display:block;width:100%;height:auto}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.cls{position:relative}
+.cls .aid-classification{display:block;text-align:center;padding:4px;font-size:var(--aid-type-caption-size);font-weight:700;letter-spacing:.12em}
+.loader-host{display:inline-flex;align-items:center;gap:10px;color:var(--aid-color-text-secondary);font-size:var(--aid-type-caption-size)}
+
+/* Lesson pins: show where each idea came from */
+.show-lessons .screen [data-l]{position:relative;outline:2px dashed var(--rv-accent);outline-offset:3px}
+.show-lessons .screen [data-l]::after{content:attr(data-l);position:absolute;top:-12px;left:-10px;z-index:5;font:700 12px/1 var(--rv-mono);background:var(--rv-accent);color:var(--rv-accent-ink);padding:5px 7px;border-radius:999px;pointer-events:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header style="display:flex;flex-direction:column;gap:10px">
+    <span class="rv-label">AID brand identity · round 1 · 30 Oct 2026</span>
+    <h1 class="rv">What the research teaches, and how it looks on AID screens</h1>
+    <p class="rv-p">Ten lessons drawn from 51 reference brands, then suggestive screens for both brands built with the AID brand library itself: its tokens, components, type roles and light, dark and night modes. Each colour route is a theme on the same screens, so you compare routes, not swatches. Suggestive, not final design.</p>
+    <div class="tabs" role="tablist" aria-label="Sections">
+      <button role="tab" id="t-learned" aria-controls="learned" aria-selected="true">What we learned</button>
+      <button role="tab" id="t-previews" aria-controls="previews" aria-selected="false">Previews</button>
+    </div>
+  </header>
+
+  <!-- ===================== WHAT WE LEARNED ===================== -->
+  <section id="learned" class="panelcol" role="tabpanel" aria-labelledby="t-learned">
+    <div class="lessons">
+      <article class="lesson"><span class="n">LESSON 1</span><h3>Name products by the job they do, not the part number</h3>
+        <dl><dt>Best do</dt><dd>Families and pages are named for the outcome; model codes live on the datasheet.</dd>
+        <dt>AID does</dt><dd>Five AID IoT families named by job (Fleet &amp; Mobility, Cold Chain, Industrial Connectivity, Connected Machines, Business Software). Product pages lead with a descriptive heading: "Vehicle tracker for fleets that cannot go dark".</dd>
+        <dt>See it</dt><dd>IoT landing (families), IoT product page (heading, model code).</dd></dl>
+        <span class="who">From Samsara, Samsara Vehicle Gateway, Disruptive Technologies, Stripe</span></article>
+      <article class="lesson"><span class="n">LESSON 2</span><h3>Navigate on two axes: what it is, and what it solves</h3>
+        <dl><dt>Best do</dt><dd>A Products menu beside an Outcomes or Industries menu, so buyers enter by either door.</dd>
+        <dt>AID does</dt><dd>AID IoT navigation: Products · Outcomes · Industries · Signal platform. Industries shown with real places.</dd>
+        <dt>See it</dt><dd>IoT landing navigation and industries row.</dd></dl>
+        <span class="who">From Stripe, Samsara, Atlassian Collections</span></article>
+      <article class="lesson"><span class="n">LESSON 3</span><h3>Show the mechanism, not the atmosphere</h3>
+        <dl><dt>Best do</dt><dd>One worked example or numbered figure explains how it works; hardware and software appear in the same frame.</dd>
+        <dt>AID does</dt><dd>"Three nodes, one fix": sense, connect, decide, the same story as the logo. Hero images show the device in place with live data beside it.</dd>
+        <dt>See it</dt><dd>IoT landing hero and mechanism, product page figures.</dd></dl>
+        <span class="who">From Linear, Tractian, Augury, Framework</span></article>
+      <article class="lesson"><span class="n">LESSON 4</span><h3>Ask for a conversation, not a checkout</h3>
+        <dl><dt>Best do</dt><dd>A human call to action, repeated calmly: talk to a person, request a briefing.</dd>
+        <dt>AID does</dt><dd>AID IoT: "Tell us the problem". AID Defence: "Request a private briefing". One primary action per view.</dd>
+        <dt>See it</dt><dd>Every landing and product page.</dd></dl>
+        <span class="who">From Blues, Epirus, Saab</span></article>
+      <article class="lesson"><span class="n">LESSON 5</span><h3>Prove it calmly, with evidence people can take away</h3>
+        <dl><dt>Best do</dt><dd>A short credibility strip, downloadable factbooks and datasheets, a trust centre. The weak ones pile on badges and awards.</dd>
+        <dt>AID does</dt><dd>A proof strip that stays empty until leadership confirms numbers; datasheets and installation guides as downloads; a Defence trust section on sovereignty.</dd>
+        <dt>See it</dt><dd>IoT landing proof strip, product downloads, Defence trust.</dd></dl>
+        <span class="who">From Zen Technologies, DroneShield, Skydio, Saab; avoid Dedrone's badge wall</span></article>
+      <article class="lesson"><span class="n">LESSON 6</span><h3>Disclose in tiers for sensitive products</h3>
+        <dl><dt>Best do</dt><dd>Public key facts, configurations in prose, performance only in a briefing; missions "powered by" one platform.</dd>
+        <dt>AID does</dt><dd>AID Defence states what is public, what is on request and what is briefing-only. Missions are "powered by Lighthouse".</dd>
+        <dt>See it</dt><dd>Defence landing (tiers, missions), Lighthouse page.</dd></dl>
+        <span class="who">From Anduril Sentry and Counter Intrusion, Saab Gripen</span></article>
+      <article class="lesson"><span class="n">LESSON 7</span><h3>Restraint is the identity</h3>
+        <dl><dt>Best do</dt><dd>One brand colour plus neutrals; colour reserved for meaning; less chrome, softer borders. One colour change can separate whole brands.</dd>
+        <dt>AID does</dt><dd>One colour per brand. Status colours (normal, caution, serious, critical) are reserved and never brand-coloured. Colour marks the one action and the data that matters.</dd>
+        <dt>See it</dt><dd>Every screen; dashboard and console status chips.</dd></dl>
+        <span class="who">From Polestar, Nothing, Teenage Engineering, Linear, Siemens Healthineers, GOV.UK</span></article>
+      <article class="lesson"><span class="n">LESSON 8</span><h3>A mark with behaviour, type with a detail</h3>
+        <dl><dt>Best do</dt><dd>Marks that move and change state; symbols that work alone; one detail shared between type and symbol.</dd>
+        <dt>AID does</dt><dd>The modernised current mark gives a loader, state glyphs and a pattern; the data face's slashed zero and open 4 are the type detail.</dd>
+        <dt>See it</dt><dd>Dashboard and console loaders and state glyphs (from the logo work).</dd></dl>
+        <span class="who">From Mozilla, Decathlon, Rivian, Walmart, Lamborghini</span></article>
+      <article class="lesson"><span class="n">LESSON 9</span><h3>Step out of the category's sameness</h3>
+        <dl><dt>Best do</dt><dd>Choose colour and art direction by auditing competitors, then go where they are not.</dd>
+        <dt>AID does</dt><dd>AID IoT avoids navy and orange glow (Copper, Indigo, Jamun). AID Defence avoids monochrome grey and black-and-red threat looks (Brass, Glacier, Bone accents).</dd>
+        <dt>See it</dt><dd>Compare view: three routes on the same screen.</dd></dl>
+        <span class="who">From Innomotics, Castelion; avoid Anduril's baseline, Geotab's blue, DroneShield's drama</span></article>
+      <article class="lesson"><span class="n">LESSON 10</span><h3>The parent is a signature, not a storefront</h3>
+        <dl><dt>Best do</dt><dd>The holding company governs and signs; the brands do the talking.</dd>
+        <dt>AID does</dt><dd>Inordinate Industrial Innovation appears only in legal footers. Neither brand names the other.</dd>
+        <dt>See it</dt><dd>Every footer.</dd></dl>
+        <span class="who">From Alphabet, Booking Holdings</span></article>
+    </div>
+    <div class="avoid"><strong>What not to copy</strong>
+      <ul>
+        <li>A pop-up on arrival and catalogue-style device lists (iTriangle).</li>
+        <li>Carousels that hide proof (Zen Technologies).</li>
+        <li>Badge and award walls, yellow-on-black alarm (Dedrone).</li>
+        <li>Weapons as the hero, aggression as the tone (Epirus, Havoc AI).</li>
+        <li>Dot-matrix gimmicks that age fast (Nothing).</li>
+        <li>Navy and orange glow, glowing meshes, stock "engineer with tablet" (IoT category).</li>
+        <li>All-grey sameness, crosshairs, fake HUDs (defence category).</li>
+        <li>Colour-coding every product, which multiplies colours (Atlassian).</li>
+      </ul>
+    </div>
+    <details class="refs"><summary>All 51 references: what each teaches and which lesson it feeds</summary>
+      <div class="tw"><table class="rt"><thead><tr><th>Reference</th><th>What they do well</th><th>For AID</th><th>Lesson</th></tr></thead><tbody id="refrows"></tbody></table></div>
+    </details>
+  </section>
+
+  <!-- ===================== PREVIEWS ===================== -->
+  <section id="previews" class="panelcol" role="tabpanel" aria-labelledby="t-previews" hidden>
+    <div class="bar" role="toolbar" aria-label="Preview controls">
+      <div class="grp"><span class="rv-label">Brand</span><div class="seg" id="c-brand"></div></div>
+      <div class="grp"><span class="rv-label">Colour</span><div class="seg" id="c-route"></div></div>
+      <div class="grp"><span class="rv-label">Screen</span><div class="seg" id="c-screen"></div></div>
+      <div class="grp"><span class="rv-label">Mode</span><div class="seg" id="c-mode"></div></div>
+      <div class="grp"><span class="rv-label">View</span><div class="seg" id="c-view"></div></div>
+      <div class="grp"><div class="seg" id="c-lessons"></div></div>
+    </div>
+    <p class="note" id="pv-note"></p>
+    <div class="stages" id="stages"></div>
+  </section>
+</div>
+
+<script>
+(() => {
+  /* ---------- Reference table (what we learned) ---------- */
+  const REFS = [
+    ['Samsara','Five product families in the mega-menu; "Operator grade" hero; photography beside map UI.','Take families named by job. Avoid navy and orange.','1, 2'],
+    ['Blues','"Talk to a human" call to action; plain section headings.','A human CTA, like "Tell us the problem".','4'],
+    ['Tractian','A photo per industry; hardware and software in one frame.','Show device and dashboard together. Avoid trust-badge walls.','3'],
+    ['Augury','"Clarity, not noise"; problem-solution framing; entry by persona.','Problem first, which matches "Understood first".','3'],
+    ['Linear','Numbered figures; one worked example; calm spacing; noise reduction.','Mechanism-led figures for Signal; calm product UI.','3, 7'],
+    ['Framework','Specs, Parts, Downloads under each product; honest footnotes.','Datasheet honesty, repairable tone.','3, 5'],
+    ['Nothing','Monochrome plus one accent.','One-accent discipline. Avoid dot-matrix gimmicks.','7'],
+    ['Teenage Engineering','Wit in microcopy, restraint, real product photography.','Confidence through restraint.','7'],
+    ['Disruptive Technologies','Sensors named by function; solutions by use case.','Name devices by what they do.','1'],
+    ['Ecozen','Indian context; impact counters.','Show Indian places with dignity, not stock.','3'],
+    ['Ather Energy','Hardware plus software story; premium Indian hardware imagery.','Proof Indian hardware can look premium.','3, 9'],
+    ['Fleetx','"Five products. One AI Engine."; verb-first one-liners.','Closest Indian competitor: learn the structure, differ in look.','1, 9'],
+    ['Geotab','Installation-led hardware copy.','Installation as a benefit. Avoid blue-on-blue sameness.','9'],
+    ['iTriangle','The Indian incumbent: device taxonomy, pop-up on arrival.','Avoid modals on arrival and catalogue lists.','9'],
+    ['Epirus','"Request Briefing" repeated calmly; Plan, Sense, Decide, Effect.','The briefing CTA. Avoid weapons as hero.','4, 6'],
+    ['D-Fend Solutions','Entry by role; deployment kit tiles; certifications.','Role-based entry for Lighthouse buyers.','2, 5'],
+    ['DroneShield','Grouping by deployment; downloadable factbook.','Downloadable proof. Avoid dark-and-orange drama.','5, 9'],
+    ['Dedrone','Uniform product cards; live counters.','Avoid badge clutter and alarm colours.','5, 9'],
+    ['Skydio','Trust centre; reliability dashboard; quantified cases.','A trust section on sovereignty and self-hosting.','5'],
+    ['Shield AI','One line per platform.','One line each for NAVIC and Lighthouse.','1, 6'],
+    ['Havoc AI','"Software wins the fight."','Avoid aggression; stay calm.','9'],
+    ['Castelion','Art direction that breaks defence monochrome.','Proof defence can escape grey sameness.','9'],
+    ['Anduril','The category baseline: grotesque, monochrome, product-only colour.','What to differ from.','9'],
+    ['Zen Technologies','Indian credibility strip: patents, deployments, certifications.','The proof strip. Avoid carousels.','5'],
+    ['Tata Advanced Systems','A large Indian prime organising divisions and proof.','Know buyer expectations; avoid the catalogue look.','2, 5'],
+    ['Saab','Restrained corporate tone; calm numbers.','Calm authority: the closest tone for AID Defence.','4, 5, 7'],
+    ['"Defence Dun" critique','Side-by-side defence marketing sameness.','What AID Defence must not look like.','9'],
+    ['Stripe','Product grid by job; Products and Solutions on two axes.','Two-axis navigation for AID IoT.','1, 2'],
+    ['Stripe Payments','Product page spine: anchor nav, capabilities with live UI, proof.','The AID IoT product page template.','3, 5'],
+    ['Stripe Docs','Task-first entry above "browse by product".','An AID knowledge hub.','2'],
+    ['Samsara Vehicle Gateway','Descriptive heading; model code only on the datasheet.','Name by job; codes stay in the datasheet.','1'],
+    ['Anduril Counter Intrusion','A mission "powered by Lattice".','Missions "powered by Lighthouse".','6'],
+    ['Anduril Sentry','Configurations in prose; no performance tables.','AID Defence disclosure tiers.','6'],
+    ['Saab Gripen E','Key-facts table; brochures and sales contact as CTAs.','Where the public line sits.','5, 6'],
+    ['Apple iPhone','Line-up strip with one-line taglines; plain compare.','A line-up strip for device families.','1'],
+    ['Atlassian Collections','Outcome bundles; colour-coded product icons.','Outcome bundles; avoid colour coding everything.','2, 7'],
+    ['Alphabet','Silent parent; brands as plain links.','Inordinate as a minimal legal page.','10'],
+    ['Booking Holdings','A silent parent with a portfolio.','The parent as a signature.','10'],
+    ['Siemens Healthineers','One colour change carries a distinct brand.','One skeleton, one colour per brand.','7'],
+    ['Polestar','One size, one weight; symbol freed; sparing accent.','Restraint as identity.','7'],
+    ['Rivian · Pentagram','Headlight-shaped zero; monospace numerals.','A numeral detail, like the slashed zero.','8'],
+    ['Anthropic · Geist','Slash wordmark; warm palette across marketing and UI.','A wordmark with one detail.','8'],
+    ['Mozilla · JKR','A flag mark that moves and changes.','A mark with states and motion.','8'],
+    ['Decathlon · Wolff Olins','Symbol at many sizes; type echoes the symbol.','Type and symbol share a detail.','8'],
+    ['Lamborghini','The bull freed from its shield.','A symbol that works without its container.','8'],
+    ['Walmart','The spark as a standalone asset.','Parts of the mark used on their own.','8'],
+    ['Linear refresh','Dimmed navigation, softer borders.','Calm UI for Signal and Lighthouse.','7'],
+    ['Linear UI','Themes from base, accent and contrast in LCH.','Same method as our OKLCH routes.','7'],
+    ['Innomotics · MetaDesign','Colour chosen by competitor audit.','Choose colour where competitors are not.','9'],
+    ['GOV.UK colour','Reserved focus yellow; status-only red and green.','Our protected status and focus colours.','7'],
+    ['Siemens','Outcome-first homepage at scale.','Outcome-first messaging.','2'],
+  ];
+  document.getElementById('refrows').innerHTML = REFS.map(([a,b,c,d]) => `<tr><td>${a}</td><td>${b}</td><td>${c}</td><td class="l">${d}</td></tr>`).join('');
+
+  /* ---------- Tabs ---------- */
+  const tabs = { learned: document.getElementById('t-learned'), previews: document.getElementById('t-previews') };
+  const showTab = (k) => {
+    for (const [id, t] of Object.entries(tabs)) { const on = id === k; t.setAttribute('aria-selected', String(on)); document.getElementById(id).hidden = !on; }
+    if (k === 'previews') render();
+  };
+  tabs.learned.onclick = () => showTab('learned'); tabs.previews.onclick = () => showTab('previews');
+
+  /* ---------- Logo: modernised kit if present, else the current mark in one colour ---------- */
+  const currentMark = (s = 34) => `<svg width="${s}" height="${s}" viewBox="0 0 120 120" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="13" stroke-linecap="round"><line x1="50.07" y1="34.5" x2="25.93" y2="79.5"/><line x1="69.93" y1="34.5" x2="94.07" y2="79.5"/><line x1="37" y1="98" x2="83" y2="98"/></g>
+    <g class="mark-node"><circle cx="60" cy="16" r="8.5"/><circle cx="16" cy="98" r="8.5"/><circle cx="104" cy="98" r="8.5"/></g></svg>`;
+  const kit = () => window.AIDLogo;
+  const mark = (brand, s = 34) => kit() ? kit().mark(kit().recommended?.[brand === 'aid-iot' ? 'iot' : 'defence'], { size: s }) : currentMark(s);
+  const lockup = (brand) => {
+    if (kit()?.lockup) return `<span class="logo">${kit().lockup(brand, kit().recommended?.[brand === 'aid-iot' ? 'iot' : 'defence'], { height: 32 })}</span>`;
+    return `<span class="logo">${currentMark(32)}<span class="wm${brand === 'aid-defence' ? ' def' : ''}">AID<span>${brand === 'aid-iot' ? ' IoT' : 'DEFENCE'}</span></span></span>`;
+  };
+  const loader = (label) => kit()?.loader ? `<span class="loader-host">${kit().loader({ size: 20 })}${label}</span>` : `<span class="loader-host">${currentMark(18)}${label}</span>`;
+  const glyph = (state) => kit()?.stateGlyph ? kit().stateGlyph(state) : currentMark(18);
+
+  /* ---------- Shared bits (tokens only) ---------- */
+  const D = (v, strong) => `<span class="aid-data${strong ? ' aid-data--strong' : ''}">${v}</span>`;
+  const btn = (t, kind = 'primary') => `<span class="aid-button aid-button--${kind}">${t}</span>`;
+  const st = (s, t) => `<span class="aid-status" data-status="${s}">${t}</span>`;
+  const foot = () => `<div class="foot" data-l="10"><span>© 2026 Inordinate Industrial Innovation Private Limited.</span><span>Privacy · Terms · Accessibility</span></div>`;
+  const img = (f, alt) => `<img src="img/${f}.jpg" alt="${alt}">`;
+
+  const iotNav = (b) => `<div class="nav">${lockup(b)}<div class="links" data-l="2"><span>Products</span><span>Outcomes</span><span>Industries</span><span>Signal platform</span><span>Company</span></div><span data-l="4">${btn('Tell us the problem')}</span></div>`;
+  const defNav = (b) => `<div class="nav">${lockup(b)}<div class="links"><span>Lighthouse</span><span>NAVIC</span><span>How we work</span><span>Trust</span><span>Company</span></div><span data-l="4">${btn('Request a private briefing')}</span></div>`;
+
+  const roads = (alert) => `<svg viewBox="0 0 640 300" aria-hidden="true">
+    <g fill="none" stroke="var(--aid-color-border-default)" stroke-width="10" stroke-linecap="round"><path d="M-10 230 C120 210 200 140 330 150 S520 90 650 60"/><path d="M90 -10 C120 90 160 170 170 310"/><path d="M380 -10 C360 80 420 200 470 310"/></g>
+    <g fill="none" stroke="var(--aid-color-surface-default)" stroke-width="2" stroke-dasharray="8 8"><path d="M-10 230 C120 210 200 140 330 150 S520 90 650 60"/></g>
+    <g fill="var(--aid-color-action-primary-bg)" stroke="var(--aid-color-surface-default)" stroke-width="3"><circle cx="150" cy="190" r="9"/><circle cx="300" cy="150" r="9"/><circle cx="420" cy="122" r="9"/><circle cx="540" cy="92" r="9"/><circle cx="160" cy="80" r="9"/><circle cx="430" cy="250" r="9"/></g>
+    ${alert ? `<circle cx="252" cy="160" r="11" fill="var(--aid-status-serious-fill)" stroke="var(--aid-color-surface-default)" stroke-width="3"/>` : ''}</svg>`;
+  const terrain = () => `<svg viewBox="0 0 640 360" aria-hidden="true">
+    <g fill="none" stroke="var(--aid-color-border-subtle)" stroke-width="1.5"><path d="M0 300 C120 260 200 290 320 240 S520 200 640 230"/><path d="M0 250 C140 210 220 240 330 190 S520 150 640 175"/><path d="M0 200 C150 160 240 190 340 140 S520 100 640 120"/><path d="M0 150 C160 110 250 140 350 95 S520 60 640 70"/><path d="M60 360 C120 320 180 330 220 300"/><path d="M420 360 C470 320 540 330 600 300"/></g>
+    <path d="M40 320 C150 280 230 250 300 200 S430 140 600 80" fill="none" stroke="var(--aid-color-text-link)" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+    <g stroke="var(--aid-symbology-affiliation-friend-frame)" stroke-width="2" fill="var(--aid-symbology-affiliation-friend-fill)"><rect x="178" y="250" width="22" height="16" rx="2"/><rect x="262" y="210" width="22" height="16" rx="2"/><rect x="342" y="170" width="22" height="16" rx="2"/><rect x="455" y="126" width="22" height="16" rx="2"/></g>
+    <circle cx="296" cy="186" r="12" fill="none" stroke="var(--aid-status-caution-fill)" stroke-width="3"/></svg>`;
+
+  /* ---------- AID IoT screens ---------- */
+  const iotLanding = (b) => `${iotNav(b)}
+    <div class="sec grid2">
+      <div class="stack-lg">
+        <span class="eb">Engineered in India · device to dashboard</span>
+        <h1 class="d">Understood first. Built to fit.</h1>
+        <p class="lead">We start with the problem on your floor, then build the hardware, firmware and software around it, and stay to run it.</p>
+        <div class="row"><span data-l="4">${btn('Tell us the problem')}</span>${btn('See how it works', 'secondary')}</div>
+        <div class="row" data-l="5"><span class="chip">${D('—')} devices reporting</span><span class="chip">${D('—')} sites</span><span class="chip">Proof figures pending</span></div>
+      </div>
+      <div class="ph" style="height:440px;position:relative" data-l="3">${img('iot-5', 'Sensor box in a pomegranate orchard at golden hour')}
+        <div class="aid-card" style="position:absolute;left:20px;bottom:20px;padding:14px 16px;min-width:270px">
+          <div class="row" style="justify-content:space-between"><span class="eb">Soil node ${D('4471')}</span>${st('normal', 'Normal')}</div>
+          <div class="row" style="gap:20px;margin-top:6px"><div class="kpi"><span class="cap2">Moisture</span><b>31%</b></div><div class="kpi"><span class="cap2">Last report</span><b>14:41</b></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec stack-lg" data-l="3">
+      <div class="stack"><span class="eb">How it works</span><h2 class="h1">Three nodes, one fix</h2><p class="lead" style="max-width:62ch">Every AID system is the same three steps, built by one team: a device senses, a connection carries it, and Signal turns it into a decision.</p></div>
+      <div class="grid3">
+        ${[['Sense', 'Trackers, sensors and bridges built in-house for Indian conditions.', 'iot-4'], ['Connect', 'Cellular, LoRa or satellite, with buffering when the network drops.', 'iot-6'], ['Decide', 'Signal shows what changed, what it means, and who should act.', 'iot-1']].map(([t, s, i], k) => `
+          <div class="aid-card stack" style="padding:0;overflow:hidden"><div style="height:170px">${img(i, t)}</div><div class="stack" style="padding:20px"><span class="fig"><span class="fn">Fig ${k + 1}</span></span><h3 class="h3">${t}</h3><p class="mut sm">${s}</p></div></div>`).join('')}
+      </div>
+    </div>
+    <div class="sec stack-lg" data-l="1">
+      <div class="row" style="justify-content:space-between;align-items:end"><div class="stack"><span class="eb">Products</span><h2 class="h1">Five families, named by the job</h2></div><a class="lnk">All products →</a></div>
+      <div class="grid5">${[['Fleet &amp; Mobility', 'Know where every vehicle is, and why it stopped.'], ['Cold Chain', 'Keep produce in range from farm to shelf.'], ['Industrial Connectivity', 'Bring old machines onto one network.'], ['Connected Machines', 'Run cleaners and vending remotely.'], ['Business Software', 'Orders, stock and service in one place.']].map(([t, s]) => `
+        <div class="aid-card stack" style="padding:20px">${glyph('connected')}<h3 class="h3" style="font-size:20px">${t}</h3><p class="mut sm">${s}</p></div>`).join('')}</div>
+    </div>
+    <div class="sec stack-lg" data-l="2">
+      <div class="stack"><span class="eb">Industries</span><h2 class="h1">Where our systems run</h2></div>
+      <div class="grid3">${[['iot-1', 'Cold storage', 'Pune'], ['iot-2', 'Logistics depots', 'Nashik'], ['iot-3', 'Machining', 'Rajkot']].map(([i, t, p]) => `
+        <div class="stack"><div class="ph" style="height:220px">${img(i, t)}</div><div class="row" style="justify-content:space-between"><h3 class="h3" style="font-size:20px">${t}</h3><span class="cap2">${p}</span></div></div>`).join('')}</div>
+    </div>
+    <div class="sec"><div class="band grid2" style="grid-template-columns:1.4fr 1fr" data-l="4"><div class="stack"><h2 class="h1">Tell us the problem.</h2><p class="lead">We come back with how we would solve it, in plain language, before we talk about products.</p></div><div class="row" style="justify-content:flex-end">${btn('Tell us the problem')}</div></div></div>
+    ${foot()}`;
+
+  const iotProduct = (b) => `${iotNav(b)}
+    <div class="sec stack-lg">
+      <span class="cap2">Products / Fleet &amp; Mobility / Vehicle tracker</span>
+      <div class="grid2" style="align-items:start">
+        <div class="stack-lg">
+          <h1 class="d" data-l="1">Vehicle tracker for fleets that cannot go dark</h1>
+          <p class="lead">Reports position, speed and battery every 10 seconds, keeps a day of data when the network drops, and fits behind a cab in fifteen minutes.</p>
+          <div class="row"><span data-l="4">${btn('Tell us about your fleet')}</span><span data-l="5">${btn('Datasheet (PDF)', 'secondary')}</span></div>
+          <span class="cap2" data-l="1">Model ${D('AT-4G-01')} · sample values</span>
+        </div>
+        <div class="ph" style="height:360px">${img('iot-2', 'Driver checking a tracker behind the cab')}</div>
+      </div>
+    </div>
+    <div class="sec grid2" style="align-items:start">
+      <div class="stack" data-l="5"><span class="eb">Key specifications</span>
+        <table class="tbl"><tbody>
+          ${[['Positioning', 'GNSS, multi-constellation'], ['Fix accuracy', '2.5 m CEP, open sky'], ['Reporting interval', '10 s to 24 h, set over the air'], ['Cellular', '4G LTE Cat 1, 2G fallback'], ['Battery', '5,000 mAh · up to 30 days at one fix per hour'], ['Operating temperature', '−20 °C to +70 °C'], ['Ingress protection', 'IP67'], ['Size and weight', '92 × 58 × 24 mm · 140 g']].map(([k, v]) => `<tr><td class="mut">${k}</td><td>${D(v)}</td></tr>`).join('')}
+        </tbody></table></div>
+      <div class="stack-lg" data-l="3"><span class="eb">How it works</span>
+        ${[['Fig 1', 'Sense', 'The tracker logs position and battery, and buffers 24 hours offline.'], ['Fig 2', 'Connect', 'It sends over 4G, falls back to 2G, and catches up when coverage returns.'], ['Fig 3', 'Decide', 'Signal flags long stops, route changes and low batteries to the right person.']].map(([f, t, s]) => `
+          <div class="row" style="align-items:start;gap:16px"><span class="fig" style="min-width:52px"><span class="fn">${f}</span></span><div class="stack" style="gap:4px"><h3 class="h3" style="font-size:20px">${t}</h3><p class="mut sm">${s}</p></div></div>`).join('')}
+        <div class="panel"><div class="row" style="justify-content:space-between"><span class="eb">Works with Signal</span><a class="lnk sm">See Signal →</a></div><div class="map" style="margin-top:12px">${roads(true)}</div></div>
+      </div>
+    </div>
+    <div class="sec stack" data-l="5"><span class="eb">Downloads</span>
+      <div class="grid3">${[['Datasheet', 'PDF · 2 pages'], ['Installation guide', 'PDF · 12 pages'], ['Certifications', 'Pending confirmation']].map(([t, s]) => `<div class="aid-card row" style="justify-content:space-between;padding:18px 20px"><div class="stack" style="gap:2px"><strong>${t}</strong><span class="cap2">${s}</span></div><a class="lnk sm">Download</a></div>`).join('')}</div>
+    </div>
+    ${foot()}`;
+
+  const iotDash = (b) => `<div class="shell">
+    <aside class="side"><div style="padding:6px 8px 18px">${lockup(b)}</div>
+      ${['Overview', 'Fleet', 'Alerts', 'Reports', 'Devices', 'Settings'].map((t, i) => `<a class="${i === 1 ? 'on' : ''}">${t}</a>`).join('')}
+      <div style="margin-top:auto" class="cap2">Signal · sample data</div></aside>
+    <div class="main">
+      <div class="topbar"><h1 class="h2">Fleet</h1><span class="chip">Pune depot</span><input class="aid-field" style="margin-left:auto;width:280px" placeholder="Search vehicles, drivers, routes" aria-label="Search">${loader('Syncing')}</div>
+      <div class="grid5" style="grid-template-columns:repeat(4,1fr)">
+        ${[['Reporting now', '142 / 150'], ['Moving', '96'], ['Open alerts', '3'], ['Average battery', '78%']].map(([k, v]) => `<div class="panel kpi"><span class="cap2">${k}</span><b>${v}</b></div>`).join('')}
+      </div>
+      <div class="grid2" style="grid-template-columns:1.6fr 1fr;align-items:stretch">
+        <div class="panel stack"><div class="row" style="justify-content:space-between"><strong>Live map</strong><span class="cap2">Updated ${D('14:41:04')}</span></div><div class="map">${roads(true)}</div></div>
+        <div class="panel stack" data-l="7"><strong>Alerts</strong>
+          ${[['serious', 'Serious', 'MH 12 QE 3306', 'No fix for 34 min'], ['caution', 'Caution', 'KA 05 MN 7710', 'Battery 11%'], ['caution', 'Caution', 'MH 14 CK 0918', 'Idle 42 min at Chakan'], ['normal', 'Resolved', 'MH 12 AB 4471', 'Back on route']].map(([s, l, v, m]) => `
+            <div class="row" style="justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--aid-color-border-subtle)"><div class="stack" style="gap:2px">${D(v, true)}<span class="cap2">${m}</span></div>${st(s, l)}</div>`).join('')}
+        </div>
+      </div>
+      <div class="grid2" style="grid-template-columns:1.6fr 1fr;align-items:start">
+        <div class="panel"><table class="tbl"><thead><tr><th>Vehicle</th><th>Driver</th><th class="n">km/h</th><th class="n">Battery</th><th class="n">Last fix</th><th>Status</th></tr></thead><tbody>
+          ${[['MH 12 AB 4471', 'R. Patil', '46', '82%', '14:41:04', 'normal', 'Moving'], ['MH 14 CK 0918', 'S. Khan', '0', '64%', '14:40:44', 'standby', 'Idle'], ['KA 05 MN 7710', 'A. Rao', '0', '11%', '14:29:40', 'caution', 'Low battery'], ['MH 12 QE 3306', 'V. Joshi', '–', '37%', '13:58:02', 'serious', 'No fix'], ['MH 04 TT 1144', 'P. Nair', '61', '91%', '14:41:02', 'normal', 'Moving'], ['GJ 01 RK 4410', '—', '–', '–', '09:12:00', 'off', 'Parked']].map(([v, d, s, bt, t, ss, sl]) => `<tr><td>${D(v, true)}</td><td>${d}</td><td class="n">${D(s)}</td><td class="n">${D(bt)}</td><td class="n">${D(t)}</td><td>${st(ss, sl)}</td></tr>`).join('')}
+        </tbody></table></div>
+        <div class="panel stack"><strong>Distance this week</strong>
+          <svg viewBox="0 0 320 170" aria-label="Distance per day, sample data"><g fill="var(--aid-color-border-subtle)"><rect x="0" y="149" width="320" height="1"/></g>
+            ${[62, 88, 74, 96, 81, 40, 28].map((v, i) => `<rect x="${12 + i * 44}" y="${149 - v * 1.4}" width="28" height="${v * 1.4}" rx="3" fill="${i === 3 ? 'var(--aid-color-data-viz-categorical-1)' : 'var(--aid-color-data-viz-categorical-3)'}"/><text x="${26 + i * 44}" y="165" text-anchor="middle" font-size="11" fill="var(--aid-color-text-muted)" font-family="var(--aid-type-data-family)">${'MTWTFSS'[i]}</text>`).join('')}</svg>
+          <span class="cap2">Thursday was the busiest day: ${D('9,600 km')}</span></div>
+      </div>
+    </div></div>`;
+
+  /* ---------- AID Defence screens ---------- */
+  const defLanding = (b) => `${defNav(b)}
+    <div class="sec grid2">
+      <div class="stack-lg"><span class="eb">AID Defence · Lighthouse</span>
+        <h1 class="d">Every vehicle on one screen, readable at night.</h1>
+        <p class="lead">Lighthouse is the command software for the NAVIC convoy management system. Built, hosted and supported in India.</p>
+        <div class="row"><span data-l="4">${btn('Request a private briefing')}</span><a class="lnk" data-l="6">What we can share publicly →</a></div></div>
+      <div class="ph" style="height:420px">${img('def-2', 'Empty mountain road at dusk')}</div>
+    </div>
+    <div class="sec stack-lg" data-l="6"><div class="stack"><span class="eb">Missions</span><h2 class="h1">Two missions, powered by Lighthouse</h2></div>
+      <div class="grid2" style="align-items:stretch">
+        ${[['Move convoys safely', 'Plan, track and hand over convoys across terrain where networks come and go.', 'def-3'], ['Keep command when links fail', 'NavIC positioning with satellite fallback keeps the picture current offline.', 'def-1']].map(([t, s, i]) => `
+          <div class="aid-card" style="padding:0;overflow:hidden;display:grid;grid-template-columns:1fr 1fr"><div style="min-height:220px">${img(i, t)}</div><div class="stack" style="padding:24px"><h3 class="h3">${t}</h3><p class="mut sm">${s}</p><a class="lnk sm" style="margin-top:auto">Read more →</a></div></div>`).join('')}
+      </div></div>
+    <div class="sec stack-lg" data-l="6"><div class="stack"><span class="eb">Disclosure</span><h2 class="h1">What we share, and where</h2><p class="lead" style="max-width:64ch">Some detail is public, some is on request, and some only in a private briefing. We say which is which.</p></div>
+      <div class="grid3">${[['Public', ['What Lighthouse does', 'Supported hardware families', 'Deployment models']], ['On request', ['Technical brochure', 'Integration guide', 'Certifications']], ['Briefing only', ['Performance and ranges', 'Deployments and users', 'Roadmap']]].map(([t, items], k) => `
+        <div class="aid-card stack"><div class="row" style="justify-content:space-between"><h3 class="h3" style="font-size:20px">${t}</h3>${st(['normal', 'standby', 'caution'][k], ['Open', 'Ask', 'Brief'][k])}</div><ul class="sm mut" style="margin:0;padding-left:18px;display:grid;gap:4px">${items.map((x) => `<li>${x}</li>`).join('')}</ul></div>`).join('')}</div></div>
+    <div class="sec grid2" data-l="5"><div class="stack"><span class="eb">Trust</span><h2 class="h1">Sovereign by design</h2><p class="lead">Runs on your servers or fully air-gapped. Engineered, built and supported in India. No data leaves your network.</p></div>
+      <div class="grid2" style="gap:16px">${[['Self-hosted', 'On-premises or air-gapped'], ['Indian-engineered', 'Hardware and software in-house'], ['Night-ready', 'Red-shifted night mode'], ['Supported', 'Field support in India']].map(([t, s]) => `<div class="panel stack" style="gap:4px"><strong>${t}</strong><span class="cap2">${s}</span></div>`).join('')}</div></div>
+    ${foot()}`;
+
+  const defProduct = (b) => `${defNav(b)}
+    <div class="sec grid2" style="align-items:start">
+      <div class="stack-lg"><span class="cap2">Lighthouse</span>
+        <h1 class="d">Lighthouse: convoy command you can read at night</h1>
+        <p class="lead">One picture of every vehicle: where it is, how it is moving, and whether it can still reach command. Configurations are set with you in a briefing.</p>
+        <div class="row"><span data-l="4">${btn('Request a private briefing')}</span>${btn('Brochure on request', 'secondary')}</div></div>
+      <div class="ph" style="height:360px">${img('def-4', 'Operator in a dim room in front of a map')}</div>
+    </div>
+    <div class="sec grid2" style="align-items:start">
+      <div class="stack" data-l="6"><span class="eb">Key facts · public</span>
+        <table class="tbl"><tbody>${[['Deployment', 'On-premises or air-gapped'], ['Positioning', 'NavIC, with GNSS fallback'], ['Links', 'Cellular and satellite'], ['Display modes', 'Day, dark and night'], ['Works with', 'NAVIC vehicle tracker, belt pager, PTT handheld, SatCom unit']].map(([k, v]) => `<tr><td class="mut">${k}</td><td>${v}</td></tr>`).join('')}</tbody></table>
+        <p class="cap2">Performance, ranges and deployments are shared in a private briefing.</p></div>
+      <div class="stack-lg" data-l="6"><span class="eb">Configurations</span>
+        <p>Lighthouse runs at a command post for a full convoy picture, on a rugged laptop with a convoy commander, or on a handheld for a section lead. Each configuration shares the same map, symbols and night mode, so a picture looks the same at every level.</p>
+        <div class="ph" style="height:240px">${img('def-5', 'Rugged radio and satellite unit')}</div></div>
+    </div>
+    ${foot()}`;
+
+  const defConsole = (b) => `<div class="cls"><span class="aid-classification" data-level="unclassified">UNCLASSIFIED · SAMPLE DATA</span></div>
+    <div class="nav" style="padding:12px 24px">${lockup(b)}<span class="chip">Convoy ${D('C-17')}</span><span class="cap2">${D('4')} vehicles · NavIC fix ${D('3 s')} ago</span><div class="links">${D('21:16:42 IST', true)}</div>${loader('Receiving')}</div>
+    <div style="display:grid;grid-template-columns:300px 1fr 300px;min-height:760px">
+      <aside class="side" style="gap:0" data-l="7">${[['VAJRA-1', 'normal', 'On route', '38', '21:40'], ['VAJRA-2', 'normal', 'On route', '36', '21:41'], ['VAJRA-3', 'caution', 'Halted 6 min', '0', '–'], ['VAJRA-4', 'standby', 'Via SatCom', '35', '21:43']].map(([c, s, l, v, e]) => `
+        <div class="stack" style="gap:6px;padding:14px 8px;border-bottom:1px solid var(--aid-color-border-subtle)"><div class="row" style="justify-content:space-between">${D(c, true)}${st(s, l)}</div><div class="row cap2" style="gap:14px"><span>${D(v)} km/h</span><span>ETA ${D(e)}</span></div></div>`).join('')}</aside>
+      <div class="main"><div class="map" style="flex:1">${terrain()}</div>
+        <div class="row cap2" style="gap:18px"><span><span class="dot" style="background:var(--aid-symbology-affiliation-friend-fill)"></span> Own vehicles</span><span><span class="dot" style="background:var(--aid-status-caution-fill)"></span> Halt</span><span>Route ··· planned</span></div></div>
+      <aside class="side" style="border-left:1px solid var(--aid-color-border-subtle);border-right:0">
+        <div class="panel stack" style="gap:8px" data-l="8"><span class="eb">Fix quality</span><div class="row">${glyph('connected')}<strong>Fix acquired</strong></div><span class="cap2">${D('3')} references · HDOP ${D('0.9')}</span></div>
+        <span class="eb" style="margin-top:14px">Events</span>
+        ${[['21:16:40', 'VAJRA-3 halted at waypoint 7'], ['21:12:05', 'VAJRA-4 switched to SatCom'], ['21:04:31', 'Convoy passed checkpoint B'], ['20:58:10', 'Night mode suggested at dusk']].map(([t, m]) => `<div class="stack" style="gap:2px;padding:8px 0;border-bottom:1px solid var(--aid-color-border-subtle)">${D(t)}<span class="sm">${m}</span></div>`).join('')}
+      </aside>
+    </div>`;
+
+  /* ---------- State and controls ---------- */
+  const ROUTES = {
+    'aid-iot': [['copper', 'Copper'], ['indigo', 'Indigo'], ['jamun', 'Jamun']],
+    'aid-defence': [['brass', 'Slate & Brass'], ['glacier', 'Graphite & Glacier'], ['bone', 'Basalt & Bone']],
+  };
+  const SCREENS = {
+    'aid-iot': [['landing', 'Landing', iotLanding], ['product', 'Product page', iotProduct], ['app', 'Signal dashboard', iotDash]],
+    'aid-defence': [['landing', 'Landing', defLanding], ['product', 'Lighthouse page', defProduct], ['app', 'Lighthouse console', defConsole]],
+  };
+  const S = { brand: 'aid-iot', route: { 'aid-iot': 'copper', 'aid-defence': 'brass' }, screen: 'landing', mode: { 'aid-iot': 'light', 'aid-defence': 'dark' }, view: 'one', lessons: false };
+  try { Object.assign(S, JSON.parse(localStorage.getItem('aid-ui-previews') || '{}')); } catch {}
+  const save = () => { try { localStorage.setItem('aid-ui-previews', JSON.stringify(S)); } catch {} };
+
+  const seg = (id, items, cur, on) => {
+    const el = document.getElementById(id);
+    el.innerHTML = items.map(([k, label, sw]) => `<button type="button" data-k="${k}" aria-pressed="${String(k === cur)}">${sw || ''}${label}</button>`).join('');
+    el.onclick = (e) => { const b = e.target.closest('button'); if (b) { on(b.dataset.k); save(); render(); } };
+  };
+  const swatch = (brand, r) => `<span class="sw" style="background:var(--route-600)" data-brand="${brand}" data-route="${r}"></span>`;
+
+  const stagesEl = document.getElementById('stages');
+  function fit() {
+    for (const vp of stagesEl.querySelectorAll('.viewport')) {
+      const sc = vp.querySelector('.scaler'); const s = vp.clientWidth / 1280;
+      sc.style.transform = `scale(${s})`; vp.style.height = `${Math.ceil(sc.scrollHeight * s)}px`;
+    }
+  }
+  function render() {
+    const brand = S.brand, routes = ROUTES[brand], screens = SCREENS[brand];
+    if (!screens.some(([k]) => k === S.screen)) S.screen = 'landing';
+    seg('c-brand', [['aid-iot', 'AID IoT'], ['aid-defence', 'AID Defence']], brand, (k) => { S.brand = k; });
+    seg('c-route', routes.map(([k, l]) => [k, l, swatch(brand, k)]), S.route[brand], (k) => { S.route[brand] = k; });
+    seg('c-screen', screens.map(([k, l]) => [k, l]), S.screen, (k) => { S.screen = k; });
+    seg('c-mode', [['light', 'Light'], ['dark', 'Dark'], ['night', 'Night']], S.mode[brand], (k) => { S.mode[brand] = k; });
+    seg('c-view', [['one', 'One route'], ['compare', 'Compare all three']], S.view, (k) => { S.view = k; });
+    seg('c-lessons', [['on', 'Show lessons']], S.lessons ? 'on' : '', () => { S.lessons = !S.lessons; });
+    document.getElementById('previews').classList.toggle('show-lessons', S.lessons);
+    const tpl = screens.find(([k]) => k === S.screen)[2];
+    const list = S.view === 'compare' ? routes : routes.filter(([k]) => k === S.route[brand]);
+    stagesEl.className = 'stages' + (S.view === 'compare' ? ' three' : '');
+    stagesEl.innerHTML = list.map(([r, label]) => `<div class="stage"><div class="cap">${swatch(brand, r)}${label} · ${S.mode[brand]}</div>
+      <div class="viewport"><div class="scaler"><div class="screen" data-brand="${brand}" data-route="${r}" data-mode="${S.mode[brand]}" data-density="comfortable">${tpl(brand)}</div></div></div></div>`).join('');
+    document.getElementById('pv-note').textContent = `${brand === 'aid-iot' ? 'AID IoT' : 'AID Defence'} · ${screens.find(([k]) => k === S.screen)[1]}. Built from the brand library tokens and components; only the brand palette and neutrals change between routes. Figures are sample values. ${kit() ? 'Logo: modernised current mark.' : 'Logo: current mark in one colour (modernised versions are in progress).'}`;
+    fit();
+    stagesEl.querySelectorAll('img').forEach((i) => i.addEventListener('load', fit, { once: true }));
+  }
+  new ResizeObserver(fit).observe(stagesEl);
+  const start = location.hash === '#previews' ? 'previews' : 'learned';
+  showTab(start);
+})();
+</script>

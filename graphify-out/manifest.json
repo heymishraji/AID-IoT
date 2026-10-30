@@ -695,6 +695,102 @@
     "ast_hash": "ebb17e6c467cc4f3b00490d5a2de085f",
     "semantic_hash": ""
   },
+  "docs/studies/identity-round-1/ui-previews/routes.py": {
+    "mtime": 1793352361.3969784,
+    "seen": 1793353230.291007,
+    "ast_hash": "0b3ace81c2c05ac7a8d9b62189b8d2fa",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/README.md": {
+    "mtime": 1793353228.5692396,
+    "seen": 1793353230.291067,
+    "ast_hash": "fbd39e1146f63a3cdf8997034afdcd70",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/index.html": {
+    "mtime": 1793353034.0785682,
+    "seen": 1793353230.2910678,
+    "ast_hash": "7e99fd365fe7d068ec263a07c81e55b0",
+    "semantic_hash": ""
+  },
+  "docs/studies/logo-modernisation/RESEARCH.md": {
+    "mtime": 1793353094.6868224,
+    "seen": 1793353230.291069,
+    "ast_hash": "bb3e47c70dd67f62f36b8aa1e50d48af",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/img/def-1.jpg": {
+    "mtime": 1793350118.334928,
+    "seen": 1793353230.291123,
+    "ast_hash": "99f283ec63bbe0b1bbac88a49b27371d",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/img/def-2.jpg": {
+    "mtime": 1793350118.4177566,
+    "seen": 1793353230.2911239,
+    "ast_hash": "a6effed0c056e7379b5666ca88a2c101",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/img/def-3.jpg": {
+    "mtime": 1793350118.5038366,
+    "seen": 1793353230.2911239,
+    "ast_hash": "8fd4c62489750a08ba372f404a82b3e9",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/img/def-4.jpg": {
+    "mtime": 1793350118.5974116,
+    "seen": 1793353230.291125,
+    "ast_hash": "487e1c77720914584ce7dba560375444",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/img/def-5.jpg": {
+    "mtime": 1793350118.6808605,
+    "seen": 1793353230.291126,
+    "ast_hash": "7a646f39b0e4b49598a37950bebf58fd",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/img/def-6.jpg": {
+    "mtime": 1793350118.7729664,
+    "seen": 1793353230.291127,
+    "ast_hash": "92437c773ae2d4c62e7045a428fb365d",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/img/iot-1.jpg": {
+    "mtime": 1793350118.849698,
+    "seen": 1793353230.291127,
+    "ast_hash": "4a9a3b37215250f875dc0e0c029b84c6",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/img/iot-2.jpg": {
+    "mtime": 1793350118.9281743,
+    "seen": 1793353230.2911282,
+    "ast_hash": "1d1bdbe2cdc95172269092564d09176e",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/img/iot-3.jpg": {
+    "mtime": 1793350119.014223,
+    "seen": 1793353230.291129,
+    "ast_hash": "c7c1bee0127cbd749dcd31d1bd1da813",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/img/iot-4.jpg": {
+    "mtime": 1793350119.0923088,
+    "seen": 1793353230.29113,
+    "ast_hash": "2ee2928f746a33f751e20cc8ce2f0686",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/img/iot-5.jpg": {
+    "mtime": 1793350119.1833806,
+    "seen": 1793353230.29113,
+    "ast_hash": "fba5708fedfa863d4b6ec25a20b48fc1",
+    "semantic_hash": ""
+  },
+  "docs/studies/identity-round-1/ui-previews/img/iot-6.jpg": {
+    "mtime": 1793350119.260613,
+    "seen": 1793353230.2911308,
+    "ast_hash": "371e493e3362d5dfcc2bd0851c23d046",
+    "semantic_hash": ""
+  },
   "packages/brand-library/package-lock.json": {
     "mtime": 1793114651.5483773,
     "seen": 1793276633.478949,
