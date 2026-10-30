@@ -1,10 +1,13 @@
 # Next steps
 
-1. **Reference boards in Figma** from the URL lists at the end of research 07–10.
-   Why: the type is decided; the logo, colour and imagery rounds need real visual evidence first.
-2. **Logo routes**, set in Archivo (wordmark) with the existing mark evolved or replaced.
-   Why: the logo is the next identity decision and now has its typeface.
-3. **Colour and imagery mood boards** per brand, after the logo routes.
-   Why: colour must work with the mark; the token pipeline and contrast check are ready to take real values.
-Also: split `docs/PRODUCT-FACTS.md` per brand into each brand folder (with the next library change); choose a
-mono for the `code` role (Atkinson Hyperlegible Mono is the natural partner; still a placeholder).
+1. **Review identity round 1 in Figma** and pick: logo route (A/B/C), a colour route per brand, and the images that
+   set each brand's direction. https://www.figma.com/design/IxAZrYXdTZpYgPzZD8mWSV (start at 00 · Read me).
+   Leans: logo B, AID IoT Copper, AID Defence Slate & Brass.
+   Why: every template, DESIGN.md and the brand library's real colour values wait on these three choices.
+2. **Refine the chosen logo route** on a grid: final drawing, clear space, minimum size, one-colour and laser-etch
+   versions, night mode, covered-logo test; start a trademark search (classes 9, 38, 42, 13).
+   Why: the route is a sketch; a mark must be drawn precisely before it goes into products and packaging.
+3. **Set the chosen colours into the brand library** (`packages/brand-library/brands/<id>/tokens/`), replacing the
+   placeholders; rebuild and run the contrast check; then write each brand's DESIGN.md colour and imagery rules.
+   Why: one token change propagates to every output, and the checks prove AA on the real values.
+Also: split `docs/PRODUCT-FACTS.md` per brand; choose a mono for the `code` role.

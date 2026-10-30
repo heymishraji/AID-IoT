@@ -44,9 +44,9 @@ td.rej{color:var(--muted)}
     <h1>Decision tracker</h1>
     <p class="muted">Every brand and design decision, with the reason and what was rejected, plus the decisions still open. Generated from <code>docs/DECISIONS.md</code>.</p>
     <div class="counts">
-      <div class="count you"><span class="label">Waiting on you</span><b>4</b></div>
+      <div class="count you"><span class="label">Waiting on you</span><b>7</b></div>
       <div class="count lead"><span class="label">Waiting on leadership</span><b>7</b></div>
-      <div class="count done"><span class="label">Decided</span><b>25</b></div>
+      <div class="count done"><span class="label">Decided</span><b>26</b></div>
     </div>
   </header>
 
@@ -64,11 +64,38 @@ td.rej{color:var(--muted)}
       </article>
       <article class="card">
         <span class="area">Identity</span>
-        <h3>Logo route: keep and explain, evolve, or replace?</h3>
+        <h3>Logo route: A keep, B evolve into one line through three nodes, or C wordmark-led A?</h3>
         <dl>
-          <dt>Recommendation</dt><dd>Evolve: one line, three nodes, triangulation story; test against a new wordmark</dd>
-          <dt>Decides</dt><dd>Brand owner, after the visual round</dd>
-          <dt>Evidence</dt><dd><code>research/10</code></dd>
+          <dt>Recommendation</dt><dd>B, with C as the comparison</dd>
+          <dt>Decides</dt><dd>Brand owner</dd>
+          <dt>Evidence</dt><dd><code>Figma identity round 1 page 02, docs/studies/identity-round-1/, research/10</code></dd>
+        </dl>
+      </article>
+      <article class="card">
+        <span class="area">Identity</span>
+        <h3>AID IoT colour route: Copper, Indigo or Jamun?</h3>
+        <dl>
+          <dt>Recommendation</dt><dd>Copper (conductor story; keep status chips off copper fills)</dd>
+          <dt>Decides</dt><dd>Brand owner</dd>
+          <dt>Evidence</dt><dd><code>Figma identity round 1 page 03, docs/studies/identity-round-1/colour-routes.json</code></dd>
+        </dl>
+      </article>
+      <article class="card">
+        <span class="area">Identity</span>
+        <h3>AID Defence colour route: Slate &amp; Brass, Graphite &amp; Glacier or Basalt &amp; Bone?</h3>
+        <dl>
+          <dt>Recommendation</dt><dd>Slate &amp; Brass (calm authority, escapes the grey sameness)</dd>
+          <dt>Decides</dt><dd>Brand owner</dd>
+          <dt>Evidence</dt><dd><code>Figma identity round 1 page 03</code></dd>
+        </dl>
+      </article>
+      <article class="card">
+        <span class="area">Identity</span>
+        <h3>Imagery direction: which of the 12 AI images set each brand's direction?</h3>
+        <dl>
+          <dt>Recommendation</dt><dd>Keep all but regenerate iot-3 with the sensor in front</dd>
+          <dt>Decides</dt><dd>Brand owner</dd>
+          <dt>Evidence</dt><dd><code>Figma identity round 1 page 04, assets/imagery/generated/</code></dd>
         </dl>
       </article>
       <article class="card">
@@ -164,6 +191,7 @@ td.rej{color:var(--muted)}
     <div class="tbl"><table>
       <thead><tr><th>Date</th><th>Decision</th><th>Why</th><th>Rejected</th></tr></thead>
       <tbody>
+        <tr><td class="date">2026-10-30</td><td>Identity round 1 built in Figma (reference boards from 45 live captures, three logo routes per brand, three colour routes per brand with AA contrast, 12 AI mood images with prompts)</td><td>the type is decided, so the identity needs evidence and options to choose from</td><td class="rej">deciding logo, colour and imagery from prose alone rejected</td></tr>
         <tr><td class="date">2026-10-30</td><td>Data face is matched to the text face by measurement: font-size-adjust cap-height 0.698 (×1.045 in tools), weights 310/380/460/560/680 for 300–700; verified in Chrome (equal digit height and stroke, unchanged line height)</td><td>the owner required the two to look consistent on one line</td><td class="rej">matching by eye rejected</td></tr>
         <tr><td class="date">2026-10-30</td><td>Supersedes 2026-10-27 &quot;one font family&quot;: two shared faces, still identical for every brand</td><td>data needs its own face</td><td class="rej">per-brand faces still rejected</td></tr>
         <tr><td class="date">2026-10-30</td><td>Type: Archivo is the shared text face; Atkinson Hyperlegible Next is the shared data face for values a reader compares, checks or copies</td><td>the owner likes Archivo's headlines, body and small print but its 4 is unclear in data; Atkinson has the clearest digits; both are Google Fonts so every tool works</td><td class="rej">Archivo alone, Atkinson digits spliced into Archivo (breaks Google Slides, needs a custom font file) and single fonts (Chivo, Public Sans, Schibsted Grotesk) rejected</td></tr>
