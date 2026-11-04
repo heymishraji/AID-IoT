@@ -21,6 +21,7 @@ Source for the decision tracker page (`npm run decisions` → docs/decisions.htm
 - Portfolio · How to group AID IoT products? · One platform plus five families (Fleet & Mobility, Cold Chain, Industrial Connectivity, Connected Machines, Business Software) · Leadership (Q3) · research/09
 - Portfolio · Where do the store, courses, PCB milling and vending sit? · Outside both brands, or a separate "Build with AID" services line · Leadership (Q1.6) · research/05, research/09
 - Proof · Which defence claims can be published? · Publish only what is evidenced; hold "seven systems fielded" until confirmed · Leadership (Q4.3) · research/05, research/08
+- Security · The repo is public and holds defence strategy, unconfirmed claims and leadership questions: should it be private? · Make it private, then install the Claude GitHub App on it (visibility can only be changed by the owner on GitHub) · Brand owner · docs/CLOUD.md
 
 ## Log
 <!-- Append-only. date · decision · why · alternatives rejected -->
@@ -54,3 +55,4 @@ Source for the decision tracker page (`npm run decisions` → docs/decisions.htm
 2026-10-30 · Logo work starts from research: RESEARCH.md checklist (14 criteria) and production limits for 16 touchpoints; eight variations scored; real vector mark placed on ten touchpoint mockups in Figma · the owner asked for research first and for scalability to be shown in real use · designing variations by taste alone rejected
 2026-10-30 · Colour routes are judged on UI previews built with the brand library (each route = brand-role and neutral overrides), in light, dark and night, with lessons from the 51 references shown on the screens · swatches alone could not show long-term fit · static colour boards alone rejected
 2026-10-30 · Figma file has a cover page (mark lattice pattern, title, one-line goal, status); set as thumbnail by being the first frame of the first page · the owner wanted the file's purpose and progress visible at a glance · API thumbnail setting unavailable
+2026-11-04 · Repo made self-sufficient for cloud sessions: licensed skills copied into .claude/skills, working rules moved from local memory into CLAUDE.md, leadership questionnaire exported to docs/brand/ · the owner will work from an iPad and may lose this laptop, and a cloud session reads only the repo · fetching skills from upstream at startup rejected because the hyperframes repo layout has already diverged from the installed copy; apple-design and brag left out for lack of a licence

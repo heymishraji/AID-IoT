@@ -40,13 +40,13 @@ td.rej{color:var(--muted)}
 </style>
 <main>
   <header style="display:flex;flex-direction:column;gap:12px">
-    <span class="label">AID brand system · last decision 2026-10-30</span>
+    <span class="label">AID brand system · last decision 2026-11-04</span>
     <h1>Decision tracker</h1>
     <p class="muted">Every brand and design decision, with the reason and what was rejected, plus the decisions still open. Generated from <code>docs/DECISIONS.md</code>.</p>
     <div class="counts">
-      <div class="count you"><span class="label">Waiting on you</span><b>10</b></div>
+      <div class="count you"><span class="label">Waiting on you</span><b>11</b></div>
       <div class="count lead"><span class="label">Waiting on leadership</span><b>7</b></div>
-      <div class="count done"><span class="label">Decided</span><b>30</b></div>
+      <div class="count done"><span class="label">Decided</span><b>31</b></div>
     </div>
   </header>
 
@@ -143,6 +143,15 @@ td.rej{color:var(--muted)}
           <dt>Evidence</dt><dd><code>brands/aid-defence/STRATEGY.md</code></dd>
         </dl>
       </article>
+      <article class="card">
+        <span class="area">Security</span>
+        <h3>The repo is public and holds defence strategy, unconfirmed claims and leadership questions: should it be private?</h3>
+        <dl>
+          <dt>Recommendation</dt><dd>Make it private, then install the Claude GitHub App on it (visibility can only be changed by the owner on GitHub)</dd>
+          <dt>Decides</dt><dd>Brand owner</dd>
+          <dt>Evidence</dt><dd><code>docs/CLOUD.md</code></dd>
+        </dl>
+      </article>
     </div>
   </section>
   <section class="leadership">
@@ -218,6 +227,7 @@ td.rej{color:var(--muted)}
     <div class="tbl"><table>
       <thead><tr><th>Date</th><th>Decision</th><th>Why</th><th>Rejected</th></tr></thead>
       <tbody>
+        <tr><td class="date">2026-11-04</td><td>Repo made self-sufficient for cloud sessions: licensed skills copied into .claude/skills, working rules moved from local memory into CLAUDE.md, leadership questionnaire exported to docs/brand/</td><td>the owner will work from an iPad and may lose this laptop, and a cloud session reads only the repo</td><td class="rej">fetching skills from upstream at startup rejected because the hyperframes repo layout has already diverged from the installed copy; apple-design and brag left out for lack of a licence</td></tr>
         <tr><td class="date">2026-10-30</td><td>Figma file has a cover page (mark lattice pattern, title, one-line goal, status); set as thumbnail by being the first frame of the first page</td><td>the owner wanted the file's purpose and progress visible at a glance</td><td class="rej">API thumbnail setting unavailable</td></tr>
         <tr><td class="date">2026-10-30</td><td>Colour routes are judged on UI previews built with the brand library (each route = brand-role and neutral overrides), in light, dark and night, with lessons from the 51 references shown on the screens</td><td>swatches alone could not show long-term fit</td><td class="rej">static colour boards alone rejected</td></tr>
         <tr><td class="date">2026-10-30</td><td>Logo work starts from research: RESEARCH.md checklist (14 criteria) and production limits for 16 touchpoints; eight variations scored; real vector mark placed on ten touchpoint mockups in Figma</td><td>the owner asked for research first and for scalability to be shown in real use</td><td class="rej">designing variations by taste alone rejected</td></tr>
