@@ -25,3 +25,7 @@ The data face is matched to the text face by measurement (tokens `font.match.*`)
 - Self-host (offline, air-gapped, Lighthouse): download both families from fonts.google.com, keep the variable
   `.woff2` files with the app, and declare them with `@font-face` under the same family names.
 - Figma, Google Slides, Canva: both families are available by name (check Canva's list for your plan).
+
+## Local copies
+`files/` holds both faces (variable weight; Latin and Latin Extended, which carries ₹) with their licences. Use
+`files/fonts.css` where Google Fonts cannot be reached, such as video renders.
