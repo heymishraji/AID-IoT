@@ -1,0 +1,4 @@
+- [AID project home](aid-iot-project-home.md) — fresh-start brand + design system repo, read-first docs, archive tag
+- [AID-IoT working style](aid-iot-working-style.md) — build end-to-end before CEO, log decisions, justified next steps, no generic design
+- [Push after every task](push-after-every-task.md) — commit + push AID repo to GitHub at the end of each piece of work
+- [Subagent model choice](subagent-model-choice.md) — Sonnet default for helpers, Opus for crucial reasoning/actions

@@ -1,0 +1,1 @@
+Snapshot of Claude's project memory, 4 November 2026. Claude keeps these notes outside the repo, so cloud sessions start without them. `MEMORY.md` is the index. Ask Claude to read this folder, and add new notes here.
