@@ -1,17 +1,17 @@
-# Graph Report - AID-IOT Project  (2026-10-30)
+# Graph Report - AID-IOT Project  (2026-11-04)
 
 ## Corpus Check
-- 94 files · ~162,818 words
+- 103 files · ~168,671 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 9 file(s) not represented in the graph (top: .css 5, (none) 3, .tsv 1)
+- Unclassified: 14 file(s) not represented in the graph (top: .css 6, .woff2 4, (none) 3)
 
 ## Summary
-- 857 nodes · 1448 edges · 77 communities (38 shown, 39 thin omitted)
-- Extraction: 89% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 152 edges (avg confidence: 0.8)
+- 887 nodes · 1476 edges · 83 communities (41 shown, 42 thin omitted)
+- Extraction: 90% EXTRACTED · 10% INFERRED · 0% AMBIGUOUS · INFERRED: 152 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e451f84b`
+- Built from commit: `94420bf3`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -19,7 +19,7 @@
 - Design system base choice
 - check.mjs
 - Brand system anatomy
-- Multi-brand exemplars
+- 09 Multi-product clarity and multi-brand systems
 - LLM-ready library and skills
 - Modern brands, logo and fonts
 - IoT vs Defence side-by-side dimensions table
@@ -93,6 +93,10 @@
 - logo-modernisation/build.mjs
 - AID mark — logo modernisation study, round 1
 - Touchpoint mockups to make in Figma (logo modernisation, round 1)
+- 08 Defence competitors and brand exemplars (AID Defence)
+- AID brand rebuild: questions for leadership
+- Working from a browser or iPad
+- video-kit.sh
 
 ## God Nodes (most connected - your core abstractions)
 1. `10 Modern brands and rebrands (2024-2026)` - 44 edges
@@ -129,7 +133,7 @@
 - **AID composed design system (own tokens, Base UI, shadcn registry, borrowed patterns)** — docs_research_02_open_source_design_systems_composition_recommendation, docs_research_02_open_source_design_systems_base_ui, docs_research_02_open_source_design_systems_shadcn_ui, docs_research_02_open_source_design_systems_borrow_patterns_table, docs_research_03_token_architecture_multibrand_three_tier_tokens [INFERRED 0.85]
 - **AID Defence discretion-led front door (briefing, tiered disclosure, assurance, what-we-don't-publish)** — docs_research_08_defence_competitors_and_exemplars_request_briefing_cta, docs_research_08_defence_competitors_and_exemplars_three_tier_disclosure, docs_research_08_defence_competitors_and_exemplars_assurance_page, docs_research_08_defence_competitors_and_exemplars_what_we_dont_publish_line [INFERRED 0.85]
 
-## Communities (77 total, 39 thin omitted)
+## Communities (83 total, 42 thin omitted)
 
 ### Community 0 - "Design system base choice"
 Cohesion: 0.08
@@ -143,9 +147,9 @@ Nodes (48): addFigma(), build(), COLLECTIONS, designFrontMatter(), figmaValue(),
 Cohesion: 0.09
 Nodes (46): 01 Brand system anatomy, discovery inputs and multi-brand architecture, AID triangle mark and wordmark, Airbus consolidation of EADS divisions under one masterbrand, Best-in-class public brand guidelines to study (IBM, Atlassian, Mailchimp, Helsing, Anduril, Samsara...), Bosch move from 3,600-page PDF to Frontify portal, Brand architecture models (branded house, endorsed, hybrid, house of brands), Brand-as-code rebrand-proofing (tokens, templates, DAM, rules as text), Proposed brand-as-code repository shape (+38 more)
 
-### Community 3 - "Multi-brand exemplars"
-Cohesion: 0.05
-Nodes (51): Framework (laptop), 08 Defence competitors and brand exemplars (AID Defence), Whitespace for AID Defence, Anduril (08), BEL, Castelion, CoreEL Technologies, Counter-drone is the crowded category (+43 more)
+### Community 3 - "09 Multi-product clarity and multi-brand systems"
+Cohesion: 0.11
+Nodes (26): 09 Multi-product clarity and multi-brand systems, Alphabet, Anduril (09), Apple, Arm naming architecture, Atlassian Collections, Booking Holdings, Cortex collides with Arm Cortex trademark (+18 more)
 
 ### Community 4 - "LLM-ready library and skills"
 Cohesion: 0.11
@@ -153,7 +157,7 @@ Nodes (43): 04 LLM-friendly design systems, machine-readable formats and agent s
 
 ### Community 5 - "Modern brands, logo and fonts"
 Cohesion: 0.09
-Nodes (33): Nothing (07 profile), 10 Modern brands and rebrands (2024-2026), Fonts that read as AI defaults (Inter, Geist, Space Grotesk, Poppins, etc.), Anek Latin + Devanagari (test first), Anthropic / Claude identity, Atkinson Hyperlegible Next (test first), Bosch armature mark, Current AID mark (three pill strokes, three dots, three colours) (+25 more)
+Nodes (34): Nothing (07 profile), Adevinta Spark, 10 Modern brands and rebrands (2024-2026), Fonts that read as AI defaults (Inter, Geist, Space Grotesk, Poppins, etc.), Anek Latin + Devanagari (test first), Anthropic / Claude identity, Atkinson Hyperlegible Next (test first), Bosch armature mark (+26 more)
 
 ### Community 6 - "IoT vs Defence side-by-side dimensions table"
 Cohesion: 0.40
@@ -165,7 +169,7 @@ Nodes (3): Decision: Lighthouse = software side of NAVIC CMS, Lighthouse (softwa
 
 ### Community 8 - "IoT competitors"
 Cohesion: 0.09
-Nodes (25): 07 IoT competitors and design-led exemplars, Ather Energy, Augury, Blues, Category cliches (AI in first line, triplet slogans, stat walls, dark HUD hero), Digi International, Disruptive Technologies, Ecozen (+17 more)
+Nodes (26): 07 IoT competitors and design-led exemplars, Ather Energy, Augury, Blues, Category cliches (AI in first line, triplet slogans, stat walls, dark HUD hero), Digi International, Disruptive Technologies, Ecozen (+18 more)
 
 ### Community 10 - "logo/logo-kit.js"
 Cohesion: 0.12
@@ -260,8 +264,8 @@ Cohesion: 0.10
 Nodes (8): cr(), lum(), oklch_to_srgb(), cr(), gamut(), lum(), to_srgb(), stem()
 
 ### Community 57 - "Fonts"
-Cohesion: 0.50
-Nodes (3): Fonts, Loading, Making them sit together
+Cohesion: 0.40
+Nodes (4): Fonts, Loading, Local copies, Making them sit together
 
 ### Community 58 - "Identity round 1 (2026-10-30)"
 Cohesion: 0.50
@@ -283,30 +287,42 @@ Nodes (12): 10. Known weaknesses, 1. The story (one sentence), 2. What is in thi
 Cohesion: 0.50
 Nodes (3): Next steps, Optional (if time allows), Touchpoint mockups to make in Figma (logo modernisation, round 1)
 
+### Community 77 - "08 Defence competitors and brand exemplars (AID Defence)"
+Cohesion: 0.11
+Nodes (23): 08 Defence competitors and brand exemplars (AID Defence), Whitespace for AID Defence, Anduril (08), BEL, Castelion, CoreEL Technologies, Counter-drone is the crowded category, D-Fend Solutions (+15 more)
+
+### Community 78 - "AID brand rebuild: questions for leadership"
+Cohesion: 0.15
+Nodes (12): 10. Timing and moments, 1. Company and ambition, 2. Brand structure, 3. Products and portfolio, 4. Proof, 5. Audiences and buying, 6. Competition, 7. Personality and voice (+4 more)
+
+### Community 79 - "Working from a browser or iPad"
+Cohesion: 0.25
+Nodes (7): If the repo is private, Limits of a cloud session, Start a session, Video, What comes with the repo, What does not come with the repo, Working from a browser or iPad
+
 ## Ambiguous Edges - Review These
 - `Branded house with two descriptor sub-brands (AID IoT, AID Defense)` → `Endorsed-brand architecture recommendation with separate store`  [AMBIGUOUS]
   docs/research/01-brand-system-anatomy.md · relation: conceptually_related_to
 
 ## Knowledge Gaps
 - **41 isolated node(s):** `PATH`, `Brand ids: aid-iot, aid-defence, inordinate, _fixture-brand`, `Library commands: build, export, check`, `Protected namespaces: status, focus, symbology, classification`, `Admired: Apple, Siemens, Samsung; disliked: AI slop, noise, jargon, too many colours` (+36 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 328 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **39 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 351 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **42 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `10 Modern brands and rebrands (2024-2026)` connect `Modern brands, logo and fonts` to `IoT competitors`, `Multi-brand exemplars`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
+- **Why does `10 Modern brands and rebrands (2024-2026)` connect `Modern brands, logo and fonts` to `IoT competitors`, `08 Defence competitors and brand exemplars (AID Defence)`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **What connects `PATH`, `Brand ids: aid-iot, aid-defence, inordinate, _fixture-brand`, `Library commands: build, export, check` to the rest of the system?**
   _41 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Design system base choice` be split into smaller, more focused modules?**
   _Cohesion score 0.08392156862745098 - nodes in this community are weakly interconnected._
-- **Why does `04 LLM-friendly design systems, machine-readable formats and agent skills` connect `LLM-ready library and skills` to `Design system base choice`, `Brand system anatomy`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
+- **Why does `09 Multi-product clarity and multi-brand systems` connect `09 Multi-product clarity and multi-brand systems` to `08 Defence competitors and brand exemplars (AID Defence)`, `Modern brands, logo and fonts`?**
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
 - **Should `check.mjs` be split into smaller, more focused modules?**
   _Cohesion score 0.07578084997439836 - nodes in this community are weakly interconnected._
-- **Should `Brand system anatomy` be split into smaller, more focused modules?**
-  _Cohesion score 0.08888888888888889 - nodes in this community are weakly interconnected._
+- **Why does `04 LLM-friendly design systems, machine-readable formats and agent skills` connect `LLM-ready library and skills` to `Design system base choice`, `Brand system anatomy`?**
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
 
 ### Low-confidence Hints
 _AMBIGUOUS edges — the extractor was unsure. Verify before acting on these._

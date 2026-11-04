@@ -1,5 +1,7 @@
 # Next steps
 
+0. **Decide whether the repo stays public, then connect the iPad (owner, on GitHub and claude.ai).** Steps: `docs/CLOUD.md`.
+   Why: the repo holds defence strategy and unconfirmed claims, and only the owner can change its visibility.
 1. **Owner review of round 1 (end to end, ready now).** Figma: https://www.figma.com/design/IxAZrYXdTZpYgPzZD8mWSV
    (start at Cover, then 00 · Read me). UI previews + lessons: https://claude.ai/artifact/6JCbNb5c7mEqH1a7g4dTWB.
    Logo showcase: https://claude.ai/artifact/JK6tg57QvjLkfzA12ndfvq. Picks needed: modernised mark (Beacon + Facet

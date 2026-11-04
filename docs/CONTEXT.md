@@ -1,12 +1,19 @@
 # Context — AID brand system + design system
 
-_Last rewritten: 2026-10-30 (identity round 1 complete: mark modernised, UI previews, logo in use; awaiting owner picks)_
+_Last rewritten: 2026-11-04 (repo made self-sufficient for iPad and cloud work; identity round 1 still awaiting owner picks)_
+
+## Working from a browser or iPad (since 2026-11-04)
+- Guide: `docs/CLOUD.md`. Tested on a real cloud machine: clone, setup, checks, graphify, skills, a video render.
+- The repo is **public**, which is an open decision (see DECISIONS). If it goes private, the Claude GitHub App must be installed on it.
+- Figma is not connected on claude.ai yet. Skills are in `.claude/skills/`; `apple-design` and `brag` were left out.
+- Video: `scripts/video-kit.sh` puts fonts and GSAP beside a composition, because the render browser has no internet.
+- The leadership questionnaire is copied to `docs/brand/LEADERSHIP-QUESTIONS.md`. Brand fonts: `packages/brand-library/core/fonts/files/`.
 
 ## State
 - Fresh start on 2026-10-27; the old website work is in git tag `archive/website-v3`.
-- Research is done (reports 01–10). Brand strategy v0 is drafted. The library skeleton is built and its
-  checks pass, with placeholder values only: no real colours, fonts or logo decisions yet.
-- Waiting on leadership answers to the questionnaire (Claude Docs, shared by the user):
+- Research is done (reports 01–10). Brand strategy v0 is drafted. The library is built and its checks pass; type is
+  decided, colour and logo values are still placeholders until the owner's picks.
+- Waiting on leadership answers to the questionnaire (Claude Docs, shared by the user; copy in `docs/brand/`):
   https://claude.ai/artifact/HH6YJ7DN16ZXoF9GUJSr7w
 
 ## Confirmed (docs/brand/DISCOVERY.md, docs/DECISIONS.md)

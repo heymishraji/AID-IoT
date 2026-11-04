@@ -43,6 +43,8 @@ Do NOT load `docs/research/*` unless a task needs the evidence; they are large r
   dependencies and build, and ffmpeg in cloud sessions. Run it by hand only if the hook is off.
 - Working from a browser or iPad: `docs/CLOUD.md`. This repo is the only memory a cloud session has, so anything a
   later session must know goes in the repo, not in local memory. Video, design and copy skills live in `.claude/skills/`.
+- Video renders: the render browser in a cloud session cannot reach CDNs. Run `bash scripts/video-kit.sh <folder>`, then
+  load only `vendor/fonts.css` and `vendor/gsap.min.js`; no external URLs in a composition. Render without Docker.
 - After changing docs or code, run `graphify update .` and commit `graphify-out/`.
 
 ## Agents and models

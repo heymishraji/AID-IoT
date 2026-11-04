@@ -6,9 +6,9 @@
     "semantic_hash": ""
   },
   "scripts/setup.sh": {
-    "mtime": 1793276597.4122317,
-    "seen": 1793276633.478893,
-    "ast_hash": "d886b1acc21a229eec9031d6b0df6657",
+    "mtime": 1793791961.2876804,
+    "seen": 1793792762.120342,
+    "ast_hash": "60fad7c8a385e07c5a64bc6a88b8b8ab",
     "semantic_hash": ""
   },
   "AGENTS.md": {
@@ -18,33 +18,33 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1793277290.6905267,
-    "seen": 1793277784.382261,
-    "ast_hash": "1b7e1a0834846c8b53ce0a8cceca396b",
+    "mtime": 1793792757.2798505,
+    "seen": 1793792762.120346,
+    "ast_hash": "cc9da3d12b84983aa05ea5e4f54df609",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1793276593.908196,
-    "seen": 1793276633.4788961,
-    "ast_hash": "917015261b16c47a4f4a480a8f72667b",
+    "mtime": 1793791961.2889667,
+    "seen": 1793792762.1203468,
+    "ast_hash": "d8c6257afbd73af4ac69da05f73ca85a",
     "semantic_hash": ""
   },
   "docs/CONTEXT.md": {
-    "mtime": 1793355237.3682687,
-    "seen": 1793355250.086072,
-    "ast_hash": "629fcee3364e678af761676b23c1f87c",
+    "mtime": 1793792757.2828927,
+    "seen": 1793792762.1203609,
+    "ast_hash": "ccc27757438764f426681212c9206fdd",
     "semantic_hash": ""
   },
   "docs/DECISIONS.md": {
-    "mtime": 1793355237.3603895,
-    "seen": 1793355250.0860732,
-    "ast_hash": "bf81dba2a026874060090e14cd00c3f1",
+    "mtime": 1793792757.2863612,
+    "seen": 1793792762.120362,
+    "ast_hash": "12c8cbc4b85b7ca727349167bfad2a18",
     "semantic_hash": ""
   },
   "docs/NEXT.md": {
-    "mtime": 1793355237.367248,
-    "seen": 1793355250.086074,
-    "ast_hash": "baf1bd0b9b2f0a96ba91c7c029e4ebee",
+    "mtime": 1793792757.2852693,
+    "seen": 1793792762.120363,
+    "ast_hash": "086169d77f3765241b1111206d5a9ad0",
     "semantic_hash": ""
   },
   "docs/PRODUCT-FACTS.md": {
@@ -198,9 +198,9 @@
     "semantic_hash": ""
   },
   "docs/decisions.html": {
-    "mtime": 1793355240.7809753,
-    "seen": 1793355250.08608,
-    "ast_hash": "ac55c9b8d51451d248003c92e0c50577",
+    "mtime": 1793792758.1176913,
+    "seen": 1793792762.120374,
+    "ast_hash": "0e542c16cc1afbdae17159bc9e148996",
     "semantic_hash": ""
   },
   "packages/brand-library/AGENTS.md": {
@@ -234,8 +234,8 @@
     "semantic_hash": ""
   },
   "packages/brand-library/brands/_fixture-brand/DESIGN.md": {
-    "mtime": 1793355243.5720952,
-    "seen": 1793355250.086103,
+    "mtime": 1793792613.039642,
+    "seen": 1793792762.120398,
     "ast_hash": "d80301cb9cc7b7e5572b6cf0fd0ccbc0",
     "semantic_hash": ""
   },
@@ -258,8 +258,8 @@
     "semantic_hash": ""
   },
   "packages/brand-library/brands/aid-defence/DESIGN.md": {
-    "mtime": 1793355243.6906736,
-    "seen": 1793355250.0861068,
+    "mtime": 1793792613.1816792,
+    "seen": 1793792762.120401,
     "ast_hash": "7322b3e29bbc05e3ffc9ddc831802c6d",
     "semantic_hash": ""
   },
@@ -300,8 +300,8 @@
     "semantic_hash": ""
   },
   "packages/brand-library/brands/aid-iot/DESIGN.md": {
-    "mtime": 1793355243.7919707,
-    "seen": 1793355250.086113,
+    "mtime": 1793792613.2977357,
+    "seen": 1793792762.120408,
     "ast_hash": "8b39e527d1218824b6a0df1bb86147dc",
     "semantic_hash": ""
   },
@@ -342,8 +342,8 @@
     "semantic_hash": ""
   },
   "packages/brand-library/brands/inordinate/DESIGN.md": {
-    "mtime": 1793355243.8857148,
-    "seen": 1793355250.08612,
+    "mtime": 1793792613.4020977,
+    "seen": 1793792762.120414,
     "ast_hash": "777de709ffd7ebe0e42851deac4ef2d1",
     "semantic_hash": ""
   },
@@ -480,9 +480,9 @@
     "semantic_hash": ""
   },
   "packages/brand-library/core/fonts/README.md": {
-    "mtime": 1793346714.7964997,
-    "seen": 1793346821.584085,
-    "ast_hash": "3b07cc3b83c0ed036fc7db3cb0699969",
+    "mtime": 1793792608.438601,
+    "seen": 1793792762.120419,
+    "ast_hash": "73edca6fb64adc01467b30f3f866a9da",
     "semantic_hash": ""
   },
   "docs/studies/type-evidence/same-line-check-chrome.png": {
@@ -1167,6 +1167,72 @@
     "mtime": 1793354529.839418,
     "seen": 1793355250.086197,
     "ast_hash": "e409695faa6ddebe159b0ed870d5c20a",
+    "semantic_hash": ""
+  },
+  "scripts/video-kit.sh": {
+    "mtime": 1793792608.4583457,
+    "seen": 1793792762.1203442,
+    "ast_hash": "cc2301478e377d46ccf092e96b59d4e1",
+    "semantic_hash": ""
+  },
+  "docs/CLOUD.md": {
+    "mtime": 1793792757.2820334,
+    "seen": 1793792762.12036,
+    "ast_hash": "b961a0cf023dbb29c7c8df242671e9b5",
+    "semantic_hash": ""
+  },
+  "docs/agent-memory/MEMORY.md": {
+    "mtime": 1793791865.1239722,
+    "seen": 1793792762.1203651,
+    "ast_hash": "a8f78218df47a2230d4dfe7ff858882c",
+    "semantic_hash": ""
+  },
+  "docs/agent-memory/README.md": {
+    "mtime": 1793791865.1291838,
+    "seen": 1793792762.120366,
+    "ast_hash": "a8840fc25797134df3b4aeddeeca8671",
+    "semantic_hash": ""
+  },
+  "docs/agent-memory/aid-iot-project-home.md": {
+    "mtime": 1793791865.1247523,
+    "seen": 1793792762.120367,
+    "ast_hash": "268b3e0bac63a9181ed15451356b68cd",
+    "semantic_hash": ""
+  },
+  "docs/agent-memory/aid-iot-working-style.md": {
+    "mtime": 1793791865.1257813,
+    "seen": 1793792762.1203682,
+    "ast_hash": "244a64a1c6167b17542c30a4152b8383",
+    "semantic_hash": ""
+  },
+  "docs/agent-memory/push-after-every-task.md": {
+    "mtime": 1793791865.1271932,
+    "seen": 1793792762.120369,
+    "ast_hash": "274fc6d99d80d1d71a6466b2af2a1d38",
+    "semantic_hash": ""
+  },
+  "docs/agent-memory/subagent-model-choice.md": {
+    "mtime": 1793791865.128282,
+    "seen": 1793792762.120369,
+    "ast_hash": "42b4bd08ed649064653f2c71636d36b2",
+    "semantic_hash": ""
+  },
+  "docs/brand/LEADERSHIP-QUESTIONS.md": {
+    "mtime": 1793791954.4858978,
+    "seen": 1793792762.1203709,
+    "ast_hash": "dc74a3a106916dc3ad3bcb248d5ec341",
+    "semantic_hash": ""
+  },
+  "packages/brand-library/core/fonts/files/OFL-Archivo.txt": {
+    "mtime": 1793792608.3605244,
+    "seen": 1793792762.12042,
+    "ast_hash": "bcc4b0d9ae273a407df2fdbbaa86888f",
+    "semantic_hash": ""
+  },
+  "packages/brand-library/core/fonts/files/OFL-Atkinson-Hyperlegible-Next.txt": {
+    "mtime": 1793792608.367483,
+    "seen": 1793792762.1204212,
+    "ast_hash": "2613c317518cfdc003cafaf9858510f6",
     "semantic_hash": ""
   },
   "packages/brand-library/package-lock.json": {

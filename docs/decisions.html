@@ -46,7 +46,7 @@ td.rej{color:var(--muted)}
     <div class="counts">
       <div class="count you"><span class="label">Waiting on you</span><b>11</b></div>
       <div class="count lead"><span class="label">Waiting on leadership</span><b>7</b></div>
-      <div class="count done"><span class="label">Decided</span><b>31</b></div>
+      <div class="count done"><span class="label">Decided</span><b>32</b></div>
     </div>
   </header>
 
@@ -227,6 +227,7 @@ td.rej{color:var(--muted)}
     <div class="tbl"><table>
       <thead><tr><th>Date</th><th>Decision</th><th>Why</th><th>Rejected</th></tr></thead>
       <tbody>
+        <tr><td class="date">2026-11-04</td><td>Brand fonts are kept in the library (core/fonts/files) and scripts/video-kit.sh puts them and GSAP beside a composition</td><td>a cloud test render failed because the render browser cannot reach CDNs, and the same render passed once everything was local</td><td class="rej">Docker rendering rejected because it adds a daemon to every session; passing the proxy to the browser left untested</td></tr>
         <tr><td class="date">2026-11-04</td><td>Repo made self-sufficient for cloud sessions: licensed skills copied into .claude/skills, working rules moved from local memory into CLAUDE.md, leadership questionnaire exported to docs/brand/</td><td>the owner will work from an iPad and may lose this laptop, and a cloud session reads only the repo</td><td class="rej">fetching skills from upstream at startup rejected because the hyperframes repo layout has already diverged from the installed copy; apple-design and brag left out for lack of a licence</td></tr>
         <tr><td class="date">2026-10-30</td><td>Figma file has a cover page (mark lattice pattern, title, one-line goal, status); set as thumbnail by being the first frame of the first page</td><td>the owner wanted the file's purpose and progress visible at a glance</td><td class="rej">API thumbnail setting unavailable</td></tr>
         <tr><td class="date">2026-10-30</td><td>Colour routes are judged on UI previews built with the brand library (each route = brand-role and neutral overrides), in light, dark and night, with lessons from the 51 references shown on the screens</td><td>swatches alone could not show long-term fit</td><td class="rej">static colour boards alone rejected</td></tr>
