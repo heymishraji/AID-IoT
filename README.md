@@ -37,5 +37,5 @@ following the same contract.
 ## Start here
 - People: `docs/CONTEXT.md`, then `docs/NEXT.md`. Decisions: `docs/decisions.html`.
 - Agents: `AGENTS.md`. Claude Code also loads `CLAUDE.md`.
-- New machine or cloud session: `bash scripts/setup.sh`.
+- New machine: `bash scripts/setup.sh`. Browser or iPad: `docs/CLOUD.md`.
 - Previous website work: git tag `archive/website-v3`.

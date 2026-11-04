@@ -39,8 +39,10 @@ Do NOT load `docs/research/*` unless a task needs the evidence; they are large r
 - Every deliverable ends with "Next steps" and the reason each step is next.
 
 ## New machine or cloud session
-- `scripts/setup.sh` runs automatically at session start (SessionStart hook): graphify CLI + each package's npm
-  dependencies. Run it by hand only if the hook is off.
+- `scripts/setup.sh` runs automatically at session start (SessionStart hook): graphify CLI, each package's npm
+  dependencies and build, and ffmpeg in cloud sessions. Run it by hand only if the hook is off.
+- Working from a browser or iPad: `docs/CLOUD.md`. This repo is the only memory a cloud session has, so anything a
+  later session must know goes in the repo, not in local memory. Video, design and copy skills live in `.claude/skills/`.
 - After changing docs or code, run `graphify update .` and commit `graphify-out/`.
 
 ## Agents and models
@@ -49,6 +51,14 @@ Do NOT load `docs/research/*` unless a task needs the evidence; they are large r
 - Pass `model: "opus"` when the agent's output decides or changes the result: brand rules, token/structure
   changes, final copy, design direction, recommendations the owner will act on, anything hard to undo.
 - Haiku only for mechanical lookups. The main session reviews every agent result before it is used.
+
+## How the owner works
+- Finish a round end to end, then show it: no mid-way checkpoints, and no intermittent questions to the CEO (technical, non-designer, time-poor).
+- Research first, then design: write the principles and a checklist before drawing, and show options in use (real screens, real touchpoint mockups), not as swatches or isolated marks.
+- Every visual deliverable needs light and dark mode.
+- Prefer committed, distinctive directions over safe ones. Generic design was rejected ("navy + orange glow + device on a sweep + bento"); the owner wants modern, motion-led, 3D/scroll storytelling on a templatised component system.
+- The owner rejected new-logo routes: keep and modernise the current AID mark.
+- Figma work goes in team Mishraji's Workspace (team::1380963047843410530). Old artifact links (audit, blueprint, direction boards) belong to the archived website work.
 
 ## Conventions
 - British English. Plain language first, engineering detail one level down.

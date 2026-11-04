@@ -5,3 +5,4 @@ node_modules/
 dist/
 graphify-out/.graphify_python
 graphify-out/.graphify_root
+graphify-out/cache/hook_sessions/

@@ -32,7 +32,7 @@ _Last rewritten: 2026-10-30 (identity round 1 complete: mark modernised, UI prev
   `brands/<aid-iot|aid-defence|inordinate|_fixture-brand>/` (tokens, DESIGN.md draft, VOICE.md, STRATEGY.md,
   assets, templates, skills). It has its own package.json and node_modules.
 - `docs/brand/`: DISCOVERY, PARENT (parent rules), STRATEGY-CONTRAST. `docs/PRODUCT-FACTS.md`: product truth.
-- Commands from the root (Node at ~/.nvm/versions/node/v24.20.0/bin): `npm run build`, `npm run check`,
+- Commands from the root (Node 22+): `npm run build`, `npm run check`,
   `npm run export -- --brand <id> --out <dir>`, `npm run decisions`.
 - Checks: protected namespaces, no hard-coded values, fixture rebrand proof, self-contained package (nothing
   points outside it), export isolation (no brand folder names the other brand), WCAG AA contrast.
